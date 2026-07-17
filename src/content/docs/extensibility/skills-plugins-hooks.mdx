@@ -1,0 +1,87 @@
+---
+title: Skills、Plugins 与 Hooks
+description: 区分能力发现、插件信任与工具调用前后拦截协议。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-tools/src/implementations/skills/discovery.rs
+  - crates/codegen/xai-grok-plugin-marketplace/src/lib.rs
+  - crates/codegen/xai-grok-plugin-marketplace/src/scanner.rs
+  - crates/codegen/xai-grok-hooks/src/lib.rs
+officialDocs:
+  - https://docs.x.ai/build/features/skills-plugins-marketplaces
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** Skills、Plugins 与 Hooks 位于不同扩展层：Skill 通过受控发现把说明和资源送入 Agent 能力面；Plugin 以包和市场元数据组织可安装扩展，并需要信任扫描；Hook 在运行时工具调用前后拦截、拒绝或旁路通知。三者不能用“都是插件”概括。
+
+## 源码入口
+
+Skill discovery 模块定义扫描、候选选择和安全边界；其实现还处理不同来源与路径规则。
+
+<SourceRef path="crates/codegen/xai-grok-tools/src/implementations/skills/discovery.rs" start={1} end={86} symbol="skill discovery architecture" />
+<SourceRef path="crates/codegen/xai-grok-tools/src/implementations/skills/discovery.rs" start={465} end={548} symbol="skill candidate discovery" />
+
+插件市场 crate 负责插件清单与市场层模型，scanner 则在安装/信任之前检查包内容。
+
+<SourceRef path="crates/codegen/xai-grok-plugin-marketplace/src/lib.rs" start={1} end={66} symbol="plugin marketplace" />
+<SourceRef path="crates/codegen/xai-grok-plugin-marketplace/src/scanner.rs" start={1} end={62} symbol="plugin scanner" />
+
+Hooks crate 将生命周期拦截从具体工具中抽离；dispatcher 的 pre-tool 路径可以影响调用，非阻塞 hook 则适合通知型动作。
+
+<SourceRef path="crates/codegen/xai-grok-hooks/src/dispatcher.rs" start={31} end={104} symbol="dispatch_pre_tool" />
+
+## 三层扩展模型
+
+<Mermaid label="发现、安装与运行时拦截" chart={`flowchart TB
+  FS[Filesystem / configured sources] --> SD[Skill discovery]
+  SD --> SK[Skill instructions + resources]
+  MP[Marketplace] --> PL[Plugin package]
+  PL --> SC[Trust scanner]
+  SC -->|accepted| CAP[Installed capabilities]
+  SK --> A[Agent context / tools]
+  CAP --> A
+  A --> TC[Tool call]
+  TC --> PRE[Pre-tool hooks]
+  PRE -->|allow/modify| EX[Tool execution]
+  PRE -->|deny| ER[Structured error]
+  EX --> POST[Post / notification hooks]
+  POST --> A`} />
+
+### Skill：按需注入的方法知识
+
+Skill 由说明文件和可选资源构成，发现阶段先确定候选，再按规则读取。它适合编码流程、领域知识和工具使用约定。路径来源必须受控：符号链接、越界引用或不可信内容不能仅因文件名正确就获得信任。
+
+### Plugin：可分发能力包
+
+Plugin 解决安装、版本、来源和市场组织。一个插件可以携带多种能力，但“市场中可见”不等于“本地已安装”，安装也不等于默认信任。scanner 提供静态检查层，运行时仍应遵循权限和 sandbox。
+
+### Hook：工具协议上的拦截点
+
+pre-tool hook 可以在真实副作用发生前检查或拒绝，适合策略、审计和参数治理；通知型 hook 不应阻塞主调用，适合记录和外部提醒。hook 自身失败时，需要明确采用 fail-open 还是 fail-closed，不能让错误语义含糊。
+
+**推断：** 三层拆分允许“知识怎样进入模型”“扩展怎样被分发”“动作怎样被治理”独立演进，也防止市场安装逻辑渗入每次 tool call 的热路径。
+
+## 信任链
+
+扩展内容可影响模型决策，hook 甚至能接触工具参数，因此来源、扫描和权限都必须可追溯。静态 scanner 能发现一部分危险结构，无法证明运行时行为安全；权限管理和 OS sandbox 仍是最终执行链的一部分。
+
+## 边界与失败模式
+
+- 同名 Skill 来自多个范围时必须有确定优先级，否则加载结果不可复现。
+- 插件更新可能改变其权限需求，不能把旧版本信任无条件继承给任意新内容。
+- 阻塞 hook 超时会拖住工具和 Agent loop；非阻塞 hook 则不能承担必须完成的安全裁决。
+- hook 递归触发工具时可能形成循环，需要协议层限制或重入保护。
+
+## 与官方文档的区别
+
+[官方扩展功能文档](https://docs.x.ai/build/features/skills-plugins-marketplaces) 负责安装与使用体验；本文只建立三个扩展面的源码边界和信任链，不复制市场命令或配置步骤。
+
+## 源码引用
+
+Skill discovery、marketplace/scanner 与 hook dispatcher 分别提供三层证据。它们最终汇入工具和 prompt 系统，但拥有不同生命周期与风险面。
+

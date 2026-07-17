@@ -1,0 +1,55 @@
+---
+title: Grok Build Architecture
+description: 从公开 Rust 源码理解 Grok Build 的运行时、工具、安全、上下文与扩展机制。
+template: splash
+lastVerified: '2026-07-17'
+sourcePaths:
+  - README.md
+  - Cargo.toml
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import HomeHero from '@components/HomeHero.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<HomeHero />
+
+## 这不是另一份使用手册
+
+官方文档已经准确回答“如何安装、配置和使用 Grok Build”。本站换一个观察方向：从公开 Rust 源码追踪输入如何变成 `Turn`，模型事件如何落入 TUI，工具调用如何越过权限与沙箱边界，以及状态如何被持久化、压缩和恢复。
+
+每篇文章都锁定同一个公开提交，并把关键判断连接到精确行号。源码没有直接表达的设计意图会标注为**推断**；无法由公开代码证明的产品行为不会写成事实。
+
+<Mermaid label="一次请求的阅读地图" chart={`flowchart LR
+  U[用户输入] --> UI[TUI / stdio / serve]
+  UI --> L[Leader 与 Session]
+  L --> A[Agentic Loop]
+  A --> M[Sampler / Model]
+  M -->|tool call| T[Tool Registry]
+  T --> P[Permission / Sandbox]
+  P --> R[结果与持久化]
+  R --> A
+  A --> UI`} />
+
+## 建议阅读顺序
+
+<div class="reading-path">
+  <a class="reading-link" href="./introduction/architecture-overview/"><small>PATH 01</small><strong>先建立全景</strong><span>workspace、crate 与端到端数据流</span></a>
+  <a class="reading-link" href="./runtime/agentic-loop/"><small>PATH 02</small><strong>再进入运行时</strong><span>Turn、Sampler 与流式事件</span></a>
+  <a class="reading-link" href="./safety/permission-plan-sandbox/"><small>PATH 03</small><strong>最后看边界</strong><span>权限、Plan Mode 与 OS Sandbox</span></a>
+</div>
+
+如果你正在定位具体模块，可以直接使用顶部搜索：`Leader`、`compaction`、`worktree`、`MCP` 等英文符号均保留为源码命名，中文概念也可检索。
+
+## 源码与官方文档的分工
+
+| 你想解决的问题 | 首选入口 |
+| --- | --- |
+| 安装、命令、配置项、扩展用法 | [Grok Build 官方文档](https://docs.x.ai/build/overview) |
+| 类型之间如何协作、事件怎样流动 | 本站架构文章 |
+| 某项行为在当前版本是否真实存在 | 本站固定行号 + 上游源码 |
+| 最新版本是否已经变化 | 上游主分支与官方发布说明 |
+
+本站是非官方社区学习项目，不代表 xAI；所有源码链接均指向固定快照，而不是会漂移的 `main` 分支。
+

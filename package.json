@@ -1,0 +1,29 @@
+{
+  "name": "grok-build-architecture",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "build": "astro build",
+    "postbuild": "node scripts/generate-llms.mjs",
+    "preview": "astro preview",
+    "validate:source": "node scripts/validate-source-refs.mjs",
+    "validate:links": "node scripts/validate-built-links.mjs",
+    "test:e2e": "npm run build && npm run validate:links && playwright test"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/starlight": "0.41.3",
+    "astro": "7.1.0",
+    "mermaid": "11.16.0",
+    "sharp": "^0.34.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.9",
+    "@axe-core/playwright": "4.12.1",
+    "@playwright/test": "1.61.1",
+    "typescript": "^5.9.0"
+  }
+}

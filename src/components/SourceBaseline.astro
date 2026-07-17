@@ -1,0 +1,28 @@
+---
+import {
+  MONOREPO_SOURCE_REV,
+  PUBLIC_COMMIT,
+  SOURCE_REPOSITORY,
+  VERIFIED_DATE,
+} from '@data/source';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<aside class:list={['source-baseline', { 'source-baseline--compact': compact }]} aria-label="源码基线">
+  <div class="source-baseline__marker" aria-hidden="true">01</div>
+  <div>
+    <p class="source-baseline__label">固定源码基线</p>
+    <p class="source-baseline__title">公开仓库提交 <code>{PUBLIC_COMMIT.slice(0, 8)}</code></p>
+    {!compact && (
+      <p class="source-baseline__meta">
+        单体仓库 SOURCE_REV <code>{MONOREPO_SOURCE_REV.slice(0, 8)}</code> · 核验于 {VERIFIED_DATE}
+      </p>
+    )}
+  </div>
+  <a href={`${SOURCE_REPOSITORY}/tree/${PUBLIC_COMMIT}`} target="_blank" rel="noreferrer">查看快照 ↗</a>
+</aside>

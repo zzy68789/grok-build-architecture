@@ -1,0 +1,82 @@
+---
+title: 跨会话 Memory
+description: 解析记忆的存储、切分、Embedding、混合检索与 Dream 整理流程。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-memory/src/lib.rs
+  - crates/codegen/xai-grok-memory/src/search.rs
+  - crates/codegen/xai-grok-memory/src/dream.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** Memory 是独立于聊天历史的跨会话知识层。内容先被持久化和切分，再通过 embedding 与文本信号做混合检索；Dream 在满足门槛时异步整理记忆。检索结果只是候选上下文，不拥有高于当前用户或项目规则的权限。
+
+## 源码入口
+
+memory crate 顶层文档给出存储、索引和查询的整体职责，是理解“记忆不等于完整 session 日志”的关键。
+
+<SourceRef path="crates/codegen/xai-grok-memory/src/lib.rs" start={1} end={76} symbol="memory architecture" />
+
+搜索模块描述 hybrid pipeline，`hybrid_search` 将语义和字面检索信号合并，而非只依赖 embedding 相似度。
+
+<SourceRef path="crates/codegen/xai-grok-memory/src/search.rs" start={1} end={62} symbol="hybrid search pipeline" />
+<SourceRef path="crates/codegen/xai-grok-memory/src/search.rs" start={146} end={224} symbol="hybrid_search" />
+
+Dream 模块定义后台整理的门槛与执行入口，使昂贵工作不会在每条消息后无条件发生。
+
+<SourceRef path="crates/codegen/xai-grok-memory/src/dream.rs" start={1} end={70} symbol="Dream gates" />
+
+## 从写入到召回
+
+<Mermaid label="Memory 数据管线" chart={`flowchart LR
+  E[Session events / useful facts] --> N[Normalize]
+  N --> C[Chunk]
+  C --> DB[(Persistent store)]
+  C --> V[Embedding index]
+  Q[Current query] --> K[Keyword search]
+  Q --> S[Semantic search]
+  DB --> K
+  V --> S
+  K --> H[Hybrid rank]
+  S --> H
+  H --> F[Filtered memory context]
+  F --> P[Prompt builder]
+  DB --> D[Dream consolidation]
+  D --> DB`} />
+
+切分决定检索粒度。块太大，相关片段会被无关内容稀释；块太小，事实失去上下文。embedding 适合捕捉语义近似，关键词检索则能保留路径、符号、错误码等精确字面信号，混合排序正是为了平衡二者。
+
+## 为什么 Memory 不直接等于 Prompt
+
+持久化内容可能过期、互相冲突或来自旧项目状态。搜索结果需要经过相关度、数量、作用域和预算过滤，之后才作为有来源的上下文输入。当前仓库源码和用户明确指令通常比历史记忆更接近事实。
+
+这也意味着“写入成功”和“以后一定被召回”不是同一保证。召回取决于查询、索引可用性、排序和预算。
+
+## Dream 的角色
+
+Dream 更像离线整理：在满足数量、时间或资源门槛时，合并重复信息、提炼长期知识或调整记忆结构。它与当前 turn 解耦，避免用户等待每次整理；但异步执行也要求对并发写入、失败重试与幂等保持谨慎。
+
+**推断：** Dream 命名体现“从事件记录提炼知识”的意图，但具体产物仍应按代码数据结构理解，而不是类比成人类记忆机制。
+
+## 边界与失败模式
+
+- embedding 模型或版本变化会改变向量分布，旧索引可能需要重建。
+- 记忆中的路径、API 和项目结论会随仓库演进而失效，召回时需核验当前源码。
+- hybrid rank 可以改善召回，但不能证明事实真实，也不能替代指令优先级。
+- Dream 后台失败不应阻断当前会话；同时也不能静默丢失未处理状态。
+
+## 与官方文档的区别
+
+官方文档若描述 Memory 的开关、可见行为或隐私边界，应优先参考。本文只解释公开 crate 的数据路径，不推断服务端保存政策。
+
+## 源码引用
+
+顶层架构、混合搜索实现和 Dream 门槛覆盖了“存—找—整理”三个阶段。公开源码之外的 embedding 服务细节不在本文结论范围内。
+

@@ -1,0 +1,89 @@
+---
+title: 工具系统
+description: 解析工具注册、定义索引、选择、权限检查、执行与结果回传。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-tools/src/registry/types.rs
+  - crates/codegen/xai-grok-tools/src/bridge.rs
+officialDocs:
+  - https://docs.x.ai/build/features/skills-plugins-marketplaces
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** 工具系统以 `ToolRegistryBuilder` 汇集实现和元数据，向模型暴露筛选后的 definitions，再由 `ToolBridge` 把结构化调用接入权限感知的执行路径。模型“看见工具”、注册表“找到工具”和系统“允许执行”是三个独立关卡。
+
+## 源码入口
+
+Builder 负责逐步装配工具集合与相关策略，是内建工具、MCP 工具和扩展能力汇入同一注册表的构造边界。
+
+<SourceRef path="crates/codegen/xai-grok-tools/src/registry/types.rs" start={519} end={590} symbol="ToolRegistryBuilder" />
+
+注册完成后，`tool_definitions` 生成供采样请求使用的工具描述；`register_tool` 则处理名称、实现和元数据进入注册表的过程。
+
+<SourceRef path="crates/codegen/xai-grok-tools/src/registry/types.rs" start={1278} end={1350} symbol="tool_definitions" />
+<SourceRef path="crates/codegen/xai-grok-tools/src/registry/types.rs" start={1664} end={1738} symbol="register_tool" />
+
+`ToolBridge` 位于模型工具协议与内部执行接口之间，承担调用上下文转换与结果回流。
+
+<SourceRef path="crates/codegen/xai-grok-tools/src/bridge.rs" start={60} end={132} symbol="ToolBridge" />
+
+## 五段式执行链
+
+<Mermaid label="工具从暴露到回传" chart={`flowchart LR
+  R[注册实现] --> I[建立名称索引]
+  I --> D[生成 Tool Definitions]
+  D --> M[模型选择 name + args]
+  M --> B[ToolBridge]
+  B --> P[权限 / 模式检查]
+  P --> X[执行实现]
+  X --> O[结构化 Tool Result]
+  O --> M`} />
+
+1. **注册**：程序启动或扩展发现时提供工具实现、schema 和行为元数据。
+2. **暴露**：根据当前会话、模式和能力生成 definitions；并非注册的所有工具都必须对模型可见。
+3. **解析**：模型返回名称与 JSON 参数，注册表完成查找和参数边界校验。
+4. **执行**：桥接层提供会话/权限上下文，具体工具执行受控动作。
+5. **回传**：成功或错误都转换为模型能消费的 result，进入下一轮采样。
+
+## schema 是运行时契约
+
+工具定义不仅用于 UI 展示，它直接影响模型生成参数。过宽 schema 会让危险输入更容易穿过第一道门，过窄 schema 则导致合法动作无法表达。即使 schema 校验通过，工具实现仍需对路径、命令、资源和会话状态做语义校验。
+
+下面是概念化的调用形态，用来辨认协议边界，并非上游某个工具的完整 schema：
+
+```json title="概念性 Tool Call"
+{
+  "name": "workspace.read_file",
+  "arguments": {
+    "path": "src/main.rs"
+  }
+}
+```
+
+工具名称也是协议面。MCP 需要命名空间，插件可能引入同名实现，注册阶段必须处理冲突，不能依靠“模型会选对”。
+
+## 权限在哪里介入
+
+权限不是模型 definition 的替代品，也不是注册表的简单布尔字段。工具在已解析调用上下文中提出访问需求，权限管理器根据模式和规则批准、询问或拒绝；随后 sandbox 还可在 OS 层限制实际能力。
+
+**推断：** Builder 模式使工具集合可以随运行配置组合，而 `ToolBridge` 把 Agent 协议与工具 trait 隔开，为 MCP、子 Agent 与内建工具共存提供了稳定接缝。
+
+## 边界与失败模式
+
+- definition 已暴露但实现未成功注册，会在调用阶段形成“未知工具”。
+- 工具返回文本成功不等于业务目标成功，结果结构应携带可判断的错误语义。
+- 工具名称冲突若被静默覆盖，会让权限元数据和真正实现错配。
+- 长任务需支持进度、取消或后台化，否则会阻塞当前 turn 的闭环。
+
+## 与官方文档的区别
+
+官方扩展文档告诉你如何使用 Skills、Plugins 和市场；本文解释它们最终如何进入统一工具执行面。具体可用工具与参数仍以当前官方版本为准。
+
+## 源码引用
+
+本页引用 Builder、definition 生成、注册和桥接层，覆盖了工具生命周期的四个结构节点。权限与 sandbox 细节在下一篇单独展开。

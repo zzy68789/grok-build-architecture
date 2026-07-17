@@ -1,0 +1,26 @@
+---
+import { sourceUrl } from '@data/source';
+
+interface Props {
+  path: string;
+  start: number;
+  end?: number;
+  symbol?: string;
+  note?: string;
+}
+
+const { path, start, end, symbol, note } = Astro.props;
+const normalized = path.replaceAll('\\', '/');
+const display = `${normalized}:${start}${end && end > start ? `–${end}` : ''}`;
+---
+
+<a class="source-ref" href={sourceUrl(normalized, start, end)} target="_blank" rel="noreferrer">
+  <span class="source-ref__signal" aria-hidden="true"></span>
+  <span class="source-ref__body">
+    <span class="source-ref__eyebrow">SOURCE</span>
+    <strong>{symbol ?? normalized.split('/').at(-1)}</strong>
+    <code>{display}</code>
+    {note && <span class="source-ref__note">{note}</span>}
+  </span>
+  <span class="source-ref__arrow" aria-hidden="true">↗</span>
+</a>

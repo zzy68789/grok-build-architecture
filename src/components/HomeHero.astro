@@ -1,0 +1,24 @@
+---
+import SourceBaseline from './SourceBaseline.astro';
+---
+
+<section class="home-hero" aria-labelledby="home-title">
+  <div class="home-hero__copy">
+    <p class="home-hero__eyebrow"><span>UNOFFICIAL</span> / SOURCE ARCHITECTURE</p>
+    <h1 id="home-title">Grok Build<br/><em>Architecture</em></h1>
+    <p class="home-hero__lede">从公开 Rust 源码出发，追踪一次请求如何穿过 TUI、Agent、工具、安全边界与持久化层。</p>
+    <div class="home-hero__actions">
+      <a class="primary-action" href="./introduction/what-is-grok-build/">开始阅读 <span>→</span></a>
+      <a class="text-action" href="https://github.com/xai-org/grok-build" target="_blank" rel="noreferrer">公开源码 ↗</a>
+    </div>
+  </div>
+  <div class="home-hero__signal" aria-label="Grok Build 核心数据流">
+    <div class="signal-rail signal-rail--top"><span>INPUT</span><i></i><b>01</b></div>
+    <div class="signal-node signal-node--tui"><small>INTERFACE</small><strong>TUI</strong><span>Action / Effect</span></div>
+    <div class="signal-node signal-node--agent"><small>ORCHESTRATION</small><strong>AGENT</strong><span>Turn / Sampler</span></div>
+    <div class="signal-node signal-node--tools"><small>EXECUTION</small><strong>TOOLS</strong><span>Policy / Sandbox</span></div>
+    <div class="signal-rail signal-rail--bottom"><b>04</b><i></i><span>RESULT</span></div>
+  </div>
+</section>
+
+<SourceBaseline />

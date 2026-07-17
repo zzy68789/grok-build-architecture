@@ -1,0 +1,110 @@
+---
+title: 架构全景
+description: 解析 Rust workspace、核心 crate 与一次请求的端到端数据流。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - Cargo.toml
+  - crates/codegen/xai-grok-shell/src/leader/mod.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** Grok Build 采用多 crate Rust workspace，把界面、会话编排、模型采样、工具、权限/工作区与持久化拆开；端到端路径的中心不是 TUI，而是 `Leader → Session → Sampler/Tools` 的状态流。
+
+## 源码入口
+
+根目录 `Cargo.toml` 定义 workspace 成员和共享依赖，是理解模块边界的总索引。仓库里大量 `xai-grok-*` crate 并非“按页面分包”，而是按执行责任和可复用边界组织。
+
+<SourceRef path="Cargo.toml" start={1} end={34} symbol="[workspace]" note="workspace 成员与统一解析器配置。" />
+
+`leader` 模块的顶层文档明确描述单进程 Leader、多个客户端与 Agent session 之间的关系，是比目录名更直接的架构证据。
+
+<SourceRef path="crates/codegen/xai-grok-shell/src/leader/mod.rs" start={1} end={40} symbol="leader module architecture" />
+
+## 核心分层
+
+<Mermaid label="核心 crate 与职责" chart={`flowchart TB
+  subgraph Interface[界面与入口]
+    Pager[xai-grok-pager]
+    Bin[xai-grok-pager-bin]
+  end
+  subgraph Runtime[运行时编排]
+    Shell[xai-grok-shell]
+    Sampler[xai-grok-sampler]
+  end
+  subgraph Execution[执行边界]
+    Tools[xai-grok-tools]
+    Workspace[xai-grok-workspace]
+    Sandbox[xai-grok-sandbox]
+  end
+  subgraph State[状态能力]
+    Memory[xai-grok-memory]
+    Compaction[xai-grok-compaction]
+    Hunk[xai-hunk-tracker]
+  end
+  Bin --> Pager --> Shell
+  Shell --> Sampler
+  Shell --> Tools
+  Tools --> Workspace --> Sandbox
+  Shell --> State`} />
+
+- `xai-grok-pager-bin` 负责进程启动和运行模式分派。
+- `xai-grok-pager` 负责 TUI 状态、`Action`、`Effect` 与事件循环。
+- `xai-grok-shell` 是会话编排中心，包含 Leader、ACP session、prompt 构建、压缩和 subagent 协调。
+- `xai-grok-sampler` 把模型端的流式响应变成运行时事件。
+- `xai-grok-tools` 提供注册表、桥接层和内建工具实现。
+- workspace、sandbox、memory、compaction 等 crate 把高风险或高复用能力隔离出来。
+
+这里的“shell”不是操作系统 shell 的同义词，它更接近 Agent runtime。命令执行只是工具系统中的一种动作。
+
+## 一次请求如何穿过系统
+
+<Mermaid label="端到端数据流" chart={`sequenceDiagram
+  participant U as User
+  participant P as Pager/TUI
+  participant L as Leader
+  participant S as Session
+  participant M as Sampler
+  participant T as Tool Registry
+  U->>P: prompt
+  P->>L: client event
+  L->>S: route to agent session
+  S->>M: prompt + tools + context
+  M-->>S: streaming events
+  alt tool call
+    S->>T: name + arguments
+    T-->>S: permission-aware result
+    S->>M: append result and continue
+  end
+  S-->>P: content/state events
+  P-->>U: incremental render`} />
+
+数据跨层时会改变形态：键盘事件先成为 UI `Action`，客户端请求再成为 session 输入，模型输出成为 sampler event，工具调用最终成为结构化 result。这些转换点也是排障时最有价值的观测点。
+
+## 设计边界
+
+`Leader` 的单实例设计让多个客户端共享 Agent 状态，但也使 Leader 生命周期成为连接与恢复的关键。工具注册表将“模型知道哪些工具”与“具体工具怎样执行”解耦；权限和 sandbox 则把策略判断与 OS 级执行限制分开。
+
+**推断：** workspace 的细粒度拆分不仅服务编译复用，也是在约束依赖方向。例如压缩引擎与 token 估算可以独立测试，避免把全部会话运行时拉入算法层。
+
+## 边界与失败模式
+
+- crate 边界不代表运行时进程边界，多数模块仍处于同一进程和异步运行时中。
+- UI 收到的事件可能晚于 session 内部状态变更；不能只凭一帧界面推断底层状态。
+- 工具定义成功进入模型上下文，不代表调用一定通过权限或参数校验。
+- Leader 重连、session 持久化和 checkpoint 分别解决不同层次的恢复，不应混为一种“保存”。
+
+## 与官方文档的区别
+
+官方概览按用户能力组织；本文按源码依赖与数据流组织。需要查命令请看官方文档，需要定位实现则从本文图中的责任模块进入。
+
+## 源码引用
+
+本文使用 workspace 清单确认模块集合，使用 `leader` 顶层文档确认运行时关系。图中的依赖是对公开代码结构的提炼，不表示所有 Rust 依赖边均已绘出。
+

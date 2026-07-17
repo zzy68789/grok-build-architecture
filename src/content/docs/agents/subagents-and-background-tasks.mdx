@@ -1,0 +1,79 @@
+---
+title: 子 Agent 与后台任务
+description: 解释 Coordinator、Task、Scheduler 与 Monitor 如何管理并行和长期工作。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-shell/src/agent/subagent/mod.rs
+  - crates/codegen/xai-grok-tools/src/implementations/grok_build/task/mod.rs
+  - crates/codegen/xai-grok-tools/src/implementations/grok_build/monitor/tool.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** 子 Agent 是由协调器持有生命周期和可见状态的独立工作单元；`Task` 工具负责创建/交互，Scheduler 管理资源与排队，Monitor 把需要持续观察的工作变成可轮询后台管线。并发扩大吞吐，也扩大状态合并与取消成本。
+
+## 源码入口
+
+subagent 模块顶层文档定义协调器责任与通信模型，是理解父子 Agent 关系的总览。
+
+<SourceRef path="crates/codegen/xai-grok-shell/src/agent/subagent/mod.rs" start={1} end={78} symbol="SubagentCoordinator architecture" />
+
+协调器可以提供状态快照和运行中任务列表，让父 Agent 或客户端观察后台工作，而不是把子任务当作不可见 future。
+
+<SourceRef path="crates/codegen/xai-grok-shell/src/agent/subagent/mod.rs" start={626} end={730} symbol="subagent snapshots" />
+
+`TaskTool` 是 Agent 可调用的控制面；Monitor 工具则建立持续检查的独立入口。
+
+<SourceRef path="crates/codegen/xai-grok-tools/src/implementations/grok_build/task/mod.rs" start={1} end={82} symbol="TaskTool" />
+<SourceRef path="crates/codegen/xai-grok-tools/src/implementations/grok_build/monitor/tool.rs" start={18} end={82} symbol="MonitorTool" />
+
+## 协作拓扑
+
+<Mermaid label="父 Agent、调度与后台状态" chart={`flowchart TB
+  P[Parent Agent] --> T[Task Tool]
+  T --> C[Subagent Coordinator]
+  C --> S[Scheduler]
+  S --> A1[Subagent A]
+  S --> A2[Subagent B]
+  A1 --> Q[Snapshots / messages]
+  A2 --> Q
+  Q --> C --> P
+  P --> M[Monitor Tool]
+  M --> B[Background pipeline]
+  B -->|status / completion| P`} />
+
+子 Agent 与普通工具调用的区别，在于它拥有更长生命周期、自己的消息上下文和可查询状态。父 Agent不必阻塞等待，可以继续本地工作，之后读取快照、发送后续指令或收集完成结果。
+
+Scheduler 需要处理并发上限和排队，否则一个模型决定就可能无限扩张资源。协调器则维护身份、父子关系、消息通道与终止状态，让“正在运行”成为可审计事实。
+
+## Task 与 Monitor 的分工
+
+`Task` 面向有明确目标的 Agent 工作单元：创建、跟进、读取结果。`Monitor` 面向外部状态会随时间变化、需要重复检查的场景。后者不应通过高频阻塞轮询占住主 turn，而是交给后台管线按策略观察。
+
+**推断：** 把二者都实现为工具，使模型能用统一的 tool call/result 协议协调长期工作，同时把真实生命周期交给 shell/tool runtime，而不是让模型文本自行“记住任务还在跑”。
+
+## 结果如何合并
+
+子 Agent 完成后返回的是证据和建议，不会自动解决父上下文中的所有冲突。父 Agent仍需核对工作区是否已变化、多个结果是否重叠、假设是否一致。若多个 Agent 能写同一文件，协调策略必须在任务拆分时建立。
+
+## 边界与失败模式
+
+- 并发任务共享工作区时可能覆盖彼此修改；worktree 隔离只能解决部分文件冲突。
+- 父 Agent取消不代表外部进程天然停止，终止信号需要沿协调器传播。
+- snapshot 是某一时刻的观察，读取后状态可能继续变化。
+- Monitor 条件若含糊或没有结束标准，会成为长期资源泄漏源。
+
+## 与官方文档的区别
+
+官方材料说明用户可见的子任务能力；本文聚焦协调器和工具协议如何保存后台身份与状态。并发数量、支持操作和计费行为不在本文承诺范围内。
+
+## 源码引用
+
+协调器文档、状态快照、Task 与 Monitor 四个入口共同证明后台工作有显式控制面，而不是仅靠异步 runtime 隐式运行。
+

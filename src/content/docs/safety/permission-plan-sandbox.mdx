@@ -1,0 +1,82 @@
+---
+title: 安全链路
+description: 区分 Permission、Auto、Plan Mode 与 OS Sandbox 的职责和组合方式。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-workspace/src/permission/types.rs
+  - crates/codegen/xai-grok-workspace/src/permission/manager.rs
+  - crates/codegen/xai-grok-sandbox/src/lib.rs
+  - crates/codegen/xai-grok-tools/src/implementations/grok_build/enter_plan_mode/mod.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** Grok Build 的安全不是单一开关。`Permission` 做策略裁决，Auto 调整何时询问，Plan Mode 收缩可用动作，OS `Sandbox` 限制进程实际能力；任何一层放行都不意味着其余层失效。
+
+## 源码入口
+
+`AccessKind` 把访问需求建模为可判断类别，而不是只传递“危险/安全”布尔值。权限管理器的 `request` 再结合会话策略与用户响应作出决定。
+
+<SourceRef path="crates/codegen/xai-grok-workspace/src/permission/types.rs" start={145} end={216} symbol="AccessKind" />
+<SourceRef path="crates/codegen/xai-grok-workspace/src/permission/manager.rs" start={617} end={704} symbol="PermissionManager::request" />
+
+Sandbox 管理器负责准备并应用平台隔离配置，是策略层之后的执行边界。
+
+<SourceRef path="crates/codegen/xai-grok-sandbox/src/lib.rs" start={118} end={174} symbol="SandboxManager" />
+
+Plan Mode 通过显式工具进入，使模式切换本身成为 Agent 可观察、可记录的协议动作。
+
+<SourceRef path="crates/codegen/xai-grok-tools/src/implementations/grok_build/enter_plan_mode/mod.rs" start={43} end={104} symbol="EnterPlanModeTool" />
+
+## 四层安全模型
+
+<Mermaid label="安全决策从意图到 OS" chart={`flowchart TD
+  C[Tool Call] --> M{当前模式}
+  M -->|Plan| L[限制执行型工具]
+  M -->|Default / Auto| A[分析 AccessKind]
+  L --> A
+  A --> P{Permission policy}
+  P -->|deny| D[返回拒绝结果]
+  P -->|ask| U[用户确认]
+  P -->|allow| S[构造 Sandbox]
+  U -->|allow| S
+  U -->|deny| D
+  S --> O[OS 级执行]
+  O --> R[Tool Result]`} />
+
+- **Plan Mode**：优先约束 Agent 能做哪类动作，适合先调查和设计。它是能力面收缩，不是操作系统虚拟机。
+- **Auto**：减少重复人工确认，但仍遵循配置的授权范围和底层限制。
+- **Permission**：根据结构化访问意图、规则与用户决定作策略裁决。
+- **Sandbox**：即使上层逻辑出错，也尽量在文件、网络、进程等 OS 资源层控制实际影响。
+
+## 为什么需要多层
+
+策略层能够理解“这是写工作区文件”或“需要网络”，却未必能阻止被执行进程的所有间接行为；OS sandbox 能限制系统调用，却不知道某次写入是否符合用户意图。Plan Mode 更早阻止执行型工具进入路径，Auto 只改变交互频率。四者互补而非重复。
+
+**推断：** 将进入/退出 Plan Mode 实现为工具，比仅保存在 UI toggle 中更适合多客户端：模式变化可以经过同一 session 协议被记录和广播。
+
+## 拒绝也是工具结果
+
+权限拒绝不应让 Agent loop 无故消失。系统要把拒绝原因转换成结构化结果，模型才能选择解释、改用只读方案或请求更小范围权限。用户拒绝的是某项动作，不必等于终止整个 session。
+
+## 边界与失败模式
+
+- 平台 sandbox 能力不同，不能把某个平台的保证外推到所有操作系统。
+- Auto 配置过宽会减少决策摩擦，也会扩大无需即时确认的动作范围。
+- 路径规范化错误可能导致权限判断对象与实际访问对象不同，工具和 sandbox 都需防御。
+- Plan Mode 主要约束工具能力；纯文本建议仍可能包含错误或危险操作，不能视作安全审计。
+
+## 与官方文档的区别
+
+官方文档说明如何选择模式和批准动作；本文说明四个概念在源码链路中的位置。实际默认策略和可配置项应以当前官方文档为准。
+
+## 源码引用
+
+访问类型、权限请求、sandbox 应用与 Plan Mode 工具共同证明安全是组合链路。任何安全判断都不应只引用其中一个类型。
+

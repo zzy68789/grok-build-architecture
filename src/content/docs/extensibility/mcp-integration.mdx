@@ -1,0 +1,85 @@
+---
+title: MCP 集成
+description: 解析 MCP 传输、OAuth、生命周期、工具发现、命名与调用回路。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-mcp/src/lib.rs
+  - crates/codegen/xai-grok-mcp/src/servers.rs
+officialDocs:
+  - https://docs.x.ai/build/features/skills-plugins-marketplaces
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** MCP 集成把外部 server 的连接生命周期、认证和工具发现封装到 `xai-grok-mcp`；发现到的工具经命名空间转换后进入统一工具面，调用再被路由回对应 server。连接成功、发现成功和调用成功是三个不同阶段。
+
+## 源码入口
+
+crate 顶层文档给出 MCP 集成层的职责边界，包括配置、server 管理与外部能力接入。
+
+<SourceRef path="crates/codegen/xai-grok-mcp/src/lib.rs" start={1} end={39} symbol="MCP integration architecture" />
+
+`servers.rs` 基于官方 `rmcp` 实现 server 生命周期。工具命名分隔规则位于模块前部，`McpState` 则保存连接与可调用能力状态。
+
+<SourceRef path="crates/codegen/xai-grok-mcp/src/servers.rs" start={1} end={64} symbol="server transport and naming" />
+<SourceRef path="crates/codegen/xai-grok-mcp/src/servers.rs" start={340} end={430} symbol="McpState" />
+
+调用时会解析元信息和 namespaced tool name，把统一工具名还原为目标 server 与远端工具。
+
+<SourceRef path="crates/codegen/xai-grok-mcp/src/servers.rs" start={1035} end={1098} symbol="tool metadata and name parsing" />
+
+## 生命周期
+
+<Mermaid label="MCP 从配置到调用" chart={`sequenceDiagram
+  participant G as Grok Build
+  participant M as McpState
+  participant O as OAuth / auth
+  participant S as MCP Server
+  participant R as Tool Registry
+  G->>M: load server config
+  M->>S: start/connect transport
+  opt authentication required
+    S-->>M: auth challenge
+    M->>O: obtain authorization
+    O-->>M: token/result
+  end
+  M->>S: initialize + list tools
+  S-->>M: capabilities + schemas
+  M->>R: register namespaced definitions
+  R->>M: tool call
+  M->>S: call_tool
+  S-->>M: result/error
+  M-->>R: normalized tool result`} />
+
+传输可以不同，但上层状态机相似：创建连接、协商协议、发现能力、维持运行状态、处理调用、关闭与重连。OAuth 是某些远端 server 的认证分支，不是所有 MCP 连接的固定步骤。
+
+## 为什么需要命名空间
+
+多个 server 可能都暴露 `search` 或 `read`。统一注册表要求名称可唯一解析，因此集成层用稳定分隔规则编码 server 和 tool。模型看到的是本地安全名称，调用时再反解并路由。
+
+名称转换不是纯展示细节：它必须与注册、权限元数据和结果回传保持一致。若 server 名或工具名包含特殊字符，还要确保编码和解析可逆。
+
+## 能力发现与信任
+
+远端 schema 描述工具参数，却不能证明 server 行为可信。MCP 工具仍应进入本地权限体系；连接端点、认证 token 和工具结果都需要按外部输入处理。server 热重连后能力集合也可能变化，注册表需要更新而非永久缓存第一次发现。
+
+**推断：** `McpState` 集中保存 server 和工具映射，是为了让异步重连、能力刷新与调用路由共享同一事实源，避免每次 tool call 重新扫描所有连接。
+
+## 边界与失败模式
+
+- transport 已连接但 initialize 或 list-tools 失败时，server 不能视作可用。
+- OAuth token 过期可能只在调用阶段暴露，需要区分认证失败与工具业务错误。
+- 远端工具 schema 变化会使已有模型上下文过期，当前 turn 可能仍持有旧 definition。
+- server 关闭或超时应返回可理解错误，不能让整个 Agent loop 永久等待。
+
+## 与官方文档的区别
+
+官方扩展文档提供 MCP 配置和使用方式；本文不维护配置字段表，只解释配置进入哪个生命周期、外部工具怎样进入本地注册表。
+
+## 源码引用
+
+顶层文档、`McpState` 与名称解析共同覆盖 server 状态和工具路由。具体 MCP 协议语义仍以官方规范与 `rmcp` 版本为准。

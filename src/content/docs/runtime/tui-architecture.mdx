@@ -1,0 +1,79 @@
+---
+title: TUI 内部架构
+description: 理解 Action、Dispatch、Effect 与终端事件循环如何形成单向状态流。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-pager/src/app/mod.rs
+  - crates/codegen/xai-grok-pager/src/app/actions.rs
+  - crates/codegen/xai-grok-pager/src/app/event_loop.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** TUI 采用 `Action → Dispatch → state/effect → event` 的单向循环。组件不直接执行大多数异步副作用，而是声明 `Effect`；事件循环统一调度终端输入、Agent 流和后台结果，从而保持渲染状态可追踪。
+
+## 源码入口
+
+`app` 模块开头用文档描述 UI 架构和主要数据流，是阅读 pager 的最佳入口。它先给出概念关系，再由 `actions.rs` 和 `event_loop.rs` 承接具体类型与循环。
+
+<SourceRef path="crates/codegen/xai-grok-pager/src/app/mod.rs" start={1} end={54} symbol="app architecture" />
+
+`Action` 表达“发生了什么或希望发生什么”，`Effect` 表达“需要在状态更新之外做什么”。两者分开，使键盘输入、Agent 事件和异步操作都可以汇入同一种 dispatch 语义。
+
+<SourceRef path="crates/codegen/xai-grok-pager/src/app/actions.rs" start={38} end={110} symbol="Action" />
+<SourceRef path="crates/codegen/xai-grok-pager/src/app/actions.rs" start={1320} end={1388} symbol="Effect" />
+
+## 单向事件循环
+
+<Mermaid label="TUI 状态与副作用循环" chart={`flowchart LR
+  K[键盘 / 鼠标 / resize] --> E[Event Loop]
+  A[Agent / background events] --> E
+  E --> D[Dispatch Action]
+  D --> U[更新 App state]
+  D --> F[产生 Effect]
+  F --> X[异步执行]
+  X -->|new Action| E
+  U --> R[Render frame]
+  R --> T[Terminal]`} />
+
+核心循环的 `run` 方法同时等待多个事件源，分派 action、执行 effect，并根据脏状态安排渲染。它是“所有变化最终在哪里汇合”的答案。
+
+<SourceRef path="crates/codegen/xai-grok-pager/src/app/event_loop.rs" start={460} end={548} symbol="EventLoop::run" />
+
+## 为什么需要 Effect
+
+如果 reducer 在更新状态时直接读文件、请求网络或等待模型，它就无法快速完成一帧处理，还会把不可预测的 I/O 混入状态转换。`Effect` 把这些动作变成显式值，事件循环可选择异步运行，并在完成时重新投递 `Action`。
+
+这带来三项工程收益：
+
+- UI 状态修改集中，减少多个异步任务同时写状态的竞争。
+- 副作用有统一入口，便于取消、记录和映射错误。
+- 组件只需声明意图，不必理解 Agent 或终端适配器的完整生命周期。
+
+**推断：** 这种结构接近 Elm/Redux 式单向数据流，但源码自己的 `Action`/`Effect` 语义比套用框架标签更准确。
+
+## 流式输出怎样进入界面
+
+Sampler 或 session 产生的增量不会直接调用终端绘制。它们先被客户端层转换为 pager 可消费事件，再形成 action 更新消息、工具状态或进度字段。渲染阶段只读取当前 app state，因此模型流速与终端刷新率可以解耦。
+
+## 边界与失败模式
+
+- action 队列拥塞会表现为界面延迟，即使底层 Agent 已经继续运行。
+- 长耗时逻辑若错误地放入同步 dispatch，会阻塞输入和重绘。
+- effect 完成后的 action 必须携带足够上下文；过期结果若未识别，可能覆盖较新的界面状态。
+- 终端恢复属于进程边界问题，panic 或强制退出时需要独立清理，不能只依赖正常事件循环。
+
+## 与官方文档的区别
+
+官方文档讲用户如何操作终端界面；本文解释一次按键和一次模型增量怎样穿过内部状态机。快捷键本身以官方说明为准。
+
+## 源码引用
+
+本页引用架构说明、两个核心枚举和实际循环。诊断某个 UI 行为时，建议先查它对应的 `Action`，再追踪产生的 `Effect` 和回流事件。
+

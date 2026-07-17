@@ -1,0 +1,49 @@
+---
+interface Props {
+  chart: string;
+  label?: string;
+}
+
+const { chart, label = '架构图' } = Astro.props;
+---
+
+<figure class="mermaid-frame" data-mermaid-frame data-source={chart} tabindex="0">
+  <figcaption>{label}</figcaption>
+  <pre class="mermaid">{chart}</pre>
+  <noscript><pre class="mermaid-fallback">{chart}</pre></noscript>
+</figure>
+
+<script>
+  import mermaid from 'mermaid';
+
+  async function renderMermaid() {
+    const frames = [...document.querySelectorAll<HTMLElement>('[data-mermaid-frame]:not([data-rendered])')];
+    if (!frames.length) return;
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: 'base',
+      fontFamily: 'Inter, PingFang SC, Microsoft YaHei, sans-serif',
+      themeVariables: {
+        primaryColor: '#e9f5ff',
+        primaryTextColor: '#101419',
+        primaryBorderColor: '#2e9fff',
+        lineColor: '#5a6b7c',
+        secondaryColor: '#f4f6f8',
+        tertiaryColor: '#ffffff',
+        clusterBkg: '#f7f9fb',
+        clusterBorder: '#b7c2cc',
+        fontSize: '15px',
+      },
+      flowchart: { curve: 'basis', htmlLabels: true },
+      sequence: { useMaxWidth: true, wrap: true },
+    });
+
+    await mermaid.run({ nodes: frames.map((frame) => frame.querySelector('.mermaid')).filter(Boolean) as HTMLElement[] });
+    frames.forEach((frame) => frame.dataset.rendered = 'true');
+  }
+
+  renderMermaid();
+  document.addEventListener('astro:page-load', renderMermaid);
+</script>

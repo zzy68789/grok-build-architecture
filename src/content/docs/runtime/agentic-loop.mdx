@@ -1,0 +1,80 @@
+---
+title: Agentic Loop
+description: 追踪 Turn、Sampler、流式事件、工具回路与终止条件。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-shell/src/session/acp_session_impl/run_loop.rs
+  - crates/codegen/xai-grok-shell/src/session/acp_session_impl/sampler_turn.rs
+  - crates/codegen/xai-grok-sampler/src/actor/mod.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** Agentic Loop 是一个由 session 驱动的多轮采样循环：每个 `Turn` 组装上下文并启动 Sampler；流中若出现工具调用，结果被追加到历史后继续采样；只有明确完成、取消、错误或预算/策略边界才终止当前运行。
+
+## 源码入口
+
+`run_session` 维护 session 级事件循环，负责接收客户端输入、控制消息和运行结果。它的生命周期比单次模型请求更长。
+
+<SourceRef path="crates/codegen/xai-grok-shell/src/session/acp_session_impl/run_loop.rs" start={33} end={112} symbol="run_session" />
+
+真正把一次 turn 交给模型采样的路径位于 `sampler_turn.rs`。`run_turn_via_sampler` 连接 prompt、工具定义、采样事件和 session 状态。
+
+<SourceRef path="crates/codegen/xai-grok-shell/src/session/acp_session_impl/sampler_turn.rs" start={860} end={950} symbol="run_turn_via_sampler" />
+
+Sampler 自身以 actor 形式消费命令并产生事件，使网络流与 session 状态机之间有清晰的异步边界。
+
+<SourceRef path="crates/codegen/xai-grok-sampler/src/actor/mod.rs" start={58} end={128} symbol="SamplerActor::run" />
+
+## Turn 的完整路径
+
+<Mermaid label="采样—工具—继续采样" chart={`stateDiagram-v2
+  [*] --> Prepare: 用户输入
+  Prepare --> Sampling: 组装 prompt / tools
+  Sampling --> Streaming: 首个模型事件
+  Streaming --> ToolCall: tool use
+  ToolCall --> ToolResult: 权限检查并执行
+  ToolResult --> Sampling: 结果追加到历史
+  Streaming --> Completed: end turn
+  Streaming --> Cancelled: cancel
+  Sampling --> Failed: transport / protocol error
+  ToolCall --> Failed: invalid or denied
+  Completed --> [*]
+  Cancelled --> [*]
+  Failed --> [*]`} />
+
+一个用户输入可能触发多次模型往返。这里“Turn”更接近一次可持续执行的 Agent 回合，不应简单等同于一次 HTTP 请求。工具结果是新的模型上下文项，模型可以据此决定继续调用、修正参数或结束。
+
+## 流式事件为何是核心协议
+
+模型响应不是结束后一次性交付：文本 delta、推理状态、工具参数、usage 和结束原因在时间上分批到达。session 必须边消费边更新内部状态，同时向客户端发布可展示事件。
+
+Sampler actor 的价值在于把网络和服务端细节封装为稳定事件面。上层关心“收到了哪类事件”，而不是底层连接如何分块。取消也通过这个边界传播，避免 session 直接操纵传输实现。
+
+## 终止条件
+
+正常完成只是其中一种结局。运行还可能因为用户取消、采样传输失败、工具拒绝、上下文限制或上层关闭而结束。终止后仍需要整理部分输出、记录状态并向客户端发出最终事件，不能把“future 返回”当成全部清理完成。
+
+**推断：** 多层终止处理体现了系统对部分成功的重视：已经流出的内容和已经执行的工具不能被当作从未发生，持久化和 UI 都要收到一致结局。
+
+## 边界与失败模式
+
+- 工具调用参数可能分片到达，只有协议表示完整后才能解析执行。
+- 取消存在竞态：请求发出时某个工具可能已产生外部副作用。
+- 流结束但缺少预期终止事件时，应按协议错误处理，而非猜测为正常完成。
+- 上下文压缩可在 turn 边界或阈值处介入，它不是 Sampler 网络重试。
+
+## 与官方文档的区别
+
+官方概览描述 Agent 能执行任务；本文给出这种“自主继续”的源码条件：流式事件、工具结果回灌和显式终止状态。
+
+## 源码引用
+
+本页用 session loop、turn bridge 与 sampler actor 三个层次交叉验证。它们分别回答“谁持有会话”“谁运行一轮”“谁消费模型流”。
+

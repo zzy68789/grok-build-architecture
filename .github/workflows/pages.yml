@@ -1,0 +1,82 @@
+name: Verify and deploy documentation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout documentation
+        uses: actions/checkout@v7
+
+      - name: Checkout fixed Grok Build source baseline
+        uses: actions/checkout@v7
+        with:
+          repository: xai-org/grok-build
+          ref: 8adf9013a0929e5c7f1d4e849492d2387837a28d
+          path: .cache/grok-build
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run check
+
+      - name: Validate source references
+        run: npm run validate:source
+
+      - name: Build site and Pagefind index
+        run: npm run build
+
+      - name: Validate generated routes and links
+        run: npm run validate:links
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run end-to-end checks
+        run: npm run test:e2e
+
+  build:
+    if: github.event_name != 'pull_request'
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout documentation
+        uses: actions/checkout@v7
+
+      - name: Build and upload Pages artifact
+        uses: withastro/action@v6
+        with:
+          node-version: 24
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

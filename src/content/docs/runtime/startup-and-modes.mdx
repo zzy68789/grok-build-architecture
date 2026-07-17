@@ -1,0 +1,77 @@
+---
+title: 启动入口与运行模式
+description: 追踪 TUI、headless、stdio 与 serve 如何从同一 CLI 入口分流。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-pager/src/app/cli.rs
+  - crates/codegen/xai-grok-pager-bin/src/main.rs
+officialDocs:
+  - https://docs.x.ai/build/cli/reference
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** Grok Build 的运行模式由统一 CLI 解析后在 binary 层分派。TUI 是默认交互适配器，headless、stdio 和 serve 改变客户端/输出通道，但共用绝大多数会话运行时。
+
+## 源码入口
+
+`Command` 枚举描述显式子命令，`PagerArgs` 则聚合默认交互模式与全局参数。先看这两个类型，可以区分“进程如何启动”和“会话如何工作”。
+
+<SourceRef path="crates/codegen/xai-grok-pager/src/app/cli.rs" start={9} end={74} symbol="Command" />
+<SourceRef path="crates/codegen/xai-grok-pager/src/app/cli.rs" start={430} end={500} symbol="PagerArgs" />
+
+参数解析完成后，`async_main` 负责环境准备与模式路由。它是将 CLI 语义连接到具体运行器的总闸门。
+
+<SourceRef path="crates/codegen/xai-grok-pager-bin/src/main.rs" start={1666} end={1738} symbol="async_main" />
+
+## 启动分流
+
+<Mermaid label="统一入口的模式分派" chart={`flowchart TD
+  E[process main] --> I[日志 / panic / 平台初始化]
+  I --> A[解析 PagerArgs]
+  A --> D{运行模式}
+  D -->|default| T[TUI event loop]
+  D -->|headless| H[非交互执行]
+  D -->|stdio| S[标准输入输出协议]
+  D -->|serve| V[服务端入口]
+  T --> R[Leader / Session runtime]
+  H --> R
+  S --> R
+  V --> R`} />
+
+这种结构将不同入口的差异集中在边缘：
+
+- TUI 需要终端原始模式、屏幕恢复、键盘与渲染循环。
+- headless 更关注确定的输入、完成条件和机器可消费的输出。
+- stdio/serve 要把外部协议消息映射为 session 事件，并管理连接生命周期。
+- 运行时仍围绕 Leader、session 配置、模型和工具构造展开。
+
+## 初始化为什么在业务逻辑之前
+
+终端程序的失败不仅可能来自 Agent。日志路径、终端能力、代理环境、认证、配置迁移都可能阻止会话创建。binary 层先完成这些进程级准备，能让下游运行时假设必要资源已经可用。
+
+**推断：** 将 `main` 保持为同步薄入口、把主体放入 `async_main`，既方便安装异步 runtime，也把 panic/退出码等进程语义与异步业务流分开。
+
+## 运行模式不等于权限模式
+
+headless 描述“是否有人类界面持续参与”，Auto/Plan 描述“工具动作如何获批”。二者是正交维度。headless 仍需要清晰的权限策略；TUI 也可以运行在自动批准或 Plan Mode 下。
+
+## 边界与失败模式
+
+- 非 TTY 环境启动默认 TUI 时，终端能力检测可能先于 Agent 创建失败。
+- stdio 模式中，普通日志若误写到协议通道会破坏消息边界，因此输出分流是实现约束。
+- serve/stdio 客户端断开不必然等于 Agent session 立即销毁，生命周期由 Leader 层决定。
+- CLI 参数只表达启动时快照；会话期间切换的模式可能由内部 action 或工具完成。
+
+## 与官方文档的区别
+
+[CLI Reference](https://docs.x.ai/build/cli/reference) 是参数含义的权威来源。本文不复制参数表，而是说明参数经过哪些源码入口、最终改变了哪一层运行结构。
+
+## 源码引用
+
+三个引用分别覆盖参数数据模型、子命令集合与异步分派入口。任何新增模式都应同时检查 CLI 类型和 binary 路由，不能只搜索文档中的命令名。
+

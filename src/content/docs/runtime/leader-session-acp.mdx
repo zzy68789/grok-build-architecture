@@ -1,0 +1,81 @@
+---
+title: Leader、Session 与 ACP
+description: 解释多个客户端如何连接单一 Leader 并共享 Agent session 状态。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-shell/src/leader/mod.rs
+  - crates/codegen/xai-grok-shell/src/session/persistence.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** `Leader` 是进程内的连接与 session 所有权中心；客户端通过 ACP 风格消息与它协作，Agent session 保有对话和运行状态。客户端断开与 session 销毁被刻意分离，持久化句柄负责把可恢复状态写出运行时。
+
+## 源码入口
+
+Leader 模块文档明确指出单个 Leader 可服务多个客户端，并维护 Agent sessions。先读这一段，可以避免把 ACP client、TUI 和 Agent 本体误认为同一对象。
+
+<SourceRef path="crates/codegen/xai-grok-shell/src/leader/mod.rs" start={1} end={40} symbol="Leader architecture" />
+
+`connect_or_spawn` 表达 Leader 的关键可用性策略：优先连接已存在实例，必要时创建。这使多个前端不必各自持有一套孤立 Agent 状态。
+
+<SourceRef path="crates/codegen/xai-grok-shell/src/leader/mod.rs" start={1205} end={1288} symbol="connect_or_spawn" />
+
+会话持久化通过专门句柄进入异步路径，避免每次状态变化直接阻塞主 session loop。
+
+<SourceRef path="crates/codegen/xai-grok-shell/src/session/persistence.rs" start={1366} end={1436} symbol="PersistenceHandle" />
+
+## 所有权与消息流
+
+<Mermaid label="多客户端共享状态" chart={`flowchart TB
+  C1[TUI client] --> L[Single Leader]
+  C2[stdio client] --> L
+  C3[serve client] --> L
+  L --> S1[Agent Session A]
+  L --> S2[Agent Session B]
+  S1 --> P[Persistence worker]
+  S2 --> P
+  S1 <--> A[ACP messages / events]
+  L --> A`} />
+
+可以把三层职责理解为：
+
+- **客户端**：呈现输入输出，发送控制意图，可能随时连接或离开。
+- **Leader**：接受连接、路由消息、创建/查找 session，并协调进程级生命周期。
+- **Session**：保存具体 Agent 的历史、配置、活动 turn、工具与持久化上下文。
+
+ACP 在这里是边界语言：客户端不需要直接调用 session 内部 Rust 方法，而是围绕请求、通知和事件交互。这让 TUI 与其他接入方式共享协议语义。
+
+## 为什么断开不等于销毁
+
+如果终端窗口暂时关闭就立刻销毁 Agent，重连与多客户端观察将难以成立。把连接生命周期和 session 生命周期分开后，Leader 可以继续持有任务，客户端重新接入时再同步状态。
+
+但这不表示 session 永不回收。显式关闭、进程退出、超时/保留策略或不可恢复错误仍可能结束它。源码中的持久化是恢复基础，不是“所有运行中 future 都能跨进程续跑”的保证。
+
+## 持久化边界
+
+`PersistenceHandle` 将写入请求发给专门任务，使 session 主循环不必同步等待磁盘。这样的异步边界必须处理顺序、关闭前 flush 与写入错误。持久化的数据模型也不同于 UI 当前帧：瞬时动画、未提交分片等不一定值得保存。
+
+**推断：** Leader + persistence 的组合为“同一 Agent 可由多个表面访问”打下基础，但公开源码并不能证明任意分布式多机共享；本文只主张进程/协议层可观察到的关系。
+
+## 边界与失败模式
+
+- 两个客户端同时发出控制请求时，需要由 Leader/session 的串行化规则决定顺序。
+- Leader 发现旧 socket 或异常实例时，连接与重建可能失败，不能盲目复用端点。
+- 异步持久化队列成功接收不等于数据已经落盘；优雅退出需等待必要 flush。
+- 恢复出来的历史与正在运行的外部进程不是同一种状态，后者可能无法重建。
+
+## 与官方文档的区别
+
+官方文档从用户视角讲会话与接入；本文聚焦所有权、连接复用与持久化通道。ACP 的完整规范和兼容性仍应以官方材料为准。
+
+## 源码引用
+
+Leader 顶层文档给出设计图，`connect_or_spawn` 展示可用性入口，`PersistenceHandle` 则证明会话状态写入被移到独立异步边界。
+

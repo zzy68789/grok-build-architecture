@@ -1,0 +1,80 @@
+---
+title: System Prompt 与项目规则
+description: 追踪配置层、AGENTS.md、项目规则与用户输入如何组装为模型上下文。
+lastVerified: '2026-07-17'
+sourcePaths:
+  - crates/codegen/xai-grok-shell/src/session/acp_session_impl/prompt_build.rs
+  - crates/codegen/xai-grok-workspace/src/discovery.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import Mermaid from '@components/Mermaid.astro';
+
+<SourceBaseline compact />
+
+> **结论：** 最终 prompt 不是一段固定字符串，而是分层组装的上下文：系统能力和会话配置奠定全局约束，工作区发现负责按作用域收集 `AGENTS.md` 等项目规则，prompt builder 再把规则、环境与用户消息按边界合并。
+
+## 源码入口
+
+`prompt_build.rs` 先把 AGENTS、Claude 兼容规则及其他 instruction 输入分组，说明不同来源并非无序拼接。
+
+<SourceRef path="crates/codegen/xai-grok-shell/src/session/acp_session_impl/prompt_build.rs" start={1} end={72} symbol="instruction partitioning" />
+
+`build_user_message_prefix` 负责形成附加在用户消息之前的上下文前缀；附近流程会收集当前路径对应的 scoped inputs。
+
+<SourceRef path="crates/codegen/xai-grok-shell/src/session/acp_session_impl/prompt_build.rs" start={339} end={424} symbol="build_user_message_prefix" />
+
+工作区发现逻辑定义了项目指令文件如何被遍历和选择，是作用域规则的来源。
+
+<SourceRef path="crates/codegen/xai-grok-workspace/src/discovery.rs" start={69} end={152} symbol="project instruction discovery" />
+
+## 上下文组装顺序
+
+<Mermaid label="Prompt 的分层来源" chart={`flowchart TB
+  S[System capabilities / safety] --> B[Prompt Builder]
+  C[Session config / mode] --> B
+  W[Workspace root] --> D[Instruction discovery]
+  D --> A[AGENTS.md hierarchy]
+  D --> X[compatible project rules]
+  A --> B
+  X --> B
+  E[Environment context] --> B
+  U[User message] --> B
+  B --> P[Messages sent to Sampler]`} />
+
+项目规则的作用域通常与目录层级相关：越接近目标文件的规则越具体。系统需要知道当前工作目录、目标路径或会话 workspace，才能选择正确规则集合；只在仓库根目录搜索一次会丢失嵌套约束。
+
+## 规则不是普通聊天历史
+
+规则来源需要保留边界和来源信息，原因有三：
+
+1. 更新工作目录时，适用规则可能变化。
+2. 上下文压缩时，稳定指令不应被误当作可随意概括的旧对话。
+3. 调试冲突时，需要知道某条要求来自系统、用户还是项目文件。
+
+prompt builder 把这些来源汇合，但“汇合”不意味着优先级相同。上层协议和安全约束不能被较低层项目文本覆盖。
+
+## AGENTS.md 的架构意义
+
+`AGENTS.md` 把仓库知识放回代码附近：构建命令、目录约定、测试范围和编码规则可以随源码版本演进。对 Agent 来说，它是运行时上下文发现机制；对团队来说，它也是面向人和工具的可审计约定。
+
+**推断：** 将兼容来源先 partition 再组装，说明实现希望保留多生态规则输入，同时避免把每种文件格式硬编码进采样层。
+
+## 边界与失败模式
+
+- 规则文件过长会消耗 token，并挤压任务本身所需的代码上下文。
+- 目录移动后若沿用旧缓存，可能应用错误作用域的规则。
+- 多来源冲突时，不应依靠文本出现顺序猜优先级；要查看 builder 的分层语义。
+- 项目规则是指令输入，不是可信代码；其中的外部命令仍受权限与 sandbox 约束。
+
+## 与官方文档的区别
+
+官方材料适合查规则文件怎样写；本文聚焦发现、分区和组装过程。具体支持的文件名与配置开关可能随版本变化，应以官方说明和固定源码共同核验。
+
+## 源码引用
+
+本文同时引用 workspace 发现和 session prompt 构建，避免把“找到了文件”和“最终送进模型”误认为同一步。
+
