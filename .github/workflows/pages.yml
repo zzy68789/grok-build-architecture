@@ -38,6 +38,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Test source atlas ordering
+        run: npm run test:atlas-order
+
       - name: Check generated source atlas
         run: npm run atlas:check
 

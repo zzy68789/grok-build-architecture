@@ -470,16 +470,16 @@
       "line": 221
     },
     {
-      "kind": "enum",
-      "name": "MarketplaceInstallResult",
-      "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
-      "line": 20
+      "kind": "struct",
+      "name": "MarketplaceRef",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+      "line": 9
     },
     {
-      "kind": "struct",
-      "name": "MarketplaceUpdateResult",
-      "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
-      "line": 28
+      "kind": "fn",
+      "name": "parse_marketplace_ref",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+      "line": 17
     }
   ],
   "files": [

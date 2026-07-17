@@ -2,6 +2,7 @@ import { access, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promise
 import path from 'node:path';
 import process from 'node:process';
 import { ARTICLE_CATALOG, primaryArticleForCrate } from '../src/data/article-catalog.mjs';
+import { sortDirectoryEntries, sortSourceSymbols } from './lib/source-atlas-order.mjs';
 
 const root = process.cwd();
 const sourceRoot = path.resolve(process.env.GROK_BUILD_SOURCE_DIR
@@ -15,7 +16,7 @@ const slash = (value) => value.replaceAll('\\', '/');
 const quote = (value) => JSON.stringify(value);
 
 async function walk(directory) {
-  const entries = await readdir(directory, { withFileTypes: true });
+  const entries = sortDirectoryEntries(await readdir(directory, { withFileTypes: true }));
   const nested = await Promise.all(entries.map((entry) => {
     const absolute = path.join(directory, entry.name);
     return entry.isDirectory() ? walk(absolute) : [absolute];
@@ -259,7 +260,7 @@ async function expectedFiles() {
       productionFileCount: productionFiles.length,
       lineCount: productionFiles.reduce((sum, file) => sum + file.lineCount, 0),
       keyEntrypoints: entrypoints.map((file) => ({ path: file.path, lineCount: file.lineCount, symbols: file.symbols.slice(0, 6) })),
-      keySymbols: allSymbols.slice(0, 30),
+      keySymbols: sortSourceSymbols(allSymbols).slice(0, 30),
       files,
     });
   }
