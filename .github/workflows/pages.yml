@@ -54,6 +54,8 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run end-to-end checks
+        env:
+          BASE_PATH: /
         run: npm run test:e2e
 
   build:
