@@ -1,0 +1,110 @@
+{
+  "name": "xai-prompt-queue",
+  "memberPath": "crates/codegen/xai-prompt-queue",
+  "manifestPath": "crates/codegen/xai-prompt-queue/Cargo.toml",
+  "description": "Shared prompt-queue wire types for xai-grok-shell and xai-grok-pager",
+  "role": "定义跨 Shell 与 Pager 共享的 prompt queue 类型和队列语义。",
+  "layer": "会话运行时",
+  "primaryArticle": "runtime/prompt-queue-interjection",
+  "relatedArticles": [
+    "runtime/prompt-queue-interjection",
+    "introduction/process-actor-concurrency",
+    "tools/task-scheduler-monitor-plan"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-shell"
+  ],
+  "fileCount": 2,
+  "productionFileCount": 2,
+  "lineCount": 178,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-prompt-queue/src/lib.rs",
+      "lineCount": 6,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+      "lineCount": 172,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "QueueEntryMeta",
+          "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+          "line": 7
+        },
+        {
+          "kind": "struct",
+          "name": "QueueEntryWire",
+          "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "QueueChanged",
+          "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+          "line": 47
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "QueueEntryMeta",
+      "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+      "line": 7
+    },
+    {
+      "kind": "struct",
+      "name": "QueueEntryWire",
+      "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+      "line": 25
+    },
+    {
+      "kind": "struct",
+      "name": "QueueChanged",
+      "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+      "line": 47
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-prompt-queue/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 6,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-prompt-queue/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+      "module": "types",
+      "kind": "production",
+      "lineCount": 172,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "QueueEntryMeta",
+          "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+          "line": 7
+        },
+        {
+          "kind": "struct",
+          "name": "QueueEntryWire",
+          "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "QueueChanged",
+          "path": "crates/codegen/xai-prompt-queue/src/types.rs",
+          "line": 47
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-prompt-queue/src/types.rs"
+    }
+  ]
+}

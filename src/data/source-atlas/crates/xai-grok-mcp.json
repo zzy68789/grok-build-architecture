@@ -1,0 +1,774 @@
+{
+  "name": "xai-grok-mcp",
+  "memberPath": "crates/codegen/xai-grok-mcp",
+  "manifestPath": "crates/codegen/xai-grok-mcp/Cargo.toml",
+  "description": "MCP integration crate. Quarantines rmcp + reqwest 0.13 (rmcp 2.1 requires reqwest >= 0.13.2 while the rest of the workspace uses reqwest 0.12) and owns the MCP credential store and OAuth flow orchestrator.",
+  "role": "隔离 MCP 传输依赖并负责 Server 生命周期、凭据和 OAuth 编排。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "extensibility/mcp-integration",
+  "relatedArticles": [
+    "extensibility/mcp-integration",
+    "extensibility/mcp-oauth-credential-catalog"
+  ],
+  "dependencies": [
+    "xai-computer-hub-sdk",
+    "xai-file-utils",
+    "xai-grok-config",
+    "xai-grok-telemetry",
+    "xai-grok-tools",
+    "xai-grok-version",
+    "xai-grok-workspace-types",
+    "xai-tool-protocol",
+    "xai-tool-runtime",
+    "xai-tool-types"
+  ],
+  "dependents": [
+    "xai-grok-config-types",
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 10,
+  "productionFileCount": 9,
+  "lineCount": 10182,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/lib.rs",
+      "lineCount": 39,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+      "lineCount": 7539,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "validate_tool_name",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "sanitize_descriptor_segment",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 89
+        },
+        {
+          "kind": "struct",
+          "name": "McpConfigDiff",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 106
+        },
+        {
+          "kind": "type",
+          "name": "McpServerName",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 116
+        },
+        {
+          "kind": "enum",
+          "name": "InitProgress",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 149
+        },
+        {
+          "kind": "fn",
+          "name": "is_complete",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 172
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+      "lineCount": 736,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "AcpReverseInvoker",
+          "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+          "line": 40
+        },
+        {
+          "kind": "type",
+          "name": "AcpBridgeTransport",
+          "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "acp_bridge_transport",
+          "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+          "line": 73
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/oauth.rs",
+      "lineCount": 523,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "authenticate_mcp_server_dedup",
+          "path": "crates/codegen/xai-grok-mcp/src/oauth.rs",
+          "line": 65
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+      "lineCount": 498,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "WarnBudget",
+          "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+          "line": 51
+        },
+        {
+          "kind": "struct",
+          "name": "McpHttpClient",
+          "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+          "line": 139
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+          "line": 147
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "lineCount": 436,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "McpCredentialError",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "McpCredentialStore",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "key",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "load_default",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "load_from",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "save_default",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 78
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+      "lineCount": 355,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_POLL_INTERVAL",
+          "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+          "line": 66
+        },
+        {
+          "kind": "type",
+          "name": "SharedLivenessSlot",
+          "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+          "line": 72
+        },
+        {
+          "kind": "struct",
+          "name": "TransportLivenessHandle",
+          "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "server_name",
+          "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+          "line": 109
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_transport_liveness",
+          "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+          "line": 147
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/oauth_config.rs",
+      "lineCount": 28,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "McpOAuthConfig",
+          "path": "crates/codegen/xai-grok-mcp/src/oauth_config.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "is_configured",
+          "path": "crates/codegen/xai-grok-mcp/src/oauth_config.rs",
+          "line": 21
+        },
+        {
+          "kind": "type",
+          "name": "McpOAuthConfigMap",
+          "path": "crates/codegen/xai-grok-mcp/src/oauth_config.rs",
+          "line": 27
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "trait",
+      "name": "AcpReverseInvoker",
+      "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+      "line": 40
+    },
+    {
+      "kind": "type",
+      "name": "AcpBridgeTransport",
+      "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+      "line": 50
+    },
+    {
+      "kind": "fn",
+      "name": "acp_bridge_transport",
+      "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+      "line": 73
+    },
+    {
+      "kind": "enum",
+      "name": "McpCredentialError",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 21
+    },
+    {
+      "kind": "struct",
+      "name": "McpCredentialStore",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 38
+    },
+    {
+      "kind": "fn",
+      "name": "key",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 53
+    },
+    {
+      "kind": "fn",
+      "name": "load_default",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 60
+    },
+    {
+      "kind": "fn",
+      "name": "load_from",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 68
+    },
+    {
+      "kind": "fn",
+      "name": "save_default",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 78
+    },
+    {
+      "kind": "fn",
+      "name": "insert_and_save",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 95
+    },
+    {
+      "kind": "fn",
+      "name": "save_to",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 158
+    },
+    {
+      "kind": "fn",
+      "name": "get",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 196
+    },
+    {
+      "kind": "fn",
+      "name": "insert_rmcp",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 205
+    },
+    {
+      "kind": "fn",
+      "name": "has_credentials",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 216
+    },
+    {
+      "kind": "fn",
+      "name": "remove",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 222
+    },
+    {
+      "kind": "fn",
+      "name": "remove_by_server_name",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 227
+    },
+    {
+      "kind": "fn",
+      "name": "is_empty",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 235
+    },
+    {
+      "kind": "struct",
+      "name": "McpCredentialStoreAdapter",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 249
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "line": 255
+    },
+    {
+      "kind": "const",
+      "name": "DEFAULT_POLL_INTERVAL",
+      "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+      "line": 66
+    },
+    {
+      "kind": "type",
+      "name": "SharedLivenessSlot",
+      "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+      "line": 72
+    },
+    {
+      "kind": "struct",
+      "name": "TransportLivenessHandle",
+      "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+      "line": 91
+    },
+    {
+      "kind": "fn",
+      "name": "server_name",
+      "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+      "line": 109
+    },
+    {
+      "kind": "fn",
+      "name": "spawn_transport_liveness",
+      "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+      "line": 147
+    },
+    {
+      "kind": "struct",
+      "name": "WarnBudget",
+      "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+      "line": 51
+    },
+    {
+      "kind": "struct",
+      "name": "McpHttpClient",
+      "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+      "line": 139
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+      "line": 147
+    },
+    {
+      "kind": "fn",
+      "name": "authenticate_mcp_server_dedup",
+      "path": "crates/codegen/xai-grok-mcp/src/oauth.rs",
+      "line": 65
+    },
+    {
+      "kind": "struct",
+      "name": "McpOAuthConfig",
+      "path": "crates/codegen/xai-grok-mcp/src/oauth_config.rs",
+      "line": 13
+    },
+    {
+      "kind": "fn",
+      "name": "is_configured",
+      "path": "crates/codegen/xai-grok-mcp/src/oauth_config.rs",
+      "line": 21
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+      "module": "acp_transport",
+      "kind": "production",
+      "lineCount": 736,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "AcpReverseInvoker",
+          "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+          "line": 40
+        },
+        {
+          "kind": "type",
+          "name": "AcpBridgeTransport",
+          "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "acp_bridge_transport",
+          "path": "crates/codegen/xai-grok-mcp/src/acp_transport.rs",
+          "line": 73
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mcp/src/acp_transport.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+      "module": "credentials",
+      "kind": "production",
+      "lineCount": 436,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "McpCredentialError",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "McpCredentialStore",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "key",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "load_default",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "load_from",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "save_default",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "insert_and_save",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "save_to",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 196
+        },
+        {
+          "kind": "fn",
+          "name": "insert_rmcp",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 205
+        },
+        {
+          "kind": "fn",
+          "name": "has_credentials",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 216
+        },
+        {
+          "kind": "fn",
+          "name": "remove",
+          "path": "crates/codegen/xai-grok-mcp/src/credentials.rs",
+          "line": 222
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mcp/src/credentials.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 39,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mcp/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+      "module": "liveness",
+      "kind": "production",
+      "lineCount": 355,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_POLL_INTERVAL",
+          "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+          "line": 66
+        },
+        {
+          "kind": "type",
+          "name": "SharedLivenessSlot",
+          "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+          "line": 72
+        },
+        {
+          "kind": "struct",
+          "name": "TransportLivenessHandle",
+          "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "server_name",
+          "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+          "line": 109
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_transport_liveness",
+          "path": "crates/codegen/xai-grok-mcp/src/liveness.rs",
+          "line": 147
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mcp/src/liveness.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+      "module": "mcp_http_client",
+      "kind": "production",
+      "lineCount": 498,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "WarnBudget",
+          "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+          "line": 51
+        },
+        {
+          "kind": "struct",
+          "name": "McpHttpClient",
+          "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+          "line": 139
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-mcp/src/mcp_http_client.rs",
+          "line": 147
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mcp/src/mcp_http_client.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/oauth_config.rs",
+      "module": "oauth_config",
+      "kind": "production",
+      "lineCount": 28,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "McpOAuthConfig",
+          "path": "crates/codegen/xai-grok-mcp/src/oauth_config.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "is_configured",
+          "path": "crates/codegen/xai-grok-mcp/src/oauth_config.rs",
+          "line": 21
+        },
+        {
+          "kind": "type",
+          "name": "McpOAuthConfigMap",
+          "path": "crates/codegen/xai-grok-mcp/src/oauth_config.rs",
+          "line": 27
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mcp/src/oauth_config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/oauth.rs",
+      "module": "oauth",
+      "kind": "production",
+      "lineCount": 523,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "authenticate_mcp_server_dedup",
+          "path": "crates/codegen/xai-grok-mcp/src/oauth.rs",
+          "line": 65
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mcp/src/oauth.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+      "module": "servers",
+      "kind": "production",
+      "lineCount": 7539,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "validate_tool_name",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "sanitize_descriptor_segment",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 89
+        },
+        {
+          "kind": "struct",
+          "name": "McpConfigDiff",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 106
+        },
+        {
+          "kind": "type",
+          "name": "McpServerName",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 116
+        },
+        {
+          "kind": "enum",
+          "name": "InitProgress",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 149
+        },
+        {
+          "kind": "fn",
+          "name": "is_complete",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 172
+        },
+        {
+          "kind": "fn",
+          "name": "is_in_progress",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 179
+        },
+        {
+          "kind": "fn",
+          "name": "has_finished_init",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 191
+        },
+        {
+          "kind": "fn",
+          "name": "is_server_handshaking",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 196
+        },
+        {
+          "kind": "fn",
+          "name": "handshaking_servers",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 207
+        },
+        {
+          "kind": "fn",
+          "name": "handshaking_count",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 219
+        },
+        {
+          "kind": "fn",
+          "name": "try_start",
+          "path": "crates/codegen/xai-grok-mcp/src/servers.rs",
+          "line": 229
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mcp/src/servers.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/src/wire.rs",
+      "module": "wire",
+      "kind": "production",
+      "lineCount": 28,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MCP_CALL",
+          "path": "crates/codegen/xai-grok-mcp/src/wire.rs",
+          "line": 12
+        },
+        {
+          "kind": "const",
+          "name": "MCP_SDK_CALL",
+          "path": "crates/codegen/xai-grok-mcp/src/wire.rs",
+          "line": 20
+        },
+        {
+          "kind": "const",
+          "name": "MCP_SERVERS",
+          "path": "crates/codegen/xai-grok-mcp/src/wire.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "MCP_SDK",
+          "path": "crates/codegen/xai-grok-mcp/src/wire.rs",
+          "line": 27
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mcp/src/wire.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mcp/tests/repro_sse_flood.rs",
+      "module": "..::tests::repro_sse_flood",
+      "kind": "test",
+      "lineCount": 209,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mcp/tests/repro_sse_flood.rs"
+    }
+  ]
+}

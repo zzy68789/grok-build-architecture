@@ -1,0 +1,27 @@
+---
+title: "HTTP、Auth 与 Circuit Breaker"
+description: "解释共享客户端、认证反转接口和熔断器怎样限制故障扩散。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-circuit-breaker
+  - xai-grok-auth
+  - xai-grok-http
+sourcePaths:
+  - crates/codegen/xai-grok-http/src/lib.rs
+  - crates/common/xai-circuit-breaker/src/lib.rs
+  - crates/codegen/xai-grok-auth/src/lib.rs
+  - crates/common/xai-circuit-breaker/src/breaker.rs
+  - crates/codegen/xai-grok-auth/src/retry_middleware.rs
+  - crates/common/xai-circuit-breaker/src/config.rs
+  - crates/codegen/xai-grok-auth/src/auth_provider.rs
+  - crates/common/xai-circuit-breaker/src/retry_policy.rs
+  - crates/common/xai-circuit-breaker/src/window.rs
+  - crates/common/xai-circuit-breaker/src/registry.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="agent/http-auth-circuit-breaker" />

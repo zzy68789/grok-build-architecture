@@ -1,0 +1,1162 @@
+{
+  "name": "xai-grok-sampler",
+  "memberPath": "crates/codegen/xai-grok-sampler",
+  "manifestPath": "crates/codegen/xai-grok-sampler/Cargo.toml",
+  "description": "Actor-based sampling/inference layer for xAI grok (HTTP streaming + retry, no shell coupling)",
+  "role": "以 actor 形式管理模型采样、HTTP 流、重试、取消和领域事件。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "agent/sampler-actor-streaming-retry",
+  "relatedArticles": [
+    "agent/sampler-actor-streaming-retry",
+    "introduction/architecture-overview",
+    "introduction/end-to-end-request",
+    "introduction/process-actor-concurrency",
+    "runtime/agentic-loop"
+  ],
+  "dependencies": [
+    "xai-grok-sampling-types",
+    "xai-grok-test-support",
+    "xai-grok-version"
+  ],
+  "dependents": [
+    "xai-grok-http",
+    "xai-grok-shell",
+    "xai-grok-telemetry"
+  ],
+  "fileCount": 26,
+  "productionFileCount": 21,
+  "lineCount": 9040,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/lib.rs",
+      "lineCount": 55,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "lineCount": 2746,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "COST_USD_TICKS_METADATA_KEY",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 184
+        },
+        {
+          "kind": "struct",
+          "name": "SamplingClient",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 279
+        },
+        {
+          "kind": "fn",
+          "name": "user_agent_string_for",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 361
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 401
+        },
+        {
+          "kind": "fn",
+          "name": "api_backend",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 545
+        },
+        {
+          "kind": "fn",
+          "name": "auth_info",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 658
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/stream/responses.rs",
+      "lineCount": 1026,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "responses_event_has_meaningful_content",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/responses.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "stream_responses",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/responses.rs",
+          "line": 94
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/actor/request_task.rs",
+      "lineCount": 862,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "CompletionResult",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/request_task.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "run_request_task",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/request_task.rs",
+          "line": 77
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+      "lineCount": 857,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "RATE_LIMIT_RETRY_THRESHOLD",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 43
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_MAX_RETRIES",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_max_retries_with_env",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_max_retries",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "doom_loop_backoff",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "retry_backoff_with_jitter",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 86
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/stream/chat_completions.rs",
+      "lineCount": 775,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "stream_chat_completions",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/chat_completions.rs",
+          "line": 36
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/stream/messages.rs",
+      "lineCount": 531,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "messages_event_has_meaningful_content",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/messages.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "stream_messages",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/messages.rs",
+          "line": 65
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+      "lineCount": 368,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SamplingChannel",
+          "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+          "line": 18
+        },
+        {
+          "kind": "enum",
+          "name": "SamplingEvent",
+          "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+          "line": 28
+        },
+        {
+          "kind": "struct",
+          "name": "SamplingErrorInfo",
+          "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+          "line": 121
+        },
+        {
+          "kind": "enum",
+          "name": "SamplingErrorKind",
+          "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+          "line": 152
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+          "line": 170
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "SamplerActor",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/mod.rs",
+      "line": 27
+    },
+    {
+      "kind": "fn",
+      "name": "spawn",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/mod.rs",
+      "line": 42
+    },
+    {
+      "kind": "type",
+      "name": "CompletionResult",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/request_task.rs",
+      "line": 42
+    },
+    {
+      "kind": "fn",
+      "name": "run_request_task",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/request_task.rs",
+      "line": 77
+    },
+    {
+      "kind": "struct",
+      "name": "ActiveRequest",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+      "line": 20
+    },
+    {
+      "kind": "struct",
+      "name": "ActorState",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+      "line": 25
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+      "line": 32
+    },
+    {
+      "kind": "fn",
+      "name": "register",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+      "line": 43
+    },
+    {
+      "kind": "fn",
+      "name": "remove",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+      "line": 54
+    },
+    {
+      "kind": "fn",
+      "name": "cancel",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+      "line": 59
+    },
+    {
+      "kind": "fn",
+      "name": "update_config",
+      "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+      "line": 70
+    },
+    {
+      "kind": "enum",
+      "name": "SamplingConsumer",
+      "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+      "line": 39
+    },
+    {
+      "kind": "fn",
+      "name": "as_endpoint",
+      "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+      "line": 59
+    },
+    {
+      "kind": "const",
+      "name": "SENT_BEARER_PREFIX_LEN",
+      "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+      "line": 82
+    },
+    {
+      "kind": "trait",
+      "name": "Auth401AttributionCallback",
+      "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+      "line": 100
+    },
+    {
+      "kind": "type",
+      "name": "SharedAttributionCallback",
+      "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+      "line": 120
+    },
+    {
+      "kind": "const",
+      "name": "COST_USD_TICKS_METADATA_KEY",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 184
+    },
+    {
+      "kind": "struct",
+      "name": "SamplingClient",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 279
+    },
+    {
+      "kind": "fn",
+      "name": "user_agent_string_for",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 361
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 401
+    },
+    {
+      "kind": "fn",
+      "name": "api_backend",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 545
+    },
+    {
+      "kind": "fn",
+      "name": "auth_info",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 658
+    },
+    {
+      "kind": "fn",
+      "name": "chat_completion",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 839
+    },
+    {
+      "kind": "fn",
+      "name": "chat_completion_stream",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 889
+    },
+    {
+      "kind": "fn",
+      "name": "create_response",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 1108
+    },
+    {
+      "kind": "fn",
+      "name": "create_response_stream",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 1235
+    },
+    {
+      "kind": "fn",
+      "name": "create_message",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 1477
+    },
+    {
+      "kind": "fn",
+      "name": "create_message_stream",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 1584
+    },
+    {
+      "kind": "fn",
+      "name": "conversation_stream",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 1789
+    },
+    {
+      "kind": "fn",
+      "name": "conversation",
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "line": 1810
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/actor/mod.rs",
+      "module": "actor::mod",
+      "kind": "production",
+      "lineCount": 146,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SamplerActor",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/mod.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/mod.rs",
+          "line": 42
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/actor/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/actor/request_task.rs",
+      "module": "actor::request_task",
+      "kind": "production",
+      "lineCount": 862,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "CompletionResult",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/request_task.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "run_request_task",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/request_task.rs",
+          "line": 77
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/actor/request_task.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+      "module": "actor::state",
+      "kind": "production",
+      "lineCount": 149,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ActiveRequest",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "ActorState",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "register",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "remove",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "cancel",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "update_config",
+          "path": "crates/codegen/xai-grok-sampler/src/actor/state.rs",
+          "line": 70
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/actor/state.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+      "module": "attribution",
+      "kind": "production",
+      "lineCount": 121,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SamplingConsumer",
+          "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "as_endpoint",
+          "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+          "line": 59
+        },
+        {
+          "kind": "const",
+          "name": "SENT_BEARER_PREFIX_LEN",
+          "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+          "line": 82
+        },
+        {
+          "kind": "trait",
+          "name": "Auth401AttributionCallback",
+          "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+          "line": 100
+        },
+        {
+          "kind": "type",
+          "name": "SharedAttributionCallback",
+          "path": "crates/codegen/xai-grok-sampler/src/attribution.rs",
+          "line": 120
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/attribution.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+      "module": "client",
+      "kind": "production",
+      "lineCount": 2746,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "COST_USD_TICKS_METADATA_KEY",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 184
+        },
+        {
+          "kind": "struct",
+          "name": "SamplingClient",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 279
+        },
+        {
+          "kind": "fn",
+          "name": "user_agent_string_for",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 361
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 401
+        },
+        {
+          "kind": "fn",
+          "name": "api_backend",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 545
+        },
+        {
+          "kind": "fn",
+          "name": "auth_info",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 658
+        },
+        {
+          "kind": "fn",
+          "name": "chat_completion",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 839
+        },
+        {
+          "kind": "fn",
+          "name": "chat_completion_stream",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 889
+        },
+        {
+          "kind": "fn",
+          "name": "create_response",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 1108
+        },
+        {
+          "kind": "fn",
+          "name": "create_response_stream",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 1235
+        },
+        {
+          "kind": "fn",
+          "name": "create_message",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 1477
+        },
+        {
+          "kind": "fn",
+          "name": "create_message_stream",
+          "path": "crates/codegen/xai-grok-sampler/src/client.rs",
+          "line": 1584
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/client.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/commands.rs",
+      "module": "commands",
+      "kind": "production",
+      "lineCount": 48,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SamplerCommand",
+          "path": "crates/codegen/xai-grok-sampler/src/commands.rs",
+          "line": 20
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/commands.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/config.rs",
+      "module": "config",
+      "kind": "production",
+      "lineCount": 247,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "AuthScheme",
+          "path": "crates/codegen/xai-grok-sampler/src/config.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "SamplerConfig",
+          "path": "crates/codegen/xai-grok-sampler/src/config.rs",
+          "line": 49
+        },
+        {
+          "kind": "trait",
+          "name": "BearerResolver",
+          "path": "crates/codegen/xai-grok-sampler/src/config.rs",
+          "line": 166
+        },
+        {
+          "kind": "type",
+          "name": "SharedBearerResolver",
+          "path": "crates/codegen/xai-grok-sampler/src/config.rs",
+          "line": 170
+        },
+        {
+          "kind": "trait",
+          "name": "HeaderInjector",
+          "path": "crates/codegen/xai-grok-sampler/src/config.rs",
+          "line": 173
+        },
+        {
+          "kind": "type",
+          "name": "SharedHeaderInjector",
+          "path": "crates/codegen/xai-grok-sampler/src/config.rs",
+          "line": 177
+        },
+        {
+          "kind": "struct",
+          "name": "RetryPolicy",
+          "path": "crates/codegen/xai-grok-sampler/src/config.rs",
+          "line": 181
+        },
+        {
+          "kind": "struct",
+          "name": "OriginClientInfo",
+          "path": "crates/codegen/xai-grok-sampler/src/config.rs",
+          "line": 202
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/doom_loop.rs",
+      "module": "doom_loop",
+      "kind": "production",
+      "lineCount": 230,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "DoomLoopSignalCollector",
+          "path": "crates/codegen/xai-grok-sampler/src/doom_loop.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-sampler/src/doom_loop.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "disarm_abort",
+          "path": "crates/codegen/xai-grok-sampler/src/doom_loop.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "abort_triggers",
+          "path": "crates/codegen/xai-grok-sampler/src/doom_loop.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "absorb",
+          "path": "crates/codegen/xai-grok-sampler/src/doom_loop.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "take",
+          "path": "crates/codegen/xai-grok-sampler/src/doom_loop.rs",
+          "line": 94
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/doom_loop.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+      "module": "events",
+      "kind": "production",
+      "lineCount": 368,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SamplingChannel",
+          "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+          "line": 18
+        },
+        {
+          "kind": "enum",
+          "name": "SamplingEvent",
+          "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+          "line": 28
+        },
+        {
+          "kind": "struct",
+          "name": "SamplingErrorInfo",
+          "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+          "line": 121
+        },
+        {
+          "kind": "enum",
+          "name": "SamplingErrorKind",
+          "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+          "line": 152
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-sampler/src/events.rs",
+          "line": 170
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/events.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+      "module": "handle",
+      "kind": "production",
+      "lineCount": 158,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SamplerHandle",
+          "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "noop",
+          "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "submit",
+          "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "submit_with_config",
+          "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "cancel",
+          "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "update_config",
+          "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "is_active",
+          "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "active_count",
+          "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "submit_and_collect",
+          "path": "crates/codegen/xai-grok-sampler/src/handle.rs",
+          "line": 113
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/handle.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 55,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/metrics.rs",
+      "module": "metrics",
+      "kind": "production",
+      "lineCount": 247,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "compute_percentiles",
+          "path": "crates/codegen/xai-grok-sampler/src/metrics.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "InferenceLatencyStats",
+          "path": "crates/codegen/xai-grok-sampler/src/metrics.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "record_on_span",
+          "path": "crates/codegen/xai-grok-sampler/src/metrics.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "from_timestamps",
+          "path": "crates/codegen/xai-grok-sampler/src/metrics.rs",
+          "line": 77
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/metrics.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+      "module": "retry",
+      "kind": "production",
+      "lineCount": 857,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "RATE_LIMIT_RETRY_THRESHOLD",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 43
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_MAX_RETRIES",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_max_retries_with_env",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_max_retries",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "doom_loop_backoff",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "retry_backoff_with_jitter",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 86
+        },
+        {
+          "kind": "enum",
+          "name": "RetryDecision",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "classify_error",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 144
+        },
+        {
+          "kind": "fn",
+          "name": "format_sampling_error",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 253
+        },
+        {
+          "kind": "fn",
+          "name": "clone_error",
+          "path": "crates/codegen/xai-grok-sampler/src/retry.rs",
+          "line": 384
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/retry.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/sampling_log.rs",
+      "module": "sampling_log",
+      "kind": "production",
+      "lineCount": 38,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TARGET",
+          "path": "crates/codegen/xai-grok-sampler/src/sampling_log.rs",
+          "line": 7
+        },
+        {
+          "kind": "struct",
+          "name": "AuthInfo",
+          "path": "crates/codegen/xai-grok-sampler/src/sampling_log.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "request_span",
+          "path": "crates/codegen/xai-grok-sampler/src/sampling_log.rs",
+          "line": 15
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/sampling_log.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/shared_http.rs",
+      "module": "shared_http",
+      "kind": "production",
+      "lineCount": 157,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "client",
+          "path": "crates/codegen/xai-grok-sampler/src/shared_http.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "client_http1",
+          "path": "crates/codegen/xai-grok-sampler/src/shared_http.rs",
+          "line": 66
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/shared_http.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/stream/chat_completions.rs",
+      "module": "stream::chat_completions",
+      "kind": "production",
+      "lineCount": 775,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "stream_chat_completions",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/chat_completions.rs",
+          "line": 36
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/stream/chat_completions.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/stream/collect.rs",
+      "module": "stream::collect",
+      "kind": "production",
+      "lineCount": 183,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "collect_response",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/collect.rs",
+          "line": 30
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/stream/collect.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/stream/messages_tests.rs",
+      "module": "stream::messages_tests",
+      "kind": "test",
+      "lineCount": 656,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/stream/messages_tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/stream/messages.rs",
+      "module": "stream::messages",
+      "kind": "production",
+      "lineCount": 531,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "messages_event_has_meaningful_content",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/messages.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "stream_messages",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/messages.rs",
+          "line": 65
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/stream/messages.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/stream/mod.rs",
+      "module": "stream::mod",
+      "kind": "production",
+      "lineCount": 20,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/stream/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/stream/responses.rs",
+      "module": "stream::responses",
+      "kind": "production",
+      "lineCount": 1026,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "responses_event_has_meaningful_content",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/responses.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "stream_responses",
+          "path": "crates/codegen/xai-grok-sampler/src/stream/responses.rs",
+          "line": 94
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/stream/responses.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/src/types.rs",
+      "module": "types",
+      "kind": "production",
+      "lineCount": 76,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "RequestId",
+          "path": "crates/codegen/xai-grok-sampler/src/types.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "random",
+          "path": "crates/codegen/xai-grok-sampler/src/types.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-sampler/src/types.rs",
+          "line": 22
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/src/types.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/tests/shared_http_kill_switch.rs",
+      "module": "..::tests::shared_http_kill_switch",
+      "kind": "test",
+      "lineCount": 30,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/tests/shared_http_kill_switch.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/tests/shared_http_wire.rs",
+      "module": "..::tests::shared_http_wire",
+      "kind": "test",
+      "lineCount": 83,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/tests/shared_http_wire.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/tests/support/mod.rs",
+      "module": "..::tests::support::mod",
+      "kind": "test",
+      "lineCount": 33,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "test_config",
+          "path": "crates/codegen/xai-grok-sampler/tests/support/mod.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "send_one",
+          "path": "crates/codegen/xai-grok-sampler/tests/support/mod.rs",
+          "line": 21
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/tests/support/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sampler/tests/test_actor.rs",
+      "module": "..::tests::test_actor",
+      "kind": "test",
+      "lineCount": 952,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sampler/tests/test_actor.rs"
+    }
+  ]
+}

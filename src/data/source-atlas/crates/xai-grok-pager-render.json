@@ -1,0 +1,3781 @@
+{
+  "name": "xai-grok-pager-render",
+  "memberPath": "crates/codegen/xai-grok-pager-render",
+  "manifestPath": "crates/codegen/xai-grok-pager-render/Cargo.toml",
+  "description": "",
+  "role": "负责终端帧、图片覆盖层和渲染后端，将视图状态转为可提交的终端输出。",
+  "layer": "交互呈现",
+  "primaryArticle": "tui/chat-view-rendering",
+  "relatedArticles": [
+    "tui/chat-view-rendering",
+    "runtime/tui-architecture"
+  ],
+  "dependencies": [
+    "xai-grok-config",
+    "xai-grok-markdown",
+    "xai-grok-paths",
+    "xai-grok-shared",
+    "xai-grok-telemetry",
+    "xai-grok-tools",
+    "xai-grok-workspace",
+    "xai-ratatui-inline",
+    "xai-ratatui-textarea",
+    "xai-tty-utils"
+  ],
+  "dependents": [
+    "xai-grok-pager"
+  ],
+  "fileCount": 64,
+  "productionFileCount": 61,
+  "lineCount": 33477,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/lib.rs",
+      "lineCount": 14,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+      "lineCount": 4809,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "PROMPT_IMAGES_TRACING_TARGET",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "ImageViewerState",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "decode_image_dimensions",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "open",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "open_from_path",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "open_from_path_deferred",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 128
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+      "lineCount": 2468,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "BlockBackground",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "AppearanceConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 28
+        },
+        {
+          "kind": "struct",
+          "name": "TurnStatusConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 65
+        },
+        {
+          "kind": "struct",
+          "name": "PromptViewConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "ScrollbackConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 109
+        },
+        {
+          "kind": "struct",
+          "name": "ScrollbackDisplayConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 119
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+      "lineCount": 1830,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "LinkTarget",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 18
+        },
+        {
+          "kind": "enum",
+          "name": "LinkPresentation",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "ResolvedLinkTarget",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_link_target",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_link_target_with_presentation",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_link_target_for_context",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+      "lineCount": 1721,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "osc52_sink_active",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "clipboard_route",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "wayland_data_control_label",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 61
+        },
+        {
+          "kind": "struct",
+          "name": "ClipboardRoute",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_clipboard_route",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 119
+        },
+        {
+          "kind": "struct",
+          "name": "SystemClipboard",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 182
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+      "lineCount": 1560,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "wrap_ranges_trim",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "HighlightSegment",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "byte_range_to_row_cols",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "byte_offset_to_display_col",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "wrap_byte_ranges_matching",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 118
+        },
+        {
+          "kind": "struct",
+          "name": "RtOptions",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 171
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+      "lineCount": 1177,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ThemeKind",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "ALL",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "available",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "display_name",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "requires_truecolor",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 90
+        },
+        {
+          "kind": "fn",
+          "name": "from_name",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+      "lineCount": 1151,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "env_from",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "kitty_flags_pushed",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "set_kitty_flags_pushed",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "take_kitty_flags_pushed",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "tmux_show_option",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "parse_tmux_show_option_output",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 82
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "load",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 63
+    },
+    {
+      "kind": "fn",
+      "name": "set",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 79
+    },
+    {
+      "kind": "fn",
+      "name": "load_timestamps",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 91
+    },
+    {
+      "kind": "fn",
+      "name": "set_timestamps",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 106
+    },
+    {
+      "kind": "fn",
+      "name": "load_show_timeline",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 118
+    },
+    {
+      "kind": "fn",
+      "name": "set_show_timeline",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 133
+    },
+    {
+      "kind": "fn",
+      "name": "load_simple_mode",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 145
+    },
+    {
+      "kind": "fn",
+      "name": "set_simple_mode",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 160
+    },
+    {
+      "kind": "fn",
+      "name": "load_vim_mode",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 179
+    },
+    {
+      "kind": "fn",
+      "name": "set_vim_mode",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 195
+    },
+    {
+      "kind": "fn",
+      "name": "load_show_thinking_blocks",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 210
+    },
+    {
+      "kind": "fn",
+      "name": "set_show_thinking_blocks",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 226
+    },
+    {
+      "kind": "fn",
+      "name": "load_group_tool_verbs",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 241
+    },
+    {
+      "kind": "fn",
+      "name": "set_group_tool_verbs",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 257
+    },
+    {
+      "kind": "fn",
+      "name": "load_collapsed_edit_blocks",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 274
+    },
+    {
+      "kind": "fn",
+      "name": "set_collapsed_edit_blocks",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 290
+    },
+    {
+      "kind": "fn",
+      "name": "load_prompt_suggestions",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 306
+    },
+    {
+      "kind": "fn",
+      "name": "set_prompt_suggestions",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 322
+    },
+    {
+      "kind": "fn",
+      "name": "load_keep_text_selection",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 336
+    },
+    {
+      "kind": "fn",
+      "name": "set_keep_text_selection",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 348
+    },
+    {
+      "kind": "fn",
+      "name": "load_scroll_speed",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 363
+    },
+    {
+      "kind": "fn",
+      "name": "set_scroll_speed",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 381
+    },
+    {
+      "kind": "fn",
+      "name": "load_scroll_mode",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 396
+    },
+    {
+      "kind": "fn",
+      "name": "set_scroll_mode",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 416
+    },
+    {
+      "kind": "fn",
+      "name": "load_invert_scroll",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 430
+    },
+    {
+      "kind": "fn",
+      "name": "set_invert_scroll",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 451
+    },
+    {
+      "kind": "fn",
+      "name": "load_scroll_lines",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 466
+    },
+    {
+      "kind": "fn",
+      "name": "set_scroll_lines",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 492
+    },
+    {
+      "kind": "fn",
+      "name": "load_render_mermaid",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 513
+    },
+    {
+      "kind": "fn",
+      "name": "set_render_mermaid",
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "line": 535
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+      "module": "appearance::cache",
+      "kind": "production",
+      "lineCount": 1096,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "load",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "set",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "load_timestamps",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "set_timestamps",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 106
+        },
+        {
+          "kind": "fn",
+          "name": "load_show_timeline",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 118
+        },
+        {
+          "kind": "fn",
+          "name": "set_show_timeline",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "load_simple_mode",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "set_simple_mode",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "load_vim_mode",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 179
+        },
+        {
+          "kind": "fn",
+          "name": "set_vim_mode",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 195
+        },
+        {
+          "kind": "fn",
+          "name": "load_show_thinking_blocks",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 210
+        },
+        {
+          "kind": "fn",
+          "name": "set_show_thinking_blocks",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/cache.rs",
+          "line": 226
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/appearance/cache.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+      "module": "appearance::config",
+      "kind": "production",
+      "lineCount": 2468,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "BlockBackground",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "AppearanceConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 28
+        },
+        {
+          "kind": "struct",
+          "name": "TurnStatusConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 65
+        },
+        {
+          "kind": "struct",
+          "name": "PromptViewConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "ScrollbackConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 109
+        },
+        {
+          "kind": "struct",
+          "name": "ScrollbackDisplayConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 119
+        },
+        {
+          "kind": "struct",
+          "name": "LayoutConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 191
+        },
+        {
+          "kind": "const",
+          "name": "MIN_HPAD",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 218
+        },
+        {
+          "kind": "fn",
+          "name": "eff_outer_vpad",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 221
+        },
+        {
+          "kind": "fn",
+          "name": "eff_hpad_left",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 226
+        },
+        {
+          "kind": "fn",
+          "name": "eff_hpad_right",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 235
+        },
+        {
+          "kind": "fn",
+          "name": "validated",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/config.rs",
+          "line": 244
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/appearance/config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/mod.rs",
+      "module": "appearance::mod",
+      "kind": "production",
+      "lineCount": 55,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "tab_width",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/mod.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "set_tab_width",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/mod.rs",
+          "line": 52
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/appearance/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+      "module": "appearance::permission_cursor",
+      "kind": "production",
+      "lineCount": 456,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "DefaultSelectedPermission",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 40
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 56
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 69
+        },
+        {
+          "kind": "fn",
+          "name": "from_config_value",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "matches_kind",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "from_kind",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "load_default_selected_permission",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "set_default_selected_permission",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 180
+        },
+        {
+          "kind": "fn",
+          "name": "prime",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 187
+        },
+        {
+          "kind": "fn",
+          "name": "last_used_permission",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 207
+        },
+        {
+          "kind": "fn",
+          "name": "set_last_used_permission",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 214
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_initial_cursor",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs",
+          "line": 233
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/appearance/permission_cursor.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/render_mermaid.rs",
+      "module": "appearance::render_mermaid",
+      "kind": "production",
+      "lineCount": 73,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "RenderMermaid",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/render_mermaid.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "as_canonical",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/render_mermaid.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "from_canonical",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/render_mermaid.rs",
+          "line": 36
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/appearance/render_mermaid.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/scroll_mode.rs",
+      "module": "appearance::scroll_mode",
+      "kind": "production",
+      "lineCount": 68,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ScrollMode",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/scroll_mode.rs",
+          "line": 11
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/scroll_mode.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "from_canonical",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/scroll_mode.rs",
+          "line": 32
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/appearance/scroll_mode.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/text_selection.rs",
+      "module": "appearance::text_selection",
+      "kind": "production",
+      "lineCount": 103,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "TextSelection",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/text_selection.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/text_selection.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "from_canonical",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/text_selection.rs",
+          "line": 36
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/text_selection.rs",
+          "line": 46
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/text_selection.rs",
+          "line": 52
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/appearance/text_selection.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/appearance/watcher.rs",
+      "module": "appearance::watcher",
+      "kind": "production",
+      "lineCount": 73,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ConfigWatcher",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/watcher.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/watcher.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "current",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/watcher.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "changed",
+          "path": "crates/codegen/xai-grok-pager-render/src/appearance/watcher.rs",
+          "line": 38
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/appearance/watcher.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+      "module": "clipboard::mod",
+      "kind": "production",
+      "lineCount": 1721,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "osc52_sink_active",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "clipboard_route",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "wayland_data_control_label",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 61
+        },
+        {
+          "kind": "struct",
+          "name": "ClipboardRoute",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_clipboard_route",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 119
+        },
+        {
+          "kind": "struct",
+          "name": "SystemClipboard",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 182
+        },
+        {
+          "kind": "fn",
+          "name": "try_set",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 186
+        },
+        {
+          "kind": "struct",
+          "name": "ClipboardWriteLegs",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 203
+        },
+        {
+          "kind": "struct",
+          "name": "CopyResult",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 264
+        },
+        {
+          "kind": "enum",
+          "name": "ClipboardToastKind",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 278
+        },
+        {
+          "kind": "fn",
+          "name": "reported_success",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 324
+        },
+        {
+          "kind": "fn",
+          "name": "copy_text",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs",
+          "line": 351
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/clipboard/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/clipboard/trust.rs",
+      "module": "clipboard::trust",
+      "kind": "production",
+      "lineCount": 705,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "trusted_native",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/trust.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "trusted_osc",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/trust.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_copy_toast",
+          "path": "crates/codegen/xai-grok-pager-render/src/clipboard/trust.rs",
+          "line": 71
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/clipboard/trust.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+      "module": "gboom::assets",
+      "kind": "production",
+      "lineCount": 712,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "Rgb",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 8
+        },
+        {
+          "kind": "const",
+          "name": "TEX_SIZE",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 11
+        },
+        {
+          "kind": "const",
+          "name": "GBOOM_RED",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "EYE_GLOW",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "XorShift64",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "next_u32",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "next_f32",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 42
+        },
+        {
+          "kind": "struct",
+          "name": "Texture",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "sample",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "build_textures",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "build_floor_texture",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/assets.rs",
+          "line": 163
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/gboom/assets.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+      "module": "gboom::engine",
+      "kind": "production",
+      "lineCount": 729,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "FrameBuffer",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "resize",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 56
+        },
+        {
+          "kind": "struct",
+          "name": "Renderer",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 140
+        },
+        {
+          "kind": "fn",
+          "name": "render_game",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 151
+        },
+        {
+          "kind": "struct",
+          "name": "FireSim",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 529
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 539
+        },
+        {
+          "kind": "fn",
+          "name": "step",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 555
+        },
+        {
+          "kind": "fn",
+          "name": "draw",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 584
+        },
+        {
+          "kind": "fn",
+          "name": "clear",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 605
+        },
+        {
+          "kind": "fn",
+          "name": "text_width",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/engine.rs",
+          "line": 612
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/gboom/engine.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+      "module": "gboom::game",
+      "kind": "production",
+      "lineCount": 917,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Map",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "cell",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "solid",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "los",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 117
+        },
+        {
+          "kind": "struct",
+          "name": "Player",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 170
+        },
+        {
+          "kind": "fn",
+          "name": "dir",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 193
+        },
+        {
+          "kind": "enum",
+          "name": "Control",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 201
+        },
+        {
+          "kind": "enum",
+          "name": "ImpState",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 217
+        },
+        {
+          "kind": "enum",
+          "name": "ImpVisual",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 235
+        },
+        {
+          "kind": "struct",
+          "name": "Imp",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 245
+        },
+        {
+          "kind": "fn",
+          "name": "alive",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 257
+        },
+        {
+          "kind": "fn",
+          "name": "walk_bob",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/game.rs",
+          "line": 263
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/gboom/game.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+      "module": "gboom::mod",
+      "kind": "production",
+      "lineCount": 724,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "GboomKeyOutcome",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "GboomHud",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 71
+        },
+        {
+          "kind": "struct",
+          "name": "GboomState",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "set_mouse_region",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "clear_mouse_region",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "tick",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 155
+        },
+        {
+          "kind": "fn",
+          "name": "handle_key",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 191
+        },
+        {
+          "kind": "fn",
+          "name": "handle_release",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 227
+        },
+        {
+          "kind": "fn",
+          "name": "handle_mouse",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 236
+        },
+        {
+          "kind": "fn",
+          "name": "release_all",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 272
+        },
+        {
+          "kind": "fn",
+          "name": "any_movement_held",
+          "path": "crates/codegen/xai-grok-pager-render/src/gboom/mod.rs",
+          "line": 280
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/gboom/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+      "module": "glyphs",
+      "kind": "production",
+      "lineCount": 820,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "prompt_arrow",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "PROMPT_ARROW_WIDTH",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "record_dot",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "collapsed_accent",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "ballot_x",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "check_mark",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "enlarge",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "copy_icon",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "token_arrow",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "monitor_icon_frames",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 148
+        },
+        {
+          "kind": "fn",
+          "name": "diamond_filled",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 167
+        },
+        {
+          "kind": "fn",
+          "name": "diamond_hollow",
+          "path": "crates/codegen/xai-grok-pager-render/src/glyphs.rs",
+          "line": 182
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/glyphs.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/host/display_refresh.rs",
+      "module": "host::display_refresh",
+      "kind": "production",
+      "lineCount": 506,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "DisplayRefreshSource",
+          "path": "crates/codegen/xai-grok-pager-render/src/host/display_refresh.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "DisplayRefreshProbeResult",
+          "path": "crates/codegen/xai-grok-pager-render/src/host/display_refresh.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "outcome",
+          "path": "crates/codegen/xai-grok-pager-render/src/host/display_refresh.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "probe_display_refresh",
+          "path": "crates/codegen/xai-grok-pager-render/src/host/display_refresh.rs",
+          "line": 45
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/host/display_refresh.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/host/mod.rs",
+      "module": "host::mod",
+      "kind": "production",
+      "lineCount": 186,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "collect_unicode_env",
+          "path": "crates/codegen/xai-grok-pager-render/src/host/mod.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "unicode_env_from_os",
+          "path": "crates/codegen/xai-grok-pager-render/src/host/mod.rs",
+          "line": 17
+        },
+        {
+          "kind": "enum",
+          "name": "HostOs",
+          "path": "crates/codegen/xai-grok-pager-render/src/host/mod.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "current",
+          "path": "crates/codegen/xai-grok-pager-render/src/host/mod.rs",
+          "line": 38
+        },
+        {
+          "kind": "enum",
+          "name": "DisplayServer",
+          "path": "crates/codegen/xai-grok-pager-render/src/host/mod.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "current",
+          "path": "crates/codegen/xai-grok-pager-render/src/host/mod.rs",
+          "line": 71
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/host/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 14,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+      "module": "link_opener",
+      "kind": "production",
+      "lineCount": 587,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "OpenUrlResult",
+          "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "browser_open_likely_available_from_env",
+          "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "browser_open_likely_available",
+          "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "browser_unavailable_message",
+          "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "open_url",
+          "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "open_path",
+          "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "is_safe_to_open",
+          "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+          "line": 244
+        },
+        {
+          "kind": "fn",
+          "name": "open_url_if_safe",
+          "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+          "line": 269
+        },
+        {
+          "kind": "fn",
+          "name": "try_open_url",
+          "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+          "line": 275
+        },
+        {
+          "kind": "fn",
+          "name": "ensure_query_param",
+          "path": "crates/codegen/xai-grok-pager-render/src/link_opener.rs",
+          "line": 297
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/link_opener.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/modal_window_state.rs",
+      "module": "modal_window_state",
+      "kind": "production",
+      "lineCount": 85,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ModalWindowState",
+          "path": "crates/codegen/xai-grok-pager-render/src/modal_window_state.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/modal_window_state.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "with_tabs",
+          "path": "crates/codegen/xai-grok-pager-render/src/modal_window_state.rs",
+          "line": 55
+        },
+        {
+          "kind": "struct",
+          "name": "ShortcutHitArea",
+          "path": "crates/codegen/xai-grok-pager-render/src/modal_window_state.rs",
+          "line": 72
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/modal_window_state.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+      "module": "prompt_images",
+      "kind": "production",
+      "lineCount": 4809,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "PROMPT_IMAGES_TRACING_TARGET",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "ImageViewerState",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "decode_image_dimensions",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "open",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "open_from_path",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "open_from_path_deferred",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "take_source_path",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "apply_loaded",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 155
+        },
+        {
+          "kind": "fn",
+          "name": "finish_loading",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 166
+        },
+        {
+          "kind": "enum",
+          "name": "ImageLoadResult",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 184
+        },
+        {
+          "kind": "struct",
+          "name": "LoadedImageData",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 190
+        },
+        {
+          "kind": "fn",
+          "name": "load_image_data",
+          "path": "crates/codegen/xai-grok-pager-render/src/prompt_images.rs",
+          "line": 200
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/prompt_images.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+      "module": "render::color",
+      "kind": "production",
+      "lineCount": 653,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "indexed_to_rgb",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "nearest_indexed",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_to_rgb",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+          "line": 141
+        },
+        {
+          "kind": "fn",
+          "name": "blend_channel",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+          "line": 171
+        },
+        {
+          "kind": "fn",
+          "name": "blend_color",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+          "line": 190
+        },
+        {
+          "kind": "fn",
+          "name": "blend_line",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+          "line": 218
+        },
+        {
+          "kind": "fn",
+          "name": "blend_line_with_default",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+          "line": 245
+        },
+        {
+          "kind": "fn",
+          "name": "fade_region",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+          "line": 276
+        },
+        {
+          "kind": "fn",
+          "name": "blend_area",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+          "line": 294
+        },
+        {
+          "kind": "fn",
+          "name": "dim_area",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/color.rs",
+          "line": 321
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/color.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+      "module": "render::draw",
+      "kind": "production",
+      "lineCount": 574,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "PagerTerminal",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 55
+        },
+        {
+          "kind": "struct",
+          "name": "WriterSync",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "is_drained",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "wait_drained",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 104
+        },
+        {
+          "kind": "struct",
+          "name": "TermWriter",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "discard",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 141
+        },
+        {
+          "kind": "fn",
+          "name": "writer_sync",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 146
+        },
+        {
+          "kind": "struct",
+          "name": "WriterThread",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 173
+        },
+        {
+          "kind": "fn",
+          "name": "join",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 180
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_writer_thread",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/draw.rs",
+          "line": 201
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/draw.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/gboom_overlay.rs",
+      "module": "render::gboom_overlay",
+      "kind": "production",
+      "lineCount": 170,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "render_gboom_overlay",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/gboom_overlay.rs",
+          "line": 17
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/gboom_overlay.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/highlight.rs",
+      "module": "render::highlight",
+      "kind": "production",
+      "lineCount": 78,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "paint_match_highlights",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/highlight.rs",
+          "line": 23
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/highlight.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay.rs",
+      "module": "render::image_overlay",
+      "kind": "production",
+      "lineCount": 224,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "render_image_overlay",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay.rs",
+          "line": 44
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/image_overlay.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/content.rs",
+      "module": "render::image_overlay::content",
+      "kind": "production",
+      "lineCount": 88,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "paint_path_line",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/content.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "build_meta_line",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/content.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "format_mime",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/content.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "format_bytes",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/content.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_path_for_overlay",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/content.rs",
+          "line": 70
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/image_overlay/content.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/geometry.rs",
+      "module": "render::image_overlay::geometry",
+      "kind": "production",
+      "lineCount": 102,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MIN_BOX_WIDTH",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/geometry.rs",
+          "line": 8
+        },
+        {
+          "kind": "const",
+          "name": "MIN_PIXEL_BOX_HEIGHT",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/geometry.rs",
+          "line": 9
+        },
+        {
+          "kind": "const",
+          "name": "MIN_META_BOX_HEIGHT",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/geometry.rs",
+          "line": 10
+        },
+        {
+          "kind": "struct",
+          "name": "ImagePreviewPlan",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/geometry.rs",
+          "line": 17
+        },
+        {
+          "kind": "struct",
+          "name": "ImageOverlayGeometry",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/geometry.rs",
+          "line": 23
+        },
+        {
+          "kind": "struct",
+          "name": "ImagePlacement",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/geometry.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "plan_image_preview",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/geometry.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "overlay_geometry",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/geometry.rs",
+          "line": 46
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/image_overlay/geometry.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/image_overlay/tests.rs",
+      "module": "render::image_overlay::tests",
+      "kind": "test",
+      "lineCount": 202,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/image_overlay/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/line_utils.rs",
+      "module": "render::line_utils",
+      "kind": "production",
+      "lineCount": 606,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "line_to_static",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/line_utils.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "push_owned_lines",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/line_utils.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "is_unsafe_display_char",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/line_utils.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "floor_char_boundary",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/line_utils.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "byte_offset_at_width",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/line_utils.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_str",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/line_utils.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_line",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/line_utils.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "fit_line_to_width",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/line_utils.rs",
+          "line": 163
+        },
+        {
+          "kind": "fn",
+          "name": "cascade_truncate",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/line_utils.rs",
+          "line": 249
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/line_utils.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/mod.rs",
+      "module": "render::mod",
+      "kind": "production",
+      "lineCount": 23,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+      "module": "render::osc8",
+      "kind": "production",
+      "lineCount": 1830,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "LinkTarget",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 18
+        },
+        {
+          "kind": "enum",
+          "name": "LinkPresentation",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "ResolvedLinkTarget",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_link_target",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_link_target_with_presentation",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_link_target_for_context",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_link_open_target",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 84
+        },
+        {
+          "kind": "struct",
+          "name": "OverlayLink",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 90
+        },
+        {
+          "kind": "struct",
+          "name": "LinkOverlay",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "push",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 116
+        },
+        {
+          "kind": "fn",
+          "name": "extend_from",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/osc8.rs",
+          "line": 134
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/osc8.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/preview_overlay.rs",
+      "module": "render::preview_overlay",
+      "kind": "production",
+      "lineCount": 605,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PreviewStyle",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/preview_overlay.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/preview_overlay.rs",
+          "line": 37
+        },
+        {
+          "kind": "struct",
+          "name": "PreviewConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/preview_overlay.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "render_preview_overlay",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/preview_overlay.rs",
+          "line": 114
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/preview_overlay.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/renderable.rs",
+      "module": "render::renderable",
+      "kind": "production",
+      "lineCount": 210,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "Renderable",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/renderable.rs",
+          "line": 21
+        },
+        {
+          "kind": "enum",
+          "name": "RenderableItem",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/renderable.rs",
+          "line": 33
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/renderable.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/safe_buf.rs",
+      "module": "render::safe_buf",
+      "kind": "production",
+      "lineCount": 53,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "SafeBuf",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/safe_buf.rs",
+          "line": 17
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/safe_buf.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+      "module": "render::scrollbar",
+      "kind": "production",
+      "lineCount": 522,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "set_scrollbars_hidden",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "scrollbars_hidden",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 60
+        },
+        {
+          "kind": "const",
+          "name": "SCROLLBAR_TOTAL_COLS",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "split_area_for_scrollbar",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "maybe_split_for_scrollbar",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "needs_scrollbar",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 124
+        },
+        {
+          "kind": "fn",
+          "name": "is_at_bottom",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 130
+        },
+        {
+          "kind": "enum",
+          "name": "ScrollbarClickResult",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "scrollbar_click_to_offset",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 161
+        },
+        {
+          "kind": "fn",
+          "name": "render_scrollbar",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 212
+        },
+        {
+          "kind": "fn",
+          "name": "render_scrollbar_styled",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs",
+          "line": 292
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/scrollbar.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/terminal_output.rs",
+      "module": "render::terminal_output",
+      "kind": "production",
+      "lineCount": 541,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "RenderedLine",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/terminal_output.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "render_terminal_lines",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/terminal_output.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "render_terminal_plain",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/terminal_output.rs",
+          "line": 49
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/terminal_output.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/tool_paths.rs",
+      "module": "render::tool_paths",
+      "kind": "production",
+      "lineCount": 450,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ToolPathSurface",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/tool_paths.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_tool_path_target_with_home",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/tool_paths.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_tool_path_target",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/tool_paths.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "shorten_path",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/tool_paths.rs",
+          "line": 125
+        },
+        {
+          "kind": "fn",
+          "name": "path_basename",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/tool_paths.rs",
+          "line": 176
+        },
+        {
+          "kind": "fn",
+          "name": "path_for_tool_header",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/tool_paths.rs",
+          "line": 187
+        },
+        {
+          "kind": "fn",
+          "name": "path_for_tool_surface",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/tool_paths.rs",
+          "line": 195
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/tool_paths.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/video_overlay.rs",
+      "module": "render::video_overlay",
+      "kind": "production",
+      "lineCount": 149,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "render_video_overlay",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/video_overlay.rs",
+          "line": 17
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/video_overlay.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+      "module": "render::wrapping",
+      "kind": "production",
+      "lineCount": 1560,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "wrap_ranges_trim",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "HighlightSegment",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "byte_range_to_row_cols",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "byte_offset_to_display_col",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "wrap_byte_ranges_matching",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 118
+        },
+        {
+          "kind": "struct",
+          "name": "RtOptions",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 171
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 198
+        },
+        {
+          "kind": "fn",
+          "name": "line_ending",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 211
+        },
+        {
+          "kind": "fn",
+          "name": "width",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 218
+        },
+        {
+          "kind": "fn",
+          "name": "initial_indent",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 222
+        },
+        {
+          "kind": "fn",
+          "name": "subsequent_indent",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 229
+        },
+        {
+          "kind": "fn",
+          "name": "break_words",
+          "path": "crates/codegen/xai-grok-pager-render/src/render/wrapping.rs",
+          "line": 236
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/render/wrapping.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/syntax.rs",
+      "module": "syntax",
+      "kind": "production",
+      "lineCount": 80,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "syntect_to_ratatui_fg",
+          "path": "crates/codegen/xai-grok-pager-render/src/syntax.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "highlight_line",
+          "path": "crates/codegen/xai-grok-pager-render/src/syntax.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "get_syntect",
+          "path": "crates/codegen/xai-grok-pager-render/src/syntax.rs",
+          "line": 67
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/syntax.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/embedded_editor.rs",
+      "module": "terminal::embedded_editor",
+      "kind": "production",
+      "lineCount": 109,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "EmbeddedEditor",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/embedded_editor.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "embedded_editor_from_env",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/embedded_editor.rs",
+          "line": 37
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/terminal/embedded_editor.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/hyperlinks.rs",
+      "module": "terminal::hyperlinks",
+      "kind": "production",
+      "lineCount": 307,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "Osc8Support",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/hyperlinks.rs",
+          "line": 12
+        },
+        {
+          "kind": "enum",
+          "name": "SchemeFilter",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/hyperlinks.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "allows",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/hyperlinks.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "HyperlinkCapabilities",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/hyperlinks.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "hyperlink_capabilities",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/hyperlinks.rs",
+          "line": 70
+        },
+        {
+          "kind": "struct",
+          "name": "SetPointerCursor",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/hyperlinks.rs",
+          "line": 209
+        },
+        {
+          "kind": "struct",
+          "name": "SetDefaultCursor",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/hyperlinks.rs",
+          "line": 223
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/terminal/hyperlinks.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+      "module": "terminal::image",
+      "kind": "production",
+      "lineCount": 652,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "GraphicsProtocol",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "supports_images",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "set_inline_overlay_force_off",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "scrollback_inline_overlay_forced_off",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "detect_graphics_protocol",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "scrollback_inline_overlay_active",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 109
+        },
+        {
+          "kind": "fn",
+          "name": "set_protocol_for_test",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 149
+        },
+        {
+          "kind": "struct",
+          "name": "TestProtocolGuard",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 156
+        },
+        {
+          "kind": "fn",
+          "name": "protocol_for_brand",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 171
+        },
+        {
+          "kind": "const",
+          "name": "KITTY_PLACEMENT_ID",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 195
+        },
+        {
+          "kind": "enum",
+          "name": "KittyImageFormat",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 199
+        },
+        {
+          "kind": "fn",
+          "name": "kitty_format_from_bytes",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/image.rs",
+          "line": 213
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/terminal/image.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/image/tests.rs",
+      "module": "terminal::image::tests",
+      "kind": "test",
+      "lineCount": 122,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/terminal/image/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs",
+      "module": "terminal::keyboard",
+      "kind": "production",
+      "lineCount": 216,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ModifierFate",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "benefits_from_rescue",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs",
+          "line": 35
+        },
+        {
+          "kind": "struct",
+          "name": "ModifierDelivery",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "new_for_test",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "benefits_from_rescue",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "label",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs",
+          "line": 61
+        },
+        {
+          "kind": "struct",
+          "name": "KeyboardCapabilities",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "enter_needs_rescue",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "keyboard_capabilities",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs",
+          "line": 89
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/terminal/keyboard.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+      "module": "terminal::mod",
+      "kind": "production",
+      "lineCount": 1151,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "env_from",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "kitty_flags_pushed",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "set_kitty_flags_pushed",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "take_kitty_flags_pushed",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "tmux_show_option",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "parse_tmux_show_option_output",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 82
+        },
+        {
+          "kind": "enum",
+          "name": "TerminalName",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "is_vte_based",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 154
+        },
+        {
+          "kind": "fn",
+          "name": "is_vscode_family",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "is_capability_unclassified",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 169
+        },
+        {
+          "kind": "fn",
+          "name": "supports_osc52_clipboard",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 174
+        },
+        {
+          "kind": "fn",
+          "name": "delivers_ime_as_bracketed_paste",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/mod.rs",
+          "line": 193
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/terminal/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+      "module": "terminal::overlay",
+      "kind": "production",
+      "lineCount": 302,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "Ownership",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 18
+        },
+        {
+          "kind": "struct",
+          "name": "Escapes",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "into_string",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "commit",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "PostFlush",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "plain",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "append",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "append_plain",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 69
+        },
+        {
+          "kind": "fn",
+          "name": "write_to",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "next_owner_id",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs",
+          "line": 91
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/terminal/overlay.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/probe.rs",
+      "module": "terminal::probe",
+      "kind": "production",
+      "lineCount": 160,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_PROBE_RESPONSE",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/probe.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "write_query",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/probe.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "read_tty_reply",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/probe.rs",
+          "line": 50
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/terminal/probe.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/test.rs",
+      "module": "terminal::test",
+      "kind": "test",
+      "lineCount": 1949,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/terminal/test.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/terminal/xtversion.rs",
+      "module": "terminal::xtversion",
+      "kind": "production",
+      "lineCount": 213,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "detected",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/xtversion.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "reply_pending",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/xtversion.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "record_reply",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/xtversion.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "record_no_reply",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/xtversion.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "probe_at_startup",
+          "path": "crates/codegen/xai-grok-pager-render/src/terminal/xtversion.rs",
+          "line": 80
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/terminal/xtversion.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+      "module": "theme::cache",
+      "kind": "production",
+      "lineCount": 656,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AutoThemeConfig",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "current_kind",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "set",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "terminal_native_locked",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 109
+        },
+        {
+          "kind": "fn",
+          "name": "set_terminal_native_lock",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "is_auto_mode",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "set_auto_mode",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "auto_theme_config",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 141
+        },
+        {
+          "kind": "fn",
+          "name": "invalidate_auto_theme_config",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 151
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_initial_theme",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 166
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_auto",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 210
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_initial_theme_no_osc11",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/cache.rs",
+          "line": 217
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/cache.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+      "module": "theme::color_support",
+      "kind": "production",
+      "lineCount": 358,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ColorLevel",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "has_color",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "has_256",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "has_truecolor",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "detect",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+          "line": 125
+        },
+        {
+          "kind": "fn",
+          "name": "set",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "quantize_color",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "quantize",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/color_support.rs",
+          "line": 163
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/color_support.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+      "module": "theme::grokday",
+      "kind": "production",
+      "lineCount": 141,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BG",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 20
+        },
+        {
+          "kind": "const",
+          "name": "BG_DARK",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "BG_STORM_DARK",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "BG_STORM",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "BG_HIGHLIGHT",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "FG",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 27
+        },
+        {
+          "kind": "const",
+          "name": "FG_DARK",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 28
+        },
+        {
+          "kind": "const",
+          "name": "FG_GUTTER",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "COMMENT",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "DARK3",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "DARK5",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "BLUE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/grokday.rs",
+          "line": 35
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/grokday.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+      "module": "theme::groknight",
+      "kind": "production",
+      "lineCount": 167,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BG",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 28
+        },
+        {
+          "kind": "const",
+          "name": "BG_DARK",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "BG_STORM_DARK",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "BG_STORM",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "BG_HIGHLIGHT",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "FG",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 35
+        },
+        {
+          "kind": "const",
+          "name": "FG_DARK",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 36
+        },
+        {
+          "kind": "const",
+          "name": "FG_GUTTER",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 37
+        },
+        {
+          "kind": "const",
+          "name": "COMMENT",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 38
+        },
+        {
+          "kind": "const",
+          "name": "DARK3",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 39
+        },
+        {
+          "kind": "const",
+          "name": "DARK5",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 40
+        },
+        {
+          "kind": "const",
+          "name": "BLUE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/groknight.rs",
+          "line": 43
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/groknight.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/md_style.rs",
+      "module": "theme::md_style",
+      "kind": "production",
+      "lineCount": 199,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "style",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/md_style.rs",
+          "line": 103
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/md_style.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+      "module": "theme::mod",
+      "kind": "production",
+      "lineCount": 1177,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ThemeKind",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "ALL",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "available",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "display_name",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "requires_truecolor",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 90
+        },
+        {
+          "kind": "fn",
+          "name": "from_name",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "is_auto",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "canonical_name",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "display_name_for_canonical",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 143
+        },
+        {
+          "kind": "fn",
+          "name": "quantized",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 167
+        },
+        {
+          "kind": "fn",
+          "name": "current",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 267
+        },
+        {
+          "kind": "fn",
+          "name": "current_kind",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/mod.rs",
+          "line": 315
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/osc11.rs",
+      "module": "theme::osc11",
+      "kind": "production",
+      "lineCount": 467,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "detect_via_osc11",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/osc11.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "classify_luminance",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/osc11.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "parse_osc11_rgb",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/osc11.rs",
+          "line": 74
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/osc11.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+      "module": "theme::oscura",
+      "kind": "production",
+      "lineCount": 150,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BASE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "SURFACE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "ELEVATED",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 25
+        },
+        {
+          "kind": "const",
+          "name": "PANEL",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "TEXT",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "TEXT_DIM",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "MUTED",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "SUBTLE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 34
+        },
+        {
+          "kind": "const",
+          "name": "GOLD",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 37
+        },
+        {
+          "kind": "const",
+          "name": "RED",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 38
+        },
+        {
+          "kind": "const",
+          "name": "TEAL",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 39
+        },
+        {
+          "kind": "const",
+          "name": "AMBER",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/oscura.rs",
+          "line": 40
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/oscura.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+      "module": "theme::rosepine",
+      "kind": "production",
+      "lineCount": 118,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BASE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "SURFACE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "OVERLAY",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "MUTED",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "SUBTLE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "TEXT",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "LOVE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 19
+        },
+        {
+          "kind": "const",
+          "name": "GOLD",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 20
+        },
+        {
+          "kind": "const",
+          "name": "ROSE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "PINE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "FOAM",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "IRIS",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs",
+          "line": 24
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/rosepine.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+      "module": "theme::system_appearance",
+      "kind": "production",
+      "lineCount": 416,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SystemAppearance",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "detect",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "detect_with_osc11_fallback",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "to_theme_kind",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+          "line": 95
+        },
+        {
+          "kind": "struct",
+          "name": "SystemAppearanceWatcher",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "start_if_auto",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "changed",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "current",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+          "line": 165
+        },
+        {
+          "kind": "fn",
+          "name": "set_mock",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+          "line": 191
+        },
+        {
+          "kind": "fn",
+          "name": "clear_mock",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs",
+          "line": 197
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/system_appearance.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/terminal_default.rs",
+      "module": "theme::terminal_default",
+      "kind": "production",
+      "lineCount": 299,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/terminal_default.rs",
+          "line": 33
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/terminal_default.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+      "module": "theme::tokyonight",
+      "kind": "production",
+      "lineCount": 351,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BG",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "BG_DARK",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "BG_HIGHLIGHT",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "BG_STORM",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "BG_STORM_DARK",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 25
+        },
+        {
+          "kind": "const",
+          "name": "FG",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "FG_DARK",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 27
+        },
+        {
+          "kind": "const",
+          "name": "FG_GUTTER",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 28
+        },
+        {
+          "kind": "const",
+          "name": "COMMENT",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "DARK3",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "DARK5",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "BLUE",
+          "path": "crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs",
+          "line": 32
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/theme/tokyonight.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+      "module": "util",
+      "kind": "production",
+      "lineCount": 443,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "pager_toml_path",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "display_grok_home_prefix",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "display_user_grok_path",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "abbreviate_path",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "is_under_user_grok_home",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 62
+        },
+        {
+          "kind": "fn",
+          "name": "format_duration",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "format_time_ago",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "system_time_from_unix_ms",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "system_time_from_instant",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 152
+        },
+        {
+          "kind": "fn",
+          "name": "decode_html_entities",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "parse_schedule_interval_secs",
+          "path": "crates/codegen/xai-grok-pager-render/src/util.rs",
+          "line": 175
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-render/src/util.rs"
+    }
+  ]
+}

@@ -1,0 +1,1846 @@
+{
+  "name": "xai-grok-pager-pty-harness",
+  "memberPath": "crates/codegen/xai-grok-pager-pty-harness",
+  "manifestPath": "crates/codegen/xai-grok-pager-pty-harness/Cargo.toml",
+  "description": "Shared PTY harness + scenario library for xai-grok-pager e2e tests and benchmarks.",
+  "role": "提供 PTY 端到端场景、屏幕断言和性能基准所需的测试基础设施。",
+  "layer": "测试支持",
+  "primaryArticle": "tui/pty-tty-minimal-client",
+  "relatedArticles": [
+    "tui/pty-tty-minimal-client"
+  ],
+  "dependencies": [
+    "ptyctl",
+    "xai-grok-test-support",
+    "xai-tty-utils"
+  ],
+  "dependents": [
+    "xai-grok-pager"
+  ],
+  "fileCount": 37,
+  "productionFileCount": 30,
+  "lineCount": 9031,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+      "lineCount": 636,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PtyHarness",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 110
+        },
+        {
+          "kind": "fn",
+          "name": "new_in_dir",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "set_respond_to_queries",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 156
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_content",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 178
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_content_in_dir",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 189
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+      "lineCount": 2292,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SGR_SCROLL_UP",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "SGR_SCROLL_DOWN",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 24
+        },
+        {
+          "kind": "struct",
+          "name": "ScriptedScenario",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "from_json_file",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "from_yaml_file",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "from_file",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 71
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+      "lineCount": 801,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "InvariantId",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "is_log_side",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 124
+        },
+        {
+          "kind": "enum",
+          "name": "InvariantResult",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "is_pass",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "check_log_invariant",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 163
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+      "lineCount": 503,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "EVT_STREAM_START",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "EVT_FLUSH",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "EVT_FINALIZE",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "ScrollLogLine",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "is_stream_start",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "is_flush",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 97
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/runner.rs",
+      "lineCount": 466,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run_cell",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/runner.rs",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+      "lineCount": 436,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "J",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "K",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "Q",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "DOWN",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "UP",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "PGDN",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+      "lineCount": 404,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ExpectedProfile",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+          "line": 31
+        },
+        {
+          "kind": "enum",
+          "name": "Tier",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+          "line": 46
+        },
+        {
+          "kind": "struct",
+          "name": "MatrixCell",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+          "line": 53
+        },
+        {
+          "kind": "const",
+          "name": "CELLS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "curated",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+          "line": 224
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+      "lineCount": 372,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "REDRAW_CADENCE_MS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "STREAM_GAP_MS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "WHEEL_TICK_DETECT_MAX_MS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "ACCEL_MIN_INTERVAL_MS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "TRACKPAD_ACCEL_MAX",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "MIN_LINES_PER_WHEEL_STREAM",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 34
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "ContentController",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 32
+    },
+    {
+      "kind": "fn",
+      "name": "start",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 41
+    },
+    {
+      "kind": "fn",
+      "name": "start_with_models",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 48
+    },
+    {
+      "kind": "fn",
+      "name": "url",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 65
+    },
+    {
+      "kind": "fn",
+      "name": "home",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 71
+    },
+    {
+      "kind": "fn",
+      "name": "env_for_pager",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 79
+    },
+    {
+      "kind": "fn",
+      "name": "set_response",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 120
+    },
+    {
+      "kind": "fn",
+      "name": "enqueue_response",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 127
+    },
+    {
+      "kind": "fn",
+      "name": "server",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 132
+    },
+    {
+      "kind": "fn",
+      "name": "set_chunk_delay",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 139
+    },
+    {
+      "kind": "fn",
+      "name": "hold_agent_completions",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 148
+    },
+    {
+      "kind": "fn",
+      "name": "release_agent_completions",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 156
+    },
+    {
+      "kind": "fn",
+      "name": "set_turns",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 162
+    },
+    {
+      "kind": "fn",
+      "name": "request_count",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 167
+    },
+    {
+      "kind": "fn",
+      "name": "has_chat_completion",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 172
+    },
+    {
+      "kind": "fn",
+      "name": "requests",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 177
+    },
+    {
+      "kind": "fn",
+      "name": "request_bodies",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 181
+    },
+    {
+      "kind": "fn",
+      "name": "set_storage_unauthorized",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 188
+    },
+    {
+      "kind": "fn",
+      "name": "storage_request_count",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 193
+    },
+    {
+      "kind": "fn",
+      "name": "storage_uploads",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "line": 198
+    },
+    {
+      "kind": "fn",
+      "name": "pager_binary",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/env.rs",
+      "line": 78
+    },
+    {
+      "kind": "fn",
+      "name": "wait_for_labels_absent",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+      "line": 13
+    },
+    {
+      "kind": "fn",
+      "name": "submit_turn",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+      "line": 32
+    },
+    {
+      "kind": "fn",
+      "name": "inference_request_count",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+      "line": 58
+    },
+    {
+      "kind": "fn",
+      "name": "seed_fake_oauth",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+      "line": 76
+    },
+    {
+      "kind": "fn",
+      "name": "oauth_env_for_pager",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+      "line": 102
+    },
+    {
+      "kind": "fn",
+      "name": "wait_for_model_via_new_sessions",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+      "line": 112
+    },
+    {
+      "kind": "fn",
+      "name": "pbcopy",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+      "line": 24
+    },
+    {
+      "kind": "fn",
+      "name": "pbcopy",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+      "line": 44
+    },
+    {
+      "kind": "fn",
+      "name": "pbpaste",
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+      "line": 71
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/benches/paste_latency.rs",
+      "module": "..::benches::paste_latency",
+      "kind": "benchmark",
+      "lineCount": 488,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/benches/paste_latency.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/benches/pty_bench.rs",
+      "module": "..::benches::pty_bench",
+      "kind": "benchmark",
+      "lineCount": 201,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/benches/pty_bench.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/bin/pty_scenario.rs",
+      "module": "bin::pty_scenario",
+      "kind": "production",
+      "lineCount": 66,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/bin/pty_scenario.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/bin/scroll_matrix.rs",
+      "module": "bin::scroll_matrix",
+      "kind": "production",
+      "lineCount": 152,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/bin/scroll_matrix.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+      "module": "content",
+      "kind": "production",
+      "lineCount": 292,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ContentController",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "start_with_models",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "url",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "home",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "env_for_pager",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "set_response",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "enqueue_response",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "server",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "set_chunk_delay",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 139
+        },
+        {
+          "kind": "fn",
+          "name": "hold_agent_completions",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 148
+        },
+        {
+          "kind": "fn",
+          "name": "release_agent_completions",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/content.rs",
+          "line": 156
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/content.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/env.rs",
+      "module": "env",
+      "kind": "production",
+      "lineCount": 101,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "pager_binary",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/env.rs",
+          "line": 78
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/env.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+      "module": "flows",
+      "kind": "production",
+      "lineCount": 125,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "wait_for_labels_absent",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "submit_turn",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "inference_request_count",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "seed_fake_oauth",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "oauth_env_for_pager",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "wait_for_model_via_new_sessions",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/flows.rs",
+          "line": 112
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/flows.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+      "module": "host_clipboard",
+      "kind": "production",
+      "lineCount": 199,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "pbcopy",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "pbcopy",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "pbpaste",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "pbpaste",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+          "line": 84
+        },
+        {
+          "kind": "fn",
+          "name": "set_clipboard_png",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "set_clipboard_png",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "write_fixture_png",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+          "line": 156
+        },
+        {
+          "kind": "fn",
+          "name": "clipboard_roundtrip_works",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+          "line": 169
+        },
+        {
+          "kind": "struct",
+          "name": "HostClipboardTextGuard",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+          "line": 181
+        },
+        {
+          "kind": "fn",
+          "name": "save",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs",
+          "line": 186
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/host_clipboard.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/leader.rs",
+      "module": "leader",
+      "kind": "production",
+      "lineCount": 238,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LeaderCluster",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/leader.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/leader.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_leader",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/leader.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "attach",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/leader.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "content",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/leader.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "session_updates",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/leader.rs",
+          "line": 97
+        },
+        {
+          "kind": "fn",
+          "name": "wait_for_turn_completed",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/leader.rs",
+          "line": 114
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/leader.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 636,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PtyHarness",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 110
+        },
+        {
+          "kind": "fn",
+          "name": "new_in_dir",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "set_respond_to_queries",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 156
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_content",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 178
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_content_in_dir",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 189
+        },
+        {
+          "kind": "fn",
+          "name": "inject_keys",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 206
+        },
+        {
+          "kind": "fn",
+          "name": "resize",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 211
+        },
+        {
+          "kind": "fn",
+          "name": "update",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 225
+        },
+        {
+          "kind": "fn",
+          "name": "feed_screen",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 267
+        },
+        {
+          "kind": "fn",
+          "name": "is_running",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 272
+        },
+        {
+          "kind": "fn",
+          "name": "screen_output",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/lib.rs",
+          "line": 279
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+      "module": "pty",
+      "kind": "production",
+      "lineCount": 436,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "J",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "K",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "Q",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "DOWN",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "UP",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "PGDN",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "PGUP",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 19
+        },
+        {
+          "kind": "const",
+          "name": "ENTER",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 20
+        },
+        {
+          "kind": "const",
+          "name": "CTRL_C",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "CTRL_R",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "ESC",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 24
+        },
+        {
+          "kind": "enum",
+          "name": "PtyRead",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/pty.rs",
+          "line": 28
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/pty.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/results.rs",
+      "module": "results",
+      "kind": "production",
+      "lineCount": 267,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "BenchResults",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/results.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "from_timings",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/results.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_REGRESSION_THRESHOLD",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/results.rs",
+          "line": 90
+        },
+        {
+          "kind": "type",
+          "name": "Baseline",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/results.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "load_baseline",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/results.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "write_baseline",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/results.rs",
+          "line": 103
+        },
+        {
+          "kind": "struct",
+          "name": "ScenarioRegression",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/results.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "compare_baseline",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/results.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "percentile",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/results.rs",
+          "line": 162
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/results.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/empty_enter_send_now.rs",
+      "module": "scenarios::empty_enter_send_now",
+      "kind": "production",
+      "lineCount": 128,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "assert_empty_enter_force_sends_top_queued",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/empty_enter_send_now.rs",
+          "line": 50
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scenarios/empty_enter_send_now.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/idle_cost.rs",
+      "module": "scenarios::idle_cost",
+      "kind": "production",
+      "lineCount": 31,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/idle_cost.rs",
+          "line": 13
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scenarios/idle_cost.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/large_codeblock.rs",
+      "module": "scenarios::large_codeblock",
+      "kind": "production",
+      "lineCount": 53,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/large_codeblock.rs",
+          "line": 18
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scenarios/large_codeblock.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/mixed_interaction.rs",
+      "module": "scenarios::mixed_interaction",
+      "kind": "production",
+      "lineCount": 47,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/mixed_interaction.rs",
+          "line": 18
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scenarios/mixed_interaction.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/mod.rs",
+      "module": "scenarios::mod",
+      "kind": "production",
+      "lineCount": 91,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "Scenario",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/mod.rs",
+          "line": 27
+        },
+        {
+          "kind": "const",
+          "name": "ALL",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/mod.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/mod.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "run",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/mod.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "wait_for_welcome",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/mod.rs",
+          "line": 84
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scenarios/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/plan_approval_resume.rs",
+      "module": "scenarios::plan_approval_resume",
+      "kind": "production",
+      "lineCount": 196,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "assert_plan_approval_restored_after_resume",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/plan_approval_resume.rs",
+          "line": 40
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scenarios/plan_approval_resume.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/resize_storm.rs",
+      "module": "scenarios::resize_storm",
+      "kind": "production",
+      "lineCount": 43,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/resize_storm.rs",
+          "line": 16
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scenarios/resize_storm.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/scroll_stress.rs",
+      "module": "scenarios::scroll_stress",
+      "kind": "production",
+      "lineCount": 66,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/scroll_stress.rs",
+          "line": 18
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scenarios/scroll_stress.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/streaming_render.rs",
+      "module": "scenarios::streaming_render",
+      "kind": "production",
+      "lineCount": 54,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scenarios/streaming_render.rs",
+          "line": 16
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scenarios/streaming_render.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+      "module": "screen",
+      "kind": "production",
+      "lineCount": 187,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ScreenTracker",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "feed",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "drain_responses",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "output",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "contents",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "contains",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "cursor_position",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "resize",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "styled",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "html",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "terminal",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/screen.rs",
+          "line": 97
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/screen.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+      "module": "scripted",
+      "kind": "production",
+      "lineCount": 2292,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SGR_SCROLL_UP",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "SGR_SCROLL_DOWN",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 24
+        },
+        {
+          "kind": "struct",
+          "name": "ScriptedScenario",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "from_json_file",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "from_yaml_file",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "from_file",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 71
+        },
+        {
+          "kind": "struct",
+          "name": "TerminalConfig",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 91
+        },
+        {
+          "kind": "struct",
+          "name": "EnvironmentConfig",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 118
+        },
+        {
+          "kind": "struct",
+          "name": "EnvVar",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 149
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceConfig",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 159
+        },
+        {
+          "kind": "struct",
+          "name": "MockConfig",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 172
+        },
+        {
+          "kind": "struct",
+          "name": "ImageFixture",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs",
+          "line": 187
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scripted.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+      "module": "scroll_matrix::cells",
+      "kind": "production",
+      "lineCount": 404,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ExpectedProfile",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+          "line": 31
+        },
+        {
+          "kind": "enum",
+          "name": "Tier",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+          "line": 46
+        },
+        {
+          "kind": "struct",
+          "name": "MatrixCell",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+          "line": 53
+        },
+        {
+          "kind": "const",
+          "name": "CELLS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "curated",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs",
+          "line": 224
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/cells.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+      "module": "scroll_matrix::gestures",
+      "kind": "production",
+      "lineCount": 372,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "REDRAW_CADENCE_MS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "STREAM_GAP_MS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "WHEEL_TICK_DETECT_MAX_MS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "ACCEL_MIN_INTERVAL_MS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "TRACKPAD_ACCEL_MAX",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "MIN_LINES_PER_WHEEL_STREAM",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 34
+        },
+        {
+          "kind": "struct",
+          "name": "WheelStep",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 42
+        },
+        {
+          "kind": "const",
+          "name": "G1_NOTCH_EPT3",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 82
+        },
+        {
+          "kind": "const",
+          "name": "G1_NOTCH_EPT1",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 84
+        },
+        {
+          "kind": "const",
+          "name": "G2_NOTCH_TRAIN_EPT3",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 86
+        },
+        {
+          "kind": "const",
+          "name": "G2_NOTCH_TRAIN_EPT1",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 87
+        },
+        {
+          "kind": "const",
+          "name": "G3_FLOOD",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs",
+          "line": 89
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/gestures.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+      "module": "scroll_matrix::invariants",
+      "kind": "production",
+      "lineCount": 801,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "InvariantId",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "is_log_side",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 124
+        },
+        {
+          "kind": "enum",
+          "name": "InvariantResult",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "is_pass",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "check_log_invariant",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs",
+          "line": 163
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/invariants.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+      "module": "scroll_matrix::log",
+      "kind": "production",
+      "lineCount": 503,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "EVT_STREAM_START",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "EVT_FLUSH",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "EVT_FINALIZE",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "ScrollLogLine",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "is_stream_start",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "is_flush",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 97
+        },
+        {
+          "kind": "fn",
+          "name": "is_finalize",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "parse_jsonl",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 115
+        },
+        {
+          "kind": "fn",
+          "name": "parse_jsonl_str",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 122
+        },
+        {
+          "kind": "struct",
+          "name": "StreamGroup",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 138
+        },
+        {
+          "kind": "fn",
+          "name": "is_finalized",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 149
+        },
+        {
+          "kind": "fn",
+          "name": "flush_bearing",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs",
+          "line": 154
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/log.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/mod.rs",
+      "module": "scroll_matrix::mod",
+      "kind": "production",
+      "lineCount": 53,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/report.rs",
+      "module": "scroll_matrix::report",
+      "kind": "production",
+      "lineCount": 284,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "InvariantStatus",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/report.rs",
+          "line": 13
+        },
+        {
+          "kind": "enum",
+          "name": "CellStatus",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/report.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/report.rs",
+          "line": 39
+        },
+        {
+          "kind": "struct",
+          "name": "InvariantReport",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/report.rs",
+          "line": 51
+        },
+        {
+          "kind": "struct",
+          "name": "CellReport",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/report.rs",
+          "line": 62
+        },
+        {
+          "kind": "fn",
+          "name": "exit_code",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/report.rs",
+          "line": 84
+        },
+        {
+          "kind": "fn",
+          "name": "write_report_json",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/report.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "summary_table",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/report.rs",
+          "line": 125
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/report.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/runner.rs",
+      "module": "scroll_matrix::runner",
+      "kind": "production",
+      "lineCount": 466,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run_cell",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/runner.rs",
+          "line": 91
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/runner.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+      "module": "scroll_matrix::session",
+      "kind": "production",
+      "lineCount": 319,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SessionKind",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_ROWS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 46
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_COLS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 47
+        },
+        {
+          "kind": "const",
+          "name": "WHEEL_ROW",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 51
+        },
+        {
+          "kind": "const",
+          "name": "WHEEL_COL",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 52
+        },
+        {
+          "kind": "const",
+          "name": "STREAM_END_SENTINEL",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "marker_line",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "marker_response",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "marker_screen_row",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "topmost_visible_marker",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 104
+        },
+        {
+          "kind": "const",
+          "name": "STREAMING_TAIL_WORDS",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 120
+        },
+        {
+          "kind": "const",
+          "name": "STREAMING_CHUNK_DELAY",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs",
+          "line": 121
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/scroll_matrix/session.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/src/timing.rs",
+      "module": "timing",
+      "kind": "production",
+      "lineCount": 129,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "FrameTiming",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/timing.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "FrameTimingParser",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/timing.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/timing.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "feed",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/timing.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "timings",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/timing.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "frame_count",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/timing.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "reset",
+          "path": "crates/codegen/xai-grok-pager-pty-harness/src/timing.rs",
+          "line": 56
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/src/timing.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/tests/empty_enter_send_now.rs",
+      "module": "..::tests::empty_enter_send_now",
+      "kind": "test",
+      "lineCount": 14,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/tests/empty_enter_send_now.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/tests/plan_approval_resume.rs",
+      "module": "..::tests::plan_approval_resume",
+      "kind": "test",
+      "lineCount": 18,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/tests/plan_approval_resume.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/tests/prompt_history_durable_quit.rs",
+      "module": "..::tests::prompt_history_durable_quit",
+      "kind": "test",
+      "lineCount": 243,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/tests/prompt_history_durable_quit.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/tests/scroll_correctness_ptyctl.rs",
+      "module": "..::tests::scroll_correctness_ptyctl",
+      "kind": "test",
+      "lineCount": 155,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/tests/scroll_correctness_ptyctl.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-pty-harness/tests/scroll_matrix_curated.rs",
+      "module": "..::tests::scroll_matrix_curated",
+      "kind": "test",
+      "lineCount": 122,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-pty-harness/tests/scroll_matrix_curated.rs"
+    }
+  ]
+}

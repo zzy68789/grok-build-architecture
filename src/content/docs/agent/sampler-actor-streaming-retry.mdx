@@ -1,0 +1,27 @@
+---
+title: "Sampler Actor、流式事件与重试"
+description: "深入 actor 命令、HTTP 流、重试边界和采样事件转换。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-circuit-breaker
+  - xai-grok-http
+  - xai-grok-sampler
+sourcePaths:
+  - crates/codegen/xai-grok-http/src/lib.rs
+  - crates/codegen/xai-grok-sampler/src/lib.rs
+  - crates/common/xai-circuit-breaker/src/lib.rs
+  - crates/codegen/xai-grok-sampler/src/client.rs
+  - crates/codegen/xai-grok-sampler/src/stream/responses.rs
+  - crates/codegen/xai-grok-sampler/src/actor/request_task.rs
+  - crates/codegen/xai-grok-sampler/src/retry.rs
+  - crates/codegen/xai-grok-sampler/src/stream/chat_completions.rs
+  - crates/codegen/xai-grok-sampler/src/stream/messages.rs
+  - crates/codegen/xai-grok-sampler/src/events.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="agent/sampler-actor-streaming-retry" />

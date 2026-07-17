@@ -1,0 +1,24 @@
+---
+title: "xai-agent-lifecycle"
+description: "负责 Agent 定义解析、构建和 system prompt 装配。"
+lastVerified: '2026-07-17'
+coverageKind: appendix
+sourceCrates:
+  - xai-agent-lifecycle
+sourcePaths:
+  - crates/codegen/xai-agent-lifecycle/Cargo.toml
+  - crates/codegen/xai-agent-lifecycle/src/lib.rs
+  - crates/codegen/xai-agent-lifecycle/src/send/registry.rs
+  - crates/codegen/xai-agent-lifecycle/src/local/registry.rs
+  - crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs
+  - crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_lifecycle.rs
+  - crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs
+  - crates/codegen/xai-agent-lifecycle/src/local/contributors/command.rs
+  - crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import CrateAtlas from '@components/CrateAtlas.astro';
+
+<CrateAtlas crateName="xai-agent-lifecycle" />

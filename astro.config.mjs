@@ -1,12 +1,20 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
+import { ARTICLE_CATALOG, ARTICLE_GROUPS } from './src/data/article-catalog.mjs';
 
 const [owner = '', repository = ''] = (process.env.GITHUB_REPOSITORY ?? '').split('/');
 const isActions = process.env.GITHUB_ACTIONS === 'true';
 const isUserSite = repository === `${owner}.github.io`;
 const inferredSite = owner ? `https://${owner}.github.io` : 'http://localhost:4321';
 const inferredBase = isActions && repository && !isUserSite ? `/${repository}` : '/';
+const sidebar = ARTICLE_GROUPS.map((group) => ({
+  label: group.label,
+  items: ARTICLE_CATALOG.filter((article) => article.group === group.key).map((article) => ({
+    label: article.title,
+    slug: article.slug,
+  })),
+}));
 
 export default defineConfig({
   site: process.env.SITE_URL ?? inferredSite,
@@ -48,50 +56,17 @@ export default defineConfig({
         },
       },
       sidebar: [
+        { label: '开始', items: [{ label: '阅读首页', link: '/' }] },
+        ...sidebar,
         {
-          label: '开始',
+          label: '源码图谱与附录',
           items: [
-            { label: '阅读首页', link: '/' },
-            { label: '什么是 Grok Build', slug: 'introduction/what-is-grok-build' },
-            { label: '架构全景', slug: 'introduction/architecture-overview' },
-          ],
-        },
-        {
-          label: '运行时',
-          items: [
-            { label: '启动入口与运行模式', slug: 'runtime/startup-and-modes' },
-            { label: 'TUI 内部架构', slug: 'runtime/tui-architecture' },
-            { label: 'Agentic Loop', slug: 'runtime/agentic-loop' },
-            { label: 'Leader、Session 与 ACP', slug: 'runtime/leader-session-acp' },
-          ],
-        },
-        {
-          label: '工具与安全',
-          items: [
-            { label: '工具系统', slug: 'tools/tool-system' },
-            { label: '安全链路', slug: 'safety/permission-plan-sandbox' },
-          ],
-        },
-        {
-          label: '上下文工程',
-          items: [
-            { label: 'System Prompt 与项目规则', slug: 'context/system-prompt-and-rules' },
-            { label: '上下文压缩与 Token 预算', slug: 'context/compaction-and-token-budget' },
-            { label: '跨会话 Memory', slug: 'context/cross-session-memory' },
-          ],
-        },
-        {
-          label: '多 Agent 协作',
-          items: [
-            { label: '子 Agent 与后台任务', slug: 'agents/subagents-and-background-tasks' },
-            { label: 'Worktree、Checkpoint 与 Hunk', slug: 'agents/worktree-checkpoint-hunk' },
-          ],
-        },
-        {
-          label: '可扩展性',
-          items: [
-            { label: 'MCP 集成', slug: 'extensibility/mcp-integration' },
-            { label: 'Skills、Plugins 与 Hooks', slug: 'extensibility/skills-plugins-hooks' },
+            { label: '73 个 Crate 源码图谱', slug: 'source-atlas' },
+            { label: 'Crate 总索引', slug: 'appendices/crate-index' },
+            { label: '文件与模块索引', slug: 'appendices/file-module-index' },
+            { label: '测试与 Harness', slug: 'appendices/testing-architecture' },
+            { label: 'Build、Prod 与 Third-party', slug: 'appendices/build-prod-third-party' },
+            { label: '覆盖报告与升级指南', slug: 'appendices/coverage-and-upgrade' },
           ],
         },
       ],

@@ -1,0 +1,27 @@
+---
+import atlas from '@data/source-atlas/index.json';
+const fmt = new Intl.NumberFormat('zh-CN');
+const layers = atlas.layers.map((layer) => {
+  const crates = atlas.crates.filter((crate) => crate.layer === layer);
+  return {
+    layer,
+    crateCount: crates.length,
+    fileCount: crates.reduce((sum, crate) => sum + crate.productionFileCount, 0),
+    lineCount: crates.reduce((sum, crate) => sum + crate.lineCount, 0),
+  };
+});
+---
+
+<div class="coverage-bars">
+  {layers.map((item) => (
+    <div>
+      <strong>{item.layer}</strong>
+      <span>{item.crateCount} 个 crate</span>
+      <span>{fmt.format(item.fileCount)} 个生产文件</span>
+      <span>{fmt.format(item.lineCount)} 行</span>
+      <i style={`--coverage:${Math.max(4, item.fileCount / atlas.productionFileCount * 100)}%`}></i>
+    </div>
+  ))}
+</div>
+
+<p class="coverage-total">固定基线共登记 <strong>{atlas.crateCount}/73</strong> 个一方 crate，图谱覆盖 <strong>{fmt.format(atlas.productionFileCount)}</strong> 个生产 Rust 文件和 <strong>{fmt.format(atlas.rustFileCount)}</strong> 个 Rust 文件总量。</p>

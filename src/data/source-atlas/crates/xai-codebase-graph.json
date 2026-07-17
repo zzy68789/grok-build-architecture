@@ -1,0 +1,1682 @@
+{
+  "name": "xai-codebase-graph",
+  "memberPath": "crates/codegen/xai-codebase-graph",
+  "manifestPath": "crates/codegen/xai-codebase-graph/Cargo.toml",
+  "description": "High-performance code graph generation using tree-sitter queries",
+  "role": "使用 tree-sitter query 生成符号和代码关系图。",
+  "layer": "工具与工作区",
+  "primaryArticle": "workspace/codebase-graph",
+  "relatedArticles": [
+    "workspace/codebase-graph"
+  ],
+  "dependencies": [
+    "xai-grok-paths"
+  ],
+  "dependents": [
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 28,
+  "productionFileCount": 26,
+  "lineCount": 8935,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/lib.rs",
+      "lineCount": 103,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "lineCount": 2186,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_INDEXABLE_FILE_SIZE",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 42
+        },
+        {
+          "kind": "enum",
+          "name": "FileEventKind",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 62
+        },
+        {
+          "kind": "struct",
+          "name": "FileEvent",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 84
+        },
+        {
+          "kind": "fn",
+          "name": "created",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "modified",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 94
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+      "lineCount": 1727,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "NodeIndex",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 24
+        },
+        {
+          "kind": "type",
+          "name": "SymbolWithRange",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 27
+        },
+        {
+          "kind": "type",
+          "name": "ReferenceWithDefinition",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 31
+        },
+        {
+          "kind": "type",
+          "name": "ExtractedSymbols",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 35
+        },
+        {
+          "kind": "enum",
+          "name": "QueryVersion",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "needs_rebuild",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 62
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+      "lineCount": 845,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "NavigationResult",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "Location",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "with_symbol",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "as_path",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 50
+        },
+        {
+          "kind": "enum",
+          "name": "NavigationError",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 57
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+      "lineCount": 540,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "IndexOperation",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "is_exclusive",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 53
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceLockGuard",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 89
+        },
+        {
+          "kind": "enum",
+          "name": "LockResult",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 115
+        },
+        {
+          "kind": "fn",
+          "name": "is_acquired",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 129
+        },
+        {
+          "kind": "fn",
+          "name": "unwrap",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 134
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+      "lineCount": 508,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "IndexError",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 19
+        },
+        {
+          "kind": "type",
+          "name": "Result",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 47
+        },
+        {
+          "kind": "struct",
+          "name": "IndexBuilder",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "with_registry",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 106
+        },
+        {
+          "kind": "fn",
+          "name": "with_threads",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 119
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+      "lineCount": 414,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "StringId",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 46
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 51
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 57
+        },
+        {
+          "kind": "struct",
+          "name": "StringInterner",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "with_capacity",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 102
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+      "lineCount": 366,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Position",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "from_tree_sitter_point",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "to_tree_sitter",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "line",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "line_1indexed",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 54
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "const",
+      "name": "MAX_INDEXABLE_FILE_SIZE",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 42
+    },
+    {
+      "kind": "enum",
+      "name": "FileEventKind",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 62
+    },
+    {
+      "kind": "struct",
+      "name": "FileEvent",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 75
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 84
+    },
+    {
+      "kind": "fn",
+      "name": "created",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 89
+    },
+    {
+      "kind": "fn",
+      "name": "modified",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 94
+    },
+    {
+      "kind": "fn",
+      "name": "removed",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 99
+    },
+    {
+      "kind": "fn",
+      "name": "renamed",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 104
+    },
+    {
+      "kind": "enum",
+      "name": "IndexCommand",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 110
+    },
+    {
+      "kind": "struct",
+      "name": "QueryResult",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 172
+    },
+    {
+      "kind": "struct",
+      "name": "SymbolLocation",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 184
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 195
+    },
+    {
+      "kind": "fn",
+      "name": "with_symbol",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 204
+    },
+    {
+      "kind": "fn",
+      "name": "as_path",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 213
+    },
+    {
+      "kind": "enum",
+      "name": "QueryError",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 220
+    },
+    {
+      "kind": "struct",
+      "name": "IndexManagerHandle",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 233
+    },
+    {
+      "kind": "fn",
+      "name": "has_run_loop_exited",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 243
+    },
+    {
+      "kind": "fn",
+      "name": "send_event",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 248
+    },
+    {
+      "kind": "fn",
+      "name": "send_events",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 253
+    },
+    {
+      "kind": "fn",
+      "name": "rebuild",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 264
+    },
+    {
+      "kind": "fn",
+      "name": "get_snapshot",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 272
+    },
+    {
+      "kind": "fn",
+      "name": "get_snapshot_async",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 281
+    },
+    {
+      "kind": "fn",
+      "name": "get_file_count",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 290
+    },
+    {
+      "kind": "fn",
+      "name": "get_stats",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 297
+    },
+    {
+      "kind": "fn",
+      "name": "get_query_version",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 304
+    },
+    {
+      "kind": "fn",
+      "name": "has_definition_blocking",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 317
+    },
+    {
+      "kind": "fn",
+      "name": "shutdown",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 329
+    },
+    {
+      "kind": "fn",
+      "name": "goto_definition",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 341
+    },
+    {
+      "kind": "fn",
+      "name": "goto_references",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 364
+    },
+    {
+      "kind": "fn",
+      "name": "find_definitions",
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "line": 387
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/bin/bench_file_listing.rs",
+      "module": "bin::bench_file_listing",
+      "kind": "production",
+      "lineCount": 234,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/bin/bench_file_listing.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/bin/bench_index.rs",
+      "module": "bin::bench_index",
+      "kind": "production",
+      "lineCount": 65,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/bin/bench_index.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/bin/code_graph.rs",
+      "module": "bin::code_graph",
+      "kind": "production",
+      "lineCount": 395,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/bin/code_graph.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+      "module": "index_manager",
+      "kind": "production",
+      "lineCount": 2186,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_INDEXABLE_FILE_SIZE",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 42
+        },
+        {
+          "kind": "enum",
+          "name": "FileEventKind",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 62
+        },
+        {
+          "kind": "struct",
+          "name": "FileEvent",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 84
+        },
+        {
+          "kind": "fn",
+          "name": "created",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "modified",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "removed",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 99
+        },
+        {
+          "kind": "fn",
+          "name": "renamed",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 104
+        },
+        {
+          "kind": "enum",
+          "name": "IndexCommand",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 110
+        },
+        {
+          "kind": "struct",
+          "name": "QueryResult",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 172
+        },
+        {
+          "kind": "struct",
+          "name": "SymbolLocation",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 184
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/index_manager.rs",
+          "line": 195
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/index_manager.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+      "module": "interner",
+      "kind": "production",
+      "lineCount": 414,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "StringId",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 46
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 51
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 57
+        },
+        {
+          "kind": "struct",
+          "name": "StringInterner",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "with_capacity",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "intern_bytes",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 119
+        },
+        {
+          "kind": "fn",
+          "name": "intern",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 148
+        },
+        {
+          "kind": "fn",
+          "name": "get_bytes_id",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 157
+        },
+        {
+          "kind": "fn",
+          "name": "get_id",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 172
+        },
+        {
+          "kind": "fn",
+          "name": "get_bytes",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 180
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/codegen/xai-codebase-graph/src/interner.rs",
+          "line": 190
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/interner.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/languages/golang.rs",
+      "module": "languages::golang",
+      "kind": "production",
+      "lineCount": 74,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "golang",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/golang.rs",
+          "line": 3
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/languages/golang.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/languages/javascript.rs",
+      "module": "languages::javascript",
+      "kind": "production",
+      "lineCount": 95,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "js_lang",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/javascript.rs",
+          "line": 5
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/languages/javascript.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+      "module": "languages::mod",
+      "kind": "production",
+      "lineCount": 147,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LanguageRegistry",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "for_extension",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "for_id",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+          "line": 69
+        },
+        {
+          "kind": "fn",
+          "name": "for_file_path",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "is_supported",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "supported_extensions",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "all_configs",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "extensions_same_language",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "compute_query_hash",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/mod.rs",
+          "line": 123
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/languages/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/languages/python.rs",
+      "module": "languages::python",
+      "kind": "production",
+      "lineCount": 39,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "python_lang",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/python.rs",
+          "line": 5
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/languages/python.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/languages/rust.rs",
+      "module": "languages::rust",
+      "kind": "production",
+      "lineCount": 199,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "rust_lang",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/rust.rs",
+          "line": 3
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/languages/rust.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/languages/ts.rs",
+      "module": "languages::ts",
+      "kind": "production",
+      "lineCount": 242,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "ts_lang",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/ts.rs",
+          "line": 3
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/languages/ts.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+      "module": "languages::types",
+      "kind": "production",
+      "lineCount": 83,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "GrammarFn",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 4
+        },
+        {
+          "kind": "struct",
+          "name": "TSLanguageConfig",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 8
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "language_ids",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "primary_language_id",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "file_extensions",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "namespaces",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "file_definition_queries",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "language",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 62
+        },
+        {
+          "kind": "fn",
+          "name": "compile_query",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "symbol_id_of",
+          "path": "crates/codegen/xai-codebase-graph/src/languages/types.rs",
+          "line": 72
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/languages/types.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 103,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+      "module": "manager::builder",
+      "kind": "production",
+      "lineCount": 508,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "IndexError",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 19
+        },
+        {
+          "kind": "type",
+          "name": "Result",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 47
+        },
+        {
+          "kind": "struct",
+          "name": "IndexBuilder",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "with_registry",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 106
+        },
+        {
+          "kind": "fn",
+          "name": "with_threads",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 119
+        },
+        {
+          "kind": "fn",
+          "name": "with_chunk_size",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "with_build_batch_size",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 139
+        },
+        {
+          "kind": "fn",
+          "name": "respect_gitignore",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "skip_hidden",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 153
+        },
+        {
+          "kind": "fn",
+          "name": "build",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/builder.rs",
+          "line": 168
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/manager/builder.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/manager/cache.rs",
+      "module": "manager::cache",
+      "kind": "production",
+      "lineCount": 107,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "CACHE_FILE_NAME",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/cache.rs",
+          "line": 11
+        },
+        {
+          "kind": "enum",
+          "name": "CacheError",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/cache.rs",
+          "line": 15
+        },
+        {
+          "kind": "type",
+          "name": "Result",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/cache.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "get_cache_path",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/cache.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "load_index",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/cache.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "save_index",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/cache.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "save_index_async",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/cache.rs",
+          "line": 90
+        },
+        {
+          "kind": "fn",
+          "name": "cache_exists",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/cache.rs",
+          "line": 99
+        },
+        {
+          "kind": "fn",
+          "name": "cache_size",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/cache.rs",
+          "line": 104
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/manager/cache.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+      "module": "manager::lock",
+      "kind": "production",
+      "lineCount": 540,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "IndexOperation",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "is_exclusive",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 53
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceLockGuard",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 89
+        },
+        {
+          "kind": "enum",
+          "name": "LockResult",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 115
+        },
+        {
+          "kind": "fn",
+          "name": "is_acquired",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 129
+        },
+        {
+          "kind": "fn",
+          "name": "unwrap",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 134
+        },
+        {
+          "kind": "fn",
+          "name": "try_lock",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 170
+        },
+        {
+          "kind": "fn",
+          "name": "is_operation_in_progress",
+          "path": "crates/codegen/xai-codebase-graph/src/manager/lock.rs",
+          "line": 226
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/manager/lock.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/manager/mod.rs",
+      "module": "manager::mod",
+      "kind": "production",
+      "lineCount": 15,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/manager/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+      "module": "navigation",
+      "kind": "production",
+      "lineCount": 845,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "NavigationResult",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "Location",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "with_symbol",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "as_path",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 50
+        },
+        {
+          "kind": "enum",
+          "name": "NavigationError",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 57
+        },
+        {
+          "kind": "struct",
+          "name": "Navigator",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 105
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 124
+        },
+        {
+          "kind": "fn",
+          "name": "index",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "index_mut",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 140
+        },
+        {
+          "kind": "fn",
+          "name": "get_symbol_at_position",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 153
+        },
+        {
+          "kind": "fn",
+          "name": "goto_definition",
+          "path": "crates/codegen/xai-codebase-graph/src/navigation.rs",
+          "line": 214
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/navigation.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/scope_graph/edges.rs",
+      "module": "scope_graph::edges",
+      "kind": "production",
+      "lineCount": 23,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "EdgeKind",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/edges.rs",
+          "line": 7
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/scope_graph/edges.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+      "module": "scope_graph::graph",
+      "kind": "production",
+      "lineCount": 1727,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "NodeIndex",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 24
+        },
+        {
+          "kind": "type",
+          "name": "SymbolWithRange",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 27
+        },
+        {
+          "kind": "type",
+          "name": "ReferenceWithDefinition",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 31
+        },
+        {
+          "kind": "type",
+          "name": "ExtractedSymbols",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 35
+        },
+        {
+          "kind": "enum",
+          "name": "QueryVersion",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "needs_rebuild",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 62
+        },
+        {
+          "kind": "struct",
+          "name": "ScopeGraph",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 84
+        },
+        {
+          "kind": "fn",
+          "name": "is_definition",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "is_reference",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "is_import",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "node_by_range",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs",
+          "line": 106
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/scope_graph/mod.rs",
+      "module": "scope_graph::mod",
+      "kind": "production",
+      "lineCount": 39,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ScopeGraphResult",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/mod.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "build_scope_graph",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/mod.rs",
+          "line": 30
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/scope_graph/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+      "module": "scope_graph::nodes",
+      "kind": "production",
+      "lineCount": 181,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Symbol",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "SymbolId",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "name",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 44
+        },
+        {
+          "kind": "struct",
+          "name": "LocalScope",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 61
+        },
+        {
+          "kind": "struct",
+          "name": "LocalDef",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "name",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "scope_range",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 93
+        },
+        {
+          "kind": "struct",
+          "name": "LocalImport",
+          "path": "crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs",
+          "line": 100
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/scope_graph/nodes.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/types/file_event.rs",
+      "module": "types::file_event",
+      "kind": "production",
+      "lineCount": 79,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FileEvent",
+          "path": "crates/codegen/xai-codebase-graph/src/types/file_event.rs",
+          "line": 7
+        },
+        {
+          "kind": "fn",
+          "name": "path",
+          "path": "crates/codegen/xai-codebase-graph/src/types/file_event.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "requires_reparse",
+          "path": "crates/codegen/xai-codebase-graph/src/types/file_event.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "affects_existing",
+          "path": "crates/codegen/xai-codebase-graph/src/types/file_event.rs",
+          "line": 57
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/types/file_event.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+      "module": "types::location",
+      "kind": "production",
+      "lineCount": 109,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Location",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "from_range",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "file_path",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "path",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "line",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "column",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "range",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "extension",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "parent_dir",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "line_0indexed",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "column_0indexed",
+          "path": "crates/codegen/xai-codebase-graph/src/types/location.rs",
+          "line": 93
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/types/location.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+      "module": "types::mod",
+      "kind": "production",
+      "lineCount": 120,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "IndexStats",
+          "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+          "line": 26
+        },
+        {
+          "kind": "struct",
+          "name": "SymbolOccurrence",
+          "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+          "line": 47
+        },
+        {
+          "kind": "struct",
+          "name": "SymbolAlias",
+          "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+          "line": 64
+        },
+        {
+          "kind": "struct",
+          "name": "FileMeta",
+          "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "from_metadata",
+          "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "is_stale",
+          "path": "crates/codegen/xai-codebase-graph/src/types/mod.rs",
+          "line": 110
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/types/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+      "module": "types::range",
+      "kind": "production",
+      "lineCount": 366,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Position",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "from_tree_sitter_point",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "to_tree_sitter",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "line",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "line_1indexed",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "column",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "column_1indexed",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "character",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 69
+        },
+        {
+          "kind": "fn",
+          "name": "byte_offset",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "to_byte_offset",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "set_byte_offset",
+          "path": "crates/codegen/xai-codebase-graph/src/types/range.rs",
+          "line": 84
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/src/types/range.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/tests/incremental_memory.rs",
+      "module": "..::tests::incremental_memory",
+      "kind": "test",
+      "lineCount": 137,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/tests/incremental_memory.rs"
+    },
+    {
+      "path": "crates/codegen/xai-codebase-graph/tests/memory_integration.rs",
+      "module": "..::tests::memory_integration",
+      "kind": "test",
+      "lineCount": 683,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-codebase-graph/tests/memory_integration.rs"
+    }
+  ]
+}

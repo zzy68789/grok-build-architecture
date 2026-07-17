@@ -1,0 +1,26 @@
+---
+title: 73 个 Crate 源码图谱
+description: 按架构层搜索全部一方 crate，并进入职责、依赖、入口、符号与完整文件树。
+lastVerified: '2026-07-17'
+coverageKind: appendix
+sourceCrates: []
+sourcePaths:
+  - Cargo.toml
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import AtlasIndex from '@components/AtlasIndex.astro';
+import SourceBaseline from '@components/SourceBaseline.astro';
+
+<SourceBaseline />
+
+## 如何使用图谱
+
+图谱的覆盖单位是 Cargo workspace 中 `crates/codegen` 与 `crates/common` 下的 73 个一方 crate。每个页面列出职责、架构层、直接依赖、直接调用者、关键公开符号、阅读入口以及完整 Rust 文件树。输入 crate 名、职责关键词或源码路径即可筛选。
+
+<AtlasIndex />
+
+## 覆盖口径
+
+生产源码指一方 crate 中位于 `src/` 且不属于测试、示例、基准或 Fuzz 路径的 Rust 文件。其他文件仍保留在 crate 图谱中，并使用独立标签展示。Cargo 编译依赖只能证明模块可见关系；真实运行链还需回到对应深度文章核对构造位置、trait 实现与消息通道。

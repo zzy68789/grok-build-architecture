@@ -1,0 +1,272 @@
+{
+  "name": "xai-grok-env",
+  "memberPath": "crates/codegen/xai-grok-env",
+  "manifestPath": "crates/codegen/xai-grok-env/Cargo.toml",
+  "description": "Backend environment presets for the Grok CLI crate family: endpoint URL defaults and env-var test support.",
+  "role": "安全、扩展与运维层的一方 crate；上游清单描述为：Backend environment presets for the Grok CLI crate family: endpoint URL defaults and env-var test support.。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/shared-foundations",
+  "relatedArticles": [
+    "operations/shared-foundations",
+    "runtime/bootstrap-environment-version"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-shell-base",
+    "xai-grok-telemetry",
+    "xai-grok-tools",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 198,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "lineCount": 198,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "GrokBuildEndpoints",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "PROD_CLI_CHAT_PROXY_BASE_URL",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "PROD_ASSET_SERVER_URL",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "PROD_RELAY_WS_URL",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "PROD_GATEWAY_WS_URL",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "PROD_WS_ORIGIN",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 33
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "GrokBuildEndpoints",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 15
+    },
+    {
+      "kind": "const",
+      "name": "PROD_CLI_CHAT_PROXY_BASE_URL",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 29
+    },
+    {
+      "kind": "const",
+      "name": "PROD_ASSET_SERVER_URL",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 30
+    },
+    {
+      "kind": "const",
+      "name": "PROD_RELAY_WS_URL",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 31
+    },
+    {
+      "kind": "const",
+      "name": "PROD_GATEWAY_WS_URL",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 32
+    },
+    {
+      "kind": "const",
+      "name": "PROD_WS_ORIGIN",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 33
+    },
+    {
+      "kind": "enum",
+      "name": "GrokBuildEnvironment",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 35
+    },
+    {
+      "kind": "fn",
+      "name": "from_flags",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 40
+    },
+    {
+      "kind": "fn",
+      "name": "indicator",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 44
+    },
+    {
+      "kind": "fn",
+      "name": "is_production",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 49
+    },
+    {
+      "kind": "fn",
+      "name": "endpoints",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 58
+    },
+    {
+      "kind": "fn",
+      "name": "cli_chat_proxy_base_url",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 68
+    },
+    {
+      "kind": "fn",
+      "name": "ws_origin",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 74
+    },
+    {
+      "kind": "fn",
+      "name": "asset_server_url",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 77
+    },
+    {
+      "kind": "fn",
+      "name": "relay_ws_url",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 83
+    },
+    {
+      "kind": "fn",
+      "name": "gateway_ws_url",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 88
+    },
+    {
+      "kind": "struct",
+      "name": "EnvVarGuard",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 109
+    },
+    {
+      "kind": "fn",
+      "name": "set",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 116
+    },
+    {
+      "kind": "fn",
+      "name": "remove",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 126
+    },
+    {
+      "kind": "fn",
+      "name": "set_value",
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "line": 137
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-env/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 198,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "GrokBuildEndpoints",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "PROD_CLI_CHAT_PROXY_BASE_URL",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "PROD_ASSET_SERVER_URL",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "PROD_RELAY_WS_URL",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "PROD_GATEWAY_WS_URL",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "PROD_WS_ORIGIN",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 33
+        },
+        {
+          "kind": "enum",
+          "name": "GrokBuildEnvironment",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "from_flags",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "indicator",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "is_production",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "endpoints",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "cli_chat_proxy_base_url",
+          "path": "crates/codegen/xai-grok-env/src/lib.rs",
+          "line": 68
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-env/src/lib.rs"
+    }
+  ]
+}

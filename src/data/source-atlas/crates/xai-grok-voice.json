@@ -1,0 +1,835 @@
+{
+  "name": "xai-grok-voice",
+  "memberPath": "crates/codegen/xai-grok-voice",
+  "manifestPath": "crates/codegen/xai-grok-voice/Cargo.toml",
+  "description": "Voice dictation (streaming STT) for Grok Build CLI",
+  "role": "提供流式语音转文字和输入草稿更新能力。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "agent/voice-dictation",
+  "relatedArticles": [
+    "agent/voice-dictation"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-pager"
+  ],
+  "fileCount": 15,
+  "productionFileCount": 15,
+  "lineCount": 2814,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-voice/src/lib.rs",
+      "lineCount": 40,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "AUDIO_SUPPORTED",
+          "path": "crates/codegen/xai-grok-voice/src/lib.rs",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+      "lineCount": 465,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CaptureHandle",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "stop",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_pcm_capture",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "capture_pcm_for_duration",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+          "line": 113
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+      "lineCount": 432,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CaptureHandle",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+          "line": 175
+        },
+        {
+          "kind": "fn",
+          "name": "stop",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+          "line": 189
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_pcm_capture",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+          "line": 226
+        },
+        {
+          "kind": "fn",
+          "name": "capture_pcm_for_duration",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+          "line": 323
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/pipeline.rs",
+      "lineCount": 408,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "VoiceCommand",
+          "path": "crates/codegen/xai-grok-voice/src/pipeline.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "run_voice_pipeline",
+          "path": "crates/codegen/xai-grok-voice/src/pipeline.rs",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+      "lineCount": 331,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "StreamingSttEvent",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "StreamingSttSession",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "connect",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "send_pcm",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 164
+        },
+        {
+          "kind": "fn",
+          "name": "recv",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 173
+        },
+        {
+          "kind": "fn",
+          "name": "finish_audio",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 178
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/language.rs",
+      "lineCount": 312,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SttLanguage",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "STT_LANGUAGE_AUTO",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 27
+        },
+        {
+          "kind": "const",
+          "name": "STT_LANGUAGE_DEFAULT",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "STT_LANGUAGES",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "stt_language_by_code",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 140
+        },
+        {
+          "kind": "fn",
+          "name": "canonicalize_stt_language",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 151
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/config.rs",
+      "lineCount": 289,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "VoiceConfig",
+          "path": "crates/codegen/xai-grok-voice/src/config.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "stt_ws_url",
+          "path": "crates/codegen/xai-grok-voice/src/config.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "from_config_table",
+          "path": "crates/codegen/xai-grok-voice/src/config.rs",
+          "line": 57
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+      "lineCount": 167,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "VoiceProbeOptions",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "VoiceProbeReport",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "run_streaming_probe",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "run_mic_only_probe",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "run_streaming_probe",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "format_probe_report",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 133
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "CaptureHandle",
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+      "line": 22
+    },
+    {
+      "kind": "fn",
+      "name": "stop",
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+      "line": 34
+    },
+    {
+      "kind": "fn",
+      "name": "spawn_pcm_capture",
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+      "line": 57
+    },
+    {
+      "kind": "fn",
+      "name": "capture_pcm_for_duration",
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+      "line": 113
+    },
+    {
+      "kind": "struct",
+      "name": "CaptureHandle",
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+      "line": 175
+    },
+    {
+      "kind": "fn",
+      "name": "stop",
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+      "line": 189
+    },
+    {
+      "kind": "fn",
+      "name": "spawn_pcm_capture",
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+      "line": 226
+    },
+    {
+      "kind": "fn",
+      "name": "capture_pcm_for_duration",
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+      "line": 323
+    },
+    {
+      "kind": "trait",
+      "name": "VoiceAuthProvider",
+      "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+      "line": 19
+    },
+    {
+      "kind": "type",
+      "name": "SharedVoiceAuth",
+      "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+      "line": 24
+    },
+    {
+      "kind": "fn",
+      "name": "require_bearer",
+      "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+      "line": 27
+    },
+    {
+      "kind": "struct",
+      "name": "StaticVoiceAuth",
+      "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+      "line": 37
+    },
+    {
+      "kind": "fn",
+      "name": "shared",
+      "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+      "line": 56
+    },
+    {
+      "kind": "struct",
+      "name": "VoiceConfig",
+      "path": "crates/codegen/xai-grok-voice/src/config.rs",
+      "line": 12
+    },
+    {
+      "kind": "fn",
+      "name": "stt_ws_url",
+      "path": "crates/codegen/xai-grok-voice/src/config.rs",
+      "line": 48
+    },
+    {
+      "kind": "fn",
+      "name": "from_config_table",
+      "path": "crates/codegen/xai-grok-voice/src/config.rs",
+      "line": 57
+    },
+    {
+      "kind": "enum",
+      "name": "VoiceError",
+      "path": "crates/codegen/xai-grok-voice/src/error.rs",
+      "line": 4
+    },
+    {
+      "kind": "enum",
+      "name": "VoiceEvent",
+      "path": "crates/codegen/xai-grok-voice/src/event.rs",
+      "line": 3
+    },
+    {
+      "kind": "struct",
+      "name": "SttLanguage",
+      "path": "crates/codegen/xai-grok-voice/src/language.rs",
+      "line": 18
+    },
+    {
+      "kind": "const",
+      "name": "STT_LANGUAGE_AUTO",
+      "path": "crates/codegen/xai-grok-voice/src/language.rs",
+      "line": 27
+    },
+    {
+      "kind": "const",
+      "name": "STT_LANGUAGE_DEFAULT",
+      "path": "crates/codegen/xai-grok-voice/src/language.rs",
+      "line": 30
+    },
+    {
+      "kind": "const",
+      "name": "STT_LANGUAGES",
+      "path": "crates/codegen/xai-grok-voice/src/language.rs",
+      "line": 36
+    },
+    {
+      "kind": "fn",
+      "name": "stt_language_by_code",
+      "path": "crates/codegen/xai-grok-voice/src/language.rs",
+      "line": 140
+    },
+    {
+      "kind": "fn",
+      "name": "canonicalize_stt_language",
+      "path": "crates/codegen/xai-grok-voice/src/language.rs",
+      "line": 151
+    },
+    {
+      "kind": "fn",
+      "name": "language_for_api",
+      "path": "crates/codegen/xai-grok-voice/src/language.rs",
+      "line": 179
+    },
+    {
+      "kind": "const",
+      "name": "AUDIO_SUPPORTED",
+      "path": "crates/codegen/xai-grok-voice/src/lib.rs",
+      "line": 39
+    },
+    {
+      "kind": "enum",
+      "name": "VoiceCommand",
+      "path": "crates/codegen/xai-grok-voice/src/pipeline.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "run_voice_pipeline",
+      "path": "crates/codegen/xai-grok-voice/src/pipeline.rs",
+      "line": 38
+    },
+    {
+      "kind": "struct",
+      "name": "VoiceProbeOptions",
+      "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+      "line": 21
+    },
+    {
+      "kind": "struct",
+      "name": "VoiceProbeReport",
+      "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+      "line": 30
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+      "module": "audio::capture_linux",
+      "kind": "production",
+      "lineCount": 432,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CaptureHandle",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+          "line": 175
+        },
+        {
+          "kind": "fn",
+          "name": "stop",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+          "line": 189
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_pcm_capture",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+          "line": 226
+        },
+        {
+          "kind": "fn",
+          "name": "capture_pcm_for_duration",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture_linux.rs",
+          "line": 323
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/audio/capture_linux.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+      "module": "audio::capture",
+      "kind": "production",
+      "lineCount": 465,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CaptureHandle",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "stop",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_pcm_capture",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "capture_pcm_for_duration",
+          "path": "crates/codegen/xai-grok-voice/src/audio/capture.rs",
+          "line": 113
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/audio/capture.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/audio/mod.rs",
+      "module": "audio::mod",
+      "kind": "production",
+      "lineCount": 19,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/audio/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+      "module": "auth",
+      "kind": "production",
+      "lineCount": 80,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "VoiceAuthProvider",
+          "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+          "line": 19
+        },
+        {
+          "kind": "type",
+          "name": "SharedVoiceAuth",
+          "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "require_bearer",
+          "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+          "line": 27
+        },
+        {
+          "kind": "struct",
+          "name": "StaticVoiceAuth",
+          "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "shared",
+          "path": "crates/codegen/xai-grok-voice/src/auth.rs",
+          "line": 56
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/auth.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/bin/voice_probe.rs",
+      "module": "bin::voice_probe",
+      "kind": "production",
+      "lineCount": 161,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/bin/voice_probe.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/config.rs",
+      "module": "config",
+      "kind": "production",
+      "lineCount": 289,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "VoiceConfig",
+          "path": "crates/codegen/xai-grok-voice/src/config.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "stt_ws_url",
+          "path": "crates/codegen/xai-grok-voice/src/config.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "from_config_table",
+          "path": "crates/codegen/xai-grok-voice/src/config.rs",
+          "line": 57
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/error.rs",
+      "module": "error",
+      "kind": "production",
+      "lineCount": 17,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "VoiceError",
+          "path": "crates/codegen/xai-grok-voice/src/error.rs",
+          "line": 4
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/error.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/event.rs",
+      "module": "event",
+      "kind": "production",
+      "lineCount": 13,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "VoiceEvent",
+          "path": "crates/codegen/xai-grok-voice/src/event.rs",
+          "line": 3
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/event.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/language.rs",
+      "module": "language",
+      "kind": "production",
+      "lineCount": 312,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SttLanguage",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "STT_LANGUAGE_AUTO",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 27
+        },
+        {
+          "kind": "const",
+          "name": "STT_LANGUAGE_DEFAULT",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "STT_LANGUAGES",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "stt_language_by_code",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 140
+        },
+        {
+          "kind": "fn",
+          "name": "canonicalize_stt_language",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 151
+        },
+        {
+          "kind": "fn",
+          "name": "language_for_api",
+          "path": "crates/codegen/xai-grok-voice/src/language.rs",
+          "line": 179
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/language.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 40,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "AUDIO_SUPPORTED",
+          "path": "crates/codegen/xai-grok-voice/src/lib.rs",
+          "line": 39
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/pipeline.rs",
+      "module": "pipeline",
+      "kind": "production",
+      "lineCount": 408,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "VoiceCommand",
+          "path": "crates/codegen/xai-grok-voice/src/pipeline.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "run_voice_pipeline",
+          "path": "crates/codegen/xai-grok-voice/src/pipeline.rs",
+          "line": 38
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/pipeline.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+      "module": "probe",
+      "kind": "production",
+      "lineCount": 167,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "VoiceProbeOptions",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "VoiceProbeReport",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "run_streaming_probe",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "run_mic_only_probe",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "run_streaming_probe",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "format_probe_report",
+          "path": "crates/codegen/xai-grok-voice/src/probe.rs",
+          "line": 133
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/probe.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/stt/mod.rs",
+      "module": "stt::mod",
+      "kind": "production",
+      "lineCount": 8,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/stt/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+      "module": "stt::streaming",
+      "kind": "production",
+      "lineCount": 331,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "StreamingSttEvent",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "StreamingSttSession",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "connect",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "send_pcm",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 164
+        },
+        {
+          "kind": "fn",
+          "name": "recv",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 173
+        },
+        {
+          "kind": "fn",
+          "name": "finish_audio",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 178
+        },
+        {
+          "kind": "fn",
+          "name": "audio_sender",
+          "path": "crates/codegen/xai-grok-voice/src/stt/streaming.rs",
+          "line": 183
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/stt/streaming.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-voice/src/stt/types.rs",
+      "module": "stt::types",
+      "kind": "production",
+      "lineCount": 72,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SttServerEvent",
+          "path": "crates/codegen/xai-grok-voice/src/stt/types.rs",
+          "line": 6
+        },
+        {
+          "kind": "struct",
+          "name": "SttTranscriptPartial",
+          "path": "crates/codegen/xai-grok-voice/src/stt/types.rs",
+          "line": 36
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-voice/src/stt/types.rs"
+    }
+  ]
+}

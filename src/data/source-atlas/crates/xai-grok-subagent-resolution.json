@@ -1,0 +1,333 @@
+{
+  "name": "xai-grok-subagent-resolution",
+  "memberPath": "crates/codegen/xai-grok-subagent-resolution",
+  "manifestPath": "crates/codegen/xai-grok-subagent-resolution/Cargo.toml",
+  "description": "Subagent configuration resolution: merges persona, role, and spawn-time overrides into a resolved spec",
+  "role": "负责 Agent 定义解析、构建和 system prompt 装配。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "agents/subagents-and-background-tasks",
+  "relatedArticles": [
+    "agents/subagents-and-background-tasks",
+    "agent/definition-prompt-assembly"
+  ],
+  "dependencies": [
+    "xai-grok-sampling-types",
+    "xai-grok-tools"
+  ],
+  "dependents": [
+    "xai-grok-shell"
+  ],
+  "fileCount": 6,
+  "productionFileCount": 6,
+  "lineCount": 2575,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/lib.rs",
+      "lineCount": 38,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/context.rs",
+      "lineCount": 1074,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "normalize_forked_context",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/context.rs",
+          "line": 48
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/overrides.rs",
+      "lineCount": 769,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "resolve_effective_overrides",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/overrides.rs",
+          "line": 41
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+      "lineCount": 358,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SubagentRole",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "SubagentPersona",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "PersonaIOField",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "render_io_summary",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+          "line": 130
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/resume.rs",
+      "lineCount": 194,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ResumeValidationError",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/resume.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "validate_resume_identity",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/resume.rs",
+          "line": 48
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+      "lineCount": 142,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ContextSource",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "EffectiveRuntimeConfig",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+          "line": 22
+        },
+        {
+          "kind": "struct",
+          "name": "ResumeSourceData",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+          "line": 51
+        },
+        {
+          "kind": "enum",
+          "name": "ResolutionError",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+          "line": 84
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "SubagentRole",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+      "line": 25
+    },
+    {
+      "kind": "struct",
+      "name": "SubagentPersona",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+      "line": 63
+    },
+    {
+      "kind": "struct",
+      "name": "PersonaIOField",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+      "line": 108
+    },
+    {
+      "kind": "fn",
+      "name": "render_io_summary",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+      "line": 130
+    },
+    {
+      "kind": "fn",
+      "name": "normalize_forked_context",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/context.rs",
+      "line": 48
+    },
+    {
+      "kind": "fn",
+      "name": "resolve_effective_overrides",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/overrides.rs",
+      "line": 41
+    },
+    {
+      "kind": "enum",
+      "name": "ResumeValidationError",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/resume.rs",
+      "line": 16
+    },
+    {
+      "kind": "fn",
+      "name": "validate_resume_identity",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/resume.rs",
+      "line": 48
+    },
+    {
+      "kind": "enum",
+      "name": "ContextSource",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+      "line": 9
+    },
+    {
+      "kind": "struct",
+      "name": "EffectiveRuntimeConfig",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+      "line": 22
+    },
+    {
+      "kind": "struct",
+      "name": "ResumeSourceData",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+      "line": 51
+    },
+    {
+      "kind": "enum",
+      "name": "ResolutionError",
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+      "line": 84
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+      "module": "config",
+      "kind": "production",
+      "lineCount": 358,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SubagentRole",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "SubagentPersona",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "PersonaIOField",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "render_io_summary",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/config.rs",
+          "line": 130
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-subagent-resolution/src/config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/context.rs",
+      "module": "context",
+      "kind": "production",
+      "lineCount": 1074,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "normalize_forked_context",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/context.rs",
+          "line": 48
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-subagent-resolution/src/context.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 38,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-subagent-resolution/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/overrides.rs",
+      "module": "overrides",
+      "kind": "production",
+      "lineCount": 769,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "resolve_effective_overrides",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/overrides.rs",
+          "line": 41
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-subagent-resolution/src/overrides.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/resume.rs",
+      "module": "resume",
+      "kind": "production",
+      "lineCount": 194,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ResumeValidationError",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/resume.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "validate_resume_identity",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/resume.rs",
+          "line": 48
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-subagent-resolution/src/resume.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+      "module": "types",
+      "kind": "production",
+      "lineCount": 142,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ContextSource",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "EffectiveRuntimeConfig",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+          "line": 22
+        },
+        {
+          "kind": "struct",
+          "name": "ResumeSourceData",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+          "line": 51
+        },
+        {
+          "kind": "enum",
+          "name": "ResolutionError",
+          "path": "crates/codegen/xai-grok-subagent-resolution/src/types.rs",
+          "line": 84
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-subagent-resolution/src/types.rs"
+    }
+  ]
+}

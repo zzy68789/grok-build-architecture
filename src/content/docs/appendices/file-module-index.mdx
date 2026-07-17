@@ -1,0 +1,26 @@
+---
+title: 一方生产 Rust 文件与模块索引
+description: 搜索固定基线中的全部一方生产 Rust 文件、模块、crate 和永久链接。
+lastVerified: '2026-07-17'
+coverageKind: appendix
+sourceCrates: []
+sourcePaths:
+  - Cargo.toml
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import FileAtlas from '@components/FileAtlas.astro';
+import SourceBaseline from '@components/SourceBaseline.astro';
+
+<SourceBaseline compact />
+
+## 文件级可追踪性
+
+这个索引解决“某个文件是否被白皮书覆盖”的问题。每一项都指向固定公开提交，而不是 `main`；路径、代码行数和公开符号由生成器扫描。输入文件名、模块路径或 crate 名可以即时过滤，点击结果直接打开上游源码。
+
+<FileAtlas />
+
+## 为什么不逐文件写文章
+
+文件只是实现组织单位，跨文件状态和调用链才是架构。深度文章负责机制解释，crate 图谱负责依赖与符号，文件索引负责完整性证明。三者组合能够覆盖全部源码，同时避免把自动生成、测试夹具或重复平台实现扩写成缺乏上下文的独立文章。

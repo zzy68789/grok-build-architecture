@@ -1,0 +1,28 @@
+---
+title: "Bootstrap、环境、路径与版本"
+description: "说明配置根目录、环境预设、版本信息和启动前检查怎样形成稳定基座。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-grok-config
+  - xai-grok-env
+  - xai-grok-paths
+  - xai-grok-version
+sourcePaths:
+  - crates/codegen/xai-grok-paths/src/lib.rs
+  - crates/codegen/xai-grok-env/src/lib.rs
+  - crates/codegen/xai-grok-version/src/lib.rs
+  - crates/codegen/xai-grok-config/src/lib.rs
+  - crates/codegen/xai-grok-config/src/loader.rs
+  - crates/codegen/xai-grok-config/src/shell.rs
+  - crates/codegen/xai-grok-config/src/managed_cache.rs
+  - crates/codegen/xai-grok-config/src/validation.rs
+  - crates/codegen/xai-grok-config/src/signed_policy.rs
+  - crates/codegen/xai-grok-config/src/paths.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="runtime/bootstrap-environment-version" />

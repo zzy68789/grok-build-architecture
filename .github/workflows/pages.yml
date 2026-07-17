@@ -38,11 +38,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check generated source atlas
+        run: npm run atlas:check
+
       - name: Type check
         run: npm run check
 
       - name: Validate source references
         run: npm run validate:source
+
+      - name: Validate full-source coverage
+        run: npm run validate:coverage
 
       - name: Build site and Pagefind index
         run: npm run build

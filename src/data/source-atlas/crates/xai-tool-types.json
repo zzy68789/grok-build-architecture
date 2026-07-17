@@ -1,0 +1,657 @@
+{
+  "name": "xai-tool-types",
+  "memberPath": "crates/common/xai-tool-types",
+  "manifestPath": "crates/common/xai-tool-types/Cargo.toml",
+  "description": "Canonical tool-description types for the xAI platform",
+  "role": "定义工具描述和 schema 等平台共享叶子类型。",
+  "layer": "工具与工作区",
+  "primaryArticle": "tools/contract-protocol-runtime-api",
+  "relatedArticles": [
+    "tools/contract-protocol-runtime-api",
+    "introduction/workspace-and-crates"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-computer-hub-core",
+    "xai-computer-hub-mcp-adapter",
+    "xai-computer-hub-sdk",
+    "xai-grok-mcp",
+    "xai-grok-shell",
+    "xai-grok-tools",
+    "xai-grok-workspace",
+    "xai-grok-workspace-client",
+    "xai-tool-protocol",
+    "xai-tool-runtime"
+  ],
+  "fileCount": 6,
+  "productionFileCount": 6,
+  "lineCount": 3605,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-tool-types/src/lib.rs",
+      "lineCount": 29,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "lineCount": 1498,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TaskToolInput",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "default_subagent_type",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "is_not_sentinel",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "sanitize_optional_arg",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 129
+        },
+        {
+          "kind": "enum",
+          "name": "SubagentCapabilityMode",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 150
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 173
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-types/src/types.rs",
+      "lineCount": 1049,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ToolDescription",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "with_namespace",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "with_kind",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "with_title",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "with_arguments_schema",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 78
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-types/src/schema_utils.rs",
+      "lineCount": 660,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "parse_arguments_from_schema_lossy",
+          "path": "crates/common/xai-tool-types/src/schema_utils.rs",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+      "lineCount": 196,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "lenient_bool_from_json",
+          "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "deserialize_lenient_bool",
+          "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "deserialize_lenient_option_bool",
+          "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "lineCount": 173,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Extensions",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "get_mut",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "set",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "remove",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 68
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "Extensions",
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "line": 33
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "line": 38
+    },
+    {
+      "kind": "fn",
+      "name": "get",
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "line": 43
+    },
+    {
+      "kind": "fn",
+      "name": "get_mut",
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "line": 50
+    },
+    {
+      "kind": "fn",
+      "name": "set",
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "line": 57
+    },
+    {
+      "kind": "fn",
+      "name": "remove",
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "line": 68
+    },
+    {
+      "kind": "fn",
+      "name": "contains",
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "line": 76
+    },
+    {
+      "kind": "fn",
+      "name": "len",
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "line": 81
+    },
+    {
+      "kind": "fn",
+      "name": "is_empty",
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "line": 86
+    },
+    {
+      "kind": "fn",
+      "name": "parse_arguments_from_schema_lossy",
+      "path": "crates/common/xai-tool-types/src/schema_utils.rs",
+      "line": 53
+    },
+    {
+      "kind": "fn",
+      "name": "lenient_bool_from_json",
+      "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+      "line": 16
+    },
+    {
+      "kind": "fn",
+      "name": "deserialize_lenient_bool",
+      "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+      "line": 53
+    },
+    {
+      "kind": "fn",
+      "name": "deserialize_lenient_option_bool",
+      "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+      "line": 64
+    },
+    {
+      "kind": "struct",
+      "name": "TaskToolInput",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 14
+    },
+    {
+      "kind": "fn",
+      "name": "default_subagent_type",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 113
+    },
+    {
+      "kind": "fn",
+      "name": "is_not_sentinel",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 120
+    },
+    {
+      "kind": "fn",
+      "name": "sanitize_optional_arg",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 129
+    },
+    {
+      "kind": "enum",
+      "name": "SubagentCapabilityMode",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 150
+    },
+    {
+      "kind": "fn",
+      "name": "as_str",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 173
+    },
+    {
+      "kind": "enum",
+      "name": "SubagentIsolationMode",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 186
+    },
+    {
+      "kind": "fn",
+      "name": "as_str",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 196
+    },
+    {
+      "kind": "struct",
+      "name": "SubagentCompletedOutput",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 210
+    },
+    {
+      "kind": "fn",
+      "name": "resume_footer",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 232
+    },
+    {
+      "kind": "fn",
+      "name": "to_model_text",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 242
+    },
+    {
+      "kind": "fn",
+      "name": "format_subagent_started_background",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 258
+    },
+    {
+      "kind": "fn",
+      "name": "format_subagent_completed",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 276
+    },
+    {
+      "kind": "fn",
+      "name": "format_resume_footer",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 295
+    },
+    {
+      "kind": "const",
+      "name": "MAX_MULTI_WAIT_IDS",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 318
+    },
+    {
+      "kind": "struct",
+      "name": "TaskOutputToolInput",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 322
+    },
+    {
+      "kind": "fn",
+      "name": "resolve_task_ids",
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "line": 341
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-tool-types/src/ext.rs",
+      "module": "ext",
+      "kind": "production",
+      "lineCount": 173,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Extensions",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "get_mut",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "set",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "remove",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "contains",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/common/xai-tool-types/src/ext.rs",
+          "line": 86
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-types/src/ext.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-types/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 29,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-types/src/lib.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-types/src/schema_utils.rs",
+      "module": "schema_utils",
+      "kind": "production",
+      "lineCount": 660,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "parse_arguments_from_schema_lossy",
+          "path": "crates/common/xai-tool-types/src/schema_utils.rs",
+          "line": 53
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-types/src/schema_utils.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+      "module": "serde_lenient",
+      "kind": "production",
+      "lineCount": 196,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "lenient_bool_from_json",
+          "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "deserialize_lenient_bool",
+          "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "deserialize_lenient_option_bool",
+          "path": "crates/common/xai-tool-types/src/serde_lenient.rs",
+          "line": 64
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-types/src/serde_lenient.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-types/src/task.rs",
+      "module": "task",
+      "kind": "production",
+      "lineCount": 1498,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TaskToolInput",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "default_subagent_type",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "is_not_sentinel",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "sanitize_optional_arg",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 129
+        },
+        {
+          "kind": "enum",
+          "name": "SubagentCapabilityMode",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 150
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 173
+        },
+        {
+          "kind": "enum",
+          "name": "SubagentIsolationMode",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 186
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 196
+        },
+        {
+          "kind": "struct",
+          "name": "SubagentCompletedOutput",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 210
+        },
+        {
+          "kind": "fn",
+          "name": "resume_footer",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 232
+        },
+        {
+          "kind": "fn",
+          "name": "to_model_text",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 242
+        },
+        {
+          "kind": "fn",
+          "name": "format_subagent_started_background",
+          "path": "crates/common/xai-tool-types/src/task.rs",
+          "line": 258
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-types/src/task.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-types/src/types.rs",
+      "module": "types",
+      "kind": "production",
+      "lineCount": 1049,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ToolDescription",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "with_namespace",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "with_kind",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "with_title",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "with_arguments_schema",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "to_arguments_lossy",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 90
+        },
+        {
+          "kind": "fn",
+          "name": "arguments_schema",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 99
+        },
+        {
+          "kind": "fn",
+          "name": "to_input_schema",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "validate",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 124
+        },
+        {
+          "kind": "struct",
+          "name": "ToolArgument",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 166
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-types/src/types.rs",
+          "line": 213
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-types/src/types.rs"
+    }
+  ]
+}

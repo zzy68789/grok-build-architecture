@@ -1,0 +1,28 @@
+---
+title: "Shell、Process、PTY 与后台命令"
+description: "解释命令构造、进程组、PTY 会话、输出流和后台生命周期。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - ptyctl
+  - xai-grok-shell-base
+  - xai-grok-tools
+  - xai-tty-utils
+sourcePaths:
+  - crates/codegen/xai-tty-utils/src/lib.rs
+  - crates/codegen/xai-grok-tools/src/lib.rs
+  - crates/codegen/ptyctl/src/lib.rs
+  - crates/codegen/xai-grok-shell-base/src/lib.rs
+  - crates/codegen/xai-grok-tools/src/implementations/grok_build/bash/mod.rs
+  - crates/codegen/xai-grok-tools/src/computer/local/terminal.rs
+  - crates/codegen/xai-grok-tools/src/registry/types.rs
+  - crates/codegen/xai-grok-tools/src/implementations/grok_build/grep/mod.rs
+  - crates/codegen/xai-grok-tools/src/implementations/grok_build/task/mod.rs
+  - crates/codegen/xai-grok-tools/src/implementations/grok_build/search_replace/mod.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="tools/shell-process-pty-background" />

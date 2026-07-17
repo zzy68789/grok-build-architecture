@@ -1,0 +1,738 @@
+{
+  "name": "xai-grok-shell-base",
+  "memberPath": "crates/codegen/xai-grok-shell-base",
+  "manifestPath": "crates/codegen/xai-grok-shell-base/Cargo.toml",
+  "description": "Foundation modules for the grok shell crate family: environment presets, CPU profiling, and process/filesystem utilities.",
+  "role": "封装 Shell 家族共享的环境、进程、文件系统和 profiling 基础能力。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/shared-foundations",
+  "relatedArticles": [
+    "operations/shared-foundations",
+    "tools/shell-process-pty-background"
+  ],
+  "dependencies": [
+    "xai-grok-config",
+    "xai-grok-env",
+    "xai-grok-shared",
+    "xai-grok-version",
+    "xai-tty-utils"
+  ],
+  "dependents": [
+    "xai-grok-shell",
+    "xai-grok-shell-session-support"
+  ],
+  "fileCount": 10,
+  "productionFileCount": 10,
+  "lineCount": 2674,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/lib.rs",
+      "lineCount": 8,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "lineCount": 1172,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ProfileArtifactFormat",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 22
+        },
+        {
+          "kind": "enum",
+          "name": "ControlErrorCode",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "ControlError",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 62
+        },
+        {
+          "kind": "struct",
+          "name": "CpuProfileStartOptions",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 92
+        },
+        {
+          "kind": "enum",
+          "name": "CpuProfileStatus",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 108
+        },
+        {
+          "kind": "struct",
+          "name": "CpuProfileStopResult",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 123
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+      "lineCount": 360,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ChangelogEntry",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 28
+        },
+        {
+          "kind": "struct",
+          "name": "Changelog",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "ChangelogManager",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "fetch",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "bullets_from_entries",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 223
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+      "lineCount": 304,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "random_f64",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "probabilistic_sample",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "is_cli_chat_proxy_url",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "is_first_party_xai_url",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "truncate",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "is_process_alive",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 105
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/secure_file.rs",
+      "lineCount": 232,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "write_secure_file",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/secure_file.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "open_secure_file",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/secure_file.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "set_windows_secure_permissions",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/secure_file.rs",
+          "line": 93
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/event_id.rs",
+      "lineCount": 181,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "generate_event_id",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/event_id.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "ensure_event_id_meta",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/event_id.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "ensure_event_counter_at_least",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/event_id.rs",
+          "line": 82
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/uname.rs",
+      "lineCount": 157,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "os_kernel_and_release",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/uname.rs",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/tips.rs",
+      "lineCount": 153,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "pick_and_advance",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/tips.rs",
+          "line": 49
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "ProfileArtifactFormat",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 22
+    },
+    {
+      "kind": "enum",
+      "name": "ControlErrorCode",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 33
+    },
+    {
+      "kind": "struct",
+      "name": "ControlError",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 62
+    },
+    {
+      "kind": "struct",
+      "name": "CpuProfileStartOptions",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 92
+    },
+    {
+      "kind": "enum",
+      "name": "CpuProfileStatus",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 108
+    },
+    {
+      "kind": "struct",
+      "name": "CpuProfileStopResult",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 123
+    },
+    {
+      "kind": "trait",
+      "name": "ProfilerEngine",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 129
+    },
+    {
+      "kind": "enum",
+      "name": "ShutdownStopDisposition",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 154
+    },
+    {
+      "kind": "struct",
+      "name": "CpuProfileStopHandle",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 160
+    },
+    {
+      "kind": "fn",
+      "name": "finish",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 165
+    },
+    {
+      "kind": "struct",
+      "name": "CpuProfileManager",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 178
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 203
+    },
+    {
+      "kind": "fn",
+      "name": "force_unsupported_for_test",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 208
+    },
+    {
+      "kind": "fn",
+      "name": "profiling_compiled_in",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 212
+    },
+    {
+      "kind": "fn",
+      "name": "runtime_cpu_profile",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 219
+    },
+    {
+      "kind": "fn",
+      "name": "profile_formats",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 226
+    },
+    {
+      "kind": "fn",
+      "name": "start",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 233
+    },
+    {
+      "kind": "fn",
+      "name": "stop",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 277
+    },
+    {
+      "kind": "fn",
+      "name": "take_stop_handle",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 284
+    },
+    {
+      "kind": "fn",
+      "name": "complete_stop",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 309
+    },
+    {
+      "kind": "fn",
+      "name": "subscribe_stop_completion",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 314
+    },
+    {
+      "kind": "fn",
+      "name": "status",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 318
+    },
+    {
+      "kind": "fn",
+      "name": "finalize_on_shutdown",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 345
+    },
+    {
+      "kind": "fn",
+      "name": "take_shutdown_stop_handle",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 357
+    },
+    {
+      "kind": "fn",
+      "name": "shutdown_stop_disposition",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 371
+    },
+    {
+      "kind": "fn",
+      "name": "start_with_engine_for_test",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 523
+    },
+    {
+      "kind": "fn",
+      "name": "profiling_compiled_in",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 650
+    },
+    {
+      "kind": "fn",
+      "name": "runtime_cpu_profile_supported",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 654
+    },
+    {
+      "kind": "fn",
+      "name": "profile_formats",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 658
+    },
+    {
+      "kind": "fn",
+      "name": "start_profiler",
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "line": 667
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+      "module": "cpu_profile",
+      "kind": "production",
+      "lineCount": 1172,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ProfileArtifactFormat",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 22
+        },
+        {
+          "kind": "enum",
+          "name": "ControlErrorCode",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "ControlError",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 62
+        },
+        {
+          "kind": "struct",
+          "name": "CpuProfileStartOptions",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 92
+        },
+        {
+          "kind": "enum",
+          "name": "CpuProfileStatus",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 108
+        },
+        {
+          "kind": "struct",
+          "name": "CpuProfileStopResult",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 123
+        },
+        {
+          "kind": "trait",
+          "name": "ProfilerEngine",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 129
+        },
+        {
+          "kind": "enum",
+          "name": "ShutdownStopDisposition",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 154
+        },
+        {
+          "kind": "struct",
+          "name": "CpuProfileStopHandle",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "finish",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 165
+        },
+        {
+          "kind": "struct",
+          "name": "CpuProfileManager",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 178
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-shell-base/src/cpu_profile.rs",
+          "line": 203
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-base/src/cpu_profile.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/env.rs",
+      "module": "env",
+      "kind": "production",
+      "lineCount": 101,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "GROK_GATEWAY_URL_ENV",
+          "path": "crates/codegen/xai-grok-shell-base/src/env.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "GROK_DISABLE_CUSTOM_BRIDGE_ENV",
+          "path": "crates/codegen/xai-grok-shell-base/src/env.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "custom_bridge_disabled",
+          "path": "crates/codegen/xai-grok-shell-base/src/env.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "parse_gateway_url",
+          "path": "crates/codegen/xai-grok-shell-base/src/env.rs",
+          "line": 43
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-base/src/env.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 8,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-base/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+      "module": "util::changelog",
+      "kind": "production",
+      "lineCount": 360,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ChangelogEntry",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 28
+        },
+        {
+          "kind": "struct",
+          "name": "Changelog",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "ChangelogManager",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "fetch",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "bullets_from_entries",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/changelog.rs",
+          "line": 223
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-base/src/util/changelog.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/event_id.rs",
+      "module": "util::event_id",
+      "kind": "production",
+      "lineCount": 181,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "generate_event_id",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/event_id.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "ensure_event_id_meta",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/event_id.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "ensure_event_counter_at_least",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/event_id.rs",
+          "line": 82
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-base/src/util/event_id.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/grok_home.rs",
+      "module": "util::grok_home",
+      "kind": "production",
+      "lineCount": 6,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-base/src/util/grok_home.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+      "module": "util::mod",
+      "kind": "production",
+      "lineCount": 304,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "random_f64",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "probabilistic_sample",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "is_cli_chat_proxy_url",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "is_first_party_xai_url",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "truncate",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "is_process_alive",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 105
+        },
+        {
+          "kind": "fn",
+          "name": "is_process_alive",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 116
+        },
+        {
+          "kind": "fn",
+          "name": "kill_process_by_pid",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "is_grok_process",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/mod.rs",
+          "line": 164
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-base/src/util/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/secure_file.rs",
+      "module": "util::secure_file",
+      "kind": "production",
+      "lineCount": 232,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "write_secure_file",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/secure_file.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "open_secure_file",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/secure_file.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "set_windows_secure_permissions",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/secure_file.rs",
+          "line": 93
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-base/src/util/secure_file.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/tips.rs",
+      "module": "util::tips",
+      "kind": "production",
+      "lineCount": 153,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "pick_and_advance",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/tips.rs",
+          "line": 49
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-base/src/util/tips.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-base/src/util/uname.rs",
+      "module": "util::uname",
+      "kind": "production",
+      "lineCount": 157,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "os_kernel_and_release",
+          "path": "crates/codegen/xai-grok-shell-base/src/util/uname.rs",
+          "line": 16
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-base/src/util/uname.rs"
+    }
+  ]
+}

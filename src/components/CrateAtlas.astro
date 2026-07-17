@@ -1,0 +1,98 @@
+---
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import { ARTICLE_CATALOG } from '@data/article-catalog.mjs';
+
+interface Props { crateName: string }
+const { crateName } = Astro.props;
+type AtlasSymbol = { kind: string; name: string; path: string; line: number };
+type AtlasEntrypoint = { path: string; lineCount: number; symbols: AtlasSymbol[] };
+type AtlasFile = { path: string; kind: keyof typeof kinds; lineCount: number; symbols: AtlasSymbol[]; url: string };
+type AtlasCrate = {
+  name: string; layer: string; role: string; description: string; memberPath: string; manifestPath: string;
+  productionFileCount: number; fileCount: number; lineCount: number; keySymbols: AtlasSymbol[];
+  keyEntrypoints: AtlasEntrypoint[]; dependencies: string[]; dependents: string[]; relatedArticles: string[]; files: AtlasFile[];
+};
+const modules = import.meta.glob<{ default: AtlasCrate }>('../data/source-atlas/crates/*.json', { eager: true });
+const loaded = Object.entries(modules).find(([key]) => key.endsWith(`/${crateName}.json`))?.[1];
+const crate = loaded?.default;
+if (!crate) throw new Error(`Unknown source-atlas crate: ${crateName}`);
+const refs = crate.keyEntrypoints.slice(0, 6).map((entry) => {
+  const symbol = entry.symbols[0];
+  const start = symbol ? Math.max(1, symbol.line - 2) : 1;
+  return { ...entry, start, end: Math.min(entry.lineCount, start + 10), symbol: symbol?.name };
+});
+const articles = ARTICLE_CATALOG.filter((article) => crate.relatedArticles.includes(article.slug));
+const fmt = new Intl.NumberFormat('zh-CN');
+const kinds = { production: '生产源码', test: '测试', benchmark: '基准', example: '示例', fuzz: 'Fuzz', support: '支持文件' } as const;
+---
+
+<SourceBaseline compact />
+
+<div class="crate-identity">
+  <span>{crate.layer}</span>
+  <h2>{crate.name}</h2>
+  <p>{crate.role}</p>
+  {crate.description && <p class="crate-identity__upstream">Cargo description: {crate.description}</p>}
+</div>
+
+<div class="article-metrics">
+  <div><strong>{fmt.format(crate.productionFileCount)}</strong><span>生产文件</span></div>
+  <div><strong>{fmt.format(crate.fileCount)}</strong><span>Rust 文件总数</span></div>
+  <div><strong>{fmt.format(crate.lineCount)}</strong><span>生产代码行</span></div>
+  <div><strong>{crate.keySymbols.length}</strong><span>收录公开符号</span></div>
+</div>
+
+<h2 id="responsibility">职责与架构位置</h2>
+
+<p><code>{crate.name}</code> 位于“{crate.layer}”层。它的首要职责是：{crate.role}。源码图谱把 crate 看成一个编译和所有权边界，而不是文件夹标签：直接依赖表示它可以调用的下层能力，反向依赖表示哪些上层模块把它当作稳定接缝。</p>
+
+<p>成员路径为 <a href={`https://github.com/xai-org/grok-build/tree/8adf9013a0929e5c7f1d4e849492d2387837a28d/${crate.memberPath}`}><code>{crate.memberPath}</code></a>，清单位于 <a href={`https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/${crate.manifestPath}`}><code>Cargo.toml</code></a>。</p>
+
+<h2 id="entrypoints">关键入口</h2>
+
+<div class="source-ref-grid">
+  {refs.map((ref) => <SourceRef path={ref.path} start={ref.start} end={ref.end} symbol={ref.symbol} note={`${fmt.format(ref.lineCount)} 行 · ${ref.symbol ? '公开符号入口' : '模块入口'}`} />)}
+</div>
+
+<p>入口文件优先按 <code>lib.rs</code>/<code>main.rs</code>、公开符号密度和文件规模选择。这是一条面向阅读的路径，不表示其他文件不重要；下方完整文件索引覆盖该 crate 的全部 Rust 源码、测试、示例、基准与 Fuzz 文件。</p>
+
+<h2 id="dependencies">依赖与调用者</h2>
+
+<div class="relation-columns">
+  <div><h3>直接依赖</h3>{crate.dependencies.length ? crate.dependencies.map((name) => <a href={`../${name}/`}>{name}</a>) : <p>无一方 crate 依赖</p>}</div>
+  <div><h3>直接调用者</h3>{crate.dependents.length ? crate.dependents.map((name) => <a href={`../${name}/`}>{name}</a>) : <p>没有一方 crate 直接依赖</p>}</div>
+</div>
+
+<p>依赖边来自固定提交中的 Cargo manifest，只表示编译期直接依赖。运行时控制流还需结合 trait 实现、构造位置和消息通道判断；反向依赖为空也不代表 crate 没有入口，它可能直接生成二进制或由外部协议调用。</p>
+
+<h2 id="symbols">关键公开符号</h2>
+
+<table tabindex="0" aria-label={`${crate.name} 的关键公开符号`}>
+  <thead><tr><th>类型</th><th>符号</th><th>文件与行号</th></tr></thead>
+  <tbody>{crate.keySymbols.slice(0, 30).map((symbol) => <tr><td>{symbol.kind}</td><td><code>{symbol.name}</code></td><td><a href={`https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/${symbol.path}#L${symbol.line}`}>{symbol.path}:{symbol.line}</a></td></tr>)}</tbody>
+</table>
+
+<p>公开符号用于快速判断 crate 对外暴露的数据、trait 和执行入口。私有实现仍会出现在完整文件索引中；本文不会仅凭 <code>pub</code> 推断某个符号就是长期稳定 API。</p>
+
+<h2 id="articles">关联深度文章</h2>
+
+{articles.map((article) => <p class="related-article"><a href={`../../../${article.slug}/`}>{article.title}</a><span>{article.description}</span></p>)}
+
+<h2 id="files">完整 Rust 文件索引</h2>
+
+<p class="file-index-summary">共 {crate.files.length} 个 Rust 文件，其中 {crate.productionFileCount} 个被覆盖校验认定为生产源码。测试、示例、基准和 Fuzz 文件不会从图谱删除，而是使用不同标签展示。</p>
+
+<div class="file-list">
+  {crate.files.map((file) => (
+    <a href={file.url} target="_blank" rel="noreferrer" data-kind={file.kind}>
+      <span class="file-kind">{kinds[file.kind]}</span>
+      <code>{file.path}</code>
+      <span>{fmt.format(file.lineCount)} 行 · {file.symbols.length} 个公开符号</span>
+    </a>
+  ))}
+</div>
+
+<h2 id="coverage">覆盖说明</h2>
+
+<p>该页面由固定源码基线生成。CI 会重新扫描 <code>{crate.memberPath}</code>，验证文件数量、行数、公开符号、依赖和入口是否与提交到站点的数据一致。若上游基线升级而图谱没有重新生成，构建会失败，避免页面显示已经不存在的路径。</p>

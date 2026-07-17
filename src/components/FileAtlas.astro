@@ -1,0 +1,52 @@
+---
+type AtlasFile = { path: string; module: string; kind: string; lineCount: number; symbols: unknown[]; url: string };
+type AtlasCrate = { name: string; layer: string; files: AtlasFile[] };
+const modules = import.meta.glob<{ default: AtlasCrate }>('../data/source-atlas/crates/*.json', { eager: true });
+const crates = Object.values(modules).map((loaded) => loaded.default).sort((a, b) => a.name.localeCompare(b.name));
+const files = crates.flatMap((crate) => crate.files.filter((file) => file.kind === 'production').map((file) => ({ ...file, crateName: crate.name, layer: crate.layer })));
+const layers = [...new Set(crates.map((crate) => crate.layer))];
+const fmt = new Intl.NumberFormat('zh-CN');
+---
+
+<div class="atlas-controls" data-file-controls>
+  <label>搜索路径、模块或 crate<input type="search" placeholder="例如 session、run_loop.rs" data-file-query /></label>
+  <label>架构层<select data-file-layer><option value="">全部架构层</option>{layers.map((layer) => <option value={layer}>{layer}</option>)}</select></label>
+  <span aria-live="polite" data-file-count>{fmt.format(files.length)} 个生产文件</span>
+</div>
+
+<div class="file-atlas" data-file-atlas>
+  {files.map((file) => (
+    <a href={file.url} target="_blank" rel="noreferrer" data-layer={file.layer} data-search={`${file.path} ${file.module} ${file.crateName}`.toLowerCase()}>
+      <span>{file.crateName}</span>
+      <code>{file.path}</code>
+      <small>{fmt.format(file.lineCount)} 行 · {file.symbols.length} 个公开符号</small>
+    </a>
+  ))}
+</div>
+
+<script>
+  function initFileAtlas() {
+    const root = document.querySelector<HTMLElement>('[data-file-controls]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = 'true';
+    const query = root.querySelector<HTMLInputElement>('[data-file-query]');
+    const layer = root.querySelector<HTMLSelectElement>('[data-file-layer]');
+    const count = root.querySelector<HTMLElement>('[data-file-count]');
+    const rows = [...document.querySelectorAll<HTMLElement>('[data-file-atlas] > a')];
+    const apply = () => {
+      const needle = query?.value.trim().toLowerCase() ?? '';
+      const selected = layer?.value ?? '';
+      let visible = 0;
+      rows.forEach((row) => {
+        const show = (!needle || row.dataset.search?.includes(needle)) && (!selected || row.dataset.layer === selected);
+        row.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (count) count.textContent = `${new Intl.NumberFormat('zh-CN').format(visible)} 个生产文件`;
+    };
+    query?.addEventListener('input', apply);
+    layer?.addEventListener('change', apply);
+  }
+  initFileAtlas();
+  document.addEventListener('astro:page-load', initFileAtlas);
+</script>

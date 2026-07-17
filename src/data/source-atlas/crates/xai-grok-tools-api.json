@@ -1,0 +1,438 @@
+{
+  "name": "xai-grok-tools-api",
+  "memberPath": "crates/codegen/xai-grok-tools-api",
+  "manifestPath": "crates/codegen/xai-grok-tools-api/Cargo.toml",
+  "description": "Protobuf API definitions for Grok tools",
+  "role": "维护 Grok 工具的 Protobuf API 定义和生成边界。",
+  "layer": "工具与工作区",
+  "primaryArticle": "tools/contract-protocol-runtime-api",
+  "relatedArticles": [
+    "tools/contract-protocol-runtime-api"
+  ],
+  "dependencies": [
+    "xai-tool-protocol"
+  ],
+  "dependents": [
+    "xai-grok-tools",
+    "xai-grok-workspace",
+    "xai-tool-runtime"
+  ],
+  "fileCount": 5,
+  "productionFileCount": 3,
+  "lineCount": 616,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-tools-api/src/lib.rs",
+      "lineCount": 140,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "default_client_name",
+          "path": "crates/codegen/xai-grok-tools-api/src/lib.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-tools-api/src/lib.rs",
+          "line": 115
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+      "lineCount": 258,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ToolConfigEntryErrorKind",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 11
+        },
+        {
+          "kind": "struct",
+          "name": "ToolConfigEntryError",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "field_path",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "parse_params_json",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "validate_name_override",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "first_unknown_tool_id",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 124
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "lineCount": 218,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SCHEDULER_CREATE_TOOL_NAME",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 8
+        },
+        {
+          "kind": "fn",
+          "name": "loop_usage_message",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "loop_schedule_instruction",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_GEN_TOOL_NAME",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "IMAGINE_COMMAND_NAME",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 51
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_TO_VIDEO_TOOL_NAME",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 54
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "ToolConfigEntryErrorKind",
+      "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+      "line": 11
+    },
+    {
+      "kind": "struct",
+      "name": "ToolConfigEntryError",
+      "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "field_path",
+      "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "parse_params_json",
+      "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+      "line": 73
+    },
+    {
+      "kind": "fn",
+      "name": "validate_name_override",
+      "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+      "line": 101
+    },
+    {
+      "kind": "fn",
+      "name": "first_unknown_tool_id",
+      "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+      "line": 124
+    },
+    {
+      "kind": "fn",
+      "name": "default_client_name",
+      "path": "crates/codegen/xai-grok-tools-api/src/lib.rs",
+      "line": 108
+    },
+    {
+      "kind": "fn",
+      "name": "as_str",
+      "path": "crates/codegen/xai-grok-tools-api/src/lib.rs",
+      "line": 115
+    },
+    {
+      "kind": "const",
+      "name": "SCHEDULER_CREATE_TOOL_NAME",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 8
+    },
+    {
+      "kind": "fn",
+      "name": "loop_usage_message",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 11
+    },
+    {
+      "kind": "fn",
+      "name": "loop_schedule_instruction",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 23
+    },
+    {
+      "kind": "const",
+      "name": "IMAGE_GEN_TOOL_NAME",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 48
+    },
+    {
+      "kind": "const",
+      "name": "IMAGINE_COMMAND_NAME",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 51
+    },
+    {
+      "kind": "const",
+      "name": "IMAGE_TO_VIDEO_TOOL_NAME",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 54
+    },
+    {
+      "kind": "const",
+      "name": "IMAGINE_VIDEO_COMMAND_NAME",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 57
+    },
+    {
+      "kind": "fn",
+      "name": "imagine_usage_message",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 60
+    },
+    {
+      "kind": "fn",
+      "name": "imagine_instruction",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 66
+    },
+    {
+      "kind": "fn",
+      "name": "imagine_video_usage_message",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 77
+    },
+    {
+      "kind": "fn",
+      "name": "imagine_video_instruction",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 83
+    },
+    {
+      "kind": "const",
+      "name": "UPDATE_GOAL_TOOL_NAME",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 132
+    },
+    {
+      "kind": "const",
+      "name": "GOAL_COMMAND_NAME",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 134
+    },
+    {
+      "kind": "const",
+      "name": "GOAL_RESERVED_SUBCOMMANDS",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 138
+    },
+    {
+      "kind": "fn",
+      "name": "goal_usage_message",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 140
+    },
+    {
+      "kind": "fn",
+      "name": "goal_instruction",
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "line": 145
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-tools-api/build.rs",
+      "module": "..::build",
+      "kind": "support",
+      "lineCount": 35,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-tools-api/build.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+      "module": "config_validation",
+      "kind": "production",
+      "lineCount": 258,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ToolConfigEntryErrorKind",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 11
+        },
+        {
+          "kind": "struct",
+          "name": "ToolConfigEntryError",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "field_path",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "parse_params_json",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "validate_name_override",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "first_unknown_tool_id",
+          "path": "crates/codegen/xai-grok-tools-api/src/config_validation.rs",
+          "line": 124
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-tools-api/src/config_validation.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-tools-api/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 140,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "default_client_name",
+          "path": "crates/codegen/xai-grok-tools-api/src/lib.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-tools-api/src/lib.rs",
+          "line": 115
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-tools-api/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+      "module": "slash_commands",
+      "kind": "production",
+      "lineCount": 218,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SCHEDULER_CREATE_TOOL_NAME",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 8
+        },
+        {
+          "kind": "fn",
+          "name": "loop_usage_message",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "loop_schedule_instruction",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_GEN_TOOL_NAME",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "IMAGINE_COMMAND_NAME",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 51
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_TO_VIDEO_TOOL_NAME",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 54
+        },
+        {
+          "kind": "const",
+          "name": "IMAGINE_VIDEO_COMMAND_NAME",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "imagine_usage_message",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "imagine_instruction",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "imagine_video_usage_message",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "imagine_video_instruction",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 83
+        },
+        {
+          "kind": "const",
+          "name": "UPDATE_GOAL_TOOL_NAME",
+          "path": "crates/codegen/xai-grok-tools-api/src/slash_commands.rs",
+          "line": 132
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-tools-api/src/slash_commands.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-tools-api/tests/wire_shape.rs",
+      "module": "..::tests::wire_shape",
+      "kind": "test",
+      "lineCount": 103,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-tools-api/tests/wire_shape.rs"
+    }
+  ]
+}

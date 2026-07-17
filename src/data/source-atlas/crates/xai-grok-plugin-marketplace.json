@@ -1,0 +1,946 @@
+{
+  "name": "xai-grok-plugin-marketplace",
+  "memberPath": "crates/codegen/xai-grok-plugin-marketplace",
+  "manifestPath": "crates/codegen/xai-grok-plugin-marketplace/Cargo.toml",
+  "description": "",
+  "role": "解析和管理插件 Marketplace 元数据及扩展来源。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "extensibility/skills-plugins-hooks",
+  "relatedArticles": [
+    "extensibility/skills-plugins-hooks"
+  ],
+  "dependencies": [
+    "xai-grok-agent",
+    "xai-grok-config",
+    "xai-hooks-plugins-types",
+    "xai-tty-utils"
+  ],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-shell"
+  ],
+  "fileCount": 11,
+  "productionFileCount": 11,
+  "lineCount": 5287,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/lib.rs",
+      "lineCount": 122,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "OFFICIAL_SOURCE_NAME",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/lib.rs",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "OFFICIAL_SOURCE_GIT_URL",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/lib.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "is_official_source_url",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/lib.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "canonical_github_owner_repo",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/lib.rs",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+      "lineCount": 1336,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MarketplaceInstallResult",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "MarketplaceUpdateResult",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "install_from_marketplace",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "install_from_remote_url",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "update_from_marketplace_entry_transactional",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 201
+        },
+        {
+          "kind": "fn",
+          "name": "find_installed_marketplace_plugin",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 439
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/scanner.rs",
+      "lineCount": 786,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "scan_marketplace",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/scanner.rs",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+      "lineCount": 678,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MarketplaceRef",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "parse_marketplace_ref",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "slugify",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "addressable_qualifier",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 64
+        },
+        {
+          "kind": "enum",
+          "name": "QualifierResolveError",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_qualified_source",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 89
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "lineCount": 589,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MarketplaceIndex",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 18
+        },
+        {
+          "kind": "struct",
+          "name": "IndexOwner",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 34
+        },
+        {
+          "kind": "struct",
+          "name": "IndexEntry",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 42
+        },
+        {
+          "kind": "struct",
+          "name": "IndexAuthor",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 76
+        },
+        {
+          "kind": "struct",
+          "name": "IndexSource",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "is_remote",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 100
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+      "lineCount": 509,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SyncMode",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "SourceCacheLease",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "sync_source_cache",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "force_sync_source_cache",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "sync_source_cache_with_mode",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "default_cache_root",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 146
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+      "lineCount": 418,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "load_sources",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "load_extra_sources_from_settings",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+          "line": 167
+        },
+        {
+          "kind": "fn",
+          "name": "load_extra_sources_from_settings_in",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+          "line": 183
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+      "lineCount": 293,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MarketplacePathError",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 8
+        },
+        {
+          "kind": "struct",
+          "name": "MarketplaceRelativePath",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "parse",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "join_under",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 95
+        },
+        {
+          "kind": "struct",
+          "name": "MarketplaceSource",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 127
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "PluginCatalog",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/catalog.rs",
+      "line": 23
+    },
+    {
+      "kind": "struct",
+      "name": "CatalogEntry",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/catalog.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "components_for",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/catalog.rs",
+      "line": 43
+    },
+    {
+      "kind": "fn",
+      "name": "load_catalog",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/catalog.rs",
+      "line": 67
+    },
+    {
+      "kind": "fn",
+      "name": "load_sources",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+      "line": 33
+    },
+    {
+      "kind": "fn",
+      "name": "load_extra_sources_from_settings",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+      "line": 167
+    },
+    {
+      "kind": "fn",
+      "name": "load_extra_sources_from_settings_in",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+      "line": 183
+    },
+    {
+      "kind": "enum",
+      "name": "MarketplaceError",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/error.rs",
+      "line": 7
+    },
+    {
+      "kind": "enum",
+      "name": "SyncMode",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+      "line": 19
+    },
+    {
+      "kind": "struct",
+      "name": "SourceCacheLease",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+      "line": 24
+    },
+    {
+      "kind": "fn",
+      "name": "sync_source_cache",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+      "line": 38
+    },
+    {
+      "kind": "fn",
+      "name": "force_sync_source_cache",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+      "line": 47
+    },
+    {
+      "kind": "fn",
+      "name": "sync_source_cache_with_mode",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+      "line": 56
+    },
+    {
+      "kind": "fn",
+      "name": "default_cache_root",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+      "line": 146
+    },
+    {
+      "kind": "const",
+      "name": "GIT_AUTH_SUPPRESSION_ENVS",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+      "line": 244
+    },
+    {
+      "kind": "fn",
+      "name": "git_command",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+      "line": 252
+    },
+    {
+      "kind": "struct",
+      "name": "MarketplaceIndex",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 18
+    },
+    {
+      "kind": "struct",
+      "name": "IndexOwner",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 34
+    },
+    {
+      "kind": "struct",
+      "name": "IndexEntry",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 42
+    },
+    {
+      "kind": "struct",
+      "name": "IndexAuthor",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 76
+    },
+    {
+      "kind": "struct",
+      "name": "IndexSource",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 88
+    },
+    {
+      "kind": "fn",
+      "name": "is_remote",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 100
+    },
+    {
+      "kind": "fn",
+      "name": "resolved_path",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 173
+    },
+    {
+      "kind": "fn",
+      "name": "resolved_marketplace_path",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 177
+    },
+    {
+      "kind": "fn",
+      "name": "remote_url",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 192
+    },
+    {
+      "kind": "fn",
+      "name": "remote_sha",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 198
+    },
+    {
+      "kind": "fn",
+      "name": "remote_subdir",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 202
+    },
+    {
+      "kind": "fn",
+      "name": "load_index",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "line": 221
+    },
+    {
+      "kind": "enum",
+      "name": "MarketplaceInstallResult",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+      "line": 20
+    },
+    {
+      "kind": "struct",
+      "name": "MarketplaceUpdateResult",
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+      "line": 28
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/catalog.rs",
+      "module": "catalog",
+      "kind": "production",
+      "lineCount": 277,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PluginCatalog",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/catalog.rs",
+          "line": 23
+        },
+        {
+          "kind": "struct",
+          "name": "CatalogEntry",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/catalog.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "components_for",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/catalog.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "load_catalog",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/catalog.rs",
+          "line": 67
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/catalog.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+      "module": "config",
+      "kind": "production",
+      "lineCount": 418,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "load_sources",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "load_extra_sources_from_settings",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+          "line": 167
+        },
+        {
+          "kind": "fn",
+          "name": "load_extra_sources_from_settings_in",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/config.rs",
+          "line": 183
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/error.rs",
+      "module": "error",
+      "kind": "production",
+      "lineCount": 21,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MarketplaceError",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/error.rs",
+          "line": 7
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/error.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+      "module": "git",
+      "kind": "production",
+      "lineCount": 509,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SyncMode",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "SourceCacheLease",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "sync_source_cache",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "force_sync_source_cache",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "sync_source_cache_with_mode",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "default_cache_root",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 146
+        },
+        {
+          "kind": "const",
+          "name": "GIT_AUTH_SUPPRESSION_ENVS",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 244
+        },
+        {
+          "kind": "fn",
+          "name": "git_command",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/git.rs",
+          "line": 252
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/git.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+      "module": "index",
+      "kind": "production",
+      "lineCount": 589,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MarketplaceIndex",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 18
+        },
+        {
+          "kind": "struct",
+          "name": "IndexOwner",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 34
+        },
+        {
+          "kind": "struct",
+          "name": "IndexEntry",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 42
+        },
+        {
+          "kind": "struct",
+          "name": "IndexAuthor",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 76
+        },
+        {
+          "kind": "struct",
+          "name": "IndexSource",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "is_remote",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "resolved_path",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 173
+        },
+        {
+          "kind": "fn",
+          "name": "resolved_marketplace_path",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 177
+        },
+        {
+          "kind": "fn",
+          "name": "remote_url",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 192
+        },
+        {
+          "kind": "fn",
+          "name": "remote_sha",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 198
+        },
+        {
+          "kind": "fn",
+          "name": "remote_subdir",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 202
+        },
+        {
+          "kind": "fn",
+          "name": "load_index",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/index.rs",
+          "line": 221
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/index.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+      "module": "install_resolve",
+      "kind": "production",
+      "lineCount": 678,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MarketplaceRef",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "parse_marketplace_ref",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "slugify",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "addressable_qualifier",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 64
+        },
+        {
+          "kind": "enum",
+          "name": "QualifierResolveError",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_qualified_source",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 89
+        },
+        {
+          "kind": "struct",
+          "name": "ScannedEntry",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 134
+        },
+        {
+          "kind": "struct",
+          "name": "BareNameSelection",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 140
+        },
+        {
+          "kind": "enum",
+          "name": "BareNameError",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 149
+        },
+        {
+          "kind": "fn",
+          "name": "select_bare_name",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs",
+          "line": 162
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/install_resolve.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+      "module": "installer",
+      "kind": "production",
+      "lineCount": 1336,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MarketplaceInstallResult",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "MarketplaceUpdateResult",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "install_from_marketplace",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "install_from_remote_url",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "update_from_marketplace_entry_transactional",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 201
+        },
+        {
+          "kind": "fn",
+          "name": "find_installed_marketplace_plugin",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/installer.rs",
+          "line": 439
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/installer.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 122,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "OFFICIAL_SOURCE_NAME",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/lib.rs",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "OFFICIAL_SOURCE_GIT_URL",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/lib.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "is_official_source_url",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/lib.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "canonical_github_owner_repo",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/lib.rs",
+          "line": 39
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/matcher.rs",
+      "module": "matcher",
+      "kind": "production",
+      "lineCount": 258,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "KeywordCandidate",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/matcher.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "match_plugin_keyword",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/matcher.rs",
+          "line": 24
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/matcher.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/scanner.rs",
+      "module": "scanner",
+      "kind": "production",
+      "lineCount": 786,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "scan_marketplace",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/scanner.rs",
+          "line": 18
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/scanner.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+      "module": "types",
+      "kind": "production",
+      "lineCount": 293,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MarketplacePathError",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 8
+        },
+        {
+          "kind": "struct",
+          "name": "MarketplaceRelativePath",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "parse",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "join_under",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 95
+        },
+        {
+          "kind": "struct",
+          "name": "MarketplaceSource",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 127
+        },
+        {
+          "kind": "enum",
+          "name": "SourceKind",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 137
+        },
+        {
+          "kind": "struct",
+          "name": "MarketplaceEntry",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 146
+        },
+        {
+          "kind": "struct",
+          "name": "MarketplaceScan",
+          "path": "crates/codegen/xai-grok-plugin-marketplace/src/types.rs",
+          "line": 196
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-plugin-marketplace/src/types.rs"
+    }
+  ]
+}

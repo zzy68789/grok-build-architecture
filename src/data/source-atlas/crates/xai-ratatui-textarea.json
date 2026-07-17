@@ -1,0 +1,575 @@
+{
+  "name": "xai-ratatui-textarea",
+  "memberPath": "crates/codegen/xai-ratatui-textarea",
+  "manifestPath": "crates/codegen/xai-ratatui-textarea/Cargo.toml",
+  "description": "",
+  "role": "实现 Unicode 感知的终端多行输入、选择和光标移动。",
+  "layer": "交互呈现",
+  "primaryArticle": "tui/terminal-components-input",
+  "relatedArticles": [
+    "tui/terminal-components-input"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-pager-render"
+  ],
+  "fileCount": 6,
+  "productionFileCount": 5,
+  "lineCount": 10411,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/src/lib.rs",
+      "lineCount": 27,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_altgr",
+          "path": "crates/codegen/xai-ratatui-textarea/src/lib.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "is_altgr",
+          "path": "crates/codegen/xai-ratatui-textarea/src/lib.rs",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "lineCount": 9716,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ElementId",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "from_raw",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 36
+        },
+        {
+          "kind": "struct",
+          "name": "ElementKind",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 45
+        },
+        {
+          "kind": "trait",
+          "name": "ClipboardProvider",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 54
+        },
+        {
+          "kind": "struct",
+          "name": "InternalClipboard",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "TextElementEvent",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 81
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+      "lineCount": 606,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "wrap_ranges",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "wrap_ranges_trim",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 42
+        },
+        {
+          "kind": "struct",
+          "name": "RtOptions",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "line_ending",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 119
+        },
+        {
+          "kind": "fn",
+          "name": "width",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 126
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+      "lineCount": 60,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "line_to_static",
+          "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+          "line": 5
+        },
+        {
+          "kind": "fn",
+          "name": "push_owned_lines",
+          "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "is_blank_line_spaces_only",
+          "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "prefix_lines",
+          "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+          "line": 40
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/src/render/mod.rs",
+      "lineCount": 2,
+      "symbols": []
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "is_altgr",
+      "path": "crates/codegen/xai-ratatui-textarea/src/lib.rs",
+      "line": 17
+    },
+    {
+      "kind": "fn",
+      "name": "is_altgr",
+      "path": "crates/codegen/xai-ratatui-textarea/src/lib.rs",
+      "line": 24
+    },
+    {
+      "kind": "fn",
+      "name": "line_to_static",
+      "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+      "line": 5
+    },
+    {
+      "kind": "fn",
+      "name": "push_owned_lines",
+      "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+      "line": 21
+    },
+    {
+      "kind": "fn",
+      "name": "is_blank_line_spaces_only",
+      "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+      "line": 29
+    },
+    {
+      "kind": "fn",
+      "name": "prefix_lines",
+      "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+      "line": 40
+    },
+    {
+      "kind": "struct",
+      "name": "ElementId",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 29
+    },
+    {
+      "kind": "fn",
+      "name": "from_raw",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 36
+    },
+    {
+      "kind": "struct",
+      "name": "ElementKind",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 45
+    },
+    {
+      "kind": "trait",
+      "name": "ClipboardProvider",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 54
+    },
+    {
+      "kind": "struct",
+      "name": "InternalClipboard",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 63
+    },
+    {
+      "kind": "struct",
+      "name": "TextElementEvent",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 81
+    },
+    {
+      "kind": "enum",
+      "name": "TextElementEventKind",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 90
+    },
+    {
+      "kind": "struct",
+      "name": "TextElement",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 105
+    },
+    {
+      "kind": "struct",
+      "name": "Selection",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 122
+    },
+    {
+      "kind": "enum",
+      "name": "MouseAction",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 133
+    },
+    {
+      "kind": "struct",
+      "name": "TextArea",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 186
+    },
+    {
+      "kind": "struct",
+      "name": "TextAreaState",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 271
+    },
+    {
+      "kind": "fn",
+      "name": "is_undo_input",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 346
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 408
+    },
+    {
+      "kind": "fn",
+      "name": "tab_width",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 447
+    },
+    {
+      "kind": "fn",
+      "name": "set_tab_width",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 452
+    },
+    {
+      "kind": "fn",
+      "name": "expand_tabs",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 466
+    },
+    {
+      "kind": "fn",
+      "name": "set_text",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 480
+    },
+    {
+      "kind": "fn",
+      "name": "text",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 504
+    },
+    {
+      "kind": "fn",
+      "name": "insert_str",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 508
+    },
+    {
+      "kind": "fn",
+      "name": "insert_str_at",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 531
+    },
+    {
+      "kind": "fn",
+      "name": "replace_range",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 562
+    },
+    {
+      "kind": "fn",
+      "name": "cursor",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 607
+    },
+    {
+      "kind": "fn",
+      "name": "set_cursor",
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "line": 611
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/examples/textarea_demo.rs",
+      "module": "..::examples::textarea_demo",
+      "kind": "example",
+      "lineCount": 1897,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-textarea/examples/textarea_demo.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 27,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_altgr",
+          "path": "crates/codegen/xai-ratatui-textarea/src/lib.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "is_altgr",
+          "path": "crates/codegen/xai-ratatui-textarea/src/lib.rs",
+          "line": 24
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-textarea/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+      "module": "render::line_utils",
+      "kind": "production",
+      "lineCount": 60,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "line_to_static",
+          "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+          "line": 5
+        },
+        {
+          "kind": "fn",
+          "name": "push_owned_lines",
+          "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "is_blank_line_spaces_only",
+          "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "prefix_lines",
+          "path": "crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs",
+          "line": 40
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-textarea/src/render/line_utils.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/src/render/mod.rs",
+      "module": "render::mod",
+      "kind": "production",
+      "lineCount": 2,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-textarea/src/render/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+      "module": "textarea",
+      "kind": "production",
+      "lineCount": 9716,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ElementId",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "from_raw",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 36
+        },
+        {
+          "kind": "struct",
+          "name": "ElementKind",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 45
+        },
+        {
+          "kind": "trait",
+          "name": "ClipboardProvider",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 54
+        },
+        {
+          "kind": "struct",
+          "name": "InternalClipboard",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "TextElementEvent",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 81
+        },
+        {
+          "kind": "enum",
+          "name": "TextElementEventKind",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 90
+        },
+        {
+          "kind": "struct",
+          "name": "TextElement",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 105
+        },
+        {
+          "kind": "struct",
+          "name": "Selection",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 122
+        },
+        {
+          "kind": "enum",
+          "name": "MouseAction",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 133
+        },
+        {
+          "kind": "struct",
+          "name": "TextArea",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 186
+        },
+        {
+          "kind": "struct",
+          "name": "TextAreaState",
+          "path": "crates/codegen/xai-ratatui-textarea/src/textarea.rs",
+          "line": 271
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-textarea/src/textarea.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+      "module": "wrapping",
+      "kind": "production",
+      "lineCount": 606,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "wrap_ranges",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "wrap_ranges_trim",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 42
+        },
+        {
+          "kind": "struct",
+          "name": "RtOptions",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "line_ending",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 119
+        },
+        {
+          "kind": "fn",
+          "name": "width",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "initial_indent",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 130
+        },
+        {
+          "kind": "fn",
+          "name": "subsequent_indent",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "break_words",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 144
+        },
+        {
+          "kind": "fn",
+          "name": "word_separator",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 151
+        },
+        {
+          "kind": "fn",
+          "name": "wrap_algorithm",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "word_splitter",
+          "path": "crates/codegen/xai-ratatui-textarea/src/wrapping.rs",
+          "line": 165
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-textarea/src/wrapping.rs"
+    }
+  ]
+}

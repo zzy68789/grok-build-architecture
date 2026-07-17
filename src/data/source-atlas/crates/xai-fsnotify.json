@@ -1,0 +1,683 @@
+{
+  "name": "xai-fsnotify",
+  "memberPath": "crates/codegen/xai-fsnotify",
+  "manifestPath": "crates/codegen/xai-fsnotify/Cargo.toml",
+  "description": "Local-filesystem event source: single causal stream of semantic FsEvents",
+  "role": "把本地文件系统变化归一化为单一因果语义事件流。",
+  "layer": "工具与工作区",
+  "primaryArticle": "workspace/execution-vcs-fsevents-status",
+  "relatedArticles": [
+    "workspace/execution-vcs-fsevents-status"
+  ],
+  "dependencies": [
+    "xai-tracing-macros"
+  ],
+  "dependents": [
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 10,
+  "productionFileCount": 7,
+  "lineCount": 5954,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-fsnotify/src/lib.rs",
+      "lineCount": 21,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+      "lineCount": 3882,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "RawFsEvent",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 54
+        },
+        {
+          "kind": "struct",
+          "name": "FsNotifyConfig",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "sapling_enabled",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 122
+        },
+        {
+          "kind": "enum",
+          "name": "WatchStrategy",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "watch_strategy",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "max_watch_budget",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 162
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "lineCount": 1499,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "STATS_TARGET",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 45
+        },
+        {
+          "kind": "struct",
+          "name": "FsWatcherStats",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "stats",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "set_runtime_handle",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "shared",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 112
+        },
+        {
+          "kind": "struct",
+          "name": "FsConfig",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 173
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/state.rs",
+      "lineCount": 374,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "COOLDOWN_MS",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 7
+        },
+        {
+          "kind": "const",
+          "name": "SETTLE_MS",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 13
+        },
+        {
+          "kind": "enum",
+          "name": "LockState",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 21
+        },
+        {
+          "kind": "enum",
+          "name": "LockTransition",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "drive",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 55
+        },
+        {
+          "kind": "struct",
+          "name": "StaleWarn",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 130
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/paths.rs",
+      "lineCount": 86,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "classify_git_path",
+          "path": "crates/codegen/xai-fsnotify/src/paths.rs",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/event.rs",
+      "lineCount": 77,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FsEvent",
+          "path": "crates/codegen/xai-fsnotify/src/event.rs",
+          "line": 21
+        },
+        {
+          "kind": "enum",
+          "name": "FsEventKind",
+          "path": "crates/codegen/xai-fsnotify/src/event.rs",
+          "line": 54
+        },
+        {
+          "kind": "enum",
+          "name": "GitMetaKind",
+          "path": "crates/codegen/xai-fsnotify/src/event.rs",
+          "line": 67
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/error.rs",
+      "lineCount": 15,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FsNotifyError",
+          "path": "crates/codegen/xai-fsnotify/src/error.rs",
+          "line": 5
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "FsNotifyError",
+      "path": "crates/codegen/xai-fsnotify/src/error.rs",
+      "line": 5
+    },
+    {
+      "kind": "enum",
+      "name": "FsEvent",
+      "path": "crates/codegen/xai-fsnotify/src/event.rs",
+      "line": 21
+    },
+    {
+      "kind": "enum",
+      "name": "FsEventKind",
+      "path": "crates/codegen/xai-fsnotify/src/event.rs",
+      "line": 54
+    },
+    {
+      "kind": "enum",
+      "name": "GitMetaKind",
+      "path": "crates/codegen/xai-fsnotify/src/event.rs",
+      "line": 67
+    },
+    {
+      "kind": "fn",
+      "name": "classify_git_path",
+      "path": "crates/codegen/xai-fsnotify/src/paths.rs",
+      "line": 15
+    },
+    {
+      "kind": "const",
+      "name": "STATS_TARGET",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 45
+    },
+    {
+      "kind": "struct",
+      "name": "FsWatcherStats",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 49
+    },
+    {
+      "kind": "fn",
+      "name": "stats",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 65
+    },
+    {
+      "kind": "fn",
+      "name": "set_runtime_handle",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 81
+    },
+    {
+      "kind": "fn",
+      "name": "shared",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 112
+    },
+    {
+      "kind": "struct",
+      "name": "FsConfig",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 173
+    },
+    {
+      "kind": "fn",
+      "name": "with_debounce_ms",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 189
+    },
+    {
+      "kind": "fn",
+      "name": "with_ignore_patterns",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 195
+    },
+    {
+      "kind": "struct",
+      "name": "FsEventSource",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 209
+    },
+    {
+      "kind": "fn",
+      "name": "start",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 220
+    },
+    {
+      "kind": "fn",
+      "name": "start_on",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 228
+    },
+    {
+      "kind": "fn",
+      "name": "subscribe",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 272
+    },
+    {
+      "kind": "fn",
+      "name": "os_watch_count",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 281
+    },
+    {
+      "kind": "fn",
+      "name": "shutdown",
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "line": 286
+    },
+    {
+      "kind": "const",
+      "name": "COOLDOWN_MS",
+      "path": "crates/codegen/xai-fsnotify/src/state.rs",
+      "line": 7
+    },
+    {
+      "kind": "const",
+      "name": "SETTLE_MS",
+      "path": "crates/codegen/xai-fsnotify/src/state.rs",
+      "line": 13
+    },
+    {
+      "kind": "enum",
+      "name": "LockState",
+      "path": "crates/codegen/xai-fsnotify/src/state.rs",
+      "line": 21
+    },
+    {
+      "kind": "enum",
+      "name": "LockTransition",
+      "path": "crates/codegen/xai-fsnotify/src/state.rs",
+      "line": 42
+    },
+    {
+      "kind": "fn",
+      "name": "drive",
+      "path": "crates/codegen/xai-fsnotify/src/state.rs",
+      "line": 55
+    },
+    {
+      "kind": "struct",
+      "name": "StaleWarn",
+      "path": "crates/codegen/xai-fsnotify/src/state.rs",
+      "line": 130
+    },
+    {
+      "kind": "fn",
+      "name": "check",
+      "path": "crates/codegen/xai-fsnotify/src/state.rs",
+      "line": 135
+    },
+    {
+      "kind": "struct",
+      "name": "RawFsEvent",
+      "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+      "line": 54
+    },
+    {
+      "kind": "struct",
+      "name": "FsNotifyConfig",
+      "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+      "line": 76
+    },
+    {
+      "kind": "fn",
+      "name": "sapling_enabled",
+      "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+      "line": 122
+    },
+    {
+      "kind": "enum",
+      "name": "WatchStrategy",
+      "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+      "line": 132
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-fsnotify/benches/startup.rs",
+      "module": "..::benches::startup",
+      "kind": "benchmark",
+      "lineCount": 148,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fsnotify/benches/startup.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/examples/watch_stats.rs",
+      "module": "..::examples::watch_stats",
+      "kind": "example",
+      "lineCount": 212,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fsnotify/examples/watch_stats.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/error.rs",
+      "module": "error",
+      "kind": "production",
+      "lineCount": 15,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FsNotifyError",
+          "path": "crates/codegen/xai-fsnotify/src/error.rs",
+          "line": 5
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fsnotify/src/error.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/event.rs",
+      "module": "event",
+      "kind": "production",
+      "lineCount": 77,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FsEvent",
+          "path": "crates/codegen/xai-fsnotify/src/event.rs",
+          "line": 21
+        },
+        {
+          "kind": "enum",
+          "name": "FsEventKind",
+          "path": "crates/codegen/xai-fsnotify/src/event.rs",
+          "line": 54
+        },
+        {
+          "kind": "enum",
+          "name": "GitMetaKind",
+          "path": "crates/codegen/xai-fsnotify/src/event.rs",
+          "line": 67
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fsnotify/src/event.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 21,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fsnotify/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/paths.rs",
+      "module": "paths",
+      "kind": "production",
+      "lineCount": 86,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "classify_git_path",
+          "path": "crates/codegen/xai-fsnotify/src/paths.rs",
+          "line": 15
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fsnotify/src/paths.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/source.rs",
+      "module": "source",
+      "kind": "production",
+      "lineCount": 1499,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "STATS_TARGET",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 45
+        },
+        {
+          "kind": "struct",
+          "name": "FsWatcherStats",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "stats",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "set_runtime_handle",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "shared",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 112
+        },
+        {
+          "kind": "struct",
+          "name": "FsConfig",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 173
+        },
+        {
+          "kind": "fn",
+          "name": "with_debounce_ms",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 189
+        },
+        {
+          "kind": "fn",
+          "name": "with_ignore_patterns",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 195
+        },
+        {
+          "kind": "struct",
+          "name": "FsEventSource",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 209
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 220
+        },
+        {
+          "kind": "fn",
+          "name": "start_on",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 228
+        },
+        {
+          "kind": "fn",
+          "name": "subscribe",
+          "path": "crates/codegen/xai-fsnotify/src/source.rs",
+          "line": 272
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fsnotify/src/source.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/state.rs",
+      "module": "state",
+      "kind": "production",
+      "lineCount": 374,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "COOLDOWN_MS",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 7
+        },
+        {
+          "kind": "const",
+          "name": "SETTLE_MS",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 13
+        },
+        {
+          "kind": "enum",
+          "name": "LockState",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 21
+        },
+        {
+          "kind": "enum",
+          "name": "LockTransition",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "drive",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 55
+        },
+        {
+          "kind": "struct",
+          "name": "StaleWarn",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 130
+        },
+        {
+          "kind": "fn",
+          "name": "check",
+          "path": "crates/codegen/xai-fsnotify/src/state.rs",
+          "line": 135
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fsnotify/src/state.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+      "module": "watcher",
+      "kind": "production",
+      "lineCount": 3882,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "RawFsEvent",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 54
+        },
+        {
+          "kind": "struct",
+          "name": "FsNotifyConfig",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "sapling_enabled",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 122
+        },
+        {
+          "kind": "enum",
+          "name": "WatchStrategy",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "watch_strategy",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "max_watch_budget",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 162
+        },
+        {
+          "kind": "struct",
+          "name": "FsNotifyHandle",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 301
+        },
+        {
+          "kind": "fn",
+          "name": "watch_count",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 311
+        },
+        {
+          "kind": "fn",
+          "name": "find_sl_dir",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 507
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 900
+        },
+        {
+          "kind": "fn",
+          "name": "start_with_timeout",
+          "path": "crates/codegen/xai-fsnotify/src/watcher.rs",
+          "line": 917
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fsnotify/src/watcher.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fsnotify/tests/integration.rs",
+      "module": "..::tests::integration",
+      "kind": "test",
+      "lineCount": 371,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fsnotify/tests/integration.rs"
+    }
+  ]
+}

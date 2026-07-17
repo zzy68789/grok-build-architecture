@@ -9,9 +9,13 @@
     "build": "astro build",
     "postbuild": "node scripts/generate-llms.mjs",
     "preview": "astro preview",
+    "atlas:generate": "node scripts/generate-source-atlas.mjs",
+    "atlas:check": "node scripts/generate-source-atlas.mjs --check",
+    "validate:coverage": "node scripts/validate-source-coverage.mjs",
     "validate:source": "node scripts/validate-source-refs.mjs",
     "validate:links": "node scripts/validate-built-links.mjs",
-    "test:e2e": "npm run build && npm run validate:links && playwright test"
+    "test:e2e": "npm run build && npm run validate:links && playwright test",
+    "verify": "npm run atlas:check && npm run check && npm run validate:source && npm run validate:coverage && npm run build && npm run validate:links"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",

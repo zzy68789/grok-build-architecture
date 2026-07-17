@@ -1,0 +1,332 @@
+{
+  "name": "xai-hooks-plugins-types",
+  "memberPath": "crates/codegen/xai-hooks-plugins-types",
+  "manifestPath": "crates/codegen/xai-hooks-plugins-types/Cargo.toml",
+  "description": "Shared DTO types for hooks/plugins ACP extensions (wire format only)",
+  "role": "负责 hook 发现、命令执行、超时和策略拦截。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "extensibility/skills-plugins-hooks",
+  "relatedArticles": [
+    "extensibility/skills-plugins-hooks",
+    "runtime/leader-session-acp",
+    "extensibility/hooks-runtime"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-plugin-marketplace",
+    "xai-grok-shell"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 1220,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "lineCount": 1220,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "PluginScope",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 24
+        },
+        {
+          "kind": "enum",
+          "name": "PluginOrigin",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 37
+        },
+        {
+          "kind": "enum",
+          "name": "HookEvent",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 84
+        },
+        {
+          "kind": "enum",
+          "name": "HookHandlerType",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 129
+        },
+        {
+          "kind": "enum",
+          "name": "HookStatus",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 137
+        },
+        {
+          "kind": "enum",
+          "name": "McpStatus",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 151
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "PluginScope",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 24
+    },
+    {
+      "kind": "enum",
+      "name": "PluginOrigin",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 37
+    },
+    {
+      "kind": "enum",
+      "name": "HookEvent",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 84
+    },
+    {
+      "kind": "enum",
+      "name": "HookHandlerType",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 129
+    },
+    {
+      "kind": "enum",
+      "name": "HookStatus",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 137
+    },
+    {
+      "kind": "enum",
+      "name": "McpStatus",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 151
+    },
+    {
+      "kind": "enum",
+      "name": "OutcomeStatus",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 165
+    },
+    {
+      "kind": "struct",
+      "name": "HookInfo",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 187
+    },
+    {
+      "kind": "struct",
+      "name": "HooksListResponse",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 213
+    },
+    {
+      "kind": "struct",
+      "name": "PluginInfo",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 229
+    },
+    {
+      "kind": "struct",
+      "name": "PluginsListResponse",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 280
+    },
+    {
+      "kind": "enum",
+      "name": "McpServerSource",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 291
+    },
+    {
+      "kind": "enum",
+      "name": "McpSessionStatus",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 301
+    },
+    {
+      "kind": "struct",
+      "name": "McpToolInfo",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 310
+    },
+    {
+      "kind": "struct",
+      "name": "McpServerInfo",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 319
+    },
+    {
+      "kind": "struct",
+      "name": "McpServersListResponse",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 338
+    },
+    {
+      "kind": "const",
+      "name": "MAX_COMPONENTS_PER_CATEGORY",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 350
+    },
+    {
+      "kind": "struct",
+      "name": "ComponentItem",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 355
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 365
+    },
+    {
+      "kind": "struct",
+      "name": "PluginComponents",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 414
+    },
+    {
+      "kind": "enum",
+      "name": "ComponentCategory",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 434
+    },
+    {
+      "kind": "fn",
+      "name": "categories",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 446
+    },
+    {
+      "kind": "fn",
+      "name": "is_empty",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 468
+    },
+    {
+      "kind": "fn",
+      "name": "summary_line",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 474
+    },
+    {
+      "kind": "fn",
+      "name": "sanitize",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 502
+    },
+    {
+      "kind": "struct",
+      "name": "HooksActionRequest",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 519
+    },
+    {
+      "kind": "enum",
+      "name": "HooksAction",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 527
+    },
+    {
+      "kind": "struct",
+      "name": "PluginsActionRequest",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 558
+    },
+    {
+      "kind": "enum",
+      "name": "PluginsAction",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 566
+    },
+    {
+      "kind": "struct",
+      "name": "ActionOutcome",
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "line": 599
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 1220,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "PluginScope",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 24
+        },
+        {
+          "kind": "enum",
+          "name": "PluginOrigin",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 37
+        },
+        {
+          "kind": "enum",
+          "name": "HookEvent",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 84
+        },
+        {
+          "kind": "enum",
+          "name": "HookHandlerType",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 129
+        },
+        {
+          "kind": "enum",
+          "name": "HookStatus",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 137
+        },
+        {
+          "kind": "enum",
+          "name": "McpStatus",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 151
+        },
+        {
+          "kind": "enum",
+          "name": "OutcomeStatus",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 165
+        },
+        {
+          "kind": "struct",
+          "name": "HookInfo",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 187
+        },
+        {
+          "kind": "struct",
+          "name": "HooksListResponse",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 213
+        },
+        {
+          "kind": "struct",
+          "name": "PluginInfo",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 229
+        },
+        {
+          "kind": "struct",
+          "name": "PluginsListResponse",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 280
+        },
+        {
+          "kind": "enum",
+          "name": "McpServerSource",
+          "path": "crates/codegen/xai-hooks-plugins-types/src/lib.rs",
+          "line": 291
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hooks-plugins-types/src/lib.rs"
+    }
+  ]
+}

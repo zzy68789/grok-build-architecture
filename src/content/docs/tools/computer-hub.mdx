@@ -1,0 +1,27 @@
+---
+title: "Computer Hub Core、SDK 与 MCP Adapter"
+description: "解释 Hub 的传输、注册表、连接池、重连和 MCP 适配。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-computer-hub-core
+  - xai-computer-hub-mcp-adapter
+  - xai-computer-hub-sdk
+sourcePaths:
+  - crates/common/xai-computer-hub-sdk/src/lib.rs
+  - crates/common/xai-computer-hub-mcp-adapter/src/lib.rs
+  - crates/common/xai-computer-hub-core/src/lib.rs
+  - crates/common/xai-computer-hub-sdk/src/harness.rs
+  - crates/common/xai-computer-hub-sdk/src/connection.rs
+  - crates/common/xai-computer-hub-sdk/src/server.rs
+  - crates/common/xai-computer-hub-sdk/src/demux.rs
+  - crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs
+  - crates/common/xai-computer-hub-sdk/src/log_donate.rs
+  - crates/common/xai-computer-hub-sdk/src/metrics.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="tools/computer-hub" />

@@ -1,0 +1,223 @@
+{
+  "name": "xai-sqlite-journal",
+  "memberPath": "crates/codegen/xai-sqlite-journal",
+  "manifestPath": "crates/codegen/xai-sqlite-journal/Cargo.toml",
+  "description": "Filesystem-aware SQLite journal-mode selection: WAL on local disks, rollback journal on network mounts where WAL's mmap'd -shm is unsafe",
+  "role": "按文件系统能力选择安全的 SQLite journal 模式。",
+  "layer": "会话运行时",
+  "primaryArticle": "runtime/session-chat-journal",
+  "relatedArticles": [
+    "runtime/session-chat-journal"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-fast-worktree",
+    "xai-grok-memory",
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 780,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "lineCount": 780,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "JournalMode",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "for_db_path",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "effective_db_path",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "open",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 135
+        },
+        {
+          "kind": "fn",
+          "name": "open_readonly",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 159
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "JournalMode",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "for_db_path",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 39
+    },
+    {
+      "kind": "fn",
+      "name": "as_str",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 81
+    },
+    {
+      "kind": "fn",
+      "name": "effective_db_path",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 104
+    },
+    {
+      "kind": "fn",
+      "name": "open",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 135
+    },
+    {
+      "kind": "fn",
+      "name": "open_readonly",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 159
+    },
+    {
+      "kind": "fn",
+      "name": "apply",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 189
+    },
+    {
+      "kind": "fn",
+      "name": "is_network_fs",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 278
+    },
+    {
+      "kind": "fn",
+      "name": "is_network_fs",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 370
+    },
+    {
+      "kind": "fn",
+      "name": "is_network_fs",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 391
+    },
+    {
+      "kind": "fn",
+      "name": "is_network_fs",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 434
+    },
+    {
+      "kind": "fn",
+      "name": "is_network_fs",
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "line": 459
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 780,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "JournalMode",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "for_db_path",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "effective_db_path",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "open",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 135
+        },
+        {
+          "kind": "fn",
+          "name": "open_readonly",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "apply",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 189
+        },
+        {
+          "kind": "fn",
+          "name": "is_network_fs",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 278
+        },
+        {
+          "kind": "fn",
+          "name": "is_network_fs",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 370
+        },
+        {
+          "kind": "fn",
+          "name": "is_network_fs",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 391
+        },
+        {
+          "kind": "fn",
+          "name": "is_network_fs",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 434
+        },
+        {
+          "kind": "fn",
+          "name": "is_network_fs",
+          "path": "crates/codegen/xai-sqlite-journal/src/lib.rs",
+          "line": 459
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-sqlite-journal/src/lib.rs"
+    }
+  ]
+}

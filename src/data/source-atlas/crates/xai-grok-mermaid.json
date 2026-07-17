@@ -1,0 +1,611 @@
+{
+  "name": "xai-grok-mermaid",
+  "memberPath": "crates/codegen/xai-grok-mermaid",
+  "manifestPath": "crates/codegen/xai-grok-mermaid/Cargo.toml",
+  "description": "Render Mermaid diagram source to a rasterized PNG behind a swappable engine trait",
+  "role": "把 Mermaid 文本通过可替换引擎转换为终端可展示图像。",
+  "layer": "交互呈现",
+  "primaryArticle": "tui/mermaid-rendering",
+  "relatedArticles": [
+    "tui/mermaid-rendering"
+  ],
+  "dependencies": [
+    "xai-tty-utils"
+  ],
+  "dependents": [
+    "xai-grok-pager"
+  ],
+  "fileCount": 7,
+  "productionFileCount": 6,
+  "lineCount": 1996,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "lineCount": 262,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MermaidTheme",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 66
+        },
+        {
+          "kind": "const",
+          "name": "LIGHT_SURFACE",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 77
+        },
+        {
+          "kind": "const",
+          "name": "DARK_SURFACE",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "surface_background",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 86
+        },
+        {
+          "kind": "struct",
+          "name": "Rgba",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 96
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 109
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+      "lineCount": 581,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BUNDLED_FONT",
+          "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "MAX_OUTPUT_MEGAPIXELS",
+          "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "rasterize",
+          "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+          "line": 124
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/subprocess.rs",
+      "lineCount": 311,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SubprocessError",
+          "path": "crates/codegen/xai-grok-mermaid/src/subprocess.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "run_with_timeout",
+          "path": "crates/codegen/xai-grok-mermaid/src/subprocess.rs",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+      "lineCount": 299,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MermaidError",
+          "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "RenderLimits",
+          "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+          "line": 50
+        },
+        {
+          "kind": "trait",
+          "name": "MermaidEngine",
+          "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "render_checked",
+          "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+          "line": 100
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/pure.rs",
+      "lineCount": 285,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PureRustEngine",
+          "path": "crates/codegen/xai-grok-mermaid/src/pure.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-mermaid/src/pure.rs",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+      "lineCount": 258,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_MMDC_TIMEOUT",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "detect_mmdc",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "MmdcEngine",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "detect",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "with_timeout",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 53
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "MermaidError",
+      "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+      "line": 15
+    },
+    {
+      "kind": "struct",
+      "name": "RenderLimits",
+      "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+      "line": 50
+    },
+    {
+      "kind": "trait",
+      "name": "MermaidEngine",
+      "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+      "line": 71
+    },
+    {
+      "kind": "fn",
+      "name": "render_checked",
+      "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+      "line": 100
+    },
+    {
+      "kind": "enum",
+      "name": "MermaidTheme",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 66
+    },
+    {
+      "kind": "const",
+      "name": "LIGHT_SURFACE",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 77
+    },
+    {
+      "kind": "const",
+      "name": "DARK_SURFACE",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 78
+    },
+    {
+      "kind": "fn",
+      "name": "surface_background",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 86
+    },
+    {
+      "kind": "struct",
+      "name": "Rgba",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 96
+    },
+    {
+      "kind": "const",
+      "name": "fn",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 109
+    },
+    {
+      "kind": "fn",
+      "name": "to_hex",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 114
+    },
+    {
+      "kind": "struct",
+      "name": "RenderParams",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 130
+    },
+    {
+      "kind": "fn",
+      "name": "for_os_viewer",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 172
+    },
+    {
+      "kind": "struct",
+      "name": "RenderedDiagram",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 188
+    },
+    {
+      "kind": "fn",
+      "name": "default_engine",
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "line": 201
+    },
+    {
+      "kind": "const",
+      "name": "DEFAULT_MMDC_TIMEOUT",
+      "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+      "line": 22
+    },
+    {
+      "kind": "fn",
+      "name": "detect_mmdc",
+      "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+      "line": 25
+    },
+    {
+      "kind": "struct",
+      "name": "MmdcEngine",
+      "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+      "line": 33
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+      "line": 40
+    },
+    {
+      "kind": "fn",
+      "name": "detect",
+      "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+      "line": 48
+    },
+    {
+      "kind": "fn",
+      "name": "with_timeout",
+      "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+      "line": 53
+    },
+    {
+      "kind": "fn",
+      "name": "binary",
+      "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+      "line": 59
+    },
+    {
+      "kind": "struct",
+      "name": "PureRustEngine",
+      "path": "crates/codegen/xai-grok-mermaid/src/pure.rs",
+      "line": 13
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-mermaid/src/pure.rs",
+      "line": 17
+    },
+    {
+      "kind": "const",
+      "name": "BUNDLED_FONT",
+      "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+      "line": 26
+    },
+    {
+      "kind": "const",
+      "name": "MAX_OUTPUT_MEGAPIXELS",
+      "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+      "line": 30
+    },
+    {
+      "kind": "fn",
+      "name": "rasterize",
+      "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+      "line": 124
+    },
+    {
+      "kind": "enum",
+      "name": "SubprocessError",
+      "path": "crates/codegen/xai-grok-mermaid/src/subprocess.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "run_with_timeout",
+      "path": "crates/codegen/xai-grok-mermaid/src/subprocess.rs",
+      "line": 53
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+      "module": "engine",
+      "kind": "production",
+      "lineCount": 299,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MermaidError",
+          "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "RenderLimits",
+          "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+          "line": 50
+        },
+        {
+          "kind": "trait",
+          "name": "MermaidEngine",
+          "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "render_checked",
+          "path": "crates/codegen/xai-grok-mermaid/src/engine.rs",
+          "line": 100
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mermaid/src/engine.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 262,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MermaidTheme",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 66
+        },
+        {
+          "kind": "const",
+          "name": "LIGHT_SURFACE",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 77
+        },
+        {
+          "kind": "const",
+          "name": "DARK_SURFACE",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "surface_background",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 86
+        },
+        {
+          "kind": "struct",
+          "name": "Rgba",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 96
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 109
+        },
+        {
+          "kind": "fn",
+          "name": "to_hex",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 114
+        },
+        {
+          "kind": "struct",
+          "name": "RenderParams",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 130
+        },
+        {
+          "kind": "fn",
+          "name": "for_os_viewer",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 172
+        },
+        {
+          "kind": "struct",
+          "name": "RenderedDiagram",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 188
+        },
+        {
+          "kind": "fn",
+          "name": "default_engine",
+          "path": "crates/codegen/xai-grok-mermaid/src/lib.rs",
+          "line": 201
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mermaid/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+      "module": "mmdc",
+      "kind": "production",
+      "lineCount": 258,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_MMDC_TIMEOUT",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "detect_mmdc",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "MmdcEngine",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "detect",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "with_timeout",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "binary",
+          "path": "crates/codegen/xai-grok-mermaid/src/mmdc.rs",
+          "line": 59
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mermaid/src/mmdc.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/pure.rs",
+      "module": "pure",
+      "kind": "production",
+      "lineCount": 285,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PureRustEngine",
+          "path": "crates/codegen/xai-grok-mermaid/src/pure.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-mermaid/src/pure.rs",
+          "line": 17
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mermaid/src/pure.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+      "module": "raster",
+      "kind": "production",
+      "lineCount": 581,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BUNDLED_FONT",
+          "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+          "line": 26
+        },
+        {
+          "kind": "const",
+          "name": "MAX_OUTPUT_MEGAPIXELS",
+          "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "rasterize",
+          "path": "crates/codegen/xai-grok-mermaid/src/raster.rs",
+          "line": 124
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mermaid/src/raster.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/src/subprocess.rs",
+      "module": "subprocess",
+      "kind": "production",
+      "lineCount": 311,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SubprocessError",
+          "path": "crates/codegen/xai-grok-mermaid/src/subprocess.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "run_with_timeout",
+          "path": "crates/codegen/xai-grok-mermaid/src/subprocess.rs",
+          "line": 53
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mermaid/src/subprocess.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-mermaid/tests/pure_engine.rs",
+      "module": "..::tests::pure_engine",
+      "kind": "test",
+      "lineCount": 179,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-mermaid/tests/pure_engine.rs"
+    }
+  ]
+}

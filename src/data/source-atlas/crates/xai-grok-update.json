@@ -1,0 +1,736 @@
+{
+  "name": "xai-grok-update",
+  "memberPath": "crates/codegen/xai-grok-update",
+  "manifestPath": "crates/codegen/xai-grok-update/Cargo.toml",
+  "description": "",
+  "role": "安全、扩展与运维层的一方 crate；上游清单描述为：未提供 description，职责由公开模块和依赖关系归纳。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/update-version-announcements-crash",
+  "relatedArticles": [
+    "operations/update-version-announcements-crash"
+  ],
+  "dependencies": [
+    "xai-grok-shell",
+    "xai-grok-tools",
+    "xai-grok-version"
+  ],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-pager-bin"
+  ],
+  "fileCount": 15,
+  "productionFileCount": 4,
+  "lineCount": 5831,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-update/src/lib.rs",
+      "lineCount": 8,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "lineCount": 4653,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "UpdateRunMode",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "UpdateStatus",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "print_update_status",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "check_update_status",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "auto_update_target",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 175
+        },
+        {
+          "kind": "struct",
+          "name": "EnsureLatestOutcome",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 191
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/src/version.rs",
+      "lineCount": 785,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "GH_RELEASE_REPO",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "CLI_BASE_URL_PRIMARY",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "CLI_BASE_URL_FALLBACK",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "CLI_BASE_URLS",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 27
+        },
+        {
+          "kind": "struct",
+          "name": "UpdateConfig",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "from_environment",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+      "lineCount": 385,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MinimumVersionError",
+          "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "check_install_target",
+          "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "apply_floor",
+          "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "enforce_minimum_version_or_exit",
+          "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+          "line": 267
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "UpdateRunMode",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 21
+    },
+    {
+      "kind": "struct",
+      "name": "UpdateStatus",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 49
+    },
+    {
+      "kind": "fn",
+      "name": "print_update_status",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 60
+    },
+    {
+      "kind": "fn",
+      "name": "check_update_status",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 102
+    },
+    {
+      "kind": "fn",
+      "name": "auto_update_target",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 175
+    },
+    {
+      "kind": "struct",
+      "name": "EnsureLatestOutcome",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 191
+    },
+    {
+      "kind": "fn",
+      "name": "ensure_latest_on_disk",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 217
+    },
+    {
+      "kind": "fn",
+      "name": "get_installer",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 294
+    },
+    {
+      "kind": "struct",
+      "name": "UpdateAvailable",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 353
+    },
+    {
+      "kind": "struct",
+      "name": "BackgroundUpdateCheck",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 359
+    },
+    {
+      "kind": "fn",
+      "name": "check_update_background",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 388
+    },
+    {
+      "kind": "fn",
+      "name": "run_update_if_available",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 464
+    },
+    {
+      "kind": "fn",
+      "name": "restart_grok",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 651
+    },
+    {
+      "kind": "fn",
+      "name": "run_install_script",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 686
+    },
+    {
+      "kind": "fn",
+      "name": "detect_platform",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 713
+    },
+    {
+      "kind": "fn",
+      "name": "download_with_progress",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 938
+    },
+    {
+      "kind": "fn",
+      "name": "download_silent",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 1000
+    },
+    {
+      "kind": "fn",
+      "name": "install_internal_from_bases",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 1107
+    },
+    {
+      "kind": "fn",
+      "name": "install_internal_from_base",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 1151
+    },
+    {
+      "kind": "fn",
+      "name": "install_npm_for_test",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 2061
+    },
+    {
+      "kind": "fn",
+      "name": "apply_channel_switch",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 2138
+    },
+    {
+      "kind": "fn",
+      "name": "run_update",
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "line": 2159
+    },
+    {
+      "kind": "enum",
+      "name": "MinimumVersionError",
+      "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+      "line": 36
+    },
+    {
+      "kind": "fn",
+      "name": "check_install_target",
+      "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+      "line": 137
+    },
+    {
+      "kind": "fn",
+      "name": "apply_floor",
+      "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+      "line": 158
+    },
+    {
+      "kind": "fn",
+      "name": "enforce_minimum_version_or_exit",
+      "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+      "line": 267
+    },
+    {
+      "kind": "const",
+      "name": "GH_RELEASE_REPO",
+      "path": "crates/codegen/xai-grok-update/src/version.rs",
+      "line": 14
+    },
+    {
+      "kind": "const",
+      "name": "CLI_BASE_URL_PRIMARY",
+      "path": "crates/codegen/xai-grok-update/src/version.rs",
+      "line": 18
+    },
+    {
+      "kind": "const",
+      "name": "CLI_BASE_URL_FALLBACK",
+      "path": "crates/codegen/xai-grok-update/src/version.rs",
+      "line": 22
+    },
+    {
+      "kind": "const",
+      "name": "CLI_BASE_URLS",
+      "path": "crates/codegen/xai-grok-update/src/version.rs",
+      "line": 27
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+      "module": "auto_update",
+      "kind": "production",
+      "lineCount": 4653,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "UpdateRunMode",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "UpdateStatus",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "print_update_status",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "check_update_status",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "auto_update_target",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 175
+        },
+        {
+          "kind": "struct",
+          "name": "EnsureLatestOutcome",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 191
+        },
+        {
+          "kind": "fn",
+          "name": "ensure_latest_on_disk",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 217
+        },
+        {
+          "kind": "fn",
+          "name": "get_installer",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 294
+        },
+        {
+          "kind": "struct",
+          "name": "UpdateAvailable",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 353
+        },
+        {
+          "kind": "struct",
+          "name": "BackgroundUpdateCheck",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 359
+        },
+        {
+          "kind": "fn",
+          "name": "check_update_background",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 388
+        },
+        {
+          "kind": "fn",
+          "name": "run_update_if_available",
+          "path": "crates/codegen/xai-grok-update/src/auto_update.rs",
+          "line": 464
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/src/auto_update.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 8,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+      "module": "minimum_version",
+      "kind": "production",
+      "lineCount": 385,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MinimumVersionError",
+          "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "check_install_target",
+          "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "apply_floor",
+          "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "enforce_minimum_version_or_exit",
+          "path": "crates/codegen/xai-grok-update/src/minimum_version.rs",
+          "line": 267
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/src/minimum_version.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/src/version.rs",
+      "module": "version",
+      "kind": "production",
+      "lineCount": 785,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "GH_RELEASE_REPO",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "CLI_BASE_URL_PRIMARY",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "CLI_BASE_URL_FALLBACK",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "CLI_BASE_URLS",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 27
+        },
+        {
+          "kind": "struct",
+          "name": "UpdateConfig",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "from_environment",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "fetch_npm_tag_for_test",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 124
+        },
+        {
+          "kind": "fn",
+          "name": "fetch_npm_version_for_test",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "fetch_gh_release_version",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 179
+        },
+        {
+          "kind": "fn",
+          "name": "fetch_gcs_version",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 240
+        },
+        {
+          "kind": "fn",
+          "name": "fetch_gcs_version_from_base",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 263
+        },
+        {
+          "kind": "fn",
+          "name": "fetch_latest_version",
+          "path": "crates/codegen/xai-grok-update/src/version.rs",
+          "line": 345
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/src/version.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/common/artifact_server.rs",
+      "module": "..::tests::common::artifact_server",
+      "kind": "test",
+      "lineCount": 268,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "Mode",
+          "path": "crates/codegen/xai-grok-update/tests/common/artifact_server.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "ArtifactServer",
+          "path": "crates/codegen/xai-grok-update/tests/common/artifact_server.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-grok-update/tests/common/artifact_server.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "uri",
+          "path": "crates/codegen/xai-grok-update/tests/common/artifact_server.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "set_mode",
+          "path": "crates/codegen/xai-grok-update/tests/common/artifact_server.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "request_count",
+          "path": "crates/codegen/xai-grok-update/tests/common/artifact_server.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "set_slow",
+          "path": "crates/codegen/xai-grok-update/tests/common/artifact_server.rs",
+          "line": 113
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/common/artifact_server.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+      "module": "..::tests::common::mod",
+      "kind": "test",
+      "lineCount": 354,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "test_home",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "reset_home",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "set_test_version",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 84
+        },
+        {
+          "kind": "fn",
+          "name": "host_platform",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "make_update_config",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "can_exec_shell_scripts",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "small_good_artifact",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 144
+        },
+        {
+          "kind": "fn",
+          "name": "backdate_downloads",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 154
+        },
+        {
+          "kind": "struct",
+          "name": "FakeBinGuard",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 178
+        },
+        {
+          "kind": "fn",
+          "name": "install",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 187
+        },
+        {
+          "kind": "fn",
+          "name": "install_npm",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 219
+        },
+        {
+          "kind": "fn",
+          "name": "install_gh",
+          "path": "crates/codegen/xai-grok-update/tests/common/mod.rs",
+          "line": 224
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/common/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/test_blitz_cancel.rs",
+      "module": "..::tests::test_blitz_cancel",
+      "kind": "test",
+      "lineCount": 400,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/test_blitz_cancel.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/test_check_status_regression.rs",
+      "module": "..::tests::test_check_status_regression",
+      "kind": "test",
+      "lineCount": 232,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/test_check_status_regression.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/test_concurrent_convergence.rs",
+      "module": "..::tests::test_concurrent_convergence",
+      "kind": "test",
+      "lineCount": 502,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/test_concurrent_convergence.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/test_downgrade_matrix.rs",
+      "module": "..::tests::test_downgrade_matrix",
+      "kind": "test",
+      "lineCount": 612,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/test_downgrade_matrix.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/test_install_internal.rs",
+      "module": "..::tests::test_install_internal",
+      "kind": "test",
+      "lineCount": 666,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/test_install_internal.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/test_install_sh.rs",
+      "module": "..::tests::test_install_sh",
+      "kind": "test",
+      "lineCount": 405,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/test_install_sh.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/test_io.rs",
+      "module": "..::tests::test_io",
+      "kind": "test",
+      "lineCount": 379,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/test_io.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/test_network.rs",
+      "module": "..::tests::test_network",
+      "kind": "test",
+      "lineCount": 682,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/test_network.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-update/tests/test_subprocess.rs",
+      "module": "..::tests::test_subprocess",
+      "kind": "test",
+      "lineCount": 447,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-update/tests/test_subprocess.rs"
+    }
+  ]
+}

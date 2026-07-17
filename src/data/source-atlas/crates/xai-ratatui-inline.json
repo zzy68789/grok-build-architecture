@@ -1,0 +1,540 @@
+{
+  "name": "xai-ratatui-inline",
+  "memberPath": "crates/codegen/xai-ratatui-inline",
+  "manifestPath": "crates/codegen/xai-ratatui-inline/Cargo.toml",
+  "description": "",
+  "role": "支持在现有终端区域内嵌运行 ratatui 组件。",
+  "layer": "交互呈现",
+  "primaryArticle": "tui/event-loop-effects",
+  "relatedArticles": [
+    "tui/event-loop-effects",
+    "tui/chat-view-rendering",
+    "tui/terminal-components-input"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-pager-minimal",
+    "xai-grok-pager-render"
+  ],
+  "fileCount": 10,
+  "productionFileCount": 6,
+  "lineCount": 2568,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/lib.rs",
+      "lineCount": 17,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "lineCount": 1449,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LinkSpan",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 24
+        },
+        {
+          "kind": "struct",
+          "name": "OurFrame",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 74
+        },
+        {
+          "kind": "struct",
+          "name": "Terminal",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 157
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 219
+        },
+        {
+          "kind": "fn",
+          "name": "with_options",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 242
+        },
+        {
+          "kind": "fn",
+          "name": "get_frame",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 273
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/segment.rs",
+      "lineCount": 373,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LineSegment",
+          "path": "crates/codegen/xai-ratatui-inline/src/segment.rs",
+          "line": 8
+        },
+        {
+          "kind": "fn",
+          "name": "split_into_line_segments",
+          "path": "crates/codegen/xai-ratatui-inline/src/segment.rs",
+          "line": 88
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/resize.rs",
+      "lineCount": 358,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "resize_purge_rerender",
+          "path": "crates/codegen/xai-ratatui-inline/src/resize.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "resize_viewport_height",
+          "path": "crates/codegen/xai-ratatui-inline/src/resize.rs",
+          "line": 102
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/scrollback.rs",
+      "lineCount": 235,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "emit_to_scrollback",
+          "path": "crates/codegen/xai-ratatui-inline/src/scrollback.rs",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/common.rs",
+      "lineCount": 136,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "TerminalLike",
+          "path": "crates/codegen/xai-ratatui-inline/src/common.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "with_synchronized_output",
+          "path": "crates/codegen/xai-ratatui-inline/src/common.rs",
+          "line": 76
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "trait",
+      "name": "TerminalLike",
+      "path": "crates/codegen/xai-ratatui-inline/src/common.rs",
+      "line": 15
+    },
+    {
+      "kind": "fn",
+      "name": "with_synchronized_output",
+      "path": "crates/codegen/xai-ratatui-inline/src/common.rs",
+      "line": 76
+    },
+    {
+      "kind": "fn",
+      "name": "resize_purge_rerender",
+      "path": "crates/codegen/xai-ratatui-inline/src/resize.rs",
+      "line": 43
+    },
+    {
+      "kind": "fn",
+      "name": "resize_viewport_height",
+      "path": "crates/codegen/xai-ratatui-inline/src/resize.rs",
+      "line": 102
+    },
+    {
+      "kind": "fn",
+      "name": "emit_to_scrollback",
+      "path": "crates/codegen/xai-ratatui-inline/src/scrollback.rs",
+      "line": 15
+    },
+    {
+      "kind": "struct",
+      "name": "LineSegment",
+      "path": "crates/codegen/xai-ratatui-inline/src/segment.rs",
+      "line": 8
+    },
+    {
+      "kind": "fn",
+      "name": "split_into_line_segments",
+      "path": "crates/codegen/xai-ratatui-inline/src/segment.rs",
+      "line": 88
+    },
+    {
+      "kind": "struct",
+      "name": "LinkSpan",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 24
+    },
+    {
+      "kind": "struct",
+      "name": "OurFrame",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 74
+    },
+    {
+      "kind": "struct",
+      "name": "Terminal",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 157
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 219
+    },
+    {
+      "kind": "fn",
+      "name": "with_options",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 242
+    },
+    {
+      "kind": "fn",
+      "name": "get_frame",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 273
+    },
+    {
+      "kind": "fn",
+      "name": "current_buffer_mut",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 285
+    },
+    {
+      "kind": "const",
+      "name": "fn",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 290
+    },
+    {
+      "kind": "fn",
+      "name": "backend_mut",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 295
+    },
+    {
+      "kind": "fn",
+      "name": "flush",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 307
+    },
+    {
+      "kind": "fn",
+      "name": "set_frame_links",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 328
+    },
+    {
+      "kind": "fn",
+      "name": "flush_with_links",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 370
+    },
+    {
+      "kind": "fn",
+      "name": "resize",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 413
+    },
+    {
+      "kind": "fn",
+      "name": "autoresize",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 458
+    },
+    {
+      "kind": "fn",
+      "name": "draw",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 519
+    },
+    {
+      "kind": "fn",
+      "name": "try_draw",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 594
+    },
+    {
+      "kind": "fn",
+      "name": "hide_cursor",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 641
+    },
+    {
+      "kind": "fn",
+      "name": "show_cursor",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 648
+    },
+    {
+      "kind": "fn",
+      "name": "get_cursor",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 659
+    },
+    {
+      "kind": "fn",
+      "name": "set_cursor",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 666
+    },
+    {
+      "kind": "fn",
+      "name": "get_cursor_position",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 673
+    },
+    {
+      "kind": "fn",
+      "name": "set_cursor_position",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 678
+    },
+    {
+      "kind": "fn",
+      "name": "clear",
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "line": 686
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-ratatui-inline/benches/bench.rs",
+      "module": "..::benches::bench",
+      "kind": "benchmark",
+      "lineCount": 207,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-inline/benches/bench.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/examples/inline.rs",
+      "module": "..::examples::inline",
+      "kind": "example",
+      "lineCount": 311,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-inline/examples/inline.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/common.rs",
+      "module": "common",
+      "kind": "production",
+      "lineCount": 136,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "TerminalLike",
+          "path": "crates/codegen/xai-ratatui-inline/src/common.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "with_synchronized_output",
+          "path": "crates/codegen/xai-ratatui-inline/src/common.rs",
+          "line": 76
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-inline/src/common.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 17,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-inline/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/resize.rs",
+      "module": "resize",
+      "kind": "production",
+      "lineCount": 358,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "resize_purge_rerender",
+          "path": "crates/codegen/xai-ratatui-inline/src/resize.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "resize_viewport_height",
+          "path": "crates/codegen/xai-ratatui-inline/src/resize.rs",
+          "line": 102
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-inline/src/resize.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/scrollback.rs",
+      "module": "scrollback",
+      "kind": "production",
+      "lineCount": 235,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "emit_to_scrollback",
+          "path": "crates/codegen/xai-ratatui-inline/src/scrollback.rs",
+          "line": 15
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-inline/src/scrollback.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/segment.rs",
+      "module": "segment",
+      "kind": "production",
+      "lineCount": 373,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LineSegment",
+          "path": "crates/codegen/xai-ratatui-inline/src/segment.rs",
+          "line": 8
+        },
+        {
+          "kind": "fn",
+          "name": "split_into_line_segments",
+          "path": "crates/codegen/xai-ratatui-inline/src/segment.rs",
+          "line": 88
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-inline/src/segment.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+      "module": "terminal",
+      "kind": "production",
+      "lineCount": 1449,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LinkSpan",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 24
+        },
+        {
+          "kind": "struct",
+          "name": "OurFrame",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 74
+        },
+        {
+          "kind": "struct",
+          "name": "Terminal",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 157
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 219
+        },
+        {
+          "kind": "fn",
+          "name": "with_options",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 242
+        },
+        {
+          "kind": "fn",
+          "name": "get_frame",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 273
+        },
+        {
+          "kind": "fn",
+          "name": "current_buffer_mut",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 285
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 290
+        },
+        {
+          "kind": "fn",
+          "name": "backend_mut",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 295
+        },
+        {
+          "kind": "fn",
+          "name": "flush",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 307
+        },
+        {
+          "kind": "fn",
+          "name": "set_frame_links",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 328
+        },
+        {
+          "kind": "fn",
+          "name": "flush_with_links",
+          "path": "crates/codegen/xai-ratatui-inline/src/terminal.rs",
+          "line": 370
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-inline/src/terminal.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/src/tests.rs",
+      "module": "tests",
+      "kind": "test",
+      "lineCount": 418,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MockTerminal",
+          "path": "crates/codegen/xai-ratatui-inline/src/tests.rs",
+          "line": 12
+        },
+        {
+          "kind": "struct",
+          "name": "MockWriter",
+          "path": "crates/codegen/xai-ratatui-inline/src/tests.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-ratatui-inline/src/tests.rs",
+          "line": 45
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-inline/src/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-ratatui-inline/tests/segment_differential.rs",
+      "module": "..::tests::segment_differential",
+      "kind": "test",
+      "lineCount": 219,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-ratatui-inline/tests/segment_differential.rs"
+    }
+  ]
+}

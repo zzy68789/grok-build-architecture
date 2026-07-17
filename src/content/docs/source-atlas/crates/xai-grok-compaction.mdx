@@ -1,0 +1,24 @@
+---
+title: "xai-grok-compaction"
+description: "实现与传输无关的上下文压缩、摘要提交和失败回退。"
+lastVerified: '2026-07-17'
+coverageKind: appendix
+sourceCrates:
+  - xai-grok-compaction
+sourcePaths:
+  - crates/common/xai-grok-compaction/Cargo.toml
+  - crates/common/xai-grok-compaction/src/lib.rs
+  - crates/common/xai-grok-compaction/src/intra_compaction/compact.rs
+  - crates/common/xai-grok-compaction/src/history/filter.rs
+  - crates/common/xai-grok-compaction/src/code_compaction/compact.rs
+  - crates/common/xai-grok-compaction/src/reminder.rs
+  - crates/common/xai-grok-compaction/src/intra_compaction/config.rs
+  - crates/common/xai-grok-compaction/src/code_compaction/sample.rs
+  - crates/common/xai-grok-compaction/src/select.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import CrateAtlas from '@components/CrateAtlas.astro';
+
+<CrateAtlas crateName="xai-grok-compaction" />

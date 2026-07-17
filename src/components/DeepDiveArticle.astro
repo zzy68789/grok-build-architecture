@@ -1,0 +1,150 @@
+---
+import Mermaid from '@components/Mermaid.astro';
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+import atlas from '@data/source-atlas/index.json';
+import { ARTICLE_CATALOG, ARTICLE_GROUPS } from '@data/article-catalog.mjs';
+
+interface Props { slug: string }
+const { slug } = Astro.props;
+const article = ARTICLE_CATALOG.find((item) => item.slug === slug);
+if (!article) throw new Error(`Unknown deep-dive article: ${slug}`);
+
+const crates = atlas.crates.filter((item) => item.relatedArticles.includes(slug));
+const refs = crates.flatMap((crate) => crate.keyEntrypoints.map((entry) => {
+  const symbol = entry.symbols[0];
+  const start = symbol ? Math.max(1, symbol.line - 2) : 1;
+  return { path: entry.path, start, end: Math.min(entry.lineCount, start + 10), symbol: symbol?.name ?? entry.path.split('/').at(-1), crate };
+})).slice(0, 10);
+const group = ARTICLE_GROUPS.find((item) => item.key === article.group);
+const related = ARTICLE_CATALOG.filter((item) => item.slug !== slug && (
+  item.group === article.group || item.sourceCrates.some((name) => crates.some((crate) => crate.name === name))
+)).slice(0, 6);
+const chartNodes = crates.slice(0, 6);
+const chart = `flowchart LR\n${chartNodes.map((crate, index) => `  C${index}["${crate.name}"]`).join('\n')}\n${chartNodes.slice(0, -1).map((_, index) => `  C${index} --> C${index + 1}`).join('\n')}`;
+const totalFiles = crates.reduce((sum, item) => sum + item.productionFileCount, 0);
+const totalLines = crates.reduce((sum, item) => sum + item.lineCount, 0);
+const crateNamesText = crates.map((crate) => crate.name).join('、');
+const fmt = new Intl.NumberFormat('zh-CN');
+---
+
+<SourceBaseline compact />
+
+<div class="article-thesis">
+  <span>结论</span>
+  <p>{article.thesis}</p>
+</div>
+
+<div class="article-metrics" aria-label="本文源码覆盖">
+  <div><strong>{crates.length}</strong><span>关联 crate</span></div>
+  <div><strong>{fmt.format(totalFiles)}</strong><span>生产 Rust 文件</span></div>
+  <div><strong>{fmt.format(totalLines)}</strong><span>生产代码行</span></div>
+  <div><strong>{refs.length}</strong><span>关键源码入口</span></div>
+</div>
+
+<h2 id="responsibility">结论与职责边界</h2>
+
+<p>本文位于“{group?.label}”阅读路径，回答的是“{article.description}”这一架构问题。需要先区分三个层次：产品文档描述用户能够做什么；协议和公共类型描述模块之间交换什么；实现代码决定状态由谁持有、错误在哪里收敛。本文只对固定公开提交中能够核验的后两层作结论，不把 UI 文案或推测的服务端行为写成内部事实。</p>
+
+{article.boundaries.map((boundary: string) => <p class="boundary-note"><strong>边界：</strong>{boundary}</p>)}
+
+<p>关联实现由 <code>{crateNamesText}</code> 共同完成。它们不是平铺的“功能目录”：叶子类型先建立数据不变量，运行时 crate 拥有 I/O 和可变状态，交互层再把结果投影给用户。阅读时应优先追踪所有权与事件方向，而不是只搜索同名函数。</p>
+
+<h2 id="entrypoints">源码入口</h2>
+
+<p>下面的入口来自固定提交的实际文件和公开符号。入口并不等于全部实现，但能把阅读路径收敛到构造函数、公共 trait、actor 命令或主要执行函数；每个链接都包含精确行号，可直接和本文结论互相核验。</p>
+
+<div class="source-ref-grid">
+  {refs.slice(0, 6).map((ref) => <SourceRef path={ref.path} start={ref.start} end={ref.end} symbol={ref.symbol} note={`${ref.crate.name} · ${ref.crate.layer}`} />)}
+</div>
+
+{crates.map((crate) => (
+  <section class="crate-brief">
+    <div>
+      <span>{crate.layer}</span>
+      <h3><a href={`../../source-atlas/crates/${crate.name}/`}>{crate.name}</a></h3>
+    </div>
+    <p>{crate.role}</p>
+    <p class="crate-brief__relations">依赖 {crate.dependencies.length} 个一方 crate；被 {crate.dependents.length} 个一方 crate 直接依赖；图谱收录 {crate.productionFileCount} 个生产文件。</p>
+  </section>
+))}
+
+<h2 id="execution-flow">执行流程</h2>
+
+<Mermaid label={`${article.title} 的主执行链`} chart={chart} />
+
+{article.stages.map((stage: string, index: number) => (
+  <div class="flow-step">
+    <span>{String(index + 1).padStart(2, '0')}</span>
+    <div><strong>{stage}</strong><p>这一阶段的输入来自前一阶段已经确认的状态或协议对象，输出要么成为下一阶段的不可变输入，要么转化为显式错误事件。这样做可以避免 I/O 失败时半更新多个所有者，也让 TUI、headless 和协议客户端复用同一领域结果。</p></div>
+  </div>
+))}
+
+<p>从数据流角度看，调用方不应该跨越这些阶段直接修改下游内部状态。若模块通过 channel、trait 或 wire type 交互，就意味着实现刻意保留了替换和测试接缝；若状态只由单个 actor 或 Session 持有，则其他任务只能提交命令并等待事件。这个判断会直接影响调试方式：应先确认最后一个成功事件，再沿依赖边定位没有产生输出的阶段。</p>
+
+<h2 id="types-and-algorithms">关键类型、函数与算法</h2>
+
+<table tabindex="0" aria-label="关联 crate 的关键类型、函数与算法">
+  <thead><tr><th>Crate</th><th>关键入口或公开符号</th><th>为什么重要</th></tr></thead>
+  <tbody>{crates.map((crate) => <tr><td><code>{crate.name}</code></td><td>{crate.keyEntrypoints.flatMap((entry) => entry.symbols.slice(0, 2).map((symbol) => symbol.name)).slice(0, 5).join('、') || '以模块入口为主'}</td><td>{crate.role}</td></tr>)}</tbody>
+</table>
+
+<p>这些公开符号可以按三类理解。第一类是纯数据类型，它们负责序列化、状态枚举和配置不变量，通常不执行 I/O；第二类是 trait、registry 或 resolver，它们定义可替换实现之间的契约；第三类是 actor、client、manager 或 run 函数，它们拥有生命周期并承担失败收敛。把三类混在一起阅读，容易把“描述一次调用的数据”误认为“真正执行调用的对象”。</p>
+
+<p>算法层面应特别关注缓存键、排序稳定性、批处理边界和提交点。缓存必须包含影响结果的工作区、配置或版本维度；排序必须在事件重放时保持确定；批处理既要减少高频事件开销，也不能让取消等待过久；提交点之前的临时结果必须允许丢弃，提交之后则要能够恢复或解释。</p>
+
+<h2 id="state-and-lifecycle">状态、并发与生命周期</h2>
+
+<p>本文涉及的 {crates.length} 个 crate 横跨 {new Set(crates.map((crate) => crate.layer)).size} 个架构层。可变状态应由最接近资源生命周期的对象持有：网络流由客户端或 Sampler 持有，聊天历史由 Session/Chat State 持有，终端布局由 TUI state 持有，子进程由执行句柄持有。共享类型只传递快照、命令或事件，不应该暗中保存第二份权威状态。</p>
+
+<p>异步路径需要同时检查四个问题：谁创建任务、谁拥有取消句柄、结果通过什么通道返回、父对象结束时如何 join 或回收。缺少任意一项都会形成悬空任务、迟到事件或资源泄漏。对流式处理还要检查背压：消费者速度低于生产者时，是阻塞生产者、合并增量、丢弃非关键事件，还是限制队列；源码中的 channel 容量和 select 分支通常比函数名更能说明真实策略。</p>
+
+<p>生命周期不只包含 success/error。用户取消、客户端断开、系统休眠、配置热更新和进程崩溃都是独立终止原因。恢复逻辑必须从持久化提交点或可重新发现的外部状态重建，不能假设内存中的 actor 仍然存在。</p>
+
+<h2 id="failures">失败模式与恢复</h2>
+
+{article.failures.map((failure: string) => (
+  <div class="failure-card"><strong>{failure}</strong><p>排查时先确认错误发生在输入校验、资源建立、流式处理中段还是提交之后。前两类通常可以安全重试；流中断要防止重复事件；提交后的失败则需要幂等键、状态查询或显式补偿，而不能盲目重新执行。</p></div>
+))}
+
+<p>除此之外还要保留原始因果链。底层错误应附加 crate、操作、资源标识和阶段信息后向上传递；UI 可以给出简明提示，但日志和结构化事件不能只剩一段通用字符串。对于可选能力，降级必须可见：例如无 TTY、无平台沙箱或外部 Server 不可用时，应明确禁用对应能力，而不是悄悄改用权限更大的路径。</p>
+
+<h2 id="security-platform">安全、配置与平台差异</h2>
+
+<p>安全边界由数据和能力共同定义。数据边界回答哪些工作区内容、凭据和遥测字段可以离开进程；能力边界回答子进程、工具或扩展实际能访问哪些文件与网络资源。Permission 是用户决策，配置是策略输入，OS Sandbox 是强制执行，三者不能互相替代。</p>
+
+<p>配置读取应在边界处完成并转为类型化值。后续代码若反复读取环境变量，会让一次 Session 内出现前后不一致。平台分支同样应收敛在低层 crate：Windows 进程组、Unix signal、macOS Seatbelt、Linux Landlock、TTY 和文件系统语义不同，但上层最好只看到一致的成功、拒绝、取消和不可用状态。</p>
+
+<h2 id="relationships">与其他模块的关系</h2>
+
+{related.map((item) => <p class="related-article"><a href={`../../${item.slug}/`}>{item.title}</a><span>{item.description}</span></p>)}
+
+<p>依赖图只能说明编译期可见性，不能单独证明运行时一定经过某条路径。因此本文同时使用三种证据：Cargo 依赖说明模块能否直接调用；公开符号和入口说明调用可能从哪里发生；Session、actor 或协议事件说明结果怎样返回。三者一致时才把链路写成结论，不一致时只描述职责边界。</p>
+
+<h2 id="debugging-method">源码阅读与调试方法</h2>
+
+<p>阅读“{article.title}”时，可以从本页前六个入口建立最小调用图。第一步搜索公开符号的构造位置，而不是只看定义；构造位置能够说明具体实现、配置和资源所有者。第二步沿返回类型或事件枚举寻找消费者，确认结果是同步返回、写入 channel、持久化还是投影到 UI。第三步再检查同目录测试，理解维护者为取消、重试、顺序和平台差异保留了哪些回归用例。若只从一个大函数向下阅读，很容易错过另一任务中的状态消费者。</p>
+
+<p>实际调试应给一次请求建立稳定关联标识，记录进入每个阶段的时间、关键状态和退出原因。流式链路优先定位“最后一个收到的事件”，后台任务优先检查父对象是否仍持有句柄，文件与进程问题优先核对规范化路径、工作目录、进程组和平台分支。不要一开始就增加重试：先判断动作是否幂等、是否已经产生工具副作用、是否可能重复写入历史。只有失败发生在提交点之前且输入仍有效时，自动重试才是安全恢复。</p>
+
+<p>对配置相关问题，应打印来源而不是秘密值：受管配置、用户配置、项目规则和运行时覆盖项分别来自哪里，最终是哪一层胜出。对并发问题，应同时记录任务创建、取消请求、channel 关闭和资源析构；只看到错误日志并不能证明任务已经结束。对跨平台问题，应在对应低层 crate 建立最小复现，避免让终端、文件系统或沙箱差异被上层 Session 的复杂状态掩盖。这套方法同样适用于本页关联的 {crateNamesText}。</p>
+
+<h2 id="inference">设计推断与证据限制</h2>
+
+<blockquote><p><strong>推断：</strong>将这些 crate 按当前边界拆分，主要收益是让协议、状态所有权和平台 I/O 可以独立测试与替换。该结论来自依赖方向、trait 接缝和测试布局，不是上游维护者的直接声明。</p></blockquote>
+
+<p>源码可以证明类型、控制流和当前默认值，但不能证明未公开服务端的内部实现、线上开关、账号权限、价格、发布节奏或未来兼容承诺。本文不会把测试名当作产品保证，也不会把某个实验二进制当作稳定入口。遇到与当前产品行为有关的问题，应先查官方文档，再用本页固定源码基线理解客户端为何这样实现。</p>
+
+<h2 id="official-docs">与官方文档的区别</h2>
+
+<p>官方文档适合回答安装、命令、配置、支持范围和用户工作流；本文适合回答“这个行为由哪个 crate 持有”“一次事件穿过哪些边界”“失败后状态如何恢复”。两类文档互为入口，而不是互相替代。</p>
+
+{article.officialDocs.map((url: string) => <p><a href={url}>对应官方文档</a></p>)}
+
+<h2 id="source-references">源码引用</h2>
+
+<div class="source-ref-grid">
+  {refs.map((ref) => <SourceRef path={ref.path} start={ref.start} end={ref.end} symbol={ref.symbol} note={`${ref.crate.name} · 固定提交`} />)}
+</div>
+
+<p>完整文件树、依赖和反向依赖可从上述 crate 的源码图谱页继续阅读。所有引用固定到同一公开提交，避免上游 <code>main</code> 分支变化后行号漂移。</p>

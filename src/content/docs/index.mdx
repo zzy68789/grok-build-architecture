@@ -1,8 +1,15 @@
 ---
 title: Grok Build Architecture
-description: 从公开 Rust 源码理解 Grok Build 的运行时、工具、安全、上下文与扩展机制。
+description: 覆盖 73 个一方 crate 与全部 Rust 文件的 Grok Build 非官方中文源码架构白皮书。
 template: splash
 lastVerified: '2026-07-17'
+coverageKind: overview
+sourceCrates:
+  - xai-grok-shell
+  - xai-grok-pager
+  - xai-grok-sampler
+  - xai-grok-tools
+  - xai-grok-workspace
 sourcePaths:
   - README.md
   - Cargo.toml
@@ -12,44 +19,44 @@ officialDocs:
 
 import HomeHero from '@components/HomeHero.astro';
 import Mermaid from '@components/Mermaid.astro';
+import CoverageOverview from '@components/CoverageOverview.astro';
 
 <HomeHero />
 
-## 这不是另一份使用手册
+## 从 15 篇文章扩展到全源码图谱
 
-官方文档已经准确回答“如何安装、配置和使用 Grok Build”。本站换一个观察方向：从公开 Rust 源码追踪输入如何变成 `Turn`，模型事件如何落入 TUI，工具调用如何越过权限与沙箱边界，以及状态如何被持久化、压缩和恢复。
+本站不是另一份安装与命令手册，而是一套基于固定公开提交的 Grok Build 源码架构白皮书。内容由 **48 篇机制文章、73 个 crate 图谱页面和 5 个工程附录**组成：文章解释调用链、状态、并发、失败恢复与安全边界；图谱保证每个一方 crate 和每个 Rust 文件都有可追踪入口。
 
-每篇文章都锁定同一个公开提交，并把关键判断连接到精确行号。源码没有直接表达的设计意图会标注为**推断**；无法由公开代码证明的产品行为不会写成事实。
+<CoverageOverview />
 
-<Mermaid label="一次请求的阅读地图" chart={`flowchart LR
-  U[用户输入] --> UI[TUI / stdio / serve]
-  UI --> L[Leader 与 Session]
-  L --> A[Agentic Loop]
-  A --> M[Sampler / Model]
-  M -->|tool call| T[Tool Registry]
-  T --> P[Permission / Sandbox]
-  P --> R[结果与持久化]
-  R --> A
-  A --> UI`} />
+“全覆盖”不等于逐行复述一百多万行代码。本站采用三层证据：深度文章解释机制，crate 页面解释职责与依赖，文件索引提供固定提交永久链接。测试、基准、示例、Fuzz、build、prod 与第三方目录不会混入生产路径，但会在附录中保留并说明边界。
 
-## 建议阅读顺序
+<Mermaid label="白皮书的三层阅读模型" chart={`flowchart LR
+  Q[架构问题] --> A[48 篇深度文章]
+  A --> C[73 个 Crate 图谱]
+  C --> F[完整 Rust 文件索引]
+  F --> S[固定提交源码行]
+  A --> O[官方产品文档]
+  C --> T[测试与工程附录]`} />
+
+## 推荐阅读路径
 
 <div class="reading-path">
-  <a class="reading-link" href="./introduction/architecture-overview/"><small>PATH 01</small><strong>先建立全景</strong><span>workspace、crate 与端到端数据流</span></a>
-  <a class="reading-link" href="./runtime/agentic-loop/"><small>PATH 02</small><strong>再进入运行时</strong><span>Turn、Sampler 与流式事件</span></a>
-  <a class="reading-link" href="./safety/permission-plan-sandbox/"><small>PATH 03</small><strong>最后看边界</strong><span>权限、Plan Mode 与 OS Sandbox</span></a>
+  <a class="reading-link" href="./introduction/architecture-overview/"><small>PATH 01</small><strong>建立系统全景</strong><span>workspace、进程、Session 与端到端数据流</span></a>
+  <a class="reading-link" href="./runtime/agentic-loop/"><small>PATH 02</small><strong>进入运行主链</strong><span>Turn、Sampler、工具回路与终止条件</span></a>
+  <a class="reading-link" href="./source-atlas/"><small>PATH 03</small><strong>按源码定位</strong><span>搜索 73 个 crate、职责、入口和完整文件树</span></a>
 </div>
 
-如果你正在定位具体模块，可以直接使用顶部搜索：`Leader`、`compaction`、`worktree`、`MCP` 等英文符号均保留为源码命名，中文概念也可检索。
+如果你正在排查具体模块，可以直接使用顶部搜索。中文概念、crate 名、公开符号和源码路径都会进入 Pagefind 本地索引；例如 `compaction`、`xai-grok-sampler`、`run_loop.rs`、`沙箱` 都能定位到对应文章或图谱页。
 
-## 源码与官方文档的分工
+## 本站与官方文档的分工
 
 | 你想解决的问题 | 首选入口 |
 | --- | --- |
-| 安装、命令、配置项、扩展用法 | [Grok Build 官方文档](https://docs.x.ai/build/overview) |
-| 类型之间如何协作、事件怎样流动 | 本站架构文章 |
-| 某项行为在当前版本是否真实存在 | 本站固定行号 + 上游源码 |
-| 最新版本是否已经变化 | 上游主分支与官方发布说明 |
+| 安装、命令、配置、账号与当前产品支持 | [Grok Build 官方文档](https://docs.x.ai/build/overview) |
+| 类型如何协作、事件怎样流动、失败怎样恢复 | 本站 48 篇架构文章 |
+| 某个 crate 有哪些入口、依赖和调用者 | [源码图谱](./source-atlas/) |
+| 某个 Rust 文件在固定版本是否存在 | [文件与模块索引](./appendices/file-module-index/) |
+| 上游基线如何升级而不让引用漂移 | [覆盖报告与升级指南](./appendices/coverage-and-upgrade/) |
 
-本站是非官方社区学习项目，不代表 xAI；所有源码链接均指向固定快照，而不是会漂移的 `main` 分支。
-
+源码没有直接表达的设计意图会标注为**推断**。无法由公开代码证明的服务端实现、线上开关、价格和未来产品行为不会写成事实。所有 GitHub 链接固定到提交 `8adf9013a0929e5c7f1d4e849492d2387837a28d`，而不是会持续移动的 `main`。

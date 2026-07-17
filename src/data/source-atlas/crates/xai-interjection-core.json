@@ -1,0 +1,367 @@
+{
+  "name": "xai-interjection-core",
+  "memberPath": "crates/common/xai-interjection-core",
+  "manifestPath": "crates/common/xai-interjection-core/Cargo.toml",
+  "description": "Shared mid-turn interjection buffer and formatting for the client and server agent loops",
+  "role": "提供 mid-turn interjection 缓冲、顺序控制和格式化。",
+  "layer": "会话运行时",
+  "primaryArticle": "runtime/prompt-queue-interjection",
+  "relatedArticles": [
+    "runtime/prompt-queue-interjection",
+    "runtime/agentic-loop"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-shell",
+    "xai-grok-tools"
+  ],
+  "fileCount": 4,
+  "productionFileCount": 4,
+  "lineCount": 324,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-interjection-core/src/lib.rs",
+      "lineCount": 8,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "lineCount": 179,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "EventQueue",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "push",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "push_capped",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-interjection-core/src/buffer.rs",
+      "lineCount": 76,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PendingInterjection",
+          "path": "crates/common/xai-interjection-core/src/buffer.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "FormattedInterjection",
+          "path": "crates/common/xai-interjection-core/src/buffer.rs",
+          "line": 16
+        },
+        {
+          "kind": "type",
+          "name": "InterjectionBuffer",
+          "path": "crates/common/xai-interjection-core/src/buffer.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "drain_formatted",
+          "path": "crates/common/xai-interjection-core/src/buffer.rs",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-interjection-core/src/format.rs",
+      "lineCount": 61,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "LARGE_PROMPT_THRESHOLD",
+          "path": "crates/common/xai-interjection-core/src/format.rs",
+          "line": 2
+        },
+        {
+          "kind": "fn",
+          "name": "user_query",
+          "path": "crates/common/xai-interjection-core/src/format.rs",
+          "line": 5
+        },
+        {
+          "kind": "fn",
+          "name": "format_interjection",
+          "path": "crates/common/xai-interjection-core/src/format.rs",
+          "line": 16
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "PendingInterjection",
+      "path": "crates/common/xai-interjection-core/src/buffer.rs",
+      "line": 9
+    },
+    {
+      "kind": "struct",
+      "name": "FormattedInterjection",
+      "path": "crates/common/xai-interjection-core/src/buffer.rs",
+      "line": 16
+    },
+    {
+      "kind": "type",
+      "name": "InterjectionBuffer",
+      "path": "crates/common/xai-interjection-core/src/buffer.rs",
+      "line": 24
+    },
+    {
+      "kind": "fn",
+      "name": "drain_formatted",
+      "path": "crates/common/xai-interjection-core/src/buffer.rs",
+      "line": 30
+    },
+    {
+      "kind": "struct",
+      "name": "EventQueue",
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "line": 9
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "line": 28
+    },
+    {
+      "kind": "fn",
+      "name": "push",
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "line": 35
+    },
+    {
+      "kind": "fn",
+      "name": "push_capped",
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "line": 40
+    },
+    {
+      "kind": "fn",
+      "name": "len",
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "line": 49
+    },
+    {
+      "kind": "fn",
+      "name": "is_empty",
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "line": 53
+    },
+    {
+      "kind": "fn",
+      "name": "drain_matching",
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "line": 59
+    },
+    {
+      "kind": "fn",
+      "name": "drain_all",
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "line": 68
+    },
+    {
+      "kind": "fn",
+      "name": "clear",
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "line": 73
+    },
+    {
+      "kind": "fn",
+      "name": "snapshot",
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "line": 84
+    },
+    {
+      "kind": "const",
+      "name": "LARGE_PROMPT_THRESHOLD",
+      "path": "crates/common/xai-interjection-core/src/format.rs",
+      "line": 2
+    },
+    {
+      "kind": "fn",
+      "name": "user_query",
+      "path": "crates/common/xai-interjection-core/src/format.rs",
+      "line": 5
+    },
+    {
+      "kind": "fn",
+      "name": "format_interjection",
+      "path": "crates/common/xai-interjection-core/src/format.rs",
+      "line": 16
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-interjection-core/src/buffer.rs",
+      "module": "buffer",
+      "kind": "production",
+      "lineCount": 76,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PendingInterjection",
+          "path": "crates/common/xai-interjection-core/src/buffer.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "FormattedInterjection",
+          "path": "crates/common/xai-interjection-core/src/buffer.rs",
+          "line": 16
+        },
+        {
+          "kind": "type",
+          "name": "InterjectionBuffer",
+          "path": "crates/common/xai-interjection-core/src/buffer.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "drain_formatted",
+          "path": "crates/common/xai-interjection-core/src/buffer.rs",
+          "line": 30
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-interjection-core/src/buffer.rs"
+    },
+    {
+      "path": "crates/common/xai-interjection-core/src/events.rs",
+      "module": "events",
+      "kind": "production",
+      "lineCount": 179,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "EventQueue",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "push",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "push_capped",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "drain_matching",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "drain_all",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "clear",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "snapshot",
+          "path": "crates/common/xai-interjection-core/src/events.rs",
+          "line": 84
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-interjection-core/src/events.rs"
+    },
+    {
+      "path": "crates/common/xai-interjection-core/src/format.rs",
+      "module": "format",
+      "kind": "production",
+      "lineCount": 61,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "LARGE_PROMPT_THRESHOLD",
+          "path": "crates/common/xai-interjection-core/src/format.rs",
+          "line": 2
+        },
+        {
+          "kind": "fn",
+          "name": "user_query",
+          "path": "crates/common/xai-interjection-core/src/format.rs",
+          "line": 5
+        },
+        {
+          "kind": "fn",
+          "name": "format_interjection",
+          "path": "crates/common/xai-interjection-core/src/format.rs",
+          "line": 16
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-interjection-core/src/format.rs"
+    },
+    {
+      "path": "crates/common/xai-interjection-core/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 8,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-interjection-core/src/lib.rs"
+    }
+  ]
+}

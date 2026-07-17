@@ -1,0 +1,334 @@
+{
+  "name": "xai-grok-workspace-client",
+  "memberPath": "crates/codegen/xai-grok-workspace-client",
+  "manifestPath": "crates/codegen/xai-grok-workspace-client/Cargo.toml",
+  "description": "Lightweight typed client for hub-proxied workspace.* RPCs (shared by xai-grok-shell proxy mode and other consumers)",
+  "role": "提供经 Hub 代理调用远程 workspace RPC 的类型化客户端。",
+  "layer": "工具与工作区",
+  "primaryArticle": "workspace/remote-client-wire-types",
+  "relatedArticles": [
+    "workspace/remote-client-wire-types"
+  ],
+  "dependencies": [
+    "xai-computer-hub-sdk",
+    "xai-grok-workspace-types",
+    "xai-tool-protocol",
+    "xai-tool-runtime",
+    "xai-tool-types"
+  ],
+  "dependents": [
+    "xai-grok-workspace"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 811,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "lineCount": 811,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "WorkspaceClientError",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "consume_stream_terminal",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "is_transport_fatal",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 113
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceClient",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "with_connected_flag",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 156
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "WorkspaceClientError",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 65
+    },
+    {
+      "kind": "fn",
+      "name": "consume_stream_terminal",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 89
+    },
+    {
+      "kind": "fn",
+      "name": "is_transport_fatal",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 113
+    },
+    {
+      "kind": "struct",
+      "name": "WorkspaceClient",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 133
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 147
+    },
+    {
+      "kind": "fn",
+      "name": "with_connected_flag",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 156
+    },
+    {
+      "kind": "fn",
+      "name": "with_deadline",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 164
+    },
+    {
+      "kind": "fn",
+      "name": "harness",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 168
+    },
+    {
+      "kind": "fn",
+      "name": "is_connected",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 172
+    },
+    {
+      "kind": "fn",
+      "name": "mark_disconnected",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 175
+    },
+    {
+      "kind": "fn",
+      "name": "mark_connected",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 179
+    },
+    {
+      "kind": "fn",
+      "name": "rpc_raw",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 184
+    },
+    {
+      "kind": "fn",
+      "name": "rpc",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 225
+    },
+    {
+      "kind": "fn",
+      "name": "info",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 241
+    },
+    {
+      "kind": "fn",
+      "name": "git_status",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 249
+    },
+    {
+      "kind": "fn",
+      "name": "discover_skills",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 252
+    },
+    {
+      "kind": "fn",
+      "name": "discover_agents_md",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 255
+    },
+    {
+      "kind": "fn",
+      "name": "git_status_ext",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 258
+    },
+    {
+      "kind": "fn",
+      "name": "git_files",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 264
+    },
+    {
+      "kind": "fn",
+      "name": "git_diff",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 270
+    },
+    {
+      "kind": "fn",
+      "name": "git_stage",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 273
+    },
+    {
+      "kind": "fn",
+      "name": "git_stage_content",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 276
+    },
+    {
+      "kind": "fn",
+      "name": "git_unstage",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 282
+    },
+    {
+      "kind": "fn",
+      "name": "git_discard",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 285
+    },
+    {
+      "kind": "fn",
+      "name": "git_commit",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 288
+    },
+    {
+      "kind": "fn",
+      "name": "git_checkout",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 294
+    },
+    {
+      "kind": "fn",
+      "name": "git_stash",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 297
+    },
+    {
+      "kind": "fn",
+      "name": "git_info",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 300
+    },
+    {
+      "kind": "fn",
+      "name": "git_branches",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 303
+    },
+    {
+      "kind": "fn",
+      "name": "git_resolve_root",
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "line": 309
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 811,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "WorkspaceClientError",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "consume_stream_terminal",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "is_transport_fatal",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 113
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceClient",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "with_connected_flag",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 156
+        },
+        {
+          "kind": "fn",
+          "name": "with_deadline",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 164
+        },
+        {
+          "kind": "fn",
+          "name": "harness",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 168
+        },
+        {
+          "kind": "fn",
+          "name": "is_connected",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 172
+        },
+        {
+          "kind": "fn",
+          "name": "mark_disconnected",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 175
+        },
+        {
+          "kind": "fn",
+          "name": "mark_connected",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 179
+        },
+        {
+          "kind": "fn",
+          "name": "rpc_raw",
+          "path": "crates/codegen/xai-grok-workspace-client/src/lib.rs",
+          "line": 184
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace-client/src/lib.rs"
+    }
+  ]
+}

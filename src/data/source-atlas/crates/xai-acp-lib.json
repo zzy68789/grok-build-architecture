@@ -1,0 +1,783 @@
+{
+  "name": "xai-acp-lib",
+  "memberPath": "crates/codegen/xai-acp-lib",
+  "manifestPath": "crates/codegen/xai-acp-lib/Cargo.toml",
+  "description": "",
+  "role": "会话运行时层的一方 crate；上游清单描述为：未提供 description，职责由公开模块和依赖关系归纳。",
+  "layer": "会话运行时",
+  "primaryArticle": "runtime/leader-session-acp",
+  "relatedArticles": [
+    "runtime/leader-session-acp"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-pager-bin",
+    "xai-grok-shell",
+    "xai-grok-test-support",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 8,
+  "productionFileCount": 8,
+  "lineCount": 2285,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-acp-lib/src/lib.rs",
+      "lineCount": 31,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "lineCount": 696,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AcpGatewayReceiver",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "with_tracing",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "with_spawn_fn",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "with_on_meta",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 61
+        },
+        {
+          "kind": "struct",
+          "name": "AcpGatewaySender",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 70
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/message.rs",
+      "lineCount": 635,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "AcpSide",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 16
+        },
+        {
+          "kind": "trait",
+          "name": "AcpMethod",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 44
+        },
+        {
+          "kind": "trait",
+          "name": "AcpRequest",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 49
+        },
+        {
+          "kind": "struct",
+          "name": "AcpArgsGeneric",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 54
+        },
+        {
+          "kind": "type",
+          "name": "AcpArgs",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 80
+        },
+        {
+          "kind": "type",
+          "name": "AcpArgsBox",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 82
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/line_reader.rs",
+      "lineCount": 304,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LineBufferedRead",
+          "path": "crates/codegen/xai-acp-lib/src/line_reader.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_local",
+          "path": "crates/codegen/xai-acp-lib/src/line_reader.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-acp-lib/src/line_reader.rs",
+          "line": 62
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/stdin_reader.rs",
+      "lineCount": 217,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "spawn_stdin_line_reader",
+          "path": "crates/codegen/xai-acp-lib/src/stdin_reader.rs",
+          "line": 78
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/normalize.rs",
+      "lineCount": 182,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "normalize_json_line",
+          "path": "crates/codegen/xai-acp-lib/src/normalize.rs",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "lineCount": 116,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "AcpResult",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 6
+        },
+        {
+          "kind": "type",
+          "name": "AcpRxo",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 8
+        },
+        {
+          "kind": "type",
+          "name": "AcpTxo",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 9
+        },
+        {
+          "kind": "type",
+          "name": "AcpClientRx",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 11
+        },
+        {
+          "kind": "type",
+          "name": "AcpClientTx",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 12
+        },
+        {
+          "kind": "type",
+          "name": "AcpAgentRx",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+      "lineCount": 104,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AcpChannel",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 17
+        },
+        {
+          "kind": "type",
+          "name": "AcpClientChannel",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 23
+        },
+        {
+          "kind": "type",
+          "name": "AcpAgentChannel",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "acp_channels",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "acp_send",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 34
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "AcpChannel",
+      "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+      "line": 11
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+      "line": 17
+    },
+    {
+      "kind": "type",
+      "name": "AcpClientChannel",
+      "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+      "line": 23
+    },
+    {
+      "kind": "type",
+      "name": "AcpAgentChannel",
+      "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+      "line": 25
+    },
+    {
+      "kind": "fn",
+      "name": "acp_channels",
+      "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+      "line": 28
+    },
+    {
+      "kind": "fn",
+      "name": "acp_send",
+      "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+      "line": 34
+    },
+    {
+      "kind": "type",
+      "name": "AcpResult",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 6
+    },
+    {
+      "kind": "type",
+      "name": "AcpRxo",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 8
+    },
+    {
+      "kind": "type",
+      "name": "AcpTxo",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 9
+    },
+    {
+      "kind": "type",
+      "name": "AcpClientRx",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 11
+    },
+    {
+      "kind": "type",
+      "name": "AcpClientTx",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 12
+    },
+    {
+      "kind": "type",
+      "name": "AcpAgentRx",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 14
+    },
+    {
+      "kind": "type",
+      "name": "AcpAgentTx",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 15
+    },
+    {
+      "kind": "fn",
+      "name": "acp_internal_error",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 17
+    },
+    {
+      "kind": "enum",
+      "name": "AcpChannelFailure",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 27
+    },
+    {
+      "kind": "fn",
+      "name": "acp_channel_failure_error",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 63
+    },
+    {
+      "kind": "fn",
+      "name": "acp_channel_failure",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 73
+    },
+    {
+      "kind": "fn",
+      "name": "compact_json",
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "line": 86
+    },
+    {
+      "kind": "struct",
+      "name": "AcpGatewayReceiver",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 22
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "with_tracing",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 43
+    },
+    {
+      "kind": "fn",
+      "name": "with_spawn_fn",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 52
+    },
+    {
+      "kind": "fn",
+      "name": "with_on_meta",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 61
+    },
+    {
+      "kind": "struct",
+      "name": "AcpGatewaySender",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 70
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 85
+    },
+    {
+      "kind": "fn",
+      "name": "tx",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 89
+    },
+    {
+      "kind": "fn",
+      "name": "with_tracing",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 93
+    },
+    {
+      "kind": "fn",
+      "name": "acp_gateway",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 99
+    },
+    {
+      "kind": "type",
+      "name": "AcpAgentGatewayReceiver",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 106
+    },
+    {
+      "kind": "type",
+      "name": "AcpAgentGatewaySender",
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "line": 107
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+      "module": "channel",
+      "kind": "production",
+      "lineCount": 104,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AcpChannel",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 17
+        },
+        {
+          "kind": "type",
+          "name": "AcpClientChannel",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 23
+        },
+        {
+          "kind": "type",
+          "name": "AcpAgentChannel",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "acp_channels",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "acp_send",
+          "path": "crates/codegen/xai-acp-lib/src/channel.rs",
+          "line": 34
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-acp-lib/src/channel.rs"
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/common.rs",
+      "module": "common",
+      "kind": "production",
+      "lineCount": 116,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "AcpResult",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 6
+        },
+        {
+          "kind": "type",
+          "name": "AcpRxo",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 8
+        },
+        {
+          "kind": "type",
+          "name": "AcpTxo",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 9
+        },
+        {
+          "kind": "type",
+          "name": "AcpClientRx",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 11
+        },
+        {
+          "kind": "type",
+          "name": "AcpClientTx",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 12
+        },
+        {
+          "kind": "type",
+          "name": "AcpAgentRx",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 14
+        },
+        {
+          "kind": "type",
+          "name": "AcpAgentTx",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "acp_internal_error",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 17
+        },
+        {
+          "kind": "enum",
+          "name": "AcpChannelFailure",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "acp_channel_failure_error",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "acp_channel_failure",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "compact_json",
+          "path": "crates/codegen/xai-acp-lib/src/common.rs",
+          "line": 86
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-acp-lib/src/common.rs"
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+      "module": "gateway",
+      "kind": "production",
+      "lineCount": 696,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AcpGatewayReceiver",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "with_tracing",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "with_spawn_fn",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "with_on_meta",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 61
+        },
+        {
+          "kind": "struct",
+          "name": "AcpGatewaySender",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "tx",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "with_tracing",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "acp_gateway",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 99
+        },
+        {
+          "kind": "type",
+          "name": "AcpAgentGatewayReceiver",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 106
+        },
+        {
+          "kind": "type",
+          "name": "AcpAgentGatewaySender",
+          "path": "crates/codegen/xai-acp-lib/src/gateway.rs",
+          "line": 107
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-acp-lib/src/gateway.rs"
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 31,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-acp-lib/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/line_reader.rs",
+      "module": "line_reader",
+      "kind": "production",
+      "lineCount": 304,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LineBufferedRead",
+          "path": "crates/codegen/xai-acp-lib/src/line_reader.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_local",
+          "path": "crates/codegen/xai-acp-lib/src/line_reader.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-acp-lib/src/line_reader.rs",
+          "line": 62
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-acp-lib/src/line_reader.rs"
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/message.rs",
+      "module": "message",
+      "kind": "production",
+      "lineCount": 635,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "AcpSide",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 16
+        },
+        {
+          "kind": "trait",
+          "name": "AcpMethod",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 44
+        },
+        {
+          "kind": "trait",
+          "name": "AcpRequest",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 49
+        },
+        {
+          "kind": "struct",
+          "name": "AcpArgsGeneric",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 54
+        },
+        {
+          "kind": "type",
+          "name": "AcpArgs",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 80
+        },
+        {
+          "kind": "type",
+          "name": "AcpArgsBox",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "boxed",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 85
+        },
+        {
+          "kind": "trait",
+          "name": "StorageMarker",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 110
+        },
+        {
+          "kind": "struct",
+          "name": "Unboxed",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 115
+        },
+        {
+          "kind": "struct",
+          "name": "Boxed",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 117
+        },
+        {
+          "kind": "enum",
+          "name": "AcpClientMessageGeneric",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 180
+        },
+        {
+          "kind": "type",
+          "name": "AcpClientMessage",
+          "path": "crates/codegen/xai-acp-lib/src/message.rs",
+          "line": 195
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-acp-lib/src/message.rs"
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/normalize.rs",
+      "module": "normalize",
+      "kind": "production",
+      "lineCount": 182,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "normalize_json_line",
+          "path": "crates/codegen/xai-acp-lib/src/normalize.rs",
+          "line": 37
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-acp-lib/src/normalize.rs"
+    },
+    {
+      "path": "crates/codegen/xai-acp-lib/src/stdin_reader.rs",
+      "module": "stdin_reader",
+      "kind": "production",
+      "lineCount": 217,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "spawn_stdin_line_reader",
+          "path": "crates/codegen/xai-acp-lib/src/stdin_reader.rs",
+          "line": 78
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-acp-lib/src/stdin_reader.rs"
+    }
+  ]
+}

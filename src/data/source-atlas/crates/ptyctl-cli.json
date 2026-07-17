@@ -1,0 +1,429 @@
+{
+  "name": "ptyctl-cli",
+  "memberPath": "crates/codegen/ptyctl-cli",
+  "manifestPath": "crates/codegen/ptyctl-cli/Cargo.toml",
+  "description": "CLI for ptyctl headless PTY controller",
+  "role": "控制无头伪终端、屏幕状态和子进程生命周期。",
+  "layer": "交互呈现",
+  "primaryArticle": "tui/pty-tty-minimal-client",
+  "relatedArticles": [
+    "tui/pty-tty-minimal-client"
+  ],
+  "dependencies": [
+    "ptyctl"
+  ],
+  "dependents": [],
+  "fileCount": 6,
+  "productionFileCount": 6,
+  "lineCount": 851,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/ptyctl-cli/src/main.rs",
+      "lineCount": 175,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+      "lineCount": 228,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Cli",
+          "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+          "line": 12
+        },
+        {
+          "kind": "enum",
+          "name": "Commands",
+          "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+          "line": 18
+        },
+        {
+          "kind": "struct",
+          "name": "Target",
+          "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+          "line": 195
+        },
+        {
+          "kind": "fn",
+          "name": "to_url",
+          "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+          "line": 211
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+      "lineCount": 197,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "send",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 7
+        },
+        {
+          "kind": "fn",
+          "name": "screen",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "cursor",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "status",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "resize",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 111
+        },
+        {
+          "kind": "fn",
+          "name": "wait",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 135
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+      "lineCount": 128,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SessionInfo",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "register_session",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "lookup_session",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "unregister_session",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 62
+        },
+        {
+          "kind": "fn",
+          "name": "server_alive",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "list_sessions",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 99
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/ptyctl-cli/src/commands/run.rs",
+      "lineCount": 120,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run",
+          "path": "crates/codegen/ptyctl-cli/src/commands/run.rs",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/ptyctl-cli/src/commands/mod.rs",
+      "lineCount": 3,
+      "symbols": []
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "Cli",
+      "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+      "line": 12
+    },
+    {
+      "kind": "enum",
+      "name": "Commands",
+      "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+      "line": 18
+    },
+    {
+      "kind": "struct",
+      "name": "Target",
+      "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+      "line": 195
+    },
+    {
+      "kind": "fn",
+      "name": "to_url",
+      "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+      "line": 211
+    },
+    {
+      "kind": "fn",
+      "name": "send",
+      "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+      "line": 7
+    },
+    {
+      "kind": "fn",
+      "name": "screen",
+      "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+      "line": 29
+    },
+    {
+      "kind": "fn",
+      "name": "cursor",
+      "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+      "line": 85
+    },
+    {
+      "kind": "fn",
+      "name": "status",
+      "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+      "line": 98
+    },
+    {
+      "kind": "fn",
+      "name": "resize",
+      "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+      "line": 111
+    },
+    {
+      "kind": "fn",
+      "name": "wait",
+      "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+      "line": 135
+    },
+    {
+      "kind": "fn",
+      "name": "stop",
+      "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+      "line": 182
+    },
+    {
+      "kind": "fn",
+      "name": "run",
+      "path": "crates/codegen/ptyctl-cli/src/commands/run.rs",
+      "line": 18
+    },
+    {
+      "kind": "struct",
+      "name": "SessionInfo",
+      "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+      "line": 11
+    },
+    {
+      "kind": "fn",
+      "name": "register_session",
+      "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "lookup_session",
+      "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+      "line": 47
+    },
+    {
+      "kind": "fn",
+      "name": "unregister_session",
+      "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+      "line": 62
+    },
+    {
+      "kind": "fn",
+      "name": "server_alive",
+      "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+      "line": 77
+    },
+    {
+      "kind": "fn",
+      "name": "list_sessions",
+      "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+      "line": 99
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+      "module": "cli",
+      "kind": "production",
+      "lineCount": 228,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Cli",
+          "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+          "line": 12
+        },
+        {
+          "kind": "enum",
+          "name": "Commands",
+          "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+          "line": 18
+        },
+        {
+          "kind": "struct",
+          "name": "Target",
+          "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+          "line": 195
+        },
+        {
+          "kind": "fn",
+          "name": "to_url",
+          "path": "crates/codegen/ptyctl-cli/src/cli.rs",
+          "line": 211
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl-cli/src/cli.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+      "module": "commands::client",
+      "kind": "production",
+      "lineCount": 197,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "send",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 7
+        },
+        {
+          "kind": "fn",
+          "name": "screen",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "cursor",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "status",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "resize",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 111
+        },
+        {
+          "kind": "fn",
+          "name": "wait",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 135
+        },
+        {
+          "kind": "fn",
+          "name": "stop",
+          "path": "crates/codegen/ptyctl-cli/src/commands/client.rs",
+          "line": 182
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl-cli/src/commands/client.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl-cli/src/commands/mod.rs",
+      "module": "commands::mod",
+      "kind": "production",
+      "lineCount": 3,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl-cli/src/commands/mod.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl-cli/src/commands/run.rs",
+      "module": "commands::run",
+      "kind": "production",
+      "lineCount": 120,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run",
+          "path": "crates/codegen/ptyctl-cli/src/commands/run.rs",
+          "line": 18
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl-cli/src/commands/run.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl-cli/src/main.rs",
+      "module": "main",
+      "kind": "production",
+      "lineCount": 175,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl-cli/src/main.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+      "module": "registry",
+      "kind": "production",
+      "lineCount": 128,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SessionInfo",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "register_session",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "lookup_session",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "unregister_session",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 62
+        },
+        {
+          "kind": "fn",
+          "name": "server_alive",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "list_sessions",
+          "path": "crates/codegen/ptyctl-cli/src/registry.rs",
+          "line": 99
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl-cli/src/registry.rs"
+    }
+  ]
+}

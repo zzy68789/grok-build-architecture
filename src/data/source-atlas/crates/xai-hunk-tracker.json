@@ -1,0 +1,1211 @@
+{
+  "name": "xai-hunk-tracker",
+  "memberPath": "crates/codegen/xai-hunk-tracker",
+  "manifestPath": "crates/codegen/xai-hunk-tracker/Cargo.toml",
+  "description": "Track file hunks (diffs) with agent/external attribution",
+  "role": "追踪文件 diff hunk 并区分 Agent 与外部修改来源。",
+  "layer": "工具与工作区",
+  "primaryArticle": "agents/worktree-checkpoint-hunk",
+  "relatedArticles": [
+    "agents/worktree-checkpoint-hunk",
+    "tools/file-search-edit"
+  ],
+  "dependencies": [
+    "xai-gix-status",
+    "xai-test-utils"
+  ],
+  "dependents": [
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 17,
+  "productionFileCount": 15,
+  "lineCount": 6396,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/lib.rs",
+      "lineCount": 83,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+      "lineCount": 971,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HunkId",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "from_string",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "HunkLineInfo",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 47
+        },
+        {
+          "kind": "enum",
+          "name": "HunkSource",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 76
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+      "lineCount": 877,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "generate_unified_patch",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "generate_hunk_patch",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "compute_hunks",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "format_unified_diff",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 308
+        },
+        {
+          "kind": "fn",
+          "name": "patch_lines",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 342
+        },
+        {
+          "kind": "fn",
+          "name": "hunks_match_content",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 377
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+      "lineCount": 720,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "REFRESH_SCAN_LOG_PREFIX",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "REFRESH_SKIP_LOG_PREFIX",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "record_agent_write",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "handle_file_change",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 152
+        },
+        {
+          "kind": "fn",
+          "name": "handle_file_changes_batch",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "handle_file_deleted",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 352
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+      "lineCount": 636,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "apply_hunk_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "apply_file_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+          "line": 298
+        },
+        {
+          "kind": "fn",
+          "name": "apply_all_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+          "line": 319
+        },
+        {
+          "kind": "fn",
+          "name": "apply_turn_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+          "line": 340
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+      "lineCount": 605,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "CoalescedPathAction",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 42
+        },
+        {
+          "kind": "struct",
+          "name": "CoalescedBatch",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "add",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 69
+        },
+        {
+          "kind": "struct",
+          "name": "HunkTrackerActor",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 103
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 192
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+      "lineCount": 546,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "AuthorType",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 27
+        },
+        {
+          "kind": "enum",
+          "name": "SourceType",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 44
+        },
+        {
+          "kind": "enum",
+          "name": "EventType",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "HunkRecord",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "from_hunk",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 147
+        },
+        {
+          "kind": "trait",
+          "name": "HunkRecordWriter",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 214
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+      "lineCount": 514,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "refresh_git_dirty_cache",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "read_repo_sync_state",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+          "line": 258
+        },
+        {
+          "kind": "fn",
+          "name": "read_baseline",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+          "line": 330
+        },
+        {
+          "kind": "fn",
+          "name": "read_baselines_batch",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+          "line": 431
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "apply_hunk_action",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+      "line": 65
+    },
+    {
+      "kind": "fn",
+      "name": "apply_file_action",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+      "line": 298
+    },
+    {
+      "kind": "fn",
+      "name": "apply_all_action",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+      "line": 319
+    },
+    {
+      "kind": "fn",
+      "name": "apply_turn_action",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+      "line": 340
+    },
+    {
+      "kind": "fn",
+      "name": "is_lfs_pointer",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+      "line": 22
+    },
+    {
+      "kind": "fn",
+      "name": "is_binary",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+      "line": 30
+    },
+    {
+      "kind": "fn",
+      "name": "classify_bytes",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+      "line": 41
+    },
+    {
+      "kind": "fn",
+      "name": "classify_string",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+      "line": 76
+    },
+    {
+      "kind": "fn",
+      "name": "missing_content",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+      "line": 100
+    },
+    {
+      "kind": "fn",
+      "name": "read_file_bounded",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+      "line": 109
+    },
+    {
+      "kind": "fn",
+      "name": "refresh_git_dirty_cache",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+      "line": 93
+    },
+    {
+      "kind": "fn",
+      "name": "read_repo_sync_state",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+      "line": 258
+    },
+    {
+      "kind": "fn",
+      "name": "read_baseline",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+      "line": 330
+    },
+    {
+      "kind": "fn",
+      "name": "read_baselines_batch",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+      "line": 431
+    },
+    {
+      "kind": "fn",
+      "name": "recompute_hunks",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/hunks.rs",
+      "line": 30
+    },
+    {
+      "kind": "enum",
+      "name": "CoalescedPathAction",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+      "line": 42
+    },
+    {
+      "kind": "struct",
+      "name": "CoalescedBatch",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+      "line": 50
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+      "line": 59
+    },
+    {
+      "kind": "fn",
+      "name": "add",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+      "line": 69
+    },
+    {
+      "kind": "struct",
+      "name": "HunkTrackerActor",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+      "line": 103
+    },
+    {
+      "kind": "fn",
+      "name": "spawn",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+      "line": 192
+    },
+    {
+      "kind": "fn",
+      "name": "is_coalescable",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+      "line": 216
+    },
+    {
+      "kind": "const",
+      "name": "REFRESH_SCAN_LOG_PREFIX",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+      "line": 30
+    },
+    {
+      "kind": "const",
+      "name": "REFRESH_SKIP_LOG_PREFIX",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+      "line": 34
+    },
+    {
+      "kind": "fn",
+      "name": "record_agent_write",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+      "line": 59
+    },
+    {
+      "kind": "fn",
+      "name": "handle_file_change",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+      "line": 152
+    },
+    {
+      "kind": "fn",
+      "name": "handle_file_changes_batch",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+      "line": 159
+    },
+    {
+      "kind": "fn",
+      "name": "handle_file_deleted",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+      "line": 352
+    },
+    {
+      "kind": "fn",
+      "name": "reset_baseline",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+      "line": 422
+    },
+    {
+      "kind": "fn",
+      "name": "refresh_all_baselines",
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+      "line": 459
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+      "module": "actor::actions",
+      "kind": "production",
+      "lineCount": 636,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "apply_hunk_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "apply_file_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+          "line": 298
+        },
+        {
+          "kind": "fn",
+          "name": "apply_all_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+          "line": 319
+        },
+        {
+          "kind": "fn",
+          "name": "apply_turn_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/actions.rs",
+          "line": 340
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/actor/actions.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+      "module": "actor::file_utils",
+      "kind": "production",
+      "lineCount": 331,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_lfs_pointer",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "is_binary",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "classify_bytes",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "classify_string",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "missing_content",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "read_file_bounded",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs",
+          "line": 109
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/actor/file_utils.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+      "module": "actor::git",
+      "kind": "production",
+      "lineCount": 514,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "refresh_git_dirty_cache",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "read_repo_sync_state",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+          "line": 258
+        },
+        {
+          "kind": "fn",
+          "name": "read_baseline",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+          "line": 330
+        },
+        {
+          "kind": "fn",
+          "name": "read_baselines_batch",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/git.rs",
+          "line": 431
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/actor/git.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/hunks.rs",
+      "module": "actor::hunks",
+      "kind": "production",
+      "lineCount": 223,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "recompute_hunks",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/hunks.rs",
+          "line": 30
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/actor/hunks.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+      "module": "actor::mod",
+      "kind": "production",
+      "lineCount": 605,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "CoalescedPathAction",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 42
+        },
+        {
+          "kind": "struct",
+          "name": "CoalescedBatch",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "add",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 69
+        },
+        {
+          "kind": "struct",
+          "name": "HunkTrackerActor",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 103
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 192
+        },
+        {
+          "kind": "fn",
+          "name": "is_coalescable",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mod.rs",
+          "line": 216
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/actor/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+      "module": "actor::mutations",
+      "kind": "production",
+      "lineCount": 720,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "REFRESH_SCAN_LOG_PREFIX",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "REFRESH_SKIP_LOG_PREFIX",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "record_agent_write",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "handle_file_change",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 152
+        },
+        {
+          "kind": "fn",
+          "name": "handle_file_changes_batch",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "handle_file_deleted",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 352
+        },
+        {
+          "kind": "fn",
+          "name": "reset_baseline",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 422
+        },
+        {
+          "kind": "fn",
+          "name": "refresh_all_baselines",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 459
+        },
+        {
+          "kind": "fn",
+          "name": "refresh_all_baselines_except",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 465
+        },
+        {
+          "kind": "fn",
+          "name": "set_mode",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/mutations.rs",
+          "line": 683
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/actor/mutations.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/queries.rs",
+      "module": "actor::queries",
+      "kind": "production",
+      "lineCount": 205,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "get_all_hunks",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/queries.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "get_hunks_for_path",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/queries.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "get_file_hunk_data",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/queries.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "get_all_tracked_paths",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/queries.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "get_hunks_by_source",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/queries.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "get_hunk",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/queries.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "get_hunks_for_turn",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/queries.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "compute_session_summary",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/queries.rs",
+          "line": 132
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/actor/queries.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/state.rs",
+      "module": "actor::state",
+      "kind": "production",
+      "lineCount": 146,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_TRACKED_TEXT_BYTES",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/state.rs",
+          "line": 13
+        },
+        {
+          "kind": "enum",
+          "name": "FileContentState",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/state.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/state.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "is_diffable",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/state.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "byte_len",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/state.rs",
+          "line": 60
+        },
+        {
+          "kind": "enum",
+          "name": "GitRepoState",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/state.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "RepoSyncState",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/state.rs",
+          "line": 110
+        },
+        {
+          "kind": "struct",
+          "name": "FileHunkState",
+          "path": "crates/codegen/xai-hunk-tracker/src/actor/state.rs",
+          "line": 118
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/actor/state.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/actor/tests.rs",
+      "module": "actor::tests",
+      "kind": "test",
+      "lineCount": 5844,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/actor/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/commands.rs",
+      "module": "commands",
+      "kind": "production",
+      "lineCount": 160,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "HunkTrackerCommand",
+          "path": "crates/codegen/xai-hunk-tracker/src/commands.rs",
+          "line": 15
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/commands.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+      "module": "diff",
+      "kind": "production",
+      "lineCount": 877,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "generate_unified_patch",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "generate_hunk_patch",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "compute_hunks",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "format_unified_diff",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 308
+        },
+        {
+          "kind": "fn",
+          "name": "patch_lines",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 342
+        },
+        {
+          "kind": "fn",
+          "name": "hunks_match_content",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 377
+        },
+        {
+          "kind": "fn",
+          "name": "hunk_moved",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 382
+        },
+        {
+          "kind": "fn",
+          "name": "hunks_overlap",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 389
+        },
+        {
+          "kind": "fn",
+          "name": "find_matching_old_hunk",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 424
+        },
+        {
+          "kind": "fn",
+          "name": "find_overlapping_hunks",
+          "path": "crates/codegen/xai-hunk-tracker/src/diff.rs",
+          "line": 463
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/diff.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/events.rs",
+      "module": "events",
+      "kind": "production",
+      "lineCount": 75,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "HunkRemovalReason",
+          "path": "crates/codegen/xai-hunk-tracker/src/events.rs",
+          "line": 13
+        },
+        {
+          "kind": "enum",
+          "name": "HunkEvent",
+          "path": "crates/codegen/xai-hunk-tracker/src/events.rs",
+          "line": 29
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/events.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+      "module": "handle",
+      "kind": "production",
+      "lineCount": 304,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HunkTrackerHandle",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "noop",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "record_agent_write",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "handle_file_change",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "handle_file_deleted",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "refresh_git_dirty_cache",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "reset_baseline",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "set_mode",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "hunk_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "file_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "all_action",
+          "path": "crates/codegen/xai-hunk-tracker/src/handle.rs",
+          "line": 119
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/handle.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 83,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+      "module": "loc::mod",
+      "kind": "production",
+      "lineCount": 546,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "AuthorType",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 27
+        },
+        {
+          "kind": "enum",
+          "name": "SourceType",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 44
+        },
+        {
+          "kind": "enum",
+          "name": "EventType",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "HunkRecord",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "from_hunk",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 147
+        },
+        {
+          "kind": "trait",
+          "name": "HunkRecordWriter",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 214
+        },
+        {
+          "kind": "struct",
+          "name": "JsonlHunkRecordWriter",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 229
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 238
+        },
+        {
+          "kind": "enum",
+          "name": "LocAggregate",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 292
+        },
+        {
+          "kind": "struct",
+          "name": "LocSinkContext",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 313
+        },
+        {
+          "kind": "fn",
+          "name": "run_loc_sink",
+          "path": "crates/codegen/xai-hunk-tracker/src/loc/mod.rs",
+          "line": 341
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/loc/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/loc/tests.rs",
+      "module": "loc::tests",
+      "kind": "test",
+      "lineCount": 783,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/loc/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+      "module": "types",
+      "kind": "production",
+      "lineCount": 971,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HunkId",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "from_string",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "HunkLineInfo",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 47
+        },
+        {
+          "kind": "enum",
+          "name": "HunkSource",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "is_agent_edit",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "is_agent_tracked",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "is_external",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 110
+        },
+        {
+          "kind": "fn",
+          "name": "prompt_index",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 118
+        },
+        {
+          "kind": "enum",
+          "name": "HunkActionError",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 128
+        },
+        {
+          "kind": "struct",
+          "name": "Hunk",
+          "path": "crates/codegen/xai-hunk-tracker/src/types.rs",
+          "line": 157
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-hunk-tracker/src/types.rs"
+    }
+  ]
+}

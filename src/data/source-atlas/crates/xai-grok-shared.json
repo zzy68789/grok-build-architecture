@@ -1,0 +1,660 @@
+{
+  "name": "xai-grok-shared",
+  "memberPath": "crates/codegen/xai-grok-shared",
+  "manifestPath": "crates/codegen/xai-grok-shared/Cargo.toml",
+  "description": "",
+  "role": "安全、扩展与运维层的一方 crate；上游清单描述为：未提供 description，职责由公开模块和依赖关系归纳。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/shared-foundations",
+  "relatedArticles": [
+    "operations/shared-foundations",
+    "introduction/workspace-and-crates"
+  ],
+  "dependencies": [
+    "xai-grok-config-types",
+    "xai-grok-models",
+    "xai-grok-tools",
+    "xai-tty-utils"
+  ],
+  "dependents": [
+    "xai-grok-pager-render",
+    "xai-grok-shell",
+    "xai-grok-shell-base"
+  ],
+  "fileCount": 8,
+  "productionFileCount": 7,
+  "lineCount": 5233,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-shared/src/lib.rs",
+      "lineCount": 10,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "lineCount": 3252,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ImageData",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "get_text",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "get_primary_text",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "x11_display_env_present",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "get_image",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 84
+        },
+        {
+          "kind": "fn",
+          "name": "get_file_urls",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 93
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+      "lineCount": 1527,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_PLACEHOLDER_IMAGE_BYTES",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 66
+        },
+        {
+          "kind": "const",
+          "name": "MAX_PLACEHOLDERS_PER_PROMPT",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 72
+        },
+        {
+          "kind": "const",
+          "name": "MAX_PLACEHOLDER_AGGREGATE_BYTES",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 77
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_DISPLAY_NUMBER_META_KEY",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "display_number_meta",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "display_number_from_meta",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 98
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+      "lineCount": 370,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "UiConfig",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 6
+        },
+        {
+          "kind": "struct",
+          "name": "ContextualHints",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 170
+        },
+        {
+          "kind": "fn",
+          "name": "is_default",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 195
+        },
+        {
+          "kind": "const",
+          "name": "SHOW_TIMELINE_DEFAULT",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 280
+        },
+        {
+          "kind": "fn",
+          "name": "show_timeline_enabled",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 286
+        },
+        {
+          "kind": "fn",
+          "name": "keep_text_selection_enabled",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 292
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/stderr.rs",
+      "lineCount": 51,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "stderr_lock",
+          "path": "crates/codegen/xai-grok-shared/src/stderr.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "with_locked_stderr",
+          "path": "crates/codegen/xai-grok-shared/src/stderr.rs",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/session/mod.rs",
+      "lineCount": 14,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "session_dir",
+          "path": "crates/codegen/xai-grok-shared/src/session/mod.rs",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/session/info.rs",
+      "lineCount": 9,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Info",
+          "path": "crates/codegen/xai-grok-shared/src/session/info.rs",
+          "line": 5
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "ImageData",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 51
+    },
+    {
+      "kind": "fn",
+      "name": "get_text",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 61
+    },
+    {
+      "kind": "fn",
+      "name": "get_primary_text",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 70
+    },
+    {
+      "kind": "fn",
+      "name": "x11_display_env_present",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 76
+    },
+    {
+      "kind": "fn",
+      "name": "get_image",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 84
+    },
+    {
+      "kind": "fn",
+      "name": "get_file_urls",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 93
+    },
+    {
+      "kind": "struct",
+      "name": "ClipboardAttachments",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 104
+    },
+    {
+      "kind": "fn",
+      "name": "get_attachments",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 112
+    },
+    {
+      "kind": "fn",
+      "name": "clipboard_image_snapshot",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 129
+    },
+    {
+      "kind": "fn",
+      "name": "clipboard_change_count",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 138
+    },
+    {
+      "kind": "fn",
+      "name": "clipboard_image_probe_supported",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 144
+    },
+    {
+      "kind": "fn",
+      "name": "clipboard_prewarm",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 153
+    },
+    {
+      "kind": "fn",
+      "name": "mime_to_extension",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 217
+    },
+    {
+      "kind": "fn",
+      "name": "mime_from_bytes",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 233
+    },
+    {
+      "kind": "struct",
+      "name": "NativeWriteOutcome",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 257
+    },
+    {
+      "kind": "fn",
+      "name": "set_text_with_outcome",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 277
+    },
+    {
+      "kind": "fn",
+      "name": "set_text",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 282
+    },
+    {
+      "kind": "fn",
+      "name": "set_image_file",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 296
+    },
+    {
+      "kind": "fn",
+      "name": "native_tool_name",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 304
+    },
+    {
+      "kind": "fn",
+      "name": "wayland_data_control_supported",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 339
+    },
+    {
+      "kind": "struct",
+      "name": "WaitTimeout",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 346
+    },
+    {
+      "kind": "fn",
+      "name": "wait_with_deadline",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 358
+    },
+    {
+      "kind": "fn",
+      "name": "spool_for_stdin",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 385
+    },
+    {
+      "kind": "fn",
+      "name": "set_text_osc52",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 419
+    },
+    {
+      "kind": "fn",
+      "name": "is_remote_session",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 435
+    },
+    {
+      "kind": "fn",
+      "name": "is_containerized_without_display",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 448
+    },
+    {
+      "kind": "const",
+      "name": "FURL_MARKER",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 478
+    },
+    {
+      "kind": "const",
+      "name": "IMAGE_MARKER",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 479
+    },
+    {
+      "kind": "fn",
+      "name": "parse_osascript_furl_output",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 487
+    },
+    {
+      "kind": "fn",
+      "name": "parse_attachments_output",
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "line": 511
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-shared/examples/clipboard_probe.rs",
+      "module": "..::examples::clipboard_probe",
+      "kind": "example",
+      "lineCount": 38,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shared/examples/clipboard_probe.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+      "module": "clipboard",
+      "kind": "production",
+      "lineCount": 3252,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ImageData",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "get_text",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "get_primary_text",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "x11_display_env_present",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "get_image",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 84
+        },
+        {
+          "kind": "fn",
+          "name": "get_file_urls",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 93
+        },
+        {
+          "kind": "struct",
+          "name": "ClipboardAttachments",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "get_attachments",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "clipboard_image_snapshot",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 129
+        },
+        {
+          "kind": "fn",
+          "name": "clipboard_change_count",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 138
+        },
+        {
+          "kind": "fn",
+          "name": "clipboard_image_probe_supported",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 144
+        },
+        {
+          "kind": "fn",
+          "name": "clipboard_prewarm",
+          "path": "crates/codegen/xai-grok-shared/src/clipboard.rs",
+          "line": 153
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shared/src/clipboard.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 10,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shared/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+      "module": "placeholder_images",
+      "kind": "production",
+      "lineCount": 1527,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_PLACEHOLDER_IMAGE_BYTES",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 66
+        },
+        {
+          "kind": "const",
+          "name": "MAX_PLACEHOLDERS_PER_PROMPT",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 72
+        },
+        {
+          "kind": "const",
+          "name": "MAX_PLACEHOLDER_AGGREGATE_BYTES",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 77
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_DISPLAY_NUMBER_META_KEY",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "display_number_meta",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "display_number_from_meta",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "attached_image_references",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 114
+        },
+        {
+          "kind": "const",
+          "name": "ALLOWED_IMAGE_EXTENSIONS",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 140
+        },
+        {
+          "kind": "const",
+          "name": "DENY_PATH_CONTAINS",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 159
+        },
+        {
+          "kind": "struct",
+          "name": "PlaceholderMatch",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 190
+        },
+        {
+          "kind": "fn",
+          "name": "extract_placeholders",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 209
+        },
+        {
+          "kind": "fn",
+          "name": "strip_paths_from_image_placeholders",
+          "path": "crates/codegen/xai-grok-shared/src/placeholder_images.rs",
+          "line": 244
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shared/src/placeholder_images.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/session/info.rs",
+      "module": "session::info",
+      "kind": "production",
+      "lineCount": 9,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Info",
+          "path": "crates/codegen/xai-grok-shared/src/session/info.rs",
+          "line": 5
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shared/src/session/info.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/session/mod.rs",
+      "module": "session::mod",
+      "kind": "production",
+      "lineCount": 14,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "session_dir",
+          "path": "crates/codegen/xai-grok-shared/src/session/mod.rs",
+          "line": 11
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shared/src/session/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/stderr.rs",
+      "module": "stderr",
+      "kind": "production",
+      "lineCount": 51,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "stderr_lock",
+          "path": "crates/codegen/xai-grok-shared/src/stderr.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "with_locked_stderr",
+          "path": "crates/codegen/xai-grok-shared/src/stderr.rs",
+          "line": 21
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shared/src/stderr.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+      "module": "ui_config",
+      "kind": "production",
+      "lineCount": 370,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "UiConfig",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 6
+        },
+        {
+          "kind": "struct",
+          "name": "ContextualHints",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 170
+        },
+        {
+          "kind": "fn",
+          "name": "is_default",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 195
+        },
+        {
+          "kind": "const",
+          "name": "SHOW_TIMELINE_DEFAULT",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 280
+        },
+        {
+          "kind": "fn",
+          "name": "show_timeline_enabled",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 286
+        },
+        {
+          "kind": "fn",
+          "name": "keep_text_selection_enabled",
+          "path": "crates/codegen/xai-grok-shared/src/ui_config.rs",
+          "line": 292
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shared/src/ui_config.rs"
+    }
+  ]
+}

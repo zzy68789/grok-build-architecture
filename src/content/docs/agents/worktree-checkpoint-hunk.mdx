@@ -1,80 +1,27 @@
 ---
-title: Worktree、Checkpoint 与 Hunk Tracking
-description: 区分文件隔离、会话恢复点与细粒度改动归属的三套机制。
+title: "Worktree、Checkpoint 与 Hunk Tracking"
+description: "解释 CoW worktree、检查点和代码 hunk 归因怎样支持隔离与恢复。"
 lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-fast-worktree
+  - xai-grok-workspace
+  - xai-hunk-tracker
 sourcePaths:
-  - crates/codegen/xai-fast-worktree/src/lib.rs
+  - crates/codegen/xai-grok-workspace/src/lib.rs
   - crates/codegen/xai-hunk-tracker/src/lib.rs
-  - crates/codegen/xai-grok-workspace/src/session/checkpoint.rs
+  - crates/codegen/xai-fast-worktree/src/lib.rs
+  - crates/codegen/xai-grok-workspace/src/handle.rs
+  - crates/codegen/xai-grok-workspace/src/permission/manager.rs
+  - crates/codegen/xai-grok-workspace/src/permission/resolution.rs
+  - crates/codegen/xai-grok-workspace/src/session/git.rs
+  - crates/codegen/xai-fast-worktree/src/api.rs
+  - crates/codegen/xai-grok-workspace/src/worktree/mod.rs
+  - crates/codegen/xai-grok-workspace/src/hub_server.rs
 officialDocs:
   - https://docs.x.ai/build/overview
 ---
 
-import SourceBaseline from '@components/SourceBaseline.astro';
-import SourceRef from '@components/SourceRef.astro';
-import Mermaid from '@components/Mermaid.astro';
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
 
-<SourceBaseline compact />
-
-> **结论：** Worktree、Checkpoint 和 Hunk Tracking 解决三种不同问题：worktree 隔离文件视图，checkpoint 记录可回退的会话/仓库边界，hunk tracker 追踪具体文本改动归属。三者组合才能支持并行尝试、局部理解与受控恢复。
-
-## 源码入口
-
-`xai-fast-worktree` 的模块文档描述快速 copy-on-write 工作树，目标是低成本提供隔离视图，而不是为每个尝试完整复制仓库。
-
-<SourceRef path="crates/codegen/xai-fast-worktree/src/lib.rs" start={1} end={60} symbol="fast worktree architecture" />
-
-`xai-hunk-tracker` 以 actor 跟踪差异块及其变化，回答“哪些行属于哪次 Agent 修改”。
-
-<SourceRef path="crates/codegen/xai-hunk-tracker/src/lib.rs" start={1} end={82} symbol="hunk tracker actor" />
-
-checkpoint 在 turn 边界记录状态，并提供显式 rewind 路径。
-
-<SourceRef path="crates/codegen/xai-grok-workspace/src/session/checkpoint.rs" start={238} end={316} symbol="turn checkpoint boundary" />
-<SourceRef path="crates/codegen/xai-grok-workspace/src/session/checkpoint.rs" start={372} end={454} symbol="rewind_to" />
-
-## 三种状态坐标
-
-<Mermaid label="隔离、归属与恢复" chart={`flowchart TB
-  B[Base repository] --> W1[Worktree A]
-  B --> W2[Worktree B]
-  W1 --> H1[Hunk ownership]
-  W2 --> H2[Hunk ownership]
-  W1 --> C1[Turn checkpoint]
-  W1 --> C2[Later checkpoint]
-  C2 -->|rewind| C1
-  H1 --> V[Diff / attribution view]
-  H2 --> V`} />
-
-- **Worktree** 是空间维度：不同任务看到和修改哪套文件。
-- **Checkpoint** 是时间维度：某个 turn 前后可恢复到哪一状态。
-- **Hunk** 是归属维度：当前 diff 中哪些行由哪次操作引入或改变。
-
-把三者混为“git 功能”会遗漏 Agent 运行时状态。checkpoint 可能同时关联消息历史、文件快照与 turn 元数据；hunk actor 也需要处理后续人工编辑使行号漂移的情况。
-
-## Rewind 的真实含义
-
-`rewind_to` 不是简单执行一次版本控制命令。它必须识别目标 checkpoint、恢复受管文件状态、协调当前会话视图，并处理目标之后产生的追踪数据。外部未受管副作用——例如网络请求或已发送消息——通常无法靠文件回退撤销。
-
-快速 worktree 的 CoW 策略让创建尝试分支更轻，但隔离也带来合并问题：父工作区继续变化时，子工作树基线可能陈旧；两个任务修改相同 hunk 时仍要人工或策略化解冲突。
-
-## Hunk Tracking 为什么独立
-
-仅保存最终 diff 无法知道改动在多轮过程中如何形成。Actor 维护增量事件与归属，可以支持 UI 标注、回滚选择和 checkpoint 对齐。它必须串行处理变化，避免多个 watcher 同时更新映射造成不一致。
-
-**推断：** 将 hunk tracking 做成独立 actor，是用消息顺序换取可解释的差异状态，而不是让每个 UI/工具重复解析 Git diff。
-
-## 边界与失败模式
-
-- 文件恢复不会撤销已经执行的数据库、网络或系统级副作用。
-- 用户在 Agent 运行时编辑同一段代码，hunk 归属可能需要重算或标记不确定。
-- worktree 基线漂移会使合并冲突晚于任务完成才暴露。
-- checkpoint 写入失败时不能宣称已有恢复点；UI 状态必须反映持久化结果。
-
-## 与官方文档的区别
-
-官方文档若讲如何创建 worktree 或回退操作，以其交互说明为准；本文解释三套内部状态为何同时存在，以及它们各自不能保证什么。
-
-## 源码引用
-
-fast worktree 和 hunk tracker 的模块文档提供设计证据，checkpoint 的 turn boundary 与 `rewind_to` 提供实际恢复路径证据。
+<DeepDiveArticle slug="agents/worktree-checkpoint-hunk" />

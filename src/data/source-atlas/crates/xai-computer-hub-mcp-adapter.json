@@ -1,0 +1,464 @@
+{
+  "name": "xai-computer-hub-mcp-adapter",
+  "memberPath": "crates/common/xai-computer-hub-mcp-adapter",
+  "manifestPath": "crates/common/xai-computer-hub-mcp-adapter/Cargo.toml",
+  "description": "Bridge between MCP servers and the xAI Computer Hub, registering MCP-discovered tools as native hub tools.",
+  "role": "把 MCP 发现的工具适配并注册为原生 Computer Hub 工具。",
+  "layer": "工具与工作区",
+  "primaryArticle": "tools/computer-hub",
+  "relatedArticles": [
+    "tools/computer-hub",
+    "extensibility/mcp-integration"
+  ],
+  "dependencies": [
+    "xai-computer-hub-sdk",
+    "xai-tool-protocol",
+    "xai-tool-runtime",
+    "xai-tool-types"
+  ],
+  "dependents": [
+    "xai-grok-workspace"
+  ],
+  "fileCount": 5,
+  "productionFileCount": 5,
+  "lineCount": 1044,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/lib.rs",
+      "lineCount": 53,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "lineCount": 782,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "McpBridgeConfig",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 22
+        },
+        {
+          "kind": "struct",
+          "name": "McpBridgeHandle",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "McpBridge",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "connect",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "handlers",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "server_info",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 163
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+      "lineCount": 108,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "McpServerInfo",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+          "line": 12
+        },
+        {
+          "kind": "struct",
+          "name": "McpToolDefinition",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "McpCallResult",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+          "line": 39
+        },
+        {
+          "kind": "enum",
+          "name": "McpContent",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+          "line": 54
+        },
+        {
+          "kind": "enum",
+          "name": "McpError",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+          "line": 86
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+      "lineCount": 62,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "mcp_call_duration_observe",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_error",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_tools_bridged_set",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_call_duration_observe",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_error",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_tools_bridged_set",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 58
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/transport.rs",
+      "lineCount": 39,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "McpTransport",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/transport.rs",
+          "line": 18
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "McpBridgeConfig",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "line": 22
+    },
+    {
+      "kind": "struct",
+      "name": "McpBridgeHandle",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "line": 33
+    },
+    {
+      "kind": "struct",
+      "name": "McpBridge",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "line": 61
+    },
+    {
+      "kind": "fn",
+      "name": "connect",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "line": 80
+    },
+    {
+      "kind": "fn",
+      "name": "handlers",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "line": 158
+    },
+    {
+      "kind": "fn",
+      "name": "server_info",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "line": 163
+    },
+    {
+      "kind": "fn",
+      "name": "tool_count",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "line": 168
+    },
+    {
+      "kind": "fn",
+      "name": "shutdown",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "line": 173
+    },
+    {
+      "kind": "struct",
+      "name": "McpToolHandler",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "line": 197
+    },
+    {
+      "kind": "fn",
+      "name": "mcp_call_duration_observe",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+      "line": 41
+    },
+    {
+      "kind": "fn",
+      "name": "mcp_error",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+      "line": 45
+    },
+    {
+      "kind": "fn",
+      "name": "mcp_tools_bridged_set",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+      "line": 49
+    },
+    {
+      "kind": "fn",
+      "name": "mcp_call_duration_observe",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+      "line": 56
+    },
+    {
+      "kind": "fn",
+      "name": "mcp_error",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+      "line": 57
+    },
+    {
+      "kind": "fn",
+      "name": "mcp_tools_bridged_set",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+      "line": 58
+    },
+    {
+      "kind": "trait",
+      "name": "McpTransport",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/transport.rs",
+      "line": 18
+    },
+    {
+      "kind": "struct",
+      "name": "McpServerInfo",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+      "line": 12
+    },
+    {
+      "kind": "struct",
+      "name": "McpToolDefinition",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+      "line": 25
+    },
+    {
+      "kind": "struct",
+      "name": "McpCallResult",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+      "line": 39
+    },
+    {
+      "kind": "enum",
+      "name": "McpContent",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+      "line": 54
+    },
+    {
+      "kind": "enum",
+      "name": "McpError",
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+      "line": 86
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+      "module": "bridge",
+      "kind": "production",
+      "lineCount": 782,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "McpBridgeConfig",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 22
+        },
+        {
+          "kind": "struct",
+          "name": "McpBridgeHandle",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "McpBridge",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "connect",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "handlers",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "server_info",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 163
+        },
+        {
+          "kind": "fn",
+          "name": "tool_count",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 168
+        },
+        {
+          "kind": "fn",
+          "name": "shutdown",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 173
+        },
+        {
+          "kind": "struct",
+          "name": "McpToolHandler",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs",
+          "line": 197
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-mcp-adapter/src/bridge.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 53,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-mcp-adapter/src/lib.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+      "module": "metrics",
+      "kind": "production",
+      "lineCount": 62,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "mcp_call_duration_observe",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_error",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_tools_bridged_set",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_call_duration_observe",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_error",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_tools_bridged_set",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs",
+          "line": 58
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-mcp-adapter/src/metrics.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/transport.rs",
+      "module": "transport",
+      "kind": "production",
+      "lineCount": 39,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "McpTransport",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/transport.rs",
+          "line": 18
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-mcp-adapter/src/transport.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+      "module": "types",
+      "kind": "production",
+      "lineCount": 108,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "McpServerInfo",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+          "line": 12
+        },
+        {
+          "kind": "struct",
+          "name": "McpToolDefinition",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "McpCallResult",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+          "line": 39
+        },
+        {
+          "kind": "enum",
+          "name": "McpContent",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+          "line": 54
+        },
+        {
+          "kind": "enum",
+          "name": "McpError",
+          "path": "crates/common/xai-computer-hub-mcp-adapter/src/types.rs",
+          "line": 86
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-mcp-adapter/src/types.rs"
+    }
+  ]
+}

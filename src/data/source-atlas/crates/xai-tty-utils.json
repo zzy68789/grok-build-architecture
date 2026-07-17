@@ -1,0 +1,448 @@
+{
+  "name": "xai-tty-utils",
+  "memberPath": "crates/codegen/xai-tty-utils",
+  "manifestPath": "crates/codegen/xai-tty-utils/Cargo.toml",
+  "description": "Lightweight process-spawning utilities for TTY safety — detach from controlling terminal, suppress interactive pagers, process-group lifecycle",
+  "role": "封装 TTY 安全的子进程派生、pager 抑制和进程组回收。",
+  "layer": "交互呈现",
+  "primaryArticle": "tui/pty-tty-minimal-client",
+  "relatedArticles": [
+    "tui/pty-tty-minimal-client",
+    "runtime/startup-and-modes",
+    "tui/event-loop-effects",
+    "tools/shell-process-pty-background"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-fast-worktree",
+    "xai-grok-config",
+    "xai-grok-mermaid",
+    "xai-grok-pager",
+    "xai-grok-pager-bin",
+    "xai-grok-pager-pty-harness",
+    "xai-grok-pager-render",
+    "xai-grok-plugin-marketplace",
+    "xai-grok-shared",
+    "xai-grok-shell",
+    "xai-grok-shell-base",
+    "xai-grok-tools",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 2,
+  "productionFileCount": 2,
+  "lineCount": 1247,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "lineCount": 939,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "detach_from_tty",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "detach_from_tty",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "detach_command",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "detach_std_command",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "new_process_group",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 147
+        },
+        {
+          "kind": "struct",
+          "name": "ProcessGroupId",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 170
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+      "lineCount": 308,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ProcessScope",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "prepare",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "register",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "enroll",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 106
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 121
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "detach_from_tty",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 65
+    },
+    {
+      "kind": "fn",
+      "name": "detach_from_tty",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 82
+    },
+    {
+      "kind": "fn",
+      "name": "detach_command",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 95
+    },
+    {
+      "kind": "fn",
+      "name": "detach_std_command",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 123
+    },
+    {
+      "kind": "fn",
+      "name": "new_process_group",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 147
+    },
+    {
+      "kind": "struct",
+      "name": "ProcessGroupId",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 170
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 181
+    },
+    {
+      "kind": "fn",
+      "name": "get",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 207
+    },
+    {
+      "kind": "struct",
+      "name": "ProcessGroup",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 221
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 239
+    },
+    {
+      "kind": "fn",
+      "name": "attach",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 278
+    },
+    {
+      "kind": "fn",
+      "name": "attach_std",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 287
+    },
+    {
+      "kind": "fn",
+      "name": "attach_pid",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 295
+    },
+    {
+      "kind": "fn",
+      "name": "terminate",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 321
+    },
+    {
+      "kind": "fn",
+      "name": "kill",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 332
+    },
+    {
+      "kind": "fn",
+      "name": "pager_env",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 377
+    },
+    {
+      "kind": "const",
+      "name": "GIT_AUTH_SUPPRESSION_ENVS",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 394
+    },
+    {
+      "kind": "fn",
+      "name": "git_command",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 404
+    },
+    {
+      "kind": "fn",
+      "name": "redirect_native_stderr",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 485
+    },
+    {
+      "kind": "fn",
+      "name": "dup_tui_stderr",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 527
+    },
+    {
+      "kind": "fn",
+      "name": "restore_native_stderr",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 572
+    },
+    {
+      "kind": "fn",
+      "name": "is_wsl",
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "line": 589
+    },
+    {
+      "kind": "struct",
+      "name": "ProcessScope",
+      "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+      "line": 52
+    },
+    {
+      "kind": "fn",
+      "name": "prepare",
+      "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+      "line": 67
+    },
+    {
+      "kind": "fn",
+      "name": "register",
+      "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+      "line": 83
+    },
+    {
+      "kind": "fn",
+      "name": "enroll",
+      "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+      "line": 106
+    },
+    {
+      "kind": "fn",
+      "name": "spawn",
+      "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+      "line": 121
+    },
+    {
+      "kind": "fn",
+      "name": "kill_all",
+      "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+      "line": 137
+    },
+    {
+      "kind": "fn",
+      "name": "live_count",
+      "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+      "line": 169
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 939,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "detach_from_tty",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "detach_from_tty",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "detach_command",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "detach_std_command",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "new_process_group",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 147
+        },
+        {
+          "kind": "struct",
+          "name": "ProcessGroupId",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 170
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 181
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 207
+        },
+        {
+          "kind": "struct",
+          "name": "ProcessGroup",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 221
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 239
+        },
+        {
+          "kind": "fn",
+          "name": "attach",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 278
+        },
+        {
+          "kind": "fn",
+          "name": "attach_std",
+          "path": "crates/codegen/xai-tty-utils/src/lib.rs",
+          "line": 287
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-tty-utils/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+      "module": "process_scope",
+      "kind": "production",
+      "lineCount": 308,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ProcessScope",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "prepare",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "register",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "enroll",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 106
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "kill_all",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "live_count",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 169
+        },
+        {
+          "kind": "fn",
+          "name": "global_process_scope",
+          "path": "crates/codegen/xai-tty-utils/src/process_scope.rs",
+          "line": 186
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-tty-utils/src/process_scope.rs"
+    }
+  ]
+}

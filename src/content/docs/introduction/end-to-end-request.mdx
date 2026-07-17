@@ -1,0 +1,29 @@
+---
+title: "一次请求的端到端链路"
+description: "从用户输入追踪到模型采样、工具调用、工作区变更和最终渲染。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-grok-pager
+  - xai-grok-sampler
+  - xai-grok-shell
+  - xai-grok-workspace
+  - xai-tool-runtime
+sourcePaths:
+  - crates/codegen/xai-grok-workspace/src/lib.rs
+  - crates/codegen/xai-grok-pager/src/lib.rs
+  - crates/codegen/xai-grok-sampler/src/lib.rs
+  - crates/common/xai-tool-runtime/src/lib.rs
+  - crates/codegen/xai-grok-shell/src/lib.rs
+  - crates/codegen/xai-grok-shell/src/agent/config.rs
+  - crates/codegen/xai-grok-pager/src/app/app_view.rs
+  - crates/codegen/xai-grok-pager/src/views/dashboard/state.rs
+  - crates/codegen/xai-grok-workspace/src/handle.rs
+  - crates/codegen/xai-grok-pager/src/views/dashboard/render.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="introduction/end-to-end-request" />

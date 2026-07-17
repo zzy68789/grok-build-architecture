@@ -1,0 +1,696 @@
+{
+  "name": "xai-tracing",
+  "memberPath": "crates/common/xai-tracing",
+  "manifestPath": "crates/common/xai-tracing/Cargo.toml",
+  "description": "",
+  "role": "提供跨模块共享的结构化 tracing 基础设施。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/telemetry-tracing-macros",
+  "relatedArticles": [
+    "operations/telemetry-tracing-macros"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-computer-hub-sdk",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 8,
+  "productionFileCount": 8,
+  "lineCount": 847,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-tracing/src/lib.rs",
+      "lineCount": 20,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "lineCount": 389,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "TracedChannel",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "traced_channel",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 32
+        },
+        {
+          "kind": "struct",
+          "name": "MakeClientSpan",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "InjectTraceContextLayer",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 61
+        },
+        {
+          "kind": "struct",
+          "name": "InjectTraceContextService",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "attach_trace_to_grpc_request_mut",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tracing/src/http_client.rs",
+      "lineCount": 156,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "attach_trace_to_http_request",
+          "path": "crates/common/xai-tracing/src/http_client.rs",
+          "line": 9
+        },
+        {
+          "kind": "type",
+          "name": "TracedHttpClient",
+          "path": "crates/common/xai-tracing/src/http_client.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "traced_client",
+          "path": "crates/common/xai-tracing/src/http_client.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "traced_client_new",
+          "path": "crates/common/xai-tracing/src/http_client.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "traced_client_from_builder",
+          "path": "crates/common/xai-tracing/src/http_client.rs",
+          "line": 26
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tracing/src/fastrace.rs",
+      "lineCount": 84,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_fastrace",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "current_trace_id",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "local_or_random_span_ctx",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "enter_span_with_traceparent",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 46
+        },
+        {
+          "kind": "type",
+          "name": "FastraceChannel",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "fastrace_channel",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 58
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tracing/src/testing.rs",
+      "lineCount": 66,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "OtelTestEnv",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "install",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "finished_spans",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "parse_traceparent",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "otel_span_id_hex",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "otel_trace_id_hex",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tracing/src/timer.rs",
+      "lineCount": 63,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Timer",
+          "path": "crates/common/xai-tracing/src/timer.rs",
+          "line": 6
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tracing/src/timer.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "stop",
+          "path": "crates/common/xai-tracing/src/timer.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "force_stop",
+          "path": "crates/common/xai-tracing/src/timer.rs",
+          "line": 45
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tracing/src/dispatch.rs",
+      "lineCount": 46,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "dispatcher_active",
+          "path": "crates/common/xai-tracing/src/dispatch.rs",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tracing/src/tokio.rs",
+      "lineCount": 23,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "spawn_traced",
+          "path": "crates/common/xai-tracing/src/tokio.rs",
+          "line": 16
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "dispatcher_active",
+      "path": "crates/common/xai-tracing/src/dispatch.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "init_fastrace",
+      "path": "crates/common/xai-tracing/src/fastrace.rs",
+      "line": 12
+    },
+    {
+      "kind": "fn",
+      "name": "current_trace_id",
+      "path": "crates/common/xai-tracing/src/fastrace.rs",
+      "line": 38
+    },
+    {
+      "kind": "fn",
+      "name": "local_or_random_span_ctx",
+      "path": "crates/common/xai-tracing/src/fastrace.rs",
+      "line": 42
+    },
+    {
+      "kind": "fn",
+      "name": "enter_span_with_traceparent",
+      "path": "crates/common/xai-tracing/src/fastrace.rs",
+      "line": 46
+    },
+    {
+      "kind": "type",
+      "name": "FastraceChannel",
+      "path": "crates/common/xai-tracing/src/fastrace.rs",
+      "line": 56
+    },
+    {
+      "kind": "fn",
+      "name": "fastrace_channel",
+      "path": "crates/common/xai-tracing/src/fastrace.rs",
+      "line": 58
+    },
+    {
+      "kind": "struct",
+      "name": "TraceparentMiddleware",
+      "path": "crates/common/xai-tracing/src/fastrace.rs",
+      "line": 69
+    },
+    {
+      "kind": "type",
+      "name": "TracedChannel",
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "line": 15
+    },
+    {
+      "kind": "fn",
+      "name": "traced_channel",
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "line": 32
+    },
+    {
+      "kind": "struct",
+      "name": "MakeClientSpan",
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "line": 41
+    },
+    {
+      "kind": "struct",
+      "name": "InjectTraceContextLayer",
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "line": 61
+    },
+    {
+      "kind": "struct",
+      "name": "InjectTraceContextService",
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "line": 72
+    },
+    {
+      "kind": "fn",
+      "name": "attach_trace_to_grpc_request_mut",
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "line": 96
+    },
+    {
+      "kind": "fn",
+      "name": "attach_trace_to_grpc_request",
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "line": 105
+    },
+    {
+      "kind": "struct",
+      "name": "MetadataInjector",
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "line": 113
+    },
+    {
+      "kind": "struct",
+      "name": "HeaderExtractor",
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "line": 131
+    },
+    {
+      "kind": "fn",
+      "name": "attach_trace_to_http_request",
+      "path": "crates/common/xai-tracing/src/http_client.rs",
+      "line": 9
+    },
+    {
+      "kind": "type",
+      "name": "TracedHttpClient",
+      "path": "crates/common/xai-tracing/src/http_client.rs",
+      "line": 16
+    },
+    {
+      "kind": "fn",
+      "name": "traced_client",
+      "path": "crates/common/xai-tracing/src/http_client.rs",
+      "line": 18
+    },
+    {
+      "kind": "fn",
+      "name": "traced_client_new",
+      "path": "crates/common/xai-tracing/src/http_client.rs",
+      "line": 22
+    },
+    {
+      "kind": "fn",
+      "name": "traced_client_from_builder",
+      "path": "crates/common/xai-tracing/src/http_client.rs",
+      "line": 26
+    },
+    {
+      "kind": "struct",
+      "name": "OtelTestEnv",
+      "path": "crates/common/xai-tracing/src/testing.rs",
+      "line": 11
+    },
+    {
+      "kind": "fn",
+      "name": "install",
+      "path": "crates/common/xai-tracing/src/testing.rs",
+      "line": 18
+    },
+    {
+      "kind": "fn",
+      "name": "finished_spans",
+      "path": "crates/common/xai-tracing/src/testing.rs",
+      "line": 39
+    },
+    {
+      "kind": "fn",
+      "name": "parse_traceparent",
+      "path": "crates/common/xai-tracing/src/testing.rs",
+      "line": 45
+    },
+    {
+      "kind": "fn",
+      "name": "otel_span_id_hex",
+      "path": "crates/common/xai-tracing/src/testing.rs",
+      "line": 53
+    },
+    {
+      "kind": "fn",
+      "name": "otel_trace_id_hex",
+      "path": "crates/common/xai-tracing/src/testing.rs",
+      "line": 60
+    },
+    {
+      "kind": "struct",
+      "name": "Timer",
+      "path": "crates/common/xai-tracing/src/timer.rs",
+      "line": 6
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-tracing/src/timer.rs",
+      "line": 19
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-tracing/src/dispatch.rs",
+      "module": "dispatch",
+      "kind": "production",
+      "lineCount": 46,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "dispatcher_active",
+          "path": "crates/common/xai-tracing/src/dispatch.rs",
+          "line": 23
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tracing/src/dispatch.rs"
+    },
+    {
+      "path": "crates/common/xai-tracing/src/fastrace.rs",
+      "module": "fastrace",
+      "kind": "production",
+      "lineCount": 84,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_fastrace",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "current_trace_id",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "local_or_random_span_ctx",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "enter_span_with_traceparent",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 46
+        },
+        {
+          "kind": "type",
+          "name": "FastraceChannel",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "fastrace_channel",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 58
+        },
+        {
+          "kind": "struct",
+          "name": "TraceparentMiddleware",
+          "path": "crates/common/xai-tracing/src/fastrace.rs",
+          "line": 69
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tracing/src/fastrace.rs"
+    },
+    {
+      "path": "crates/common/xai-tracing/src/grpc_client.rs",
+      "module": "grpc_client",
+      "kind": "production",
+      "lineCount": 389,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "TracedChannel",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "traced_channel",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 32
+        },
+        {
+          "kind": "struct",
+          "name": "MakeClientSpan",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "InjectTraceContextLayer",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 61
+        },
+        {
+          "kind": "struct",
+          "name": "InjectTraceContextService",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "attach_trace_to_grpc_request_mut",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "attach_trace_to_grpc_request",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 105
+        },
+        {
+          "kind": "struct",
+          "name": "MetadataInjector",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 113
+        },
+        {
+          "kind": "struct",
+          "name": "HeaderExtractor",
+          "path": "crates/common/xai-tracing/src/grpc_client.rs",
+          "line": 131
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tracing/src/grpc_client.rs"
+    },
+    {
+      "path": "crates/common/xai-tracing/src/http_client.rs",
+      "module": "http_client",
+      "kind": "production",
+      "lineCount": 156,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "attach_trace_to_http_request",
+          "path": "crates/common/xai-tracing/src/http_client.rs",
+          "line": 9
+        },
+        {
+          "kind": "type",
+          "name": "TracedHttpClient",
+          "path": "crates/common/xai-tracing/src/http_client.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "traced_client",
+          "path": "crates/common/xai-tracing/src/http_client.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "traced_client_new",
+          "path": "crates/common/xai-tracing/src/http_client.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "traced_client_from_builder",
+          "path": "crates/common/xai-tracing/src/http_client.rs",
+          "line": 26
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tracing/src/http_client.rs"
+    },
+    {
+      "path": "crates/common/xai-tracing/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 20,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tracing/src/lib.rs"
+    },
+    {
+      "path": "crates/common/xai-tracing/src/testing.rs",
+      "module": "testing",
+      "kind": "production",
+      "lineCount": 66,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "OtelTestEnv",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "install",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "finished_spans",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "parse_traceparent",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "otel_span_id_hex",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "otel_trace_id_hex",
+          "path": "crates/common/xai-tracing/src/testing.rs",
+          "line": 60
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tracing/src/testing.rs"
+    },
+    {
+      "path": "crates/common/xai-tracing/src/timer.rs",
+      "module": "timer",
+      "kind": "production",
+      "lineCount": 63,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Timer",
+          "path": "crates/common/xai-tracing/src/timer.rs",
+          "line": 6
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tracing/src/timer.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "stop",
+          "path": "crates/common/xai-tracing/src/timer.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "force_stop",
+          "path": "crates/common/xai-tracing/src/timer.rs",
+          "line": 45
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tracing/src/timer.rs"
+    },
+    {
+      "path": "crates/common/xai-tracing/src/tokio.rs",
+      "module": "tokio",
+      "kind": "production",
+      "lineCount": 23,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "spawn_traced",
+          "path": "crates/common/xai-tracing/src/tokio.rs",
+          "line": 16
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tracing/src/tokio.rs"
+    }
+  ]
+}

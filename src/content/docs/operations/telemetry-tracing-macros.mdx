@@ -1,0 +1,28 @@
+---
+title: "Telemetry、Mixpanel、Tracing 与 Macros"
+description: "区分产品事件、错误上报、内部 tracing 和计时宏。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-grok-telemetry
+  - xai-mixpanel
+  - xai-tracing
+  - xai-tracing-macros
+sourcePaths:
+  - crates/codegen/xai-mixpanel/src/lib.rs
+  - crates/codegen/xai-grok-telemetry/src/lib.rs
+  - crates/codegen/xai-tracing-macros/src/lib.rs
+  - crates/common/xai-tracing/src/lib.rs
+  - crates/codegen/xai-grok-telemetry/src/events.rs
+  - crates/codegen/xai-grok-telemetry/src/external/schema.rs
+  - crates/codegen/xai-grok-telemetry/src/debug_log.rs
+  - crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs
+  - crates/codegen/xai-grok-telemetry/src/external/config.rs
+  - crates/codegen/xai-grok-telemetry/src/instrumentation.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="operations/telemetry-tracing-macros" />

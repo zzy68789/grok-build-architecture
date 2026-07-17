@@ -1,0 +1,133 @@
+{
+  "name": "xai-gix-status",
+  "memberPath": "crates/codegen/xai-gix-status",
+  "manifestPath": "crates/codegen/xai-gix-status/Cargo.toml",
+  "description": "Shared gix status helpers: thread budget under RLIMIT_NPROC so produce-worker spawn cannot abort under panic=abort",
+  "role": "在进程线程预算内安全执行共享 gix status 扫描。",
+  "layer": "工具与工作区",
+  "primaryArticle": "workspace/execution-vcs-fsevents-status",
+  "relatedArticles": [
+    "workspace/execution-vcs-fsevents-status"
+  ],
+  "dependencies": [
+    "xai-test-utils"
+  ],
+  "dependents": [
+    "xai-fast-worktree",
+    "xai-hunk-tracker"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 589,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-gix-status/src/lib.rs",
+      "lineCount": 589,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "OUTER_RESERVE",
+          "path": "crates/codegen/xai-gix-status/src/lib.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "compute_gix_status_thread_limit_from",
+          "path": "crates/codegen/xai-gix-status/src/lib.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "compute_gix_status_thread_limit",
+          "path": "crates/codegen/xai-gix-status/src/lib.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "with_budgeted_thread_limit",
+          "path": "crates/codegen/xai-gix-status/src/lib.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "temp_repo_with_dirty_file",
+          "path": "crates/codegen/xai-gix-status/src/lib.rs",
+          "line": 229
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "const",
+      "name": "OUTER_RESERVE",
+      "path": "crates/codegen/xai-gix-status/src/lib.rs",
+      "line": 12
+    },
+    {
+      "kind": "fn",
+      "name": "compute_gix_status_thread_limit_from",
+      "path": "crates/codegen/xai-gix-status/src/lib.rs",
+      "line": 18
+    },
+    {
+      "kind": "fn",
+      "name": "compute_gix_status_thread_limit",
+      "path": "crates/codegen/xai-gix-status/src/lib.rs",
+      "line": 40
+    },
+    {
+      "kind": "fn",
+      "name": "with_budgeted_thread_limit",
+      "path": "crates/codegen/xai-gix-status/src/lib.rs",
+      "line": 75
+    },
+    {
+      "kind": "fn",
+      "name": "temp_repo_with_dirty_file",
+      "path": "crates/codegen/xai-gix-status/src/lib.rs",
+      "line": 229
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-gix-status/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 589,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "OUTER_RESERVE",
+          "path": "crates/codegen/xai-gix-status/src/lib.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "compute_gix_status_thread_limit_from",
+          "path": "crates/codegen/xai-gix-status/src/lib.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "compute_gix_status_thread_limit",
+          "path": "crates/codegen/xai-gix-status/src/lib.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "with_budgeted_thread_limit",
+          "path": "crates/codegen/xai-gix-status/src/lib.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "temp_repo_with_dirty_file",
+          "path": "crates/codegen/xai-gix-status/src/lib.rs",
+          "line": 229
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-gix-status/src/lib.rs"
+    }
+  ]
+}

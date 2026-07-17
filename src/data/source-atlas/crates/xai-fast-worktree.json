@@ -1,0 +1,1632 @@
+{
+  "name": "xai-fast-worktree",
+  "memberPath": "crates/codegen/xai-fast-worktree",
+  "manifestPath": "crates/codegen/xai-fast-worktree/Cargo.toml",
+  "description": "High-performance git worktree creation using CoW cloning",
+  "role": "使用 CoW 克隆快速创建隔离 Git worktree。",
+  "layer": "工具与工作区",
+  "primaryArticle": "agents/worktree-checkpoint-hunk",
+  "relatedArticles": [
+    "agents/worktree-checkpoint-hunk"
+  ],
+  "dependencies": [
+    "xai-gix-status",
+    "xai-sqlite-journal",
+    "xai-test-utils",
+    "xai-tty-utils"
+  ],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 36,
+  "productionFileCount": 34,
+  "lineCount": 17514,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/lib.rs",
+      "lineCount": 68,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "count_tracked_files",
+          "path": "crates/codegen/xai-fast-worktree/src/lib.rs",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "lineCount": 3614,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "DelegateSnapshotResult",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 23
+        },
+        {
+          "kind": "trait",
+          "name": "BtrfsDelegate",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 39
+        },
+        {
+          "kind": "enum",
+          "name": "WorkingTreeMode",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 77
+        },
+        {
+          "kind": "enum",
+          "name": "IgnoredFilesMode",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 94
+        },
+        {
+          "kind": "enum",
+          "name": "BtrfsMode",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 114
+        },
+        {
+          "kind": "enum",
+          "name": "CreationMode",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 131
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+      "lineCount": 1913,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SourceDirtyState",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "collect_source_dirty_state",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "SyncReport",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 84
+        },
+        {
+          "kind": "struct",
+          "name": "WorktreeSync",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 131
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/worktree/execute.rs",
+      "lineCount": 1732,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "cleanup_snapshot_git_state",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/execute.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "execute_create_worktree",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/execute.rs",
+          "line": 216
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/worktree/mod.rs",
+      "lineCount": 1353,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CreateWorktreeResult",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/mod.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "execute_plan",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/mod.rs",
+          "line": 34
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+      "lineCount": 1228,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "GIT_AUTH_SUPPRESSION_ENVS",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "git_command",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "git_reset_hard_command",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "git_clean_fd",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "checkout_ref",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "worktree_has_tracked_changes",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 102
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+      "lineCount": 1049,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "create_snapshot",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "SnapshotResult",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "create_snapshot_with_symlink",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "snapshot_dest_path",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 235
+        },
+        {
+          "kind": "fn",
+          "name": "create_worktree_symlink",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 263
+        },
+        {
+          "kind": "fn",
+          "name": "delete_snapshot",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 316
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+      "lineCount": 770,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "OverlayWorktreeResult",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "create_overlay_worktree",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "remove_overlay_worktree",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 176
+        },
+        {
+          "kind": "fn",
+          "name": "try_remove_from_mountinfo",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 269
+        },
+        {
+          "kind": "fn",
+          "name": "try_remove_from_metadata",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 327
+        },
+        {
+          "kind": "fn",
+          "name": "cleanup_orphaned_overlay_snapshots",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 401
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "DelegateSnapshotResult",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 23
+    },
+    {
+      "kind": "trait",
+      "name": "BtrfsDelegate",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 39
+    },
+    {
+      "kind": "enum",
+      "name": "WorkingTreeMode",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 77
+    },
+    {
+      "kind": "enum",
+      "name": "IgnoredFilesMode",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 94
+    },
+    {
+      "kind": "enum",
+      "name": "BtrfsMode",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 114
+    },
+    {
+      "kind": "enum",
+      "name": "CreationMode",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 131
+    },
+    {
+      "kind": "fn",
+      "name": "as_db_str",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 155
+    },
+    {
+      "kind": "struct",
+      "name": "CopyReport",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 166
+    },
+    {
+      "kind": "struct",
+      "name": "WorktreeReport",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 191
+    },
+    {
+      "kind": "struct",
+      "name": "WorktreeBuilder",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 203
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 239
+    },
+    {
+      "kind": "fn",
+      "name": "cancellation_token",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 265
+    },
+    {
+      "kind": "fn",
+      "name": "git_ref",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 270
+    },
+    {
+      "kind": "fn",
+      "name": "parallelism",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 275
+    },
+    {
+      "kind": "fn",
+      "name": "ignored_parallelism",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 280
+    },
+    {
+      "kind": "fn",
+      "name": "channel_buffer",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 285
+    },
+    {
+      "kind": "fn",
+      "name": "working_tree_mode",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 290
+    },
+    {
+      "kind": "fn",
+      "name": "ignored_files_mode",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 295
+    },
+    {
+      "kind": "fn",
+      "name": "creation_mode",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 308
+    },
+    {
+      "kind": "fn",
+      "name": "worktree_kind",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 316
+    },
+    {
+      "kind": "fn",
+      "name": "session_id",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 323
+    },
+    {
+      "kind": "fn",
+      "name": "worktree_id",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 330
+    },
+    {
+      "kind": "fn",
+      "name": "metadata",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 337
+    },
+    {
+      "kind": "fn",
+      "name": "standalone",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 343
+    },
+    {
+      "kind": "fn",
+      "name": "btrfs_mode",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 355
+    },
+    {
+      "kind": "fn",
+      "name": "btrfs_delegate",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 372
+    },
+    {
+      "kind": "fn",
+      "name": "create",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 381
+    },
+    {
+      "kind": "fn",
+      "name": "copy_ignored_only",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 447
+    },
+    {
+      "kind": "const",
+      "name": "OUT_OF_DISK_CONTEXT",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 508
+    },
+    {
+      "kind": "const",
+      "name": "ENOSPC_OS_MESSAGE",
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "line": 512
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+      "module": "api",
+      "kind": "production",
+      "lineCount": 3614,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "DelegateSnapshotResult",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 23
+        },
+        {
+          "kind": "trait",
+          "name": "BtrfsDelegate",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 39
+        },
+        {
+          "kind": "enum",
+          "name": "WorkingTreeMode",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 77
+        },
+        {
+          "kind": "enum",
+          "name": "IgnoredFilesMode",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 94
+        },
+        {
+          "kind": "enum",
+          "name": "BtrfsMode",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 114
+        },
+        {
+          "kind": "enum",
+          "name": "CreationMode",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "as_db_str",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 155
+        },
+        {
+          "kind": "struct",
+          "name": "CopyReport",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 166
+        },
+        {
+          "kind": "struct",
+          "name": "WorktreeReport",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 191
+        },
+        {
+          "kind": "struct",
+          "name": "WorktreeBuilder",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 203
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 239
+        },
+        {
+          "kind": "fn",
+          "name": "cancellation_token",
+          "path": "crates/codegen/xai-fast-worktree/src/api.rs",
+          "line": 265
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/api.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/bin/cli.rs",
+      "module": "bin::cli",
+      "kind": "production",
+      "lineCount": 215,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/bin/cli.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/bin/pool_perf_bench.rs",
+      "module": "bin::pool_perf_bench",
+      "kind": "production",
+      "lineCount": 809,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/bin/pool_perf_bench.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/btrfs/detect.rs",
+      "module": "btrfs::detect",
+      "kind": "production",
+      "lineCount": 729,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "BtrfsInfo",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/detect.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "BindMountInfo",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/detect.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "is_btrfs",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/detect.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "get_bind_mount_info",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/detect.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "get_btrfs_mount_point",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/detect.rs",
+          "line": 296
+        },
+        {
+          "kind": "fn",
+          "name": "is_btrfs_subvolume",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/detect.rs",
+          "line": 342
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/btrfs/detect.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/btrfs/mod.rs",
+      "module": "btrfs::mod",
+      "kind": "production",
+      "lineCount": 25,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/btrfs/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+      "module": "btrfs::snapshot",
+      "kind": "production",
+      "lineCount": 1049,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "create_snapshot",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "SnapshotResult",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "create_snapshot_with_symlink",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "snapshot_dest_path",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 235
+        },
+        {
+          "kind": "fn",
+          "name": "create_worktree_symlink",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 263
+        },
+        {
+          "kind": "fn",
+          "name": "delete_snapshot",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 316
+        },
+        {
+          "kind": "fn",
+          "name": "is_safe_snapshot_delete_target",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 359
+        },
+        {
+          "kind": "struct",
+          "name": "BtrfsSnapshotMetadata",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 420
+        },
+        {
+          "kind": "const",
+          "name": "BTRFS_META_SUFFIX",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 429
+        },
+        {
+          "kind": "const",
+          "name": "BTRFS_SNAPSHOT_SUBDIRS",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 436
+        },
+        {
+          "kind": "fn",
+          "name": "btrfs_meta_path",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 439
+        },
+        {
+          "kind": "fn",
+          "name": "write_btrfs_metadata",
+          "path": "crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs",
+          "line": 450
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/btrfs/snapshot.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/copy/cow.rs",
+      "module": "copy::cow",
+      "kind": "production",
+      "lineCount": 118,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "clone_file",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/cow.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "replace_symlink",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/cow.rs",
+          "line": 30
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/copy/cow.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/copy/engine.rs",
+      "module": "copy::engine",
+      "kind": "production",
+      "lineCount": 443,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "copy_parallel",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/engine.rs",
+          "line": 32
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/copy/engine.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/copy/gitdir.rs",
+      "module": "copy::gitdir",
+      "kind": "production",
+      "lineCount": 570,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "GitDirCopyStats",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/gitdir.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "copy_git_dir",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/gitdir.rs",
+          "line": 76
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/copy/gitdir.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/copy/mod.rs",
+      "module": "copy::mod",
+      "kind": "production",
+      "lineCount": 16,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/copy/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/copy/shard.rs",
+      "module": "copy::shard",
+      "kind": "production",
+      "lineCount": 91,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "shard_for_path",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/shard.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "short_path_hash",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/shard.rs",
+          "line": 35
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/copy/shard.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/copy/skip.rs",
+      "module": "copy::skip",
+      "kind": "production",
+      "lineCount": 113,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "build_skip_matcher",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/skip.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "collect_unignored_paths",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/skip.rs",
+          "line": 23
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/copy/skip.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/copy/types.rs",
+      "module": "copy::types",
+      "kind": "production",
+      "lineCount": 78,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "DirtyFilesReport",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/types.rs",
+          "line": 11
+        },
+        {
+          "kind": "struct",
+          "name": "CopyStats",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/types.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "merge",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/types.rs",
+          "line": 30
+        },
+        {
+          "kind": "enum",
+          "name": "CopyEntryKind",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/types.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "CopyEntry",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/types.rs",
+          "line": 49
+        },
+        {
+          "kind": "struct",
+          "name": "ParallelCopyConfig",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/types.rs",
+          "line": 56
+        },
+        {
+          "kind": "struct",
+          "name": "ParallelCopyResult",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/types.rs",
+          "line": 71
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/copy/types.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/copy/worker.rs",
+      "module": "copy::worker",
+      "kind": "production",
+      "lineCount": 136,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "WorkerCtx",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/worker.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "run_worker",
+          "path": "crates/codegen/xai-fast-worktree/src/copy/worker.rs",
+          "line": 25
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/copy/worker.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+      "module": "db::mod",
+      "kind": "production",
+      "lineCount": 414,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "WorktreeKind",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "from_str_lossy",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 40
+        },
+        {
+          "kind": "enum",
+          "name": "WorktreeStatus",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "from_str_lossy",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 68
+        },
+        {
+          "kind": "struct",
+          "name": "WorktreeRecord",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 78
+        },
+        {
+          "kind": "struct",
+          "name": "ListFilter",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 96
+        },
+        {
+          "kind": "struct",
+          "name": "DbStats",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 105
+        },
+        {
+          "kind": "struct",
+          "name": "WorktreeDb",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "open",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 118
+        },
+        {
+          "kind": "fn",
+          "name": "open_at",
+          "path": "crates/codegen/xai-fast-worktree/src/db/mod.rs",
+          "line": 123
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/db/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+      "module": "db::queries",
+      "kind": "production",
+      "lineCount": 232,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "register",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "unregister",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "unregister_by_path",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "mark_dead",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "touch",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "get_by_id",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 117
+        },
+        {
+          "kind": "fn",
+          "name": "get_by_label",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "get_by_path",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 129
+        },
+        {
+          "kind": "fn",
+          "name": "list",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "stats",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 189
+        },
+        {
+          "kind": "fn",
+          "name": "sweep_dead",
+          "path": "crates/codegen/xai-fast-worktree/src/db/queries.rs",
+          "line": 211
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/db/queries.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/db/schema.rs",
+      "module": "db::schema",
+      "kind": "production",
+      "lineCount": 36,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SCHEMA_VERSION",
+          "path": "crates/codegen/xai-fast-worktree/src/db/schema.rs",
+          "line": 1
+        },
+        {
+          "kind": "const",
+          "name": "INIT_SQL",
+          "path": "crates/codegen/xai-fast-worktree/src/db/schema.rs",
+          "line": 3
+        },
+        {
+          "kind": "const",
+          "name": "UPSERT_META",
+          "path": "crates/codegen/xai-fast-worktree/src/db/schema.rs",
+          "line": 34
+        },
+        {
+          "kind": "const",
+          "name": "GET_META",
+          "path": "crates/codegen/xai-fast-worktree/src/db/schema.rs",
+          "line": 35
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/db/schema.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/db/tests.rs",
+      "module": "db::tests",
+      "kind": "test",
+      "lineCount": 691,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/db/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/discovery.rs",
+      "module": "discovery",
+      "kind": "production",
+      "lineCount": 331,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "DiscoveredWorktree",
+          "path": "crates/codegen/xai-fast-worktree/src/discovery.rs",
+          "line": 11
+        },
+        {
+          "kind": "struct",
+          "name": "DiscoveryReport",
+          "path": "crates/codegen/xai-fast-worktree/src/discovery.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "discover_worktrees",
+          "path": "crates/codegen/xai-fast-worktree/src/discovery.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "into_record",
+          "path": "crates/codegen/xai-fast-worktree/src/discovery.rs",
+          "line": 120
+        },
+        {
+          "kind": "struct",
+          "name": "RebuildReport",
+          "path": "crates/codegen/xai-fast-worktree/src/discovery.rs",
+          "line": 151
+        },
+        {
+          "kind": "fn",
+          "name": "rebuild_worktree_db",
+          "path": "crates/codegen/xai-fast-worktree/src/discovery.rs",
+          "line": 157
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/discovery.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+      "module": "git::checkout",
+      "kind": "production",
+      "lineCount": 1228,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "GIT_AUTH_SUPPRESSION_ENVS",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "git_command",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "git_reset_hard_command",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "git_clean_fd",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "checkout_ref",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "worktree_has_tracked_changes",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "has_staged_changes",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "worktree_at_ref",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 141
+        },
+        {
+          "kind": "const",
+          "name": "SNAPSHOT_GIT_CONFIG",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 199
+        },
+        {
+          "kind": "fn",
+          "name": "snapshot_worktree_to_ref",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 285
+        },
+        {
+          "kind": "fn",
+          "name": "transfer_snapshot_to_repo",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 361
+        },
+        {
+          "kind": "fn",
+          "name": "rehydrate_worktree_from_ref",
+          "path": "crates/codegen/xai-fast-worktree/src/git/checkout.rs",
+          "line": 424
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/git/checkout.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/git/discovery.rs",
+      "module": "git::discovery",
+      "kind": "production",
+      "lineCount": 152,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "find_git_dir",
+          "path": "crates/codegen/xai-fast-worktree/src/git/discovery.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "find_worktree_git_dir",
+          "path": "crates/codegen/xai-fast-worktree/src/git/discovery.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "find_worktree_root",
+          "path": "crates/codegen/xai-fast-worktree/src/git/discovery.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "get_head_commit",
+          "path": "crates/codegen/xai-fast-worktree/src/git/discovery.rs",
+          "line": 81
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/git/discovery.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/git/index.rs",
+      "module": "git::index",
+      "kind": "production",
+      "lineCount": 308,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "copy_git_index",
+          "path": "crates/codegen/xai-fast-worktree/src/git/index.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "update_index_stats",
+          "path": "crates/codegen/xai-fast-worktree/src/git/index.rs",
+          "line": 181
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/git/index.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/git/mod.rs",
+      "module": "git::mod",
+      "kind": "production",
+      "lineCount": 21,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/git/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/git/status.rs",
+      "module": "git::status",
+      "kind": "production",
+      "lineCount": 107,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ModifiedFilesResult",
+          "path": "crates/codegen/xai-fast-worktree/src/git/status.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "get_modified_files",
+          "path": "crates/codegen/xai-fast-worktree/src/git/status.rs",
+          "line": 30
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/git/status.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/git/worktree.rs",
+      "module": "git::worktree",
+      "kind": "production",
+      "lineCount": 31,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "worktree_add_no_checkout",
+          "path": "crates/codegen/xai-fast-worktree/src/git/worktree.rs",
+          "line": 10
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/git/worktree.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 68,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "count_tracked_files",
+          "path": "crates/codegen/xai-fast-worktree/src/lib.rs",
+          "line": 60
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+      "module": "mount_info",
+      "kind": "production",
+      "lineCount": 532,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MountEntry",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 17
+        },
+        {
+          "kind": "struct",
+          "name": "OverlayMountInfo",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "parse_mountinfo",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "overlay_upperdirs_all_namespaces",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "parse_mountinfo_from",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 97
+        },
+        {
+          "kind": "fn",
+          "name": "find_mount_for_path",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 103
+        },
+        {
+          "kind": "fn",
+          "name": "find_overlay_mount",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 123
+        },
+        {
+          "kind": "enum",
+          "name": "MountNsStatus",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "current_mount_ns_status",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 194
+        },
+        {
+          "kind": "fn",
+          "name": "is_fuse_mount",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 236
+        },
+        {
+          "kind": "fn",
+          "name": "extract_option",
+          "path": "crates/codegen/xai-fast-worktree/src/mount_info.rs",
+          "line": 278
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/mount_info.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/overlay/detect.rs",
+      "module": "overlay::detect",
+      "kind": "production",
+      "lineCount": 191,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "OverlayInfo",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/detect.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "detect_fuse_overlay",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/detect.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "detect_fuse_overlay_from_entries",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/detect.rs",
+          "line": 50
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/overlay/detect.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/overlay/mod.rs",
+      "module": "overlay::mod",
+      "kind": "production",
+      "lineCount": 16,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/overlay/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+      "module": "overlay::snapshot",
+      "kind": "production",
+      "lineCount": 770,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "OverlayWorktreeResult",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "create_overlay_worktree",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "remove_overlay_worktree",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 176
+        },
+        {
+          "kind": "fn",
+          "name": "try_remove_from_mountinfo",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 269
+        },
+        {
+          "kind": "fn",
+          "name": "try_remove_from_metadata",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 327
+        },
+        {
+          "kind": "fn",
+          "name": "cleanup_orphaned_overlay_snapshots",
+          "path": "crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs",
+          "line": 401
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/overlay/snapshot.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+      "module": "sync",
+      "kind": "production",
+      "lineCount": 1913,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SourceDirtyState",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "collect_source_dirty_state",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "SyncReport",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 84
+        },
+        {
+          "kind": "struct",
+          "name": "WorktreeSync",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "sync_worktree",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 148
+        },
+        {
+          "kind": "fn",
+          "name": "sync_worktree_opts",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "sync_from_precomputed",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 226
+        },
+        {
+          "kind": "fn",
+          "name": "sync_dirty_state",
+          "path": "crates/codegen/xai-fast-worktree/src/sync.rs",
+          "line": 292
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/sync.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/util.rs",
+      "module": "util",
+      "kind": "production",
+      "lineCount": 8,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "unix_timestamp_string",
+          "path": "crates/codegen/xai-fast-worktree/src/util.rs",
+          "line": 2
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/util.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/worktree/execute.rs",
+      "module": "worktree::execute",
+      "kind": "production",
+      "lineCount": 1732,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "cleanup_snapshot_git_state",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/execute.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "execute_create_worktree",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/execute.rs",
+          "line": 216
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/worktree/execute.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/worktree/mod.rs",
+      "module": "worktree::mod",
+      "kind": "production",
+      "lineCount": 1353,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CreateWorktreeResult",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/mod.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "execute_plan",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/mod.rs",
+          "line": 34
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/worktree/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/src/worktree/plan.rs",
+      "module": "worktree::plan",
+      "kind": "production",
+      "lineCount": 65,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "WorktreePlan",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/plan.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "effective_parallelism",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/plan.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "effective_ignored_parallelism",
+          "path": "crates/codegen/xai-fast-worktree/src/worktree/plan.rs",
+          "line": 57
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/src/worktree/plan.rs"
+    },
+    {
+      "path": "crates/codegen/xai-fast-worktree/tests/overlay_integration.rs",
+      "module": "..::tests::overlay_integration",
+      "kind": "test",
+      "lineCount": 939,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-fast-worktree/tests/overlay_integration.rs"
+    }
+  ]
+}

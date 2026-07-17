@@ -1,0 +1,1206 @@
+{
+  "name": "xai-file-utils",
+  "memberPath": "crates/codegen/xai-file-utils",
+  "manifestPath": "crates/codegen/xai-file-utils/Cargo.toml",
+  "description": "Local data collection: per-turn event tracking",
+  "role": "工具与工作区层的一方 crate；上游清单描述为：Local data collection: per-turn event tracking。",
+  "layer": "工具与工作区",
+  "primaryArticle": "tools/file-search-edit",
+  "relatedArticles": [
+    "tools/file-search-edit"
+  ],
+  "dependencies": [
+    "xai-circuit-breaker",
+    "xai-grok-auth",
+    "xai-grok-version",
+    "xai-test-utils"
+  ],
+  "dependents": [
+    "xai-grok-mcp",
+    "xai-grok-pager",
+    "xai-grok-shell",
+    "xai-grok-shell-session-support",
+    "xai-grok-telemetry",
+    "xai-grok-tools",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 15,
+  "productionFileCount": 13,
+  "lineCount": 14651,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-file-utils/src/lib.rs",
+      "lineCount": 61,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "with_auth_retry",
+          "path": "crates/codegen/xai-file-utils/src/lib.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "sha256_hex",
+          "path": "crates/codegen/xai-file-utils/src/lib.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "sha256_hex_from_file",
+          "path": "crates/codegen/xai-file-utils/src/lib.rs",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/queue.rs",
+      "lineCount": 6434,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "TraceExportSource",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 43
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_MAX_AGE",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 152
+        },
+        {
+          "kind": "struct",
+          "name": "UploadRetryPolicy",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 155
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_AUTH_PARK_PROBE_INTERVAL",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 172
+        },
+        {
+          "kind": "const",
+          "name": "QUEUE_ITEM_SIDECAR_SCHEMA_VERSION",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 262
+        },
+        {
+          "kind": "struct",
+          "name": "QueueItemSidecar",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 269
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+      "lineCount": 3463,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "Auth401AttributionCallback",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 62
+        },
+        {
+          "kind": "struct",
+          "name": "RetryConfig",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "conservative",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "with_initial_delay",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "with_max_delay",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 133
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/s3.rs",
+      "lineCount": 1541,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "build_s3_client",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 99
+        },
+        {
+          "kind": "struct",
+          "name": "S3StaticCredentials",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "presign_put_url",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 184
+        },
+        {
+          "kind": "fn",
+          "name": "presign_get_url",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 206
+        },
+        {
+          "kind": "fn",
+          "name": "upload_bytes",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 326
+        },
+        {
+          "kind": "fn",
+          "name": "upload_file",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 355
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+      "lineCount": 894,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MULTIPART_UPLOAD_THRESHOLD",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 21
+        },
+        {
+          "kind": "trait",
+          "name": "StorageConfig",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 69
+        },
+        {
+          "kind": "fn",
+          "name": "upload_bytes",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "upload_bytes_signed",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 192
+        },
+        {
+          "kind": "fn",
+          "name": "upload_file",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 240
+        },
+        {
+          "kind": "fn",
+          "name": "upload_stream",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 317
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+      "lineCount": 856,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "EVENT_SCHEMA_VERSION",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 4
+        },
+        {
+          "kind": "enum",
+          "name": "Event",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 13
+        },
+        {
+          "kind": "enum",
+          "name": "InterjectionSource",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 464
+        },
+        {
+          "kind": "enum",
+          "name": "RedirectKind",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 479
+        },
+        {
+          "kind": "enum",
+          "name": "McpErrorCategory",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 493
+        },
+        {
+          "kind": "struct",
+          "name": "McpConfigServer",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 503
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/workspace_classifier.rs",
+      "lineCount": 376,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_project_dir",
+          "path": "crates/codegen/xai-file-utils/src/workspace_classifier.rs",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+      "lineCount": 317,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "current_traceparent",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 7
+        },
+        {
+          "kind": "fn",
+          "name": "inject_trace_context_into_request",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "trace_context_headers",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "inject_trace_context",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "span_from_meta_traceparent",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "link_current_span_to_meta",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 100
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "TracingObserver",
+      "path": "crates/codegen/xai-file-utils/src/circuit_breaker_observer.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-file-utils/src/circuit_breaker_observer.rs",
+      "line": 28
+    },
+    {
+      "kind": "struct",
+      "name": "EventWriter",
+      "path": "crates/codegen/xai-file-utils/src/events/log.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "open",
+      "path": "crates/codegen/xai-file-utils/src/events/log.rs",
+      "line": 33
+    },
+    {
+      "kind": "fn",
+      "name": "noop",
+      "path": "crates/codegen/xai-file-utils/src/events/log.rs",
+      "line": 53
+    },
+    {
+      "kind": "fn",
+      "name": "emit",
+      "path": "crates/codegen/xai-file-utils/src/events/log.rs",
+      "line": 62
+    },
+    {
+      "kind": "struct",
+      "name": "EventTracker",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 10
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 60
+    },
+    {
+      "kind": "fn",
+      "name": "writer",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 73
+    },
+    {
+      "kind": "fn",
+      "name": "emit",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 77
+    },
+    {
+      "kind": "fn",
+      "name": "begin_turn",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 82
+    },
+    {
+      "kind": "fn",
+      "name": "emit_turn_ended",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 88
+    },
+    {
+      "kind": "fn",
+      "name": "tool_started",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 105
+    },
+    {
+      "kind": "fn",
+      "name": "tool_count_this_turn",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 112
+    },
+    {
+      "kind": "fn",
+      "name": "has_active_tool",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 116
+    },
+    {
+      "kind": "fn",
+      "name": "tool_finished",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 120
+    },
+    {
+      "kind": "fn",
+      "name": "cancel_active_tool",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 126
+    },
+    {
+      "kind": "fn",
+      "name": "set_prior_interrupt_category",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 139
+    },
+    {
+      "kind": "fn",
+      "name": "take_prior_interrupt_category",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 144
+    },
+    {
+      "kind": "fn",
+      "name": "set_prior_redirect_kind",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 151
+    },
+    {
+      "kind": "fn",
+      "name": "take_prior_redirect_kind",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 156
+    },
+    {
+      "kind": "fn",
+      "name": "set_pending_interrupt_reminder",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 163
+    },
+    {
+      "kind": "fn",
+      "name": "take_pending_interrupt_reminder",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 168
+    },
+    {
+      "kind": "fn",
+      "name": "permission_requested",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 174
+    },
+    {
+      "kind": "fn",
+      "name": "permission_resolved",
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "line": 184
+    },
+    {
+      "kind": "const",
+      "name": "EVENT_SCHEMA_VERSION",
+      "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+      "line": 4
+    },
+    {
+      "kind": "enum",
+      "name": "Event",
+      "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+      "line": 13
+    },
+    {
+      "kind": "enum",
+      "name": "InterjectionSource",
+      "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+      "line": 464
+    },
+    {
+      "kind": "enum",
+      "name": "RedirectKind",
+      "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+      "line": 479
+    },
+    {
+      "kind": "enum",
+      "name": "McpErrorCategory",
+      "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+      "line": 493
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-file-utils/src/circuit_breaker_observer_tests.rs",
+      "module": "circuit_breaker_observer_tests",
+      "kind": "test",
+      "lineCount": 281,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/circuit_breaker_observer_tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/circuit_breaker_observer.rs",
+      "module": "circuit_breaker_observer",
+      "kind": "production",
+      "lineCount": 87,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TracingObserver",
+          "path": "crates/codegen/xai-file-utils/src/circuit_breaker_observer.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-file-utils/src/circuit_breaker_observer.rs",
+          "line": 28
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/circuit_breaker_observer.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/events/log.rs",
+      "module": "events::log",
+      "kind": "production",
+      "lineCount": 180,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "EventWriter",
+          "path": "crates/codegen/xai-file-utils/src/events/log.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "open",
+          "path": "crates/codegen/xai-file-utils/src/events/log.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "noop",
+          "path": "crates/codegen/xai-file-utils/src/events/log.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "emit",
+          "path": "crates/codegen/xai-file-utils/src/events/log.rs",
+          "line": 62
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/events/log.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/events/mod.rs",
+      "module": "events::mod",
+      "kind": "production",
+      "lineCount": 13,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/events/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+      "module": "events::tracker",
+      "kind": "production",
+      "lineCount": 262,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "EventTracker",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "writer",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "emit",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "begin_turn",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "emit_turn_ended",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "tool_started",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 105
+        },
+        {
+          "kind": "fn",
+          "name": "tool_count_this_turn",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "has_active_tool",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 116
+        },
+        {
+          "kind": "fn",
+          "name": "tool_finished",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "cancel_active_tool",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "set_prior_interrupt_category",
+          "path": "crates/codegen/xai-file-utils/src/events/tracker.rs",
+          "line": 139
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/events/tracker.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+      "module": "events::types",
+      "kind": "production",
+      "lineCount": 856,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "EVENT_SCHEMA_VERSION",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 4
+        },
+        {
+          "kind": "enum",
+          "name": "Event",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 13
+        },
+        {
+          "kind": "enum",
+          "name": "InterjectionSource",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 464
+        },
+        {
+          "kind": "enum",
+          "name": "RedirectKind",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 479
+        },
+        {
+          "kind": "enum",
+          "name": "McpErrorCategory",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 493
+        },
+        {
+          "kind": "struct",
+          "name": "McpConfigServer",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 503
+        },
+        {
+          "kind": "enum",
+          "name": "GoalClassifierVerdictTelemetry",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 514
+        },
+        {
+          "kind": "enum",
+          "name": "GoalPauseReasonTelemetry",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 528
+        },
+        {
+          "kind": "enum",
+          "name": "ToolOutcome",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 548
+        },
+        {
+          "kind": "enum",
+          "name": "Phase",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 569
+        },
+        {
+          "kind": "enum",
+          "name": "SessionRelationship",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 579
+        },
+        {
+          "kind": "enum",
+          "name": "TurnOutcomeLabel",
+          "path": "crates/codegen/xai-file-utils/src/events/types.rs",
+          "line": 587
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/events/types.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+      "module": "gcs",
+      "kind": "production",
+      "lineCount": 894,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MULTIPART_UPLOAD_THRESHOLD",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 21
+        },
+        {
+          "kind": "trait",
+          "name": "StorageConfig",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 69
+        },
+        {
+          "kind": "fn",
+          "name": "upload_bytes",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "upload_bytes_signed",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 192
+        },
+        {
+          "kind": "fn",
+          "name": "upload_file",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 240
+        },
+        {
+          "kind": "fn",
+          "name": "upload_stream",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 317
+        },
+        {
+          "kind": "fn",
+          "name": "upload_bytes_via_signed_url",
+          "path": "crates/codegen/xai-file-utils/src/gcs.rs",
+          "line": 627
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/gcs.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 61,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "with_auth_retry",
+          "path": "crates/codegen/xai-file-utils/src/lib.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "sha256_hex",
+          "path": "crates/codegen/xai-file-utils/src/lib.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "sha256_hex_from_file",
+          "path": "crates/codegen/xai-file-utils/src/lib.rs",
+          "line": 38
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/queue.rs",
+      "module": "queue",
+      "kind": "production",
+      "lineCount": 6434,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "TraceExportSource",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 43
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_MAX_AGE",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 152
+        },
+        {
+          "kind": "struct",
+          "name": "UploadRetryPolicy",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 155
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_AUTH_PARK_PROBE_INTERVAL",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 172
+        },
+        {
+          "kind": "const",
+          "name": "QUEUE_ITEM_SIDECAR_SCHEMA_VERSION",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 262
+        },
+        {
+          "kind": "struct",
+          "name": "QueueItemSidecar",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 269
+        },
+        {
+          "kind": "struct",
+          "name": "UploadCompletion",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 323
+        },
+        {
+          "kind": "struct",
+          "name": "EnqueueResult",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 330
+        },
+        {
+          "kind": "struct",
+          "name": "UploadQueueStats",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 335
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 384
+        },
+        {
+          "kind": "fn",
+          "name": "set_transition_notify",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 406
+        },
+        {
+          "kind": "fn",
+          "name": "try_remove_temp",
+          "path": "crates/codegen/xai-file-utils/src/queue.rs",
+          "line": 420
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/queue.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/s3.rs",
+      "module": "s3",
+      "kind": "production",
+      "lineCount": 1541,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "build_s3_client",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 99
+        },
+        {
+          "kind": "struct",
+          "name": "S3StaticCredentials",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "presign_put_url",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 184
+        },
+        {
+          "kind": "fn",
+          "name": "presign_get_url",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 206
+        },
+        {
+          "kind": "fn",
+          "name": "upload_bytes",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 326
+        },
+        {
+          "kind": "fn",
+          "name": "upload_file",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 355
+        },
+        {
+          "kind": "fn",
+          "name": "upload_stream",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 401
+        },
+        {
+          "kind": "struct",
+          "name": "S3ExistsResponse",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 432
+        },
+        {
+          "kind": "struct",
+          "name": "S3StorageClient",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 443
+        },
+        {
+          "kind": "fn",
+          "name": "bucket_name",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 450
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 454
+        },
+        {
+          "kind": "fn",
+          "name": "batch_check_exists",
+          "path": "crates/codegen/xai-file-utils/src/s3.rs",
+          "line": 471
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/s3.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/storage_client_breaker_tests.rs",
+      "module": "storage_client_breaker_tests",
+      "kind": "test",
+      "lineCount": 428,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/storage_client_breaker_tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+      "module": "storage_client",
+      "kind": "production",
+      "lineCount": 3463,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "Auth401AttributionCallback",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 62
+        },
+        {
+          "kind": "struct",
+          "name": "RetryConfig",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "conservative",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "with_initial_delay",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "with_max_delay",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "with_max_retries",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 139
+        },
+        {
+          "kind": "fn",
+          "name": "with_multiplier",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "with_jitter_factor",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 151
+        },
+        {
+          "kind": "struct",
+          "name": "HttpUploadError",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 194
+        },
+        {
+          "kind": "enum",
+          "name": "ExistsResult",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 294
+        },
+        {
+          "kind": "struct",
+          "name": "UploadResponse",
+          "path": "crates/codegen/xai-file-utils/src/storage_client.rs",
+          "line": 303
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/storage_client.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+      "module": "trace_context",
+      "kind": "production",
+      "lineCount": 317,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "current_traceparent",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 7
+        },
+        {
+          "kind": "fn",
+          "name": "inject_trace_context_into_request",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "trace_context_headers",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "inject_trace_context",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "span_from_meta_traceparent",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "link_current_span_to_meta",
+          "path": "crates/codegen/xai-file-utils/src/trace_context.rs",
+          "line": 100
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/trace_context.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+      "module": "upload_config",
+      "kind": "production",
+      "lineCount": 167,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "UploadMethod",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 10
+        },
+        {
+          "kind": "struct",
+          "name": "TraceExportConfig",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 31
+        },
+        {
+          "kind": "enum",
+          "name": "BlobCompression",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 43
+        },
+        {
+          "kind": "const",
+          "name": "SKIP_DIR_NAMES",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "skip_dir_set",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 83
+        },
+        {
+          "kind": "const",
+          "name": "SKIP_FILE_PATTERNS",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "default_untracked_exclude_globs",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "default_excludes_as_gitignore",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 114
+        },
+        {
+          "kind": "const",
+          "name": "ARCHIVE_SCHEMA_VERSION",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 118
+        },
+        {
+          "kind": "const",
+          "name": "ARCHIVE_SCHEMA_VERSION_V3",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 119
+        },
+        {
+          "kind": "const",
+          "name": "DEDUP_GCS_PREFIX",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 120
+        },
+        {
+          "kind": "const",
+          "name": "DEDUP_PATCH_SUBDIR",
+          "path": "crates/codegen/xai-file-utils/src/upload_config.rs",
+          "line": 121
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/upload_config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-file-utils/src/workspace_classifier.rs",
+      "module": "workspace_classifier",
+      "kind": "production",
+      "lineCount": 376,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_project_dir",
+          "path": "crates/codegen/xai-file-utils/src/workspace_classifier.rs",
+          "line": 23
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-file-utils/src/workspace_classifier.rs"
+    }
+  ]
+}

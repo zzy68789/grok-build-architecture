@@ -1,0 +1,817 @@
+{
+  "name": "xai-agent-lifecycle",
+  "memberPath": "crates/codegen/xai-agent-lifecycle",
+  "manifestPath": "crates/codegen/xai-agent-lifecycle/Cargo.toml",
+  "description": "",
+  "role": "负责 Agent 定义解析、构建和 system prompt 装配。",
+  "layer": "会话运行时",
+  "primaryArticle": "runtime/lifecycle-crash-power",
+  "relatedArticles": [
+    "runtime/lifecycle-crash-power",
+    "introduction/process-actor-concurrency",
+    "agents/subagents-and-background-tasks",
+    "tools/task-scheduler-monitor-plan"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-shell"
+  ],
+  "fileCount": 15,
+  "productionFileCount": 15,
+  "lineCount": 623,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/lib.rs",
+      "lineCount": 18,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+      "lineCount": 227,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ExtensionRegistryBuilder",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "turn_lifecycle_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "session_lifecycle_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "turn_input_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "command_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "lineCount": 102,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LocalExtensionRegistryBuilder",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "turn_lifecycle_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "session_lifecycle_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "turn_input_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "command_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 41
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+      "lineCount": 53,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TurnStartInput",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 4
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 10
+        },
+        {
+          "kind": "struct",
+          "name": "TurnDoneInput",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 16
+        },
+        {
+          "kind": "enum",
+          "name": "TurnAbortReason",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "TurnAbortInput",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_lifecycle.rs",
+      "lineCount": 41,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "LocalTurnLifecycleContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_lifecycle.rs",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+      "lineCount": 33,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CommandSpec",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+          "line": 4
+        },
+        {
+          "kind": "struct",
+          "name": "CommandInvocation",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+          "line": 11
+        },
+        {
+          "kind": "enum",
+          "name": "CommandAction",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+          "line": 17
+        },
+        {
+          "kind": "trait",
+          "name": "CommandContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/command.rs",
+      "lineCount": 28,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "LocalCommandContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/command.rs",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+      "lineCount": 24,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TurnInputContext",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+          "line": 4
+        },
+        {
+          "kind": "struct",
+          "name": "TurnInputFragment",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+          "line": 12
+        },
+        {
+          "kind": "trait",
+          "name": "TurnInputContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+          "line": 19
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "trait",
+      "name": "LocalCommandContributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/command.rs",
+      "line": 10
+    },
+    {
+      "kind": "trait",
+      "name": "LocalSessionLifecycleContributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/session_lifecycle.rs",
+      "line": 7
+    },
+    {
+      "kind": "trait",
+      "name": "LocalTurnInputContributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_input.rs",
+      "line": 10
+    },
+    {
+      "kind": "trait",
+      "name": "LocalTurnLifecycleContributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_lifecycle.rs",
+      "line": 11
+    },
+    {
+      "kind": "struct",
+      "name": "LocalExtensionRegistryBuilder",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 11
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 19
+    },
+    {
+      "kind": "fn",
+      "name": "turn_lifecycle_contributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "session_lifecycle_contributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 30
+    },
+    {
+      "kind": "fn",
+      "name": "turn_input_contributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 37
+    },
+    {
+      "kind": "fn",
+      "name": "command_contributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 41
+    },
+    {
+      "kind": "fn",
+      "name": "build",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 47
+    },
+    {
+      "kind": "struct",
+      "name": "LocalExtensionRegistry",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 72
+    },
+    {
+      "kind": "fn",
+      "name": "turn_lifecycle_contributors",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 81
+    },
+    {
+      "kind": "fn",
+      "name": "session_lifecycle_contributors",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 85
+    },
+    {
+      "kind": "fn",
+      "name": "turn_input_contributors",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 89
+    },
+    {
+      "kind": "fn",
+      "name": "command_contributors",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 93
+    },
+    {
+      "kind": "fn",
+      "name": "command_handler",
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "line": 98
+    },
+    {
+      "kind": "struct",
+      "name": "CommandSpec",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+      "line": 4
+    },
+    {
+      "kind": "struct",
+      "name": "CommandInvocation",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+      "line": 11
+    },
+    {
+      "kind": "enum",
+      "name": "CommandAction",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+      "line": 17
+    },
+    {
+      "kind": "trait",
+      "name": "CommandContributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+      "line": 27
+    },
+    {
+      "kind": "struct",
+      "name": "SessionIdleInput",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/session_lifecycle.rs",
+      "line": 4
+    },
+    {
+      "kind": "trait",
+      "name": "SessionLifecycleContributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/session_lifecycle.rs",
+      "line": 7
+    },
+    {
+      "kind": "struct",
+      "name": "TurnInputContext",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+      "line": 4
+    },
+    {
+      "kind": "struct",
+      "name": "TurnInputFragment",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+      "line": 12
+    },
+    {
+      "kind": "trait",
+      "name": "TurnInputContributor",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+      "line": 19
+    },
+    {
+      "kind": "struct",
+      "name": "TurnStartInput",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+      "line": 4
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+      "line": 10
+    },
+    {
+      "kind": "struct",
+      "name": "TurnDoneInput",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+      "line": 16
+    },
+    {
+      "kind": "enum",
+      "name": "TurnAbortReason",
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+      "line": 20
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 18,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/local.rs",
+      "module": "local",
+      "kind": "production",
+      "lineCount": 9,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/local.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors.rs",
+      "module": "local::contributors",
+      "kind": "production",
+      "lineCount": 10,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/local/contributors.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/command.rs",
+      "module": "local::contributors::command",
+      "kind": "production",
+      "lineCount": 28,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "LocalCommandContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/command.rs",
+          "line": 10
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/local/contributors/command.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/session_lifecycle.rs",
+      "module": "local::contributors::session_lifecycle",
+      "kind": "production",
+      "lineCount": 20,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "LocalSessionLifecycleContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/session_lifecycle.rs",
+          "line": 7
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/local/contributors/session_lifecycle.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_input.rs",
+      "module": "local::contributors::turn_input",
+      "kind": "production",
+      "lineCount": 23,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "LocalTurnInputContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_input.rs",
+          "line": 10
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_input.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_lifecycle.rs",
+      "module": "local::contributors::turn_lifecycle",
+      "kind": "production",
+      "lineCount": 41,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "LocalTurnLifecycleContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_lifecycle.rs",
+          "line": 11
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/local/contributors/turn_lifecycle.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+      "module": "local::registry",
+      "kind": "production",
+      "lineCount": 102,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LocalExtensionRegistryBuilder",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "turn_lifecycle_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "session_lifecycle_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "turn_input_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "command_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "build",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 47
+        },
+        {
+          "kind": "struct",
+          "name": "LocalExtensionRegistry",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "turn_lifecycle_contributors",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "session_lifecycle_contributors",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "turn_input_contributors",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "command_contributors",
+          "path": "crates/codegen/xai-agent-lifecycle/src/local/registry.rs",
+          "line": 93
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/local/registry.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send.rs",
+      "module": "send",
+      "kind": "production",
+      "lineCount": 11,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/send.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors.rs",
+      "module": "send::contributors",
+      "kind": "production",
+      "lineCount": 13,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/send/contributors.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+      "module": "send::contributors::command",
+      "kind": "production",
+      "lineCount": 33,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CommandSpec",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+          "line": 4
+        },
+        {
+          "kind": "struct",
+          "name": "CommandInvocation",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+          "line": 11
+        },
+        {
+          "kind": "enum",
+          "name": "CommandAction",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+          "line": 17
+        },
+        {
+          "kind": "trait",
+          "name": "CommandContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs",
+          "line": 27
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/send/contributors/command.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/session_lifecycle.rs",
+      "module": "send::contributors::session_lifecycle",
+      "kind": "production",
+      "lineCount": 11,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SessionIdleInput",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/session_lifecycle.rs",
+          "line": 4
+        },
+        {
+          "kind": "trait",
+          "name": "SessionLifecycleContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/session_lifecycle.rs",
+          "line": 7
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/send/contributors/session_lifecycle.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+      "module": "send::contributors::turn_input",
+      "kind": "production",
+      "lineCount": 24,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TurnInputContext",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+          "line": 4
+        },
+        {
+          "kind": "struct",
+          "name": "TurnInputFragment",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+          "line": 12
+        },
+        {
+          "kind": "trait",
+          "name": "TurnInputContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs",
+          "line": 19
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_input.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+      "module": "send::contributors::turn_lifecycle",
+      "kind": "production",
+      "lineCount": 53,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TurnStartInput",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 4
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 10
+        },
+        {
+          "kind": "struct",
+          "name": "TurnDoneInput",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 16
+        },
+        {
+          "kind": "enum",
+          "name": "TurnAbortReason",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "TurnAbortInput",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "TurnErrorInput",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 39
+        },
+        {
+          "kind": "trait",
+          "name": "TurnLifecycleContributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs",
+          "line": 44
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/send/contributors/turn_lifecycle.rs"
+    },
+    {
+      "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+      "module": "send::registry",
+      "kind": "production",
+      "lineCount": 227,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ExtensionRegistryBuilder",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "turn_lifecycle_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "session_lifecycle_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "turn_input_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "command_contributor",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "build",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 43
+        },
+        {
+          "kind": "struct",
+          "name": "ExtensionRegistry",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "turn_lifecycle_contributors",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "session_lifecycle_contributors",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "turn_input_contributors",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "command_contributors",
+          "path": "crates/codegen/xai-agent-lifecycle/src/send/registry.rs",
+          "line": 89
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-agent-lifecycle/src/send/registry.rs"
+    }
+  ]
+}

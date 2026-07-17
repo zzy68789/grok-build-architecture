@@ -1,0 +1,131 @@
+{
+  "name": "xai-grok-models",
+  "memberPath": "crates/codegen/xai-grok-models",
+  "manifestPath": "crates/codegen/xai-grok-models/Cargo.toml",
+  "description": "Default model IDs for the grok CLI, loaded from the embedded default_models.json.",
+  "role": "Agent 与推理层的一方 crate；上游清单描述为：Default model IDs for the grok CLI, loaded from the embedded default_models.json.。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "agent/sampling-wire-model-catalog",
+  "relatedArticles": [
+    "agent/sampling-wire-model-catalog"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-shared",
+    "xai-grok-shell"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 71,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-models/src/lib.rs",
+      "lineCount": 71,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_MODELS_JSON",
+          "path": "crates/codegen/xai-grok-models/src/lib.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "default_model",
+          "path": "crates/codegen/xai-grok-models/src/lib.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "default_web_search_model",
+          "path": "crates/codegen/xai-grok-models/src/lib.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "default_image_description_model",
+          "path": "crates/codegen/xai-grok-models/src/lib.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "default_session_summary_model",
+          "path": "crates/codegen/xai-grok-models/src/lib.rs",
+          "line": 65
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "const",
+      "name": "DEFAULT_MODELS_JSON",
+      "path": "crates/codegen/xai-grok-models/src/lib.rs",
+      "line": 12
+    },
+    {
+      "kind": "fn",
+      "name": "default_model",
+      "path": "crates/codegen/xai-grok-models/src/lib.rs",
+      "line": 47
+    },
+    {
+      "kind": "fn",
+      "name": "default_web_search_model",
+      "path": "crates/codegen/xai-grok-models/src/lib.rs",
+      "line": 52
+    },
+    {
+      "kind": "fn",
+      "name": "default_image_description_model",
+      "path": "crates/codegen/xai-grok-models/src/lib.rs",
+      "line": 57
+    },
+    {
+      "kind": "fn",
+      "name": "default_session_summary_model",
+      "path": "crates/codegen/xai-grok-models/src/lib.rs",
+      "line": 65
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-models/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 71,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_MODELS_JSON",
+          "path": "crates/codegen/xai-grok-models/src/lib.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "default_model",
+          "path": "crates/codegen/xai-grok-models/src/lib.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "default_web_search_model",
+          "path": "crates/codegen/xai-grok-models/src/lib.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "default_image_description_model",
+          "path": "crates/codegen/xai-grok-models/src/lib.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "default_session_summary_model",
+          "path": "crates/codegen/xai-grok-models/src/lib.rs",
+          "line": 65
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-models/src/lib.rs"
+    }
+  ]
+}

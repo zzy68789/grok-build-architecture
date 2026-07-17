@@ -1,0 +1,56 @@
+{
+  "name": "xai-grok-pager-bin",
+  "memberPath": "crates/codegen/xai-grok-pager-bin",
+  "manifestPath": "crates/codegen/xai-grok-pager-bin/Cargo.toml",
+  "description": "",
+  "role": "提供 Grok Build 终端程序的二进制入口与启动参数边界。",
+  "layer": "会话运行时",
+  "primaryArticle": "runtime/startup-and-modes",
+  "relatedArticles": [
+    "runtime/startup-and-modes"
+  ],
+  "dependencies": [
+    "xai-acp-lib",
+    "xai-crash-handler",
+    "xai-grok-config",
+    "xai-grok-pager",
+    "xai-grok-pager-minimal",
+    "xai-grok-sandbox",
+    "xai-grok-shell",
+    "xai-grok-telemetry",
+    "xai-grok-update",
+    "xai-grok-version",
+    "xai-grok-workspace",
+    "xai-tty-utils"
+  ],
+  "dependents": [],
+  "fileCount": 2,
+  "productionFileCount": 1,
+  "lineCount": 3077,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-pager-bin/src/main.rs",
+      "lineCount": 3077,
+      "symbols": []
+    }
+  ],
+  "keySymbols": [],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-pager-bin/build.rs",
+      "module": "..::build",
+      "kind": "support",
+      "lineCount": 25,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-bin/build.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-pager-bin/src/main.rs",
+      "module": "main",
+      "kind": "production",
+      "lineCount": 3077,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-pager-bin/src/main.rs"
+    }
+  ]
+}

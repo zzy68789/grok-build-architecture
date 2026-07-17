@@ -1,0 +1,64 @@
+{
+  "name": "xai-tracing-macros",
+  "memberPath": "crates/codegen/xai-tracing-macros",
+  "manifestPath": "crates/codegen/xai-tracing-macros/Cargo.toml",
+  "description": "Tracing-based utility macros for timestamped logging and timing",
+  "role": "提供基于 tracing 的时间戳和耗时记录宏。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/telemetry-tracing-macros",
+  "relatedArticles": [
+    "operations/telemetry-tracing-macros"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-fsnotify",
+    "xai-grok-shell"
+  ],
+  "fileCount": 3,
+  "productionFileCount": 3,
+  "lineCount": 217,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-tracing-macros/src/lib.rs",
+      "lineCount": 32,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-tracing-macros/src/timed.rs",
+      "lineCount": 118,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-tracing-macros/src/timestamp.rs",
+      "lineCount": 67,
+      "symbols": []
+    }
+  ],
+  "keySymbols": [],
+  "files": [
+    {
+      "path": "crates/codegen/xai-tracing-macros/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 32,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-tracing-macros/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-tracing-macros/src/timed.rs",
+      "module": "timed",
+      "kind": "production",
+      "lineCount": 118,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-tracing-macros/src/timed.rs"
+    },
+    {
+      "path": "crates/codegen/xai-tracing-macros/src/timestamp.rs",
+      "module": "timestamp",
+      "kind": "production",
+      "lineCount": 67,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-tracing-macros/src/timestamp.rs"
+    }
+  ]
+}

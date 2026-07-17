@@ -1,0 +1,184 @@
+{
+  "name": "xai-grok-markdown-core",
+  "memberPath": "crates/codegen/xai-grok-markdown-core",
+  "manifestPath": "crates/codegen/xai-grok-markdown-core/Cargo.toml",
+  "description": "Headless markdown analysis sharing Grok Build's exact pulldown-cmark config.",
+  "role": "提供与终端渲染器一致的无头 Markdown 解析和结构分析。",
+  "layer": "交互呈现",
+  "primaryArticle": "tui/streaming-markdown",
+  "relatedArticles": [
+    "tui/streaming-markdown"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-markdown"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 1071,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "lineCount": 1071,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "parser_options",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "offset_events",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "MarkdownStats",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 97
+        },
+        {
+          "kind": "fn",
+          "name": "headings",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "as_pairs",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 133
+        },
+        {
+          "kind": "enum",
+          "name": "StructuralIssue",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 193
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "parser_options",
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "line": 21
+    },
+    {
+      "kind": "fn",
+      "name": "offset_events",
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "line": 33
+    },
+    {
+      "kind": "struct",
+      "name": "MarkdownStats",
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "line": 97
+    },
+    {
+      "kind": "fn",
+      "name": "headings",
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "line": 128
+    },
+    {
+      "kind": "fn",
+      "name": "as_pairs",
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "line": 133
+    },
+    {
+      "kind": "enum",
+      "name": "StructuralIssue",
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "line": 193
+    },
+    {
+      "kind": "fn",
+      "name": "as_str",
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "line": 204
+    },
+    {
+      "kind": "struct",
+      "name": "MarkdownAnalysis",
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "line": 214
+    },
+    {
+      "kind": "fn",
+      "name": "analyze",
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "line": 298
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 1071,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "parser_options",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "offset_events",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "MarkdownStats",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 97
+        },
+        {
+          "kind": "fn",
+          "name": "headings",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "as_pairs",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 133
+        },
+        {
+          "kind": "enum",
+          "name": "StructuralIssue",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 193
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 204
+        },
+        {
+          "kind": "struct",
+          "name": "MarkdownAnalysis",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 214
+        },
+        {
+          "kind": "fn",
+          "name": "analyze",
+          "path": "crates/codegen/xai-grok-markdown-core/src/lib.rs",
+          "line": 298
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown-core/src/lib.rs"
+    }
+  ]
+}

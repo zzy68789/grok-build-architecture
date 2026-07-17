@@ -1,0 +1,1104 @@
+{
+  "name": "xai-grok-memory",
+  "memberPath": "crates/codegen/xai-grok-memory",
+  "manifestPath": "crates/codegen/xai-grok-memory/Cargo.toml",
+  "description": "",
+  "role": "负责跨会话记忆的存储、切分、向量检索和后台整理。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "context/cross-session-memory",
+  "relatedArticles": [
+    "context/cross-session-memory"
+  ],
+  "dependencies": [
+    "xai-grok-auth",
+    "xai-grok-config-types",
+    "xai-grok-http",
+    "xai-grok-telemetry",
+    "xai-grok-tools",
+    "xai-grok-version",
+    "xai-sqlite-journal"
+  ],
+  "dependents": [
+    "xai-grok-shell"
+  ],
+  "fileCount": 15,
+  "productionFileCount": 15,
+  "lineCount": 9732,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-memory/src/lib.rs",
+      "lineCount": 110,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "embed_missing_chunks",
+          "path": "crates/codegen/xai-grok-memory/src/lib.rs",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+      "lineCount": 1863,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MemoryScope",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryStorage",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "new_flat",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "with_paths",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "global_dir",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 88
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "lineCount": 1472,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "DreamGate",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "check_dream_gates",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 40
+        },
+        {
+          "kind": "const",
+          "name": "DREAM_SYSTEM_PROMPT",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 88
+        },
+        {
+          "kind": "struct",
+          "name": "DreamResult",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 116
+        },
+        {
+          "kind": "enum",
+          "name": "DreamStatus",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 129
+        },
+        {
+          "kind": "struct",
+          "name": "DreamMessage",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 145
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "lineCount": 1416,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MemoryBackendParams",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "make_embedding_provider",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 59
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryBackendImpl",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 141
+        },
+        {
+          "kind": "fn",
+          "name": "with_session_id",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "with_embedding",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 168
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/search.rs",
+      "lineCount": 1350,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SearchResult",
+          "path": "crates/codegen/xai-grok-memory/src/search.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "hybrid_search",
+          "path": "crates/codegen/xai-grok-memory/src/search.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "hybrid_search_merge",
+          "path": "crates/codegen/xai-grok-memory/src/search.rs",
+          "line": 195
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/index.rs",
+      "lineCount": 1287,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_sqlite_vec",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 29
+        },
+        {
+          "kind": "struct",
+          "name": "ChunkRecord",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 53
+        },
+        {
+          "kind": "struct",
+          "name": "FtsResult",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 68
+        },
+        {
+          "kind": "struct",
+          "name": "ReindexResult",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 76
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryIndex",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "open_or_create",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 99
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+      "lineCount": 489,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "DreamLock",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "last_consolidated_at",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "try_acquire",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "rollback",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 124
+        },
+        {
+          "kind": "fn",
+          "name": "record_consolidation",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 144
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+      "lineCount": 368,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Chunk",
+          "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "chunk_hash",
+          "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "chunk_markdown",
+          "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "header_level",
+          "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+          "line": 211
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "build_memory_archive",
+      "path": "crates/codegen/xai-grok-memory/src/archive.rs",
+      "line": 11
+    },
+    {
+      "kind": "struct",
+      "name": "MemoryBackendParams",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 28
+    },
+    {
+      "kind": "fn",
+      "name": "make_embedding_provider",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 59
+    },
+    {
+      "kind": "struct",
+      "name": "MemoryBackendImpl",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 108
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 141
+    },
+    {
+      "kind": "fn",
+      "name": "with_session_id",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 160
+    },
+    {
+      "kind": "fn",
+      "name": "with_embedding",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 168
+    },
+    {
+      "kind": "fn",
+      "name": "with_search_config",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 181
+    },
+    {
+      "kind": "fn",
+      "name": "with_watcher",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 187
+    },
+    {
+      "kind": "fn",
+      "name": "from_session_params",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 219
+    },
+    {
+      "kind": "fn",
+      "name": "session_id_for_test",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 249
+    },
+    {
+      "kind": "fn",
+      "name": "search_config_for_test",
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "line": 254
+    },
+    {
+      "kind": "struct",
+      "name": "Chunk",
+      "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+      "line": 13
+    },
+    {
+      "kind": "fn",
+      "name": "chunk_hash",
+      "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "chunk_markdown",
+      "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+      "line": 38
+    },
+    {
+      "kind": "fn",
+      "name": "header_level",
+      "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+      "line": 211
+    },
+    {
+      "kind": "enum",
+      "name": "DreamGate",
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "line": 16
+    },
+    {
+      "kind": "fn",
+      "name": "check_dream_gates",
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "line": 40
+    },
+    {
+      "kind": "const",
+      "name": "DREAM_SYSTEM_PROMPT",
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "line": 88
+    },
+    {
+      "kind": "struct",
+      "name": "DreamResult",
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "line": 116
+    },
+    {
+      "kind": "enum",
+      "name": "DreamStatus",
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "line": 129
+    },
+    {
+      "kind": "struct",
+      "name": "DreamMessage",
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "line": 145
+    },
+    {
+      "kind": "fn",
+      "name": "is_scaffold_template",
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "line": 161
+    },
+    {
+      "kind": "fn",
+      "name": "build_dream_user_message",
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "line": 181
+    },
+    {
+      "kind": "fn",
+      "name": "process_dream_response",
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "line": 273
+    },
+    {
+      "kind": "fn",
+      "name": "execute_dream",
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "line": 394
+    },
+    {
+      "kind": "struct",
+      "name": "DreamLock",
+      "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+      "line": 53
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+      "line": 58
+    },
+    {
+      "kind": "fn",
+      "name": "last_consolidated_at",
+      "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+      "line": 66
+    },
+    {
+      "kind": "fn",
+      "name": "try_acquire",
+      "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+      "line": 86
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-memory/src/archive.rs",
+      "module": "archive",
+      "kind": "production",
+      "lineCount": 117,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "build_memory_archive",
+          "path": "crates/codegen/xai-grok-memory/src/archive.rs",
+          "line": 11
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/archive.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+      "module": "backend",
+      "kind": "production",
+      "lineCount": 1416,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MemoryBackendParams",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "make_embedding_provider",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 59
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryBackendImpl",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 141
+        },
+        {
+          "kind": "fn",
+          "name": "with_session_id",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "with_embedding",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 168
+        },
+        {
+          "kind": "fn",
+          "name": "with_search_config",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 181
+        },
+        {
+          "kind": "fn",
+          "name": "with_watcher",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 187
+        },
+        {
+          "kind": "fn",
+          "name": "from_session_params",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 219
+        },
+        {
+          "kind": "fn",
+          "name": "session_id_for_test",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 249
+        },
+        {
+          "kind": "fn",
+          "name": "search_config_for_test",
+          "path": "crates/codegen/xai-grok-memory/src/backend.rs",
+          "line": 254
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/backend.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+      "module": "chunker",
+      "kind": "production",
+      "lineCount": 368,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Chunk",
+          "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "chunk_hash",
+          "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "chunk_markdown",
+          "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "header_level",
+          "path": "crates/codegen/xai-grok-memory/src/chunker.rs",
+          "line": 211
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/chunker.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+      "module": "dream_lock",
+      "kind": "production",
+      "lineCount": 489,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "DreamLock",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "last_consolidated_at",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "try_acquire",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "rollback",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 124
+        },
+        {
+          "kind": "fn",
+          "name": "record_consolidation",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 144
+        },
+        {
+          "kind": "fn",
+          "name": "sessions_since",
+          "path": "crates/codegen/xai-grok-memory/src/dream_lock.rs",
+          "line": 155
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/dream_lock.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+      "module": "dream",
+      "kind": "production",
+      "lineCount": 1472,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "DreamGate",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "check_dream_gates",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 40
+        },
+        {
+          "kind": "const",
+          "name": "DREAM_SYSTEM_PROMPT",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 88
+        },
+        {
+          "kind": "struct",
+          "name": "DreamResult",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 116
+        },
+        {
+          "kind": "enum",
+          "name": "DreamStatus",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 129
+        },
+        {
+          "kind": "struct",
+          "name": "DreamMessage",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "is_scaffold_template",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 161
+        },
+        {
+          "kind": "fn",
+          "name": "build_dream_user_message",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 181
+        },
+        {
+          "kind": "fn",
+          "name": "process_dream_response",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 273
+        },
+        {
+          "kind": "fn",
+          "name": "execute_dream",
+          "path": "crates/codegen/xai-grok-memory/src/dream.rs",
+          "line": 394
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/dream.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/embedding.rs",
+      "module": "embedding",
+      "kind": "production",
+      "lineCount": 284,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "EmbeddingProvider",
+          "path": "crates/codegen/xai-grok-memory/src/embedding.rs",
+          "line": 22
+        },
+        {
+          "kind": "struct",
+          "name": "ApiEmbeddingProvider",
+          "path": "crates/codegen/xai-grok-memory/src/embedding.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-memory/src/embedding.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "from_config",
+          "path": "crates/codegen/xai-grok-memory/src/embedding.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "from_session",
+          "path": "crates/codegen/xai-grok-memory/src/embedding.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "build_middleware_client",
+          "path": "crates/codegen/xai-grok-memory/src/embedding.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "MockEmbeddingProvider",
+          "path": "crates/codegen/xai-grok-memory/src/embedding.rs",
+          "line": 218
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/embedding.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/index.rs",
+      "module": "index",
+      "kind": "production",
+      "lineCount": 1287,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_sqlite_vec",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 29
+        },
+        {
+          "kind": "struct",
+          "name": "ChunkRecord",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 53
+        },
+        {
+          "kind": "struct",
+          "name": "FtsResult",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 68
+        },
+        {
+          "kind": "struct",
+          "name": "ReindexResult",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 76
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryIndex",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "open_or_create",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 99
+        },
+        {
+          "kind": "fn",
+          "name": "vec_available",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 201
+        },
+        {
+          "kind": "fn",
+          "name": "embedding_dimensions",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 206
+        },
+        {
+          "kind": "fn",
+          "name": "db",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 212
+        },
+        {
+          "kind": "fn",
+          "name": "reindex_file",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 223
+        },
+        {
+          "kind": "fn",
+          "name": "search_fts_by_sources",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 362
+        },
+        {
+          "kind": "fn",
+          "name": "search_fts",
+          "path": "crates/codegen/xai-grok-memory/src/index.rs",
+          "line": 408
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/index.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 110,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "embed_missing_chunks",
+          "path": "crates/codegen/xai-grok-memory/src/lib.rs",
+          "line": 51
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/mmr.rs",
+      "module": "mmr",
+      "kind": "production",
+      "lineCount": 349,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "mmr_rerank",
+          "path": "crates/codegen/xai-grok-memory/src/mmr.rs",
+          "line": 59
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/mmr.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/query_expansion.rs",
+      "module": "query_expansion",
+      "kind": "production",
+      "lineCount": 280,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "extract_keywords",
+          "path": "crates/codegen/xai-grok-memory/src/query_expansion.rs",
+          "line": 168
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/query_expansion.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/schema.rs",
+      "module": "schema",
+      "kind": "production",
+      "lineCount": 99,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SCHEMA_VERSION",
+          "path": "crates/codegen/xai-grok-memory/src/schema.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "schema_sql",
+          "path": "crates/codegen/xai-grok-memory/src/schema.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "UPSERT_META_SQL",
+          "path": "crates/codegen/xai-grok-memory/src/schema.rs",
+          "line": 67
+        },
+        {
+          "kind": "const",
+          "name": "GET_META_SQL",
+          "path": "crates/codegen/xai-grok-memory/src/schema.rs",
+          "line": 70
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/schema.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/search.rs",
+      "module": "search",
+      "kind": "production",
+      "lineCount": 1350,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SearchResult",
+          "path": "crates/codegen/xai-grok-memory/src/search.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "hybrid_search",
+          "path": "crates/codegen/xai-grok-memory/src/search.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "hybrid_search_merge",
+          "path": "crates/codegen/xai-grok-memory/src/search.rs",
+          "line": 195
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/search.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+      "module": "storage",
+      "kind": "production",
+      "lineCount": 1863,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MemoryScope",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryStorage",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "new_flat",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "with_paths",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "global_dir",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "workspace_dir",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "workspace_path",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "is_ephemeral",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 103
+        },
+        {
+          "kind": "fn",
+          "name": "total_chunk_count",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 109
+        },
+        {
+          "kind": "fn",
+          "name": "global_memory_file",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "workspace_memory_file",
+          "path": "crates/codegen/xai-grok-memory/src/storage.rs",
+          "line": 125
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/storage.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/text_utils.rs",
+      "module": "text_utils",
+      "kind": "production",
+      "lineCount": 55,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "has_markdown_headers",
+          "path": "crates/codegen/xai-grok-memory/src/text_utils.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "is_no_reply",
+          "path": "crates/codegen/xai-grok-memory/src/text_utils.rs",
+          "line": 23
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/text_utils.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-memory/src/watcher.rs",
+      "module": "watcher",
+      "kind": "production",
+      "lineCount": 193,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MemoryFileWatcher",
+          "path": "crates/codegen/xai-grok-memory/src/watcher.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-grok-memory/src/watcher.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "is_dirty",
+          "path": "crates/codegen/xai-grok-memory/src/watcher.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "take_dirty",
+          "path": "crates/codegen/xai-grok-memory/src/watcher.rs",
+          "line": 102
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-memory/src/watcher.rs"
+    }
+  ]
+}

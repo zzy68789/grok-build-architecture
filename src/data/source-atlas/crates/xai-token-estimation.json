@@ -1,0 +1,214 @@
+{
+  "name": "xai-token-estimation",
+  "memberPath": "crates/codegen/xai-token-estimation",
+  "manifestPath": "crates/codegen/xai-token-estimation/Cargo.toml",
+  "description": "Pure shared token-estimation primitives.",
+  "role": "提供纯 token 估算原语，为预算与压缩决策提供近似值。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "context/compaction-and-token-budget",
+  "relatedArticles": [
+    "context/compaction-and-token-budget"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-chat-state",
+    "xai-grok-agent",
+    "xai-grok-pager",
+    "xai-grok-pager-minimal",
+    "xai-grok-shell",
+    "xai-grok-telemetry",
+    "xai-grok-tools"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 256,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "lineCount": 256,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BYTES_PER_TOKEN",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 9
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_TOKEN_ESTIMATE",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_tokens",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_chars",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_image_tokens",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "usage_percentage",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 38
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "const",
+      "name": "BYTES_PER_TOKEN",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 9
+    },
+    {
+      "kind": "const",
+      "name": "IMAGE_TOKEN_ESTIMATE",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 13
+    },
+    {
+      "kind": "fn",
+      "name": "estimate_tokens",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 17
+    },
+    {
+      "kind": "fn",
+      "name": "estimate_chars",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 25
+    },
+    {
+      "kind": "fn",
+      "name": "estimate_image_tokens",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "usage_percentage",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 38
+    },
+    {
+      "kind": "fn",
+      "name": "usage_percentage_u8",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 48
+    },
+    {
+      "kind": "fn",
+      "name": "usage_percentage_truncated_u8",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 60
+    },
+    {
+      "kind": "fn",
+      "name": "free_tokens",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 71
+    },
+    {
+      "kind": "fn",
+      "name": "exceeds_threshold",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 80
+    },
+    {
+      "kind": "fn",
+      "name": "exceeds_threshold_with_headroom",
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "line": 91
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 256,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BYTES_PER_TOKEN",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 9
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_TOKEN_ESTIMATE",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_tokens",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_chars",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_image_tokens",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "usage_percentage",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "usage_percentage_u8",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "usage_percentage_truncated_u8",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "free_tokens",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "exceeds_threshold",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "exceeds_threshold_with_headroom",
+          "path": "crates/codegen/xai-token-estimation/src/lib.rs",
+          "line": 91
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-token-estimation/src/lib.rs"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "name": "xai-grok-version",
+  "memberPath": "crates/codegen/xai-grok-version",
+  "manifestPath": "crates/codegen/xai-grok-version/Cargo.toml",
+  "description": "Lockstepped grok CLI version.",
+  "role": "安全、扩展与运维层的一方 crate；上游清单描述为：Lockstepped grok CLI version.。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/update-version-announcements-crash",
+  "relatedArticles": [
+    "operations/update-version-announcements-crash",
+    "runtime/bootstrap-environment-version"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-file-utils",
+    "xai-grok-config",
+    "xai-grok-http",
+    "xai-grok-mcp",
+    "xai-grok-memory",
+    "xai-grok-pager",
+    "xai-grok-pager-bin",
+    "xai-grok-pager-minimal",
+    "xai-grok-sampler",
+    "xai-grok-shell",
+    "xai-grok-shell-base",
+    "xai-grok-shell-session-support",
+    "xai-grok-tools",
+    "xai-grok-update",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 2,
+  "productionFileCount": 1,
+  "lineCount": 76,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-version/src/lib.rs",
+      "lineCount": 76,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TEST_VERSION_ENV",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 5
+        },
+        {
+          "kind": "const",
+          "name": "VERSION",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 7
+        },
+        {
+          "kind": "fn",
+          "name": "installed",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "installed_semver",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "display_version",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "display_version_with_commit",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 39
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "const",
+      "name": "TEST_VERSION_ENV",
+      "path": "crates/codegen/xai-grok-version/src/lib.rs",
+      "line": 5
+    },
+    {
+      "kind": "const",
+      "name": "VERSION",
+      "path": "crates/codegen/xai-grok-version/src/lib.rs",
+      "line": 7
+    },
+    {
+      "kind": "fn",
+      "name": "installed",
+      "path": "crates/codegen/xai-grok-version/src/lib.rs",
+      "line": 14
+    },
+    {
+      "kind": "fn",
+      "name": "installed_semver",
+      "path": "crates/codegen/xai-grok-version/src/lib.rs",
+      "line": 20
+    },
+    {
+      "kind": "fn",
+      "name": "display_version",
+      "path": "crates/codegen/xai-grok-version/src/lib.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "display_version_with_commit",
+      "path": "crates/codegen/xai-grok-version/src/lib.rs",
+      "line": 39
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-version/build.rs",
+      "module": "..::build",
+      "kind": "support",
+      "lineCount": 4,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-version/build.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-version/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 76,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TEST_VERSION_ENV",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 5
+        },
+        {
+          "kind": "const",
+          "name": "VERSION",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 7
+        },
+        {
+          "kind": "fn",
+          "name": "installed",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "installed_semver",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "display_version",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "display_version_with_commit",
+          "path": "crates/codegen/xai-grok-version/src/lib.rs",
+          "line": 39
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-version/src/lib.rs"
+    }
+  ]
+}

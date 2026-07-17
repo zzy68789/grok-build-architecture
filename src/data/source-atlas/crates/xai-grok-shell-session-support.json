@@ -1,0 +1,347 @@
+{
+  "name": "xai-grok-shell-session-support",
+  "memberPath": "crates/codegen/xai-grok-shell-session-support",
+  "manifestPath": "crates/codegen/xai-grok-shell-session-support/Cargo.toml",
+  "description": "Session-support modules for the grok shell crate family: managed MCP credential/catalog caching and file-access tracking.",
+  "role": "提供 Session 的 MCP catalog、凭据缓存和文件访问跟踪支持。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "extensibility/mcp-oauth-credential-catalog",
+  "relatedArticles": [
+    "extensibility/mcp-oauth-credential-catalog"
+  ],
+  "dependencies": [
+    "xai-file-utils",
+    "xai-grok-http",
+    "xai-grok-shell-base",
+    "xai-grok-version",
+    "xai-grok-workspace"
+  ],
+  "dependents": [
+    "xai-grok-shell"
+  ],
+  "fileCount": 2,
+  "productionFileCount": 2,
+  "lineCount": 1480,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-shell-session-support/src/lib.rs",
+      "lineCount": 12,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "lineCount": 1468,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ManagedMcpCache",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 22
+        },
+        {
+          "kind": "enum",
+          "name": "GatewayToolCatalogCache",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 84
+        },
+        {
+          "kind": "struct",
+          "name": "ManagedMcpState",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 119
+        },
+        {
+          "kind": "fn",
+          "name": "complete_fetch",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 227
+        },
+        {
+          "kind": "fn",
+          "name": "fail_fetch",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 255
+        },
+        {
+          "kind": "fn",
+          "name": "reauth_allowed",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 263
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "ManagedMcpCache",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 22
+    },
+    {
+      "kind": "enum",
+      "name": "GatewayToolCatalogCache",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 84
+    },
+    {
+      "kind": "struct",
+      "name": "ManagedMcpState",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 119
+    },
+    {
+      "kind": "fn",
+      "name": "complete_fetch",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 227
+    },
+    {
+      "kind": "fn",
+      "name": "fail_fetch",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 255
+    },
+    {
+      "kind": "fn",
+      "name": "reauth_allowed",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 263
+    },
+    {
+      "kind": "fn",
+      "name": "reauth_is_terminal",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 272
+    },
+    {
+      "kind": "fn",
+      "name": "record_reauth_failure",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 280
+    },
+    {
+      "kind": "fn",
+      "name": "record_reauth_success",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 288
+    },
+    {
+      "kind": "fn",
+      "name": "clear_reauth_cooldowns",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 297
+    },
+    {
+      "kind": "fn",
+      "name": "enable_gateway_tools",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 301
+    },
+    {
+      "kind": "fn",
+      "name": "start_gateway_tool_fetch",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 309
+    },
+    {
+      "kind": "fn",
+      "name": "complete_gateway_tool_fetch",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 317
+    },
+    {
+      "kind": "fn",
+      "name": "fail_gateway_tool_fetch",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 329
+    },
+    {
+      "kind": "fn",
+      "name": "disable_gateway_tools",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 339
+    },
+    {
+      "kind": "type",
+      "name": "ManagedMcpStateHandle",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 347
+    },
+    {
+      "kind": "struct",
+      "name": "ManagedMcpConfig",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 350
+    },
+    {
+      "kind": "struct",
+      "name": "GatewayToolCallRequest",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 372
+    },
+    {
+      "kind": "struct",
+      "name": "GatewayToolCallResponse",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 378
+    },
+    {
+      "kind": "struct",
+      "name": "GatewayToolCatalog",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 385
+    },
+    {
+      "kind": "struct",
+      "name": "GatewayTool",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 395
+    },
+    {
+      "kind": "fn",
+      "name": "qualified_name",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 406
+    },
+    {
+      "kind": "enum",
+      "name": "ManagedMcpFetchError",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 415
+    },
+    {
+      "kind": "fn",
+      "name": "fetch_managed_configs",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 433
+    },
+    {
+      "kind": "fn",
+      "name": "call_gateway_tool",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 456
+    },
+    {
+      "kind": "fn",
+      "name": "fetch_gateway_tool_catalog",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 541
+    },
+    {
+      "kind": "fn",
+      "name": "invalidate_cache",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 566
+    },
+    {
+      "kind": "fn",
+      "name": "invalidate_gateway_tool_cache",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 574
+    },
+    {
+      "kind": "fn",
+      "name": "get_or_fetch",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 589
+    },
+    {
+      "kind": "fn",
+      "name": "get_or_fetch_gateway_tool_catalog",
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "line": 633
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-shell-session-support/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 12,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-session-support/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+      "module": "managed_mcp",
+      "kind": "production",
+      "lineCount": 1468,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ManagedMcpCache",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 22
+        },
+        {
+          "kind": "enum",
+          "name": "GatewayToolCatalogCache",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 84
+        },
+        {
+          "kind": "struct",
+          "name": "ManagedMcpState",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 119
+        },
+        {
+          "kind": "fn",
+          "name": "complete_fetch",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 227
+        },
+        {
+          "kind": "fn",
+          "name": "fail_fetch",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 255
+        },
+        {
+          "kind": "fn",
+          "name": "reauth_allowed",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 263
+        },
+        {
+          "kind": "fn",
+          "name": "reauth_is_terminal",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 272
+        },
+        {
+          "kind": "fn",
+          "name": "record_reauth_failure",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 280
+        },
+        {
+          "kind": "fn",
+          "name": "record_reauth_success",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 288
+        },
+        {
+          "kind": "fn",
+          "name": "clear_reauth_cooldowns",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 297
+        },
+        {
+          "kind": "fn",
+          "name": "enable_gateway_tools",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 301
+        },
+        {
+          "kind": "fn",
+          "name": "start_gateway_tool_fetch",
+          "path": "crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs",
+          "line": 309
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-shell-session-support/src/managed_mcp.rs"
+    }
+  ]
+}

@@ -1,0 +1,765 @@
+{
+  "name": "xai-grok-config-types",
+  "memberPath": "crates/codegen/xai-grok-config-types",
+  "manifestPath": "crates/codegen/xai-grok-config-types/Cargo.toml",
+  "description": "Leaf configuration value types for the grok CLI, extracted from xai-grok-shell for dependency inversion.",
+  "role": "定义不依赖运行时的叶子配置值类型。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/shared-foundations",
+  "relatedArticles": [
+    "operations/shared-foundations",
+    "introduction/workspace-and-crates"
+  ],
+  "dependencies": [
+    "xai-grok-announcements",
+    "xai-grok-config",
+    "xai-grok-mcp"
+  ],
+  "dependents": [
+    "xai-grok-memory",
+    "xai-grok-shared",
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 6,
+  "productionFileCount": 6,
+  "lineCount": 2749,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+      "lineCount": 1674,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CampaignOverride",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 23
+        },
+        {
+          "kind": "struct",
+          "name": "DoomLoopRecoverySettings",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "DisplayRefreshSettings",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 62
+        },
+        {
+          "kind": "fn",
+          "name": "is_default",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 111
+        },
+        {
+          "kind": "struct",
+          "name": "RemoteSettings",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 218
+        },
+        {
+          "kind": "fn",
+          "name": "imagine_tool_disabled",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 792
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+      "lineCount": 469,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MemoryIndexConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryEmbeddingConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "MemorySearchConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 55
+        },
+        {
+          "kind": "struct",
+          "name": "TemporalDecayConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 113
+        },
+        {
+          "kind": "struct",
+          "name": "MmrConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 141
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_RECENCY_DECAY",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 182
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "lineCount": 277,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "McpServerTransportConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 36
+        },
+        {
+          "kind": "struct",
+          "name": "McpJsonOAuthBlock",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 70
+        },
+        {
+          "kind": "struct",
+          "name": "McpServerConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "expand_strings",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "to_acp_mcp_server",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 136
+        },
+        {
+          "kind": "fn",
+          "name": "oauth_config",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 217
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "lineCount": 165,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ConfigSource",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "Resolved",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 29
+        },
+        {
+          "kind": "struct",
+          "name": "BoolFlag",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "env",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "requirement",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 63
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/pool.rs",
+      "lineCount": 104,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PoolConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/pool.rs",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+      "lineCount": 60,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PermissionConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "PermissionRule",
+          "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+          "line": 15
+        },
+        {
+          "kind": "enum",
+          "name": "PatternMode",
+          "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+          "line": 26
+        },
+        {
+          "kind": "enum",
+          "name": "RuleAction",
+          "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+          "line": 40
+        },
+        {
+          "kind": "enum",
+          "name": "ToolFilter",
+          "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+          "line": 50
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "ConfigSource",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 9
+    },
+    {
+      "kind": "struct",
+      "name": "Resolved",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 29
+    },
+    {
+      "kind": "struct",
+      "name": "BoolFlag",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 40
+    },
+    {
+      "kind": "fn",
+      "name": "env",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 51
+    },
+    {
+      "kind": "fn",
+      "name": "requirement",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 63
+    },
+    {
+      "kind": "fn",
+      "name": "cli",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 67
+    },
+    {
+      "kind": "fn",
+      "name": "config",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 71
+    },
+    {
+      "kind": "fn",
+      "name": "managed",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 75
+    },
+    {
+      "kind": "fn",
+      "name": "feature_flag",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 79
+    },
+    {
+      "kind": "fn",
+      "name": "default",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 83
+    },
+    {
+      "kind": "fn",
+      "name": "resolve",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 88
+    },
+    {
+      "kind": "struct",
+      "name": "LazinessDetectorPerModelConfig",
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "line": 139
+    },
+    {
+      "kind": "struct",
+      "name": "CampaignOverride",
+      "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+      "line": 23
+    },
+    {
+      "kind": "struct",
+      "name": "DoomLoopRecoverySettings",
+      "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+      "line": 38
+    },
+    {
+      "kind": "struct",
+      "name": "DisplayRefreshSettings",
+      "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+      "line": 62
+    },
+    {
+      "kind": "fn",
+      "name": "is_default",
+      "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+      "line": 111
+    },
+    {
+      "kind": "struct",
+      "name": "RemoteSettings",
+      "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+      "line": 218
+    },
+    {
+      "kind": "fn",
+      "name": "imagine_tool_disabled",
+      "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+      "line": 792
+    },
+    {
+      "kind": "struct",
+      "name": "ContextualHintsRemote",
+      "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+      "line": 803
+    },
+    {
+      "kind": "struct",
+      "name": "GoalRoleModel",
+      "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+      "line": 913
+    },
+    {
+      "kind": "enum",
+      "name": "McpServerTransportConfig",
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "line": 36
+    },
+    {
+      "kind": "struct",
+      "name": "McpJsonOAuthBlock",
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "line": 70
+    },
+    {
+      "kind": "struct",
+      "name": "McpServerConfig",
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "line": 82
+    },
+    {
+      "kind": "fn",
+      "name": "expand_strings",
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "line": 104
+    },
+    {
+      "kind": "fn",
+      "name": "to_acp_mcp_server",
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "line": 136
+    },
+    {
+      "kind": "fn",
+      "name": "oauth_config",
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "line": 217
+    },
+    {
+      "kind": "struct",
+      "name": "RelaySyncConfig",
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "line": 258
+    },
+    {
+      "kind": "fn",
+      "name": "is_enabled",
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "line": 264
+    },
+    {
+      "kind": "struct",
+      "name": "McpConfig",
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "line": 273
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+      "module": "flags",
+      "kind": "production",
+      "lineCount": 165,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ConfigSource",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "Resolved",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 29
+        },
+        {
+          "kind": "struct",
+          "name": "BoolFlag",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "env",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "requirement",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "cli",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "config",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "managed",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "feature_flag",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "default",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "resolve",
+          "path": "crates/codegen/xai-grok-config-types/src/flags.rs",
+          "line": 88
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config-types/src/flags.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 1674,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CampaignOverride",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 23
+        },
+        {
+          "kind": "struct",
+          "name": "DoomLoopRecoverySettings",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "DisplayRefreshSettings",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 62
+        },
+        {
+          "kind": "fn",
+          "name": "is_default",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 111
+        },
+        {
+          "kind": "struct",
+          "name": "RemoteSettings",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 218
+        },
+        {
+          "kind": "fn",
+          "name": "imagine_tool_disabled",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 792
+        },
+        {
+          "kind": "struct",
+          "name": "ContextualHintsRemote",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 803
+        },
+        {
+          "kind": "struct",
+          "name": "GoalRoleModel",
+          "path": "crates/codegen/xai-grok-config-types/src/lib.rs",
+          "line": 913
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config-types/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+      "module": "mcp",
+      "kind": "production",
+      "lineCount": 277,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "McpServerTransportConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 36
+        },
+        {
+          "kind": "struct",
+          "name": "McpJsonOAuthBlock",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 70
+        },
+        {
+          "kind": "struct",
+          "name": "McpServerConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "expand_strings",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "to_acp_mcp_server",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 136
+        },
+        {
+          "kind": "fn",
+          "name": "oauth_config",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 217
+        },
+        {
+          "kind": "struct",
+          "name": "RelaySyncConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 258
+        },
+        {
+          "kind": "fn",
+          "name": "is_enabled",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 264
+        },
+        {
+          "kind": "struct",
+          "name": "McpConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/mcp.rs",
+          "line": 273
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config-types/src/mcp.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+      "module": "memory",
+      "kind": "production",
+      "lineCount": 469,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MemoryIndexConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryEmbeddingConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "MemorySearchConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 55
+        },
+        {
+          "kind": "struct",
+          "name": "TemporalDecayConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 113
+        },
+        {
+          "kind": "struct",
+          "name": "MmrConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 141
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_RECENCY_DECAY",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 182
+        },
+        {
+          "kind": "fn",
+          "name": "effective_half_life_days",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 194
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryInitialInjectionConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 229
+        },
+        {
+          "kind": "struct",
+          "name": "MemorySessionConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 250
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryDreamConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 264
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryWatcherConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 302
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryGcConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/memory.rs",
+          "line": 328
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config-types/src/memory.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+      "module": "permission",
+      "kind": "production",
+      "lineCount": 60,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PermissionConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "PermissionRule",
+          "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+          "line": 15
+        },
+        {
+          "kind": "enum",
+          "name": "PatternMode",
+          "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+          "line": 26
+        },
+        {
+          "kind": "enum",
+          "name": "RuleAction",
+          "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+          "line": 40
+        },
+        {
+          "kind": "enum",
+          "name": "ToolFilter",
+          "path": "crates/codegen/xai-grok-config-types/src/permission.rs",
+          "line": 50
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config-types/src/permission.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config-types/src/pool.rs",
+      "module": "pool",
+      "kind": "production",
+      "lineCount": 104,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PoolConfig",
+          "path": "crates/codegen/xai-grok-config-types/src/pool.rs",
+          "line": 20
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config-types/src/pool.rs"
+    }
+  ]
+}

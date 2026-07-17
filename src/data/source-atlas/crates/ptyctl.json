@@ -1,0 +1,853 @@
+{
+  "name": "ptyctl",
+  "memberPath": "crates/codegen/ptyctl",
+  "manifestPath": "crates/codegen/ptyctl/Cargo.toml",
+  "description": "Headless PTY controller built on alacritty_terminal",
+  "role": "控制无头伪终端、屏幕状态和子进程生命周期。",
+  "layer": "交互呈现",
+  "primaryArticle": "tui/pty-tty-minimal-client",
+  "relatedArticles": [
+    "tui/pty-tty-minimal-client",
+    "tools/shell-process-pty-background"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "ptyctl-cli",
+    "xai-grok-pager-pty-harness"
+  ],
+  "fileCount": 8,
+  "productionFileCount": 8,
+  "lineCount": 2357,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/ptyctl/src/lib.rs",
+      "lineCount": 14,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "lineCount": 607,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SessionConfig",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "SessionStatus",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 35
+        },
+        {
+          "kind": "struct",
+          "name": "PtySession",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "send_keys",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 210
+        },
+        {
+          "kind": "fn",
+          "name": "send_bytes",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 216
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/server.rs",
+      "lineCount": 496,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ScreenParams",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 23
+        },
+        {
+          "kind": "struct",
+          "name": "SendRequest",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "ResizeRequest",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 44
+        },
+        {
+          "kind": "struct",
+          "name": "ScrollbackParams",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 51
+        },
+        {
+          "kind": "struct",
+          "name": "WaitParams",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "build_router",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 92
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/term.rs",
+      "lineCount": 359,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SessionListener",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 29
+        },
+        {
+          "kind": "struct",
+          "name": "ScreenOpts",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 44
+        },
+        {
+          "kind": "struct",
+          "name": "ScreenOutput",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 57
+        },
+        {
+          "kind": "struct",
+          "name": "CursorPosition",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 65
+        },
+        {
+          "kind": "struct",
+          "name": "TerminalSize",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/styled.rs",
+      "lineCount": 317,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "StyledRun",
+          "path": "crates/codegen/ptyctl/src/styled.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "StyledLine",
+          "path": "crates/codegen/ptyctl/src/styled.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "extract_styled_line",
+          "path": "crates/codegen/ptyctl/src/styled.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "render_html",
+          "path": "crates/codegen/ptyctl/src/styled.rs",
+          "line": 166
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/wait.rs",
+      "lineCount": 214,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "RAW_TAIL_CAP",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 16
+        },
+        {
+          "kind": "enum",
+          "name": "WaitCondition",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "WaitOutcome",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "WaitDiagnostics",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 43
+        },
+        {
+          "kind": "struct",
+          "name": "WaitHandle",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "wait_for",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 77
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/keys.rs",
+      "lineCount": 194,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "parse_keys",
+          "path": "crates/codegen/ptyctl/src/keys.rs",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "lineCount": 156,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PtyConfig",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 12
+        },
+        {
+          "kind": "struct",
+          "name": "PtyHandle",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 26
+        },
+        {
+          "kind": "struct",
+          "name": "PtyMaster",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "resize",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 43
+        },
+        {
+          "kind": "struct",
+          "name": "PtyChild",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "is_alive",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 64
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "parse_keys",
+      "path": "crates/codegen/ptyctl/src/keys.rs",
+      "line": 19
+    },
+    {
+      "kind": "struct",
+      "name": "PtyConfig",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 12
+    },
+    {
+      "kind": "struct",
+      "name": "PtyHandle",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 26
+    },
+    {
+      "kind": "struct",
+      "name": "PtyMaster",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 37
+    },
+    {
+      "kind": "fn",
+      "name": "resize",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 43
+    },
+    {
+      "kind": "struct",
+      "name": "PtyChild",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 58
+    },
+    {
+      "kind": "fn",
+      "name": "is_alive",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 64
+    },
+    {
+      "kind": "fn",
+      "name": "pid",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 69
+    },
+    {
+      "kind": "fn",
+      "name": "wait",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 74
+    },
+    {
+      "kind": "fn",
+      "name": "kill",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 80
+    },
+    {
+      "kind": "fn",
+      "name": "spawn",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 87
+    },
+    {
+      "kind": "fn",
+      "name": "into_parts",
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "line": 138
+    },
+    {
+      "kind": "struct",
+      "name": "ScreenParams",
+      "path": "crates/codegen/ptyctl/src/server.rs",
+      "line": 23
+    },
+    {
+      "kind": "struct",
+      "name": "SendRequest",
+      "path": "crates/codegen/ptyctl/src/server.rs",
+      "line": 38
+    },
+    {
+      "kind": "struct",
+      "name": "ResizeRequest",
+      "path": "crates/codegen/ptyctl/src/server.rs",
+      "line": 44
+    },
+    {
+      "kind": "struct",
+      "name": "ScrollbackParams",
+      "path": "crates/codegen/ptyctl/src/server.rs",
+      "line": 51
+    },
+    {
+      "kind": "struct",
+      "name": "WaitParams",
+      "path": "crates/codegen/ptyctl/src/server.rs",
+      "line": 63
+    },
+    {
+      "kind": "fn",
+      "name": "build_router",
+      "path": "crates/codegen/ptyctl/src/server.rs",
+      "line": 92
+    },
+    {
+      "kind": "struct",
+      "name": "SessionConfig",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 25
+    },
+    {
+      "kind": "struct",
+      "name": "SessionStatus",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 35
+    },
+    {
+      "kind": "struct",
+      "name": "PtySession",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 45
+    },
+    {
+      "kind": "fn",
+      "name": "start",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 67
+    },
+    {
+      "kind": "fn",
+      "name": "send_keys",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 210
+    },
+    {
+      "kind": "fn",
+      "name": "send_bytes",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 216
+    },
+    {
+      "kind": "fn",
+      "name": "screen",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 223
+    },
+    {
+      "kind": "fn",
+      "name": "screen_styled",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 229
+    },
+    {
+      "kind": "fn",
+      "name": "screen_html",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 235
+    },
+    {
+      "kind": "fn",
+      "name": "cursor",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 241
+    },
+    {
+      "kind": "fn",
+      "name": "status_basic",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 247
+    },
+    {
+      "kind": "fn",
+      "name": "status",
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "line": 256
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/ptyctl/src/keys.rs",
+      "module": "keys",
+      "kind": "production",
+      "lineCount": 194,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "parse_keys",
+          "path": "crates/codegen/ptyctl/src/keys.rs",
+          "line": 19
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl/src/keys.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 14,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/pty.rs",
+      "module": "pty",
+      "kind": "production",
+      "lineCount": 156,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PtyConfig",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 12
+        },
+        {
+          "kind": "struct",
+          "name": "PtyHandle",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 26
+        },
+        {
+          "kind": "struct",
+          "name": "PtyMaster",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "resize",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 43
+        },
+        {
+          "kind": "struct",
+          "name": "PtyChild",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "is_alive",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "pid",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 69
+        },
+        {
+          "kind": "fn",
+          "name": "wait",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "kill",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "into_parts",
+          "path": "crates/codegen/ptyctl/src/pty.rs",
+          "line": 138
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl/src/pty.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/server.rs",
+      "module": "server",
+      "kind": "production",
+      "lineCount": 496,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ScreenParams",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 23
+        },
+        {
+          "kind": "struct",
+          "name": "SendRequest",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "ResizeRequest",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 44
+        },
+        {
+          "kind": "struct",
+          "name": "ScrollbackParams",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 51
+        },
+        {
+          "kind": "struct",
+          "name": "WaitParams",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "build_router",
+          "path": "crates/codegen/ptyctl/src/server.rs",
+          "line": 92
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl/src/server.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/session.rs",
+      "module": "session",
+      "kind": "production",
+      "lineCount": 607,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SessionConfig",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "SessionStatus",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 35
+        },
+        {
+          "kind": "struct",
+          "name": "PtySession",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "send_keys",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 210
+        },
+        {
+          "kind": "fn",
+          "name": "send_bytes",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 216
+        },
+        {
+          "kind": "fn",
+          "name": "screen",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 223
+        },
+        {
+          "kind": "fn",
+          "name": "screen_styled",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 229
+        },
+        {
+          "kind": "fn",
+          "name": "screen_html",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 235
+        },
+        {
+          "kind": "fn",
+          "name": "cursor",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 241
+        },
+        {
+          "kind": "fn",
+          "name": "status_basic",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 247
+        },
+        {
+          "kind": "fn",
+          "name": "status",
+          "path": "crates/codegen/ptyctl/src/session.rs",
+          "line": 256
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl/src/session.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/styled.rs",
+      "module": "styled",
+      "kind": "production",
+      "lineCount": 317,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "StyledRun",
+          "path": "crates/codegen/ptyctl/src/styled.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "StyledLine",
+          "path": "crates/codegen/ptyctl/src/styled.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "extract_styled_line",
+          "path": "crates/codegen/ptyctl/src/styled.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "render_html",
+          "path": "crates/codegen/ptyctl/src/styled.rs",
+          "line": 166
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl/src/styled.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/term.rs",
+      "module": "term",
+      "kind": "production",
+      "lineCount": 359,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SessionListener",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 29
+        },
+        {
+          "kind": "struct",
+          "name": "ScreenOpts",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 44
+        },
+        {
+          "kind": "struct",
+          "name": "ScreenOutput",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 57
+        },
+        {
+          "kind": "struct",
+          "name": "CursorPosition",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 65
+        },
+        {
+          "kind": "struct",
+          "name": "TerminalSize",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 72
+        },
+        {
+          "kind": "struct",
+          "name": "TerminalModes",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 79
+        },
+        {
+          "kind": "struct",
+          "name": "ScrollbackLine",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 106
+        },
+        {
+          "kind": "struct",
+          "name": "Terminal",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 143
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 150
+        },
+        {
+          "kind": "fn",
+          "name": "feed",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "cursor_position",
+          "path": "crates/codegen/ptyctl/src/term.rs",
+          "line": 165
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl/src/term.rs"
+    },
+    {
+      "path": "crates/codegen/ptyctl/src/wait.rs",
+      "module": "wait",
+      "kind": "production",
+      "lineCount": 214,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "RAW_TAIL_CAP",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 16
+        },
+        {
+          "kind": "enum",
+          "name": "WaitCondition",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "WaitOutcome",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "WaitDiagnostics",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 43
+        },
+        {
+          "kind": "struct",
+          "name": "WaitHandle",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "wait_for",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "push_raw_tail",
+          "path": "crates/codegen/ptyctl/src/wait.rs",
+          "line": 202
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/ptyctl/src/wait.rs"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "name": "xai-mixpanel",
+  "memberPath": "crates/codegen/xai-mixpanel",
+  "manifestPath": "crates/codegen/xai-mixpanel/Cargo.toml",
+  "description": "Lightweight Mixpanel HTTP tracking client (replaces mixpanel-rs to avoid pulling reqwest 0.11)",
+  "role": "提供轻量 Mixpanel HTTP 事件发送客户端。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/telemetry-tracing-macros",
+  "relatedArticles": [
+    "operations/telemetry-tracing-macros",
+    "safety/secrets-outbound-boundary"
+  ],
+  "dependencies": [
+    "xai-grok-secrets"
+  ],
+  "dependents": [
+    "xai-grok-telemetry"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 142,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+      "lineCount": 142,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Mixpanel",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 13
+        },
+        {
+          "kind": "enum",
+          "name": "Error",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "with_client",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "track",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "engage",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 87
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "Mixpanel",
+      "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+      "line": 13
+    },
+    {
+      "kind": "enum",
+      "name": "Error",
+      "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+      "line": 20
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+      "line": 29
+    },
+    {
+      "kind": "fn",
+      "name": "with_client",
+      "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+      "line": 37
+    },
+    {
+      "kind": "fn",
+      "name": "track",
+      "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+      "line": 60
+    },
+    {
+      "kind": "fn",
+      "name": "engage",
+      "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+      "line": 87
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 142,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Mixpanel",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 13
+        },
+        {
+          "kind": "enum",
+          "name": "Error",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "with_client",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "track",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "engage",
+          "path": "crates/codegen/xai-mixpanel/src/lib.rs",
+          "line": 87
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-mixpanel/src/lib.rs"
+    }
+  ]
+}

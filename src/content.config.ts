@@ -8,6 +8,8 @@ const docs = defineCollection({
   schema: docsSchema({
     extend: z.object({
       lastVerified: z.string().optional(),
+      coverageKind: z.enum(['overview', 'deep-dive', 'appendix']).default('overview'),
+      sourceCrates: z.array(z.string()).default([]),
       sourcePaths: z.array(z.string()).default([]),
       officialDocs: z.array(z.url()).default([]),
     }),

@@ -1,0 +1,2088 @@
+{
+  "name": "xai-grok-telemetry",
+  "memberPath": "crates/codegen/xai-grok-telemetry",
+  "manifestPath": "crates/codegen/xai-grok-telemetry/Cargo.toml",
+  "description": "Telemetry engine: product events + Mixpanel emission + Sentry error reporting for Grok Build sessions",
+  "role": "聚合产品事件、Mixpanel 发射和错误上报。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/telemetry-tracing-macros",
+  "relatedArticles": [
+    "operations/telemetry-tracing-macros",
+    "safety/secrets-outbound-boundary"
+  ],
+  "dependencies": [
+    "xai-file-utils",
+    "xai-grok-auth",
+    "xai-grok-config",
+    "xai-grok-env",
+    "xai-grok-sampler",
+    "xai-grok-secrets",
+    "xai-mixpanel",
+    "xai-token-estimation"
+  ],
+  "dependents": [
+    "xai-grok-http",
+    "xai-grok-mcp",
+    "xai-grok-memory",
+    "xai-grok-pager",
+    "xai-grok-pager-bin",
+    "xai-grok-pager-render",
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 39,
+  "productionFileCount": 31,
+  "lineCount": 11806,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/lib.rs",
+      "lineCount": 42,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+      "lineCount": 2097,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "TelemetryEvent",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 17
+        },
+        {
+          "kind": "enum",
+          "name": "PlanModeTrigger",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 52
+        },
+        {
+          "kind": "enum",
+          "name": "ContextualTipKind",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 59
+        },
+        {
+          "kind": "enum",
+          "name": "ContextualTipAction",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 71
+        },
+        {
+          "kind": "enum",
+          "name": "PromptSuggestionAction",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 78
+        },
+        {
+          "kind": "enum",
+          "name": "YoloTrigger",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 89
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+      "lineCount": 1119,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SCHEMA_VERSION",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "SCOPE_NAME",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 19
+        },
+        {
+          "kind": "enum",
+          "name": "ExternalEventName",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 51
+        },
+        {
+          "kind": "enum",
+          "name": "ExternalKey",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 169
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+      "lineCount": 962,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "DebugSource",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "ACP_UPDATE_TARGET",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 50
+        },
+        {
+          "kind": "const",
+          "name": "ACP_UPDATE_PAYLOAD_TARGET",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 57
+        },
+        {
+          "kind": "const",
+          "name": "RMCP_SSE_NOISE_TARGET",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "install_firehose",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 368
+        },
+        {
+          "kind": "fn",
+          "name": "flush",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 401
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+      "lineCount": 773,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "OtelLayerConfig",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 27
+        },
+        {
+          "kind": "struct",
+          "name": "OtelClientInfo",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 44
+        },
+        {
+          "kind": "struct",
+          "name": "OtelExporterConfig",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "build_otel_layer",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "shutdown_otel",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 464
+        },
+        {
+          "kind": "struct",
+          "name": "OtelGuard",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 473
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+      "lineCount": 744,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "OtlpTransport",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "as_protocol_str",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 34
+        },
+        {
+          "kind": "const",
+          "name": "ENV_MASTER_SWITCH",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 46
+        },
+        {
+          "kind": "enum",
+          "name": "ExporterSelection",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "is_active",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 73
+        },
+        {
+          "kind": "struct",
+          "name": "ContentGates",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 81
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+      "lineCount": 635,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TARGET",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 24
+        },
+        {
+          "kind": "enum",
+          "name": "InstrumentationMode",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "current_mode",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 65
+        },
+        {
+          "kind": "struct",
+          "name": "TargetFilterLayer",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 108
+        },
+        {
+          "kind": "struct",
+          "name": "NoOpLayer",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 176
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/redact.rs",
+      "lineCount": 594,
+      "symbols": [
+        {
+          "kind": "static",
+          "name": "ALLOWED_STRING_KEYS",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/redact.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "redact_batch",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/redact.rs",
+          "line": 158
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "non_blocking_file_writer",
+      "path": "crates/codegen/xai-grok-telemetry/src/appender.rs",
+      "line": 17
+    },
+    {
+      "kind": "fn",
+      "name": "flush_file_log_guards",
+      "path": "crates/codegen/xai-grok-telemetry/src/appender.rs",
+      "line": 40
+    },
+    {
+      "kind": "type",
+      "name": "Metadata",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 20
+    },
+    {
+      "kind": "struct",
+      "name": "TelemetryClient",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 38
+    },
+    {
+      "kind": "fn",
+      "name": "from_config",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 67
+    },
+    {
+      "kind": "fn",
+      "name": "is_enabled",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 134
+    },
+    {
+      "kind": "fn",
+      "name": "is_session_metrics_enabled",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 143
+    },
+    {
+      "kind": "struct",
+      "name": "UserContext",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 150
+    },
+    {
+      "kind": "fn",
+      "name": "collect",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 157
+    },
+    {
+      "kind": "fn",
+      "name": "track",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 172
+    },
+    {
+      "kind": "fn",
+      "name": "sync_profile",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 258
+    },
+    {
+      "kind": "fn",
+      "name": "init",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 310
+    },
+    {
+      "kind": "fn",
+      "name": "init_if_needed",
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "line": 345
+    },
+    {
+      "kind": "enum",
+      "name": "TelemetryMode",
+      "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+      "line": 16
+    },
+    {
+      "kind": "fn",
+      "name": "is_disabled",
+      "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "is_enabled",
+      "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+      "line": 26
+    },
+    {
+      "kind": "fn",
+      "name": "session_metrics_enabled",
+      "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+      "line": 30
+    },
+    {
+      "kind": "fn",
+      "name": "parse",
+      "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+      "line": 33
+    },
+    {
+      "kind": "fn",
+      "name": "env_telemetry_mode",
+      "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+      "line": 87
+    },
+    {
+      "kind": "struct",
+      "name": "TelemetryConfig",
+      "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+      "line": 93
+    },
+    {
+      "kind": "fn",
+      "name": "apply_env_overrides",
+      "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+      "line": 158
+    },
+    {
+      "kind": "fn",
+      "name": "deployment_id_from_key",
+      "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+      "line": 213
+    },
+    {
+      "kind": "struct",
+      "name": "GitContext",
+      "path": "crates/codegen/xai-grok-telemetry/src/context.rs",
+      "line": 3
+    },
+    {
+      "kind": "fn",
+      "name": "collect_git_context",
+      "path": "crates/codegen/xai-grok-telemetry/src/context.rs",
+      "line": 7
+    },
+    {
+      "kind": "enum",
+      "name": "DebugSource",
+      "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+      "line": 30
+    },
+    {
+      "kind": "const",
+      "name": "ACP_UPDATE_TARGET",
+      "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+      "line": 50
+    },
+    {
+      "kind": "const",
+      "name": "ACP_UPDATE_PAYLOAD_TARGET",
+      "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+      "line": 57
+    },
+    {
+      "kind": "const",
+      "name": "RMCP_SSE_NOISE_TARGET",
+      "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+      "line": 61
+    },
+    {
+      "kind": "fn",
+      "name": "install_firehose",
+      "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+      "line": 368
+    },
+    {
+      "kind": "fn",
+      "name": "flush",
+      "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+      "line": 401
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/appender.rs",
+      "module": "appender",
+      "kind": "production",
+      "lineCount": 47,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "non_blocking_file_writer",
+          "path": "crates/codegen/xai-grok-telemetry/src/appender.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "flush_file_log_guards",
+          "path": "crates/codegen/xai-grok-telemetry/src/appender.rs",
+          "line": 40
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/appender.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+      "module": "client",
+      "kind": "production",
+      "lineCount": 466,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "Metadata",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "TelemetryClient",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "from_config",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "is_enabled",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 134
+        },
+        {
+          "kind": "fn",
+          "name": "is_session_metrics_enabled",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 143
+        },
+        {
+          "kind": "struct",
+          "name": "UserContext",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 150
+        },
+        {
+          "kind": "fn",
+          "name": "collect",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 157
+        },
+        {
+          "kind": "fn",
+          "name": "track",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 172
+        },
+        {
+          "kind": "fn",
+          "name": "sync_profile",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 258
+        },
+        {
+          "kind": "fn",
+          "name": "init",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 310
+        },
+        {
+          "kind": "fn",
+          "name": "init_if_needed",
+          "path": "crates/codegen/xai-grok-telemetry/src/client.rs",
+          "line": 345
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/client.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+      "module": "config",
+      "kind": "production",
+      "lineCount": 238,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "TelemetryMode",
+          "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "is_disabled",
+          "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "is_enabled",
+          "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "session_metrics_enabled",
+          "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "parse",
+          "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "env_telemetry_mode",
+          "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+          "line": 87
+        },
+        {
+          "kind": "struct",
+          "name": "TelemetryConfig",
+          "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "apply_env_overrides",
+          "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "deployment_id_from_key",
+          "path": "crates/codegen/xai-grok-telemetry/src/config.rs",
+          "line": 213
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/context.rs",
+      "module": "context",
+      "kind": "production",
+      "lineCount": 15,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "GitContext",
+          "path": "crates/codegen/xai-grok-telemetry/src/context.rs",
+          "line": 3
+        },
+        {
+          "kind": "fn",
+          "name": "collect_git_context",
+          "path": "crates/codegen/xai-grok-telemetry/src/context.rs",
+          "line": 7
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/context.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+      "module": "debug_log",
+      "kind": "production",
+      "lineCount": 962,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "DebugSource",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "ACP_UPDATE_TARGET",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 50
+        },
+        {
+          "kind": "const",
+          "name": "ACP_UPDATE_PAYLOAD_TARGET",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 57
+        },
+        {
+          "kind": "const",
+          "name": "RMCP_SSE_NOISE_TARGET",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "install_firehose",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 368
+        },
+        {
+          "kind": "fn",
+          "name": "flush",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 401
+        },
+        {
+          "kind": "enum",
+          "name": "DebugTarget",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 407
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_debug_target",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 419
+        },
+        {
+          "kind": "fn",
+          "name": "sweep_old_logs",
+          "path": "crates/codegen/xai-grok-telemetry/src/debug_log.rs",
+          "line": 483
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/debug_log.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/enums.rs",
+      "module": "enums",
+      "kind": "production",
+      "lineCount": 65,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "McpInitStrategy",
+          "path": "crates/codegen/xai-grok-telemetry/src/enums.rs",
+          "line": 11
+        },
+        {
+          "kind": "enum",
+          "name": "PrCreationSource",
+          "path": "crates/codegen/xai-grok-telemetry/src/enums.rs",
+          "line": 32
+        },
+        {
+          "kind": "enum",
+          "name": "PermissionMode",
+          "path": "crates/codegen/xai-grok-telemetry/src/enums.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "is_always_approve",
+          "path": "crates/codegen/xai-grok-telemetry/src/enums.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "is_auto",
+          "path": "crates/codegen/xai-grok-telemetry/src/enums.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "from_yolo",
+          "path": "crates/codegen/xai-grok-telemetry/src/enums.rs",
+          "line": 61
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/enums.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+      "module": "events",
+      "kind": "production",
+      "lineCount": 2097,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "TelemetryEvent",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 17
+        },
+        {
+          "kind": "enum",
+          "name": "PlanModeTrigger",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 52
+        },
+        {
+          "kind": "enum",
+          "name": "ContextualTipKind",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 59
+        },
+        {
+          "kind": "enum",
+          "name": "ContextualTipAction",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 71
+        },
+        {
+          "kind": "enum",
+          "name": "PromptSuggestionAction",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 78
+        },
+        {
+          "kind": "enum",
+          "name": "YoloTrigger",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 89
+        },
+        {
+          "kind": "enum",
+          "name": "AccessKind",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 97
+        },
+        {
+          "kind": "enum",
+          "name": "PermissionOutcome",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 117
+        },
+        {
+          "kind": "enum",
+          "name": "CompactionTrigger",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 129
+        },
+        {
+          "kind": "enum",
+          "name": "Outcome",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 136
+        },
+        {
+          "kind": "enum",
+          "name": "HookOutcome",
+          "path": "crates/codegen/xai-grok-telemetry/src/events.rs",
+          "line": 144
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/events.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+      "module": "external::config",
+      "kind": "production",
+      "lineCount": 744,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "OtlpTransport",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "as_protocol_str",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 34
+        },
+        {
+          "kind": "const",
+          "name": "ENV_MASTER_SWITCH",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 46
+        },
+        {
+          "kind": "enum",
+          "name": "ExporterSelection",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "is_active",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 73
+        },
+        {
+          "kind": "struct",
+          "name": "ContentGates",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 81
+        },
+        {
+          "kind": "enum",
+          "name": "TemporalityPreference",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 93
+        },
+        {
+          "kind": "struct",
+          "name": "ExternalClientInfo",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 102
+        },
+        {
+          "kind": "struct",
+          "name": "ExternalOtelFileConfig",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 123
+        },
+        {
+          "kind": "struct",
+          "name": "ExternalOtelConfig",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "parse_header_list",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 205
+        },
+        {
+          "kind": "fn",
+          "name": "resolve",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/config.rs",
+          "line": 249
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/external/config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/external/emit.rs",
+      "module": "external::emit",
+      "kind": "production",
+      "lineCount": 270,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Instruments",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/emit.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/emit.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "emit_record",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/emit.rs",
+          "line": 92
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/external/emit.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+      "module": "external::mod",
+      "kind": "production",
+      "lineCount": 481,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "IdentityAttrs",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "from_snapshot",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 59
+        },
+        {
+          "kind": "struct",
+          "name": "ExternalOtelRemotePolicy",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 74
+        },
+        {
+          "kind": "struct",
+          "name": "ExternalTelemetry",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "next_sequence",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "init",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 135
+        },
+        {
+          "kind": "fn",
+          "name": "is_active",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 225
+        },
+        {
+          "kind": "fn",
+          "name": "emit",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 232
+        },
+        {
+          "kind": "fn",
+          "name": "set_identity",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 245
+        },
+        {
+          "kind": "fn",
+          "name": "set_identity_on",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 252
+        },
+        {
+          "kind": "fn",
+          "name": "apply_remote_policy",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 274
+        },
+        {
+          "kind": "fn",
+          "name": "apply_remote_policy_on",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/mod.rs",
+          "line": 281
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/external/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/external/providers.rs",
+      "module": "external::providers",
+      "kind": "production",
+      "lineCount": 586,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "BuiltProviders",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/providers.rs",
+          "line": 229
+        },
+        {
+          "kind": "fn",
+          "name": "build",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/providers.rs",
+          "line": 436
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/external/providers.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/external/redact.rs",
+      "module": "external::redact",
+      "kind": "production",
+      "lineCount": 249,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "SharedGates",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/redact.rs",
+          "line": 29
+        },
+        {
+          "kind": "struct",
+          "name": "ExportHealth",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/redact.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "RedactingLogExporter",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/redact.rs",
+          "line": 105
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/redact.rs",
+          "line": 112
+        },
+        {
+          "kind": "struct",
+          "name": "ValidatingMetricExporter",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/redact.rs",
+          "line": 201
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/redact.rs",
+          "line": 207
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/external/redact.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+      "module": "external::schema",
+      "kind": "production",
+      "lineCount": 1119,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SCHEMA_VERSION",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "SCOPE_NAME",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 19
+        },
+        {
+          "kind": "enum",
+          "name": "ExternalEventName",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 51
+        },
+        {
+          "kind": "enum",
+          "name": "ExternalKey",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 169
+        },
+        {
+          "kind": "const",
+          "name": "ALL_KEYS",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 244
+        },
+        {
+          "kind": "fn",
+          "name": "external_allowed_keys",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 322
+        },
+        {
+          "kind": "fn",
+          "name": "gate_for_key",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 329
+        },
+        {
+          "kind": "enum",
+          "name": "AttrValue",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 345
+        },
+        {
+          "kind": "enum",
+          "name": "Gate",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 389
+        },
+        {
+          "kind": "struct",
+          "name": "GatedAttr",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/schema.rs",
+          "line": 400
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/external/schema.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/external/tests.rs",
+      "module": "external::tests",
+      "kind": "test",
+      "lineCount": 992,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/external/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+      "module": "external::truncate",
+      "kind": "production",
+      "lineCount": 187,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_STRING_LEN",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 9
+        },
+        {
+          "kind": "const",
+          "name": "TRUNCATED_PREFIX_LEN",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 11
+        },
+        {
+          "kind": "const",
+          "name": "TRUNCATION_MARKER",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "MAX_TOOL_INPUT_JSON_BYTES",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "MAX_JSON_DEPTH",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "MAX_COLLECTION_ITEMS",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 19
+        },
+        {
+          "kind": "const",
+          "name": "MAX_CONTENT_BYTES",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "MAX_FILE_EXTENSION_LEN",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_value",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_value_owned",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_content",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "reduce_tool_input",
+          "path": "crates/codegen/xai-grok-telemetry/src/external/truncate.rs",
+          "line": 69
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/external/truncate.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/hooks_log.rs",
+      "module": "hooks_log",
+      "kind": "production",
+      "lineCount": 125,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "layer",
+          "path": "crates/codegen/xai-grok-telemetry/src/hooks_log.rs",
+          "line": 65
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/hooks_log.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/http.rs",
+      "module": "http",
+      "kind": "production",
+      "lineCount": 22,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "origin_client_info_from_env",
+          "path": "crates/codegen/xai-grok-telemetry/src/http.rs",
+          "line": 14
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/http.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/id.rs",
+      "module": "id",
+      "kind": "production",
+      "lineCount": 87,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "agent_id",
+          "path": "crates/codegen/xai-grok-telemetry/src/id.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "agent_instance_id",
+          "path": "crates/codegen/xai-grok-telemetry/src/id.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "has_workspace_env_markers",
+          "path": "crates/codegen/xai-grok-telemetry/src/id.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "is_special_user",
+          "path": "crates/codegen/xai-grok-telemetry/src/id.rs",
+          "line": 81
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/id.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+      "module": "instrumentation",
+      "kind": "production",
+      "lineCount": 635,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TARGET",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 24
+        },
+        {
+          "kind": "enum",
+          "name": "InstrumentationMode",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "current_mode",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 65
+        },
+        {
+          "kind": "struct",
+          "name": "TargetFilterLayer",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 108
+        },
+        {
+          "kind": "struct",
+          "name": "NoOpLayer",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 176
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 185
+        },
+        {
+          "kind": "fn",
+          "name": "layer",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 321
+        },
+        {
+          "kind": "fn",
+          "name": "install_panic_hook",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 339
+        },
+        {
+          "kind": "struct",
+          "name": "ChromeTraceOptions",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 391
+        },
+        {
+          "kind": "fn",
+          "name": "generate_chrome_trace",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 396
+        },
+        {
+          "kind": "fn",
+          "name": "finalize",
+          "path": "crates/codegen/xai-grok-telemetry/src/instrumentation.rs",
+          "line": 510
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/instrumentation.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 42,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/memory_log.rs",
+      "module": "memory_log",
+      "kind": "production",
+      "lineCount": 128,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TARGET",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_log.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "layer",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_log.rs",
+          "line": 70
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/memory_log.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs",
+      "module": "memory_telemetry",
+      "kind": "production",
+      "lineCount": 119,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MemorySessionInit",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs",
+          "line": 8
+        },
+        {
+          "kind": "struct",
+          "name": "MemorySearch",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "MemorySearchEmpty",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs",
+          "line": 39
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryFlushStart",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs",
+          "line": 51
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryFlushComplete",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs",
+          "line": 59
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryInjection",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs",
+          "line": 70
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryReindex",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs",
+          "line": 81
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryWatcherSync",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs",
+          "line": 93
+        },
+        {
+          "kind": "struct",
+          "name": "MemorySessionSummary",
+          "path": "crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs",
+          "line": 103
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/memory_telemetry.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+      "module": "otel_layer::mod",
+      "kind": "production",
+      "lineCount": 773,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "OtelLayerConfig",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 27
+        },
+        {
+          "kind": "struct",
+          "name": "OtelClientInfo",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 44
+        },
+        {
+          "kind": "struct",
+          "name": "OtelExporterConfig",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "build_otel_layer",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "shutdown_otel",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 464
+        },
+        {
+          "kind": "struct",
+          "name": "OtelGuard",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 473
+        },
+        {
+          "kind": "fn",
+          "name": "otel_guard",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs",
+          "line": 480
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/otel_layer/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/redact.rs",
+      "module": "otel_layer::redact",
+      "kind": "production",
+      "lineCount": 594,
+      "symbols": [
+        {
+          "kind": "static",
+          "name": "ALLOWED_STRING_KEYS",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/redact.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "redact_batch",
+          "path": "crates/codegen/xai-grok-telemetry/src/otel_layer/redact.rs",
+          "line": 158
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/otel_layer/redact.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/otlp_http.rs",
+      "module": "otlp_http",
+      "kind": "production",
+      "lineCount": 78,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "BlockingOtlpClient",
+          "path": "crates/codegen/xai-grok-telemetry/src/otlp_http.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "build_blocking_client",
+          "path": "crates/codegen/xai-grok-telemetry/src/otlp_http.rs",
+          "line": 48
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/otlp_http.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/prompt_timing.rs",
+      "module": "prompt_timing",
+      "kind": "production",
+      "lineCount": 58,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PromptTiming",
+          "path": "crates/codegen/xai-grok-telemetry/src/prompt_timing.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-grok-telemetry/src/prompt_timing.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "record_tool_prep",
+          "path": "crates/codegen/xai-grok-telemetry/src/prompt_timing.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "emit",
+          "path": "crates/codegen/xai-grok-telemetry/src/prompt_timing.rs",
+          "line": 32
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/prompt_timing.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/redact_common.rs",
+      "module": "redact_common",
+      "kind": "production",
+      "lineCount": 73,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "redact_owned",
+          "path": "crates/codegen/xai-grok-telemetry/src/redact_common.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "redact_to_owned",
+          "path": "crates/codegen/xai-grok-telemetry/src/redact_common.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "url_origin",
+          "path": "crates/codegen/xai-grok-telemetry/src/redact_common.rs",
+          "line": 33
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/redact_common.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/sampling_log.rs",
+      "module": "sampling_log",
+      "kind": "production",
+      "lineCount": 71,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "layer",
+          "path": "crates/codegen/xai-grok-telemetry/src/sampling_log.rs",
+          "line": 22
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/sampling_log.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/sentry.rs",
+      "module": "sentry",
+      "kind": "production",
+      "lineCount": 428,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Config",
+          "path": "crates/codegen/xai-grok-telemetry/src/sentry.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "init",
+          "path": "crates/codegen/xai-grok-telemetry/src/sentry.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "flush_on_shutdown",
+          "path": "crates/codegen/xai-grok-telemetry/src/sentry.rs",
+          "line": 71
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/sentry.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+      "module": "session_ctx",
+      "kind": "production",
+      "lineCount": 327,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TelemetryCtx",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 28
+        },
+        {
+          "kind": "struct",
+          "name": "ExternalCtxSnapshot",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "begin_prompt_id",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "external_ctx_snapshot",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 56
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_ID_FIELD",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "with_session_ctx",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 85
+        },
+        {
+          "kind": "enum",
+          "name": "EmitterOrigin",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 98
+        },
+        {
+          "kind": "const",
+          "name": "ALL",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "event_prefix",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 119
+        },
+        {
+          "kind": "fn",
+          "name": "log_event",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "log_event_dual",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_ctx.rs",
+          "line": 157
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/session_ctx.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+      "module": "session_metrics",
+      "kind": "production",
+      "lineCount": 214,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SessionStarted",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "Turn",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "TurnCompletedLifecycle",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "DoomLoopRecovery",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 29
+        },
+        {
+          "kind": "struct",
+          "name": "TraceUploadAttempted",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 44
+        },
+        {
+          "kind": "struct",
+          "name": "TraceUploadSucceeded",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 51
+        },
+        {
+          "kind": "struct",
+          "name": "TraceUploadSkipped",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 59
+        },
+        {
+          "kind": "struct",
+          "name": "TraceUploadFailed",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 66
+        },
+        {
+          "kind": "enum",
+          "name": "TraceUploadReason",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "from_upload_method",
+          "path": "crates/codegen/xai-grok-telemetry/src/session_metrics.rs",
+          "line": 108
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/session_metrics.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+      "module": "unified_log",
+      "kind": "production",
+      "lineCount": 506,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "set_version",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "LOG_DIR",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 27
+        },
+        {
+          "kind": "const",
+          "name": "MAX_SIZE",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "LOG_METHOD",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 32
+        },
+        {
+          "kind": "enum",
+          "name": "LogLevel",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 42
+        },
+        {
+          "kind": "enum",
+          "name": "LogSource",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 51
+        },
+        {
+          "kind": "struct",
+          "name": "LogEntry",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 65
+        },
+        {
+          "kind": "struct",
+          "name": "LogNotificationParams",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 100
+        },
+        {
+          "kind": "struct",
+          "name": "ClientLogEntry",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "file_size",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "trim_file",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 217
+        },
+        {
+          "kind": "fn",
+          "name": "emit",
+          "path": "crates/codegen/xai-grok-telemetry/src/unified_log.rs",
+          "line": 241
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/src/unified_log.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/tests/external_otlp_gates_on.rs",
+      "module": "..::tests::external_otlp_gates_on",
+      "kind": "test",
+      "lineCount": 286,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/tests/external_otlp_gates_on.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/tests/external_otlp_grpc.rs",
+      "module": "..::tests::external_otlp_grpc",
+      "kind": "test",
+      "lineCount": 128,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/tests/external_otlp_grpc.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/tests/external_otlp_guard.rs",
+      "module": "..::tests::external_otlp_guard",
+      "kind": "test",
+      "lineCount": 73,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/tests/external_otlp_guard.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/tests/external_otlp_session_ctx.rs",
+      "module": "..::tests::external_otlp_session_ctx",
+      "kind": "test",
+      "lineCount": 123,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/tests/external_otlp_session_ctx.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/tests/external_otlp.rs",
+      "module": "..::tests::external_otlp",
+      "kind": "test",
+      "lineCount": 234,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/tests/external_otlp.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/tests/manual_auth_emit.rs",
+      "module": "..::tests::manual_auth_emit",
+      "kind": "test",
+      "lineCount": 90,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/tests/manual_auth_emit.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+      "module": "..::tests::otlp_collector::mod",
+      "kind": "test",
+      "lineCount": 384,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TEMPORALITY_DELTA",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "TEMPORALITY_CUMULATIVE",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "Collected",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "logs_len",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "metrics_len",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "raw_logs",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "raw_metrics",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "raw_text",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 48
+        },
+        {
+          "kind": "enum",
+          "name": "CollectorProtocol",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "start_collector",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "start_collector_with_protocol",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 106
+        },
+        {
+          "kind": "fn",
+          "name": "decode_logs",
+          "path": "crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs",
+          "line": 177
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-telemetry/tests/otlp_collector/mod.rs"
+    }
+  ]
+}

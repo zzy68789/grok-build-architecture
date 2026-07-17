@@ -1,0 +1,27 @@
+---
+title: "文件、搜索与编辑工具"
+description: "追踪文件读取、代码搜索、补丁应用和 hunk 归因。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-file-utils
+  - xai-grok-tools
+  - xai-hunk-tracker
+sourcePaths:
+  - crates/codegen/xai-hunk-tracker/src/lib.rs
+  - crates/codegen/xai-file-utils/src/lib.rs
+  - crates/codegen/xai-grok-tools/src/lib.rs
+  - crates/codegen/xai-file-utils/src/queue.rs
+  - crates/codegen/xai-grok-tools/src/implementations/grok_build/bash/mod.rs
+  - crates/codegen/xai-grok-tools/src/computer/local/terminal.rs
+  - crates/codegen/xai-grok-tools/src/registry/types.rs
+  - crates/codegen/xai-file-utils/src/storage_client.rs
+  - crates/codegen/xai-grok-tools/src/implementations/grok_build/grep/mod.rs
+  - crates/codegen/xai-grok-tools/src/implementations/grok_build/task/mod.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="tools/file-search-edit" />

@@ -1,0 +1,48 @@
+---
+title: 源码覆盖报告与上游基线升级指南
+description: 说明覆盖指标、自动校验、固定提交和安全升级源码基线的完整流程。
+lastVerified: '2026-07-17'
+coverageKind: appendix
+sourceCrates: []
+sourcePaths:
+  - Cargo.toml
+  - README.md
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import CoverageOverview from '@components/CoverageOverview.astro';
+import SourceBaseline from '@components/SourceBaseline.astro';
+
+<SourceBaseline />
+
+## 当前覆盖
+
+<CoverageOverview />
+
+覆盖完成需要同时满足：73 个一方 crate 全部登记；每个 crate 具有职责、入口、依赖、调用者、关联文章和图谱页；每个生产 Rust 文件出现在文件索引；所有测试、示例、基准与 Fuzz 文件保留类别；48 篇文章和 5 个附录均进入 Starlight、Pagefind、sitemap 与 `llms.txt`。
+
+## 自动校验链
+
+```powershell
+npm run atlas:check
+npm run check
+npm run validate:source
+npm run validate:coverage
+npm run build
+npm run validate:links
+npm run test:e2e
+```
+
+`atlas:check` 重新扫描只读源码并和提交的数据逐字比较；`validate:source` 检查 frontmatter、源码路径和精确行号；`validate:coverage` 检查 73 个 crate、48 篇文章、5 个附录和全部文件归属；构建后再检查路由、静态资源、官方链接和永久源码链接。
+
+## 升级固定基线
+
+1. 选择公开仓库中可访问的目标 commit，并确认对应 `SOURCE_REV` 的用途。
+2. 在独立只读目录检出目标 commit，不在文档脚本中修改上游源码。
+3. 更新 `src/data/source.ts`、图谱生成器、CI checkout 和 `llms.txt` 中的公开 commit。
+4. 运行 `npm run atlas:generate` 重建 crate、文件、依赖和符号数据。
+5. 逐篇处理失效 SourceRef 和行为变化，设计推断必须重新核验。
+6. 执行完整验证，再发布新的白皮书基线。
+
+不能只替换 GitHub URL 中的 commit：文件移动、符号重命名、依赖变化和行为调整都会让旧文章产生“链接能打开但结论已过期”的隐性错误。固定基线升级是一轮内容审计，而不是字符串替换。

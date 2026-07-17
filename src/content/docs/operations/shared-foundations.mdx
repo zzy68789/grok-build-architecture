@@ -1,0 +1,30 @@
+---
+title: "Shared Foundations：配置、环境、路径与 Shell Base"
+description: "解释 leaf types、共享工具和依赖倒置如何稳定上层 crate。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-grok-config
+  - xai-grok-config-types
+  - xai-grok-env
+  - xai-grok-paths
+  - xai-grok-shared
+  - xai-grok-shell-base
+sourcePaths:
+  - crates/codegen/xai-grok-config-types/src/lib.rs
+  - crates/codegen/xai-grok-paths/src/lib.rs
+  - crates/codegen/xai-grok-env/src/lib.rs
+  - crates/codegen/xai-grok-config/src/lib.rs
+  - crates/codegen/xai-grok-shared/src/lib.rs
+  - crates/codegen/xai-grok-shell-base/src/lib.rs
+  - crates/codegen/xai-grok-shared/src/clipboard.rs
+  - crates/codegen/xai-grok-shared/src/placeholder_images.rs
+  - crates/codegen/xai-grok-shell-base/src/cpu_profile.rs
+  - crates/codegen/xai-grok-config/src/loader.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="operations/shared-foundations" />

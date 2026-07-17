@@ -1,0 +1,42 @@
+---
+title: 测试、Harness、Snapshot 与 Fuzz 架构
+description: 解释一方测试支持 crate、PTY 场景、快照、模拟服务和 Fuzz 的验证边界。
+lastVerified: '2026-07-17'
+coverageKind: appendix
+sourceCrates:
+  - xai-grok-test-support
+  - xai-grok-pager-pty-harness
+  - xai-test-utils
+sourcePaths:
+  - crates/codegen/xai-grok-test-support/src/lib.rs
+  - crates/codegen/xai-grok-pager-pty-harness/src/lib.rs
+  - crates/common/xai-test-utils/src/lib.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+
+<SourceBaseline compact />
+
+## 测试并不是生产调用链
+
+固定基线包含单元测试、集成测试、端到端 PTY 场景、快照、基准、示例和 Fuzz。它们能够证明维护者重点保护哪些不变量，却不能单独证明某个实验入口已经成为稳定产品能力。因此图谱保留全部测试文件，但覆盖报告会把它们与生产源码分别计数。
+
+<SourceRef path="crates/codegen/xai-grok-test-support/src/lib.rs" start={1} end={30} symbol="xai-grok-test-support" note="模拟推理服务、SSE、ACP 与环境沙箱" />
+<SourceRef path="crates/codegen/xai-grok-pager-pty-harness/src/lib.rs" start={1} end={30} symbol="PTY harness" note="终端端到端场景与基准基础设施" />
+<SourceRef path="crates/common/xai-test-utils/src/lib.rs" start={1} end={26} symbol="xai-test-utils" note="密封 Git 与共享测试工具" />
+
+## 四类验证层
+
+1. **纯逻辑测试**验证配置合并、状态机、解析和错误分类，不依赖真实网络或终端。
+2. **模拟边界测试**使用 HTTP/SSE、ACP stdio、环境变量和临时工作区替换外部系统。
+3. **PTY 端到端测试**启动真实终端进程，观察按键、屏幕、滚动、选择、持久化和退出行为。
+4. **Snapshot/Fuzz/Benchmark**分别保护稳定输出、异常输入安全和性能回归。
+
+测试辅助 crate 主要出现在开发和 CI，不应被算作一次用户请求的生产依赖。反过来，生产 `src/` 中以 `tests.rs` 或测试目录组织的文件也会被单独标记，避免把大量回归用例误认为业务实现规模。
+
+## 失败解释
+
+测试失败首先要区分实现回归和环境失败。PTY 测试依赖终端尺寸、字体宽度、平台进程语义与超时；网络模拟测试依赖端口和进程调度；Snapshot 差异可能来自预期行为更新，也可能是不稳定排序。CI 只有在固定环境中重新构建、运行并保存报告后，才可把结果用于发布门禁。

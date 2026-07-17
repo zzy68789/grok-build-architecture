@@ -1,0 +1,24 @@
+---
+title: "xai-tracing"
+description: "提供跨模块共享的结构化 tracing 基础设施。"
+lastVerified: '2026-07-17'
+coverageKind: appendix
+sourceCrates:
+  - xai-tracing
+sourcePaths:
+  - crates/common/xai-tracing/Cargo.toml
+  - crates/common/xai-tracing/src/lib.rs
+  - crates/common/xai-tracing/src/grpc_client.rs
+  - crates/common/xai-tracing/src/http_client.rs
+  - crates/common/xai-tracing/src/fastrace.rs
+  - crates/common/xai-tracing/src/testing.rs
+  - crates/common/xai-tracing/src/timer.rs
+  - crates/common/xai-tracing/src/dispatch.rs
+  - crates/common/xai-tracing/src/tokio.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import CrateAtlas from '@components/CrateAtlas.astro';
+
+<CrateAtlas crateName="xai-tracing" />

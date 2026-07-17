@@ -1,0 +1,1368 @@
+{
+  "name": "xai-chat-state",
+  "memberPath": "crates/codegen/xai-chat-state",
+  "manifestPath": "crates/codegen/xai-chat-state/Cargo.toml",
+  "description": "Actor-based chat state management for xAI agents",
+  "role": "以 actor 所有权维护聊天状态和可订阅的状态投影。",
+  "layer": "会话运行时",
+  "primaryArticle": "runtime/session-chat-journal",
+  "relatedArticles": [
+    "runtime/session-chat-journal",
+    "introduction/process-actor-concurrency"
+  ],
+  "dependencies": [
+    "xai-grok-compaction",
+    "xai-grok-sampling-types",
+    "xai-token-estimation"
+  ],
+  "dependents": [
+    "xai-grok-shell"
+  ],
+  "fileCount": 17,
+  "productionFileCount": 16,
+  "lineCount": 9011,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-chat-state/src/lib.rs",
+      "lineCount": 56,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+      "lineCount": 3634,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "strip_tool_messages_for_conversation_item",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "strip_reasoning_blocks",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "strip_images",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "prepare_conversation_for_summarization",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "prepare_conversation_for_segment",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_trailing_incomplete_tool_call",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 100
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+      "lineCount": 866,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "HARD_CLEAR_PLACEHOLDER",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "build_conversation_request",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "should_prune",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "prune_conversation",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 166
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_COMPACT_TRIGGER_BYTES",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 246
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_COMPACT_RECLAIM_TARGET_BYTES",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 259
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+      "lineCount": 822,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "COMPACTION_DIR",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "INDEX_FILE",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 17
+        },
+        {
+          "kind": "enum",
+          "name": "CompactionDetail",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "parse",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 50
+        },
+        {
+          "kind": "const",
+          "name": "INDEX_HEADER",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "segment_filename",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 86
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/handle.rs",
+      "lineCount": 642,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ChatStateHandle",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "noop",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "push_user_message",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "push_user_message_and_ack",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "push_user_message_with_repair_reason",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 54
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "lineCount": 533,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "ensure_conversation_integrity",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "ensure_conversation_integrity_with_reason",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "repair_dangling_after_harness_halt",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "repair_history",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "push_message",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "push_user_message",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 140
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/commands.rs",
+      "lineCount": 486,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ModelMetadata",
+          "path": "crates/codegen/xai-chat-state/src/commands.rs",
+          "line": 17
+        },
+        {
+          "kind": "struct",
+          "name": "RepairHistoryBlocked",
+          "path": "crates/codegen/xai-chat-state/src/commands.rs",
+          "line": 25
+        },
+        {
+          "kind": "enum",
+          "name": "ChatStateCommand",
+          "path": "crates/codegen/xai-chat-state/src/commands.rs",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+      "lineCount": 403,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "estimate_system_message_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_tool_definition_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_tool_definitions_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_item_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_conversation_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 83
+        },
+        {
+          "kind": "struct",
+          "name": "EstimatedItemTokenCounter",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 96
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "ChatStateActor",
+      "path": "crates/codegen/xai-chat-state/src/actor/mod.rs",
+      "line": 30
+    },
+    {
+      "kind": "fn",
+      "name": "spawn",
+      "path": "crates/codegen/xai-chat-state/src/actor/mod.rs",
+      "line": 54
+    },
+    {
+      "kind": "fn",
+      "name": "spawn_with_pruning",
+      "path": "crates/codegen/xai-chat-state/src/actor/mod.rs",
+      "line": 72
+    },
+    {
+      "kind": "fn",
+      "name": "ensure_conversation_integrity",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 43
+    },
+    {
+      "kind": "fn",
+      "name": "ensure_conversation_integrity_with_reason",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 48
+    },
+    {
+      "kind": "fn",
+      "name": "repair_dangling_after_harness_halt",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 74
+    },
+    {
+      "kind": "fn",
+      "name": "repair_history",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 86
+    },
+    {
+      "kind": "fn",
+      "name": "push_message",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 113
+    },
+    {
+      "kind": "fn",
+      "name": "push_user_message",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 140
+    },
+    {
+      "kind": "fn",
+      "name": "push_user_message_with_repair_reason",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 145
+    },
+    {
+      "kind": "fn",
+      "name": "prune_retained_conversation",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 206
+    },
+    {
+      "kind": "fn",
+      "name": "record_token_usage",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 310
+    },
+    {
+      "kind": "fn",
+      "name": "record_last_turn_usage",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 321
+    },
+    {
+      "kind": "fn",
+      "name": "record_model_call_usage",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 325
+    },
+    {
+      "kind": "fn",
+      "name": "record_subagent_usage",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 349
+    },
+    {
+      "kind": "fn",
+      "name": "mark_usage_incomplete",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 373
+    },
+    {
+      "kind": "fn",
+      "name": "increment_prompt_index",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 385
+    },
+    {
+      "kind": "fn",
+      "name": "replace_conversation",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 401
+    },
+    {
+      "kind": "fn",
+      "name": "replace_system_head",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 450
+    },
+    {
+      "kind": "fn",
+      "name": "restore_snapshot",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 465
+    },
+    {
+      "kind": "fn",
+      "name": "snapshot_turn_slice",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 492
+    },
+    {
+      "kind": "fn",
+      "name": "rebase_turn_capture_offset",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 504
+    },
+    {
+      "kind": "fn",
+      "name": "turn_tail",
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "line": 514
+    },
+    {
+      "kind": "fn",
+      "name": "get_notification_meta",
+      "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+      "line": 10
+    },
+    {
+      "kind": "fn",
+      "name": "snapshot",
+      "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+      "line": 18
+    },
+    {
+      "kind": "fn",
+      "name": "truncate_to_prompt_index",
+      "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+      "line": 47
+    },
+    {
+      "kind": "fn",
+      "name": "check_auto_compact_needed",
+      "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+      "line": 87
+    },
+    {
+      "kind": "fn",
+      "name": "get_last_model_metadata",
+      "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+      "line": 107
+    },
+    {
+      "kind": "fn",
+      "name": "get_conversation_len",
+      "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+      "line": 128
+    },
+    {
+      "kind": "fn",
+      "name": "has_dangling_tool_calls",
+      "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+      "line": 134
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-chat-state/src/actor/mod.rs",
+      "module": "actor::mod",
+      "kind": "production",
+      "lineCount": 392,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ChatStateActor",
+          "path": "crates/codegen/xai-chat-state/src/actor/mod.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/xai-chat-state/src/actor/mod.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_pruning",
+          "path": "crates/codegen/xai-chat-state/src/actor/mod.rs",
+          "line": 72
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/actor/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+      "module": "actor::mutations",
+      "kind": "production",
+      "lineCount": 533,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "ensure_conversation_integrity",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "ensure_conversation_integrity_with_reason",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "repair_dangling_after_harness_halt",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "repair_history",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "push_message",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "push_user_message",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 140
+        },
+        {
+          "kind": "fn",
+          "name": "push_user_message_with_repair_reason",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "prune_retained_conversation",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 206
+        },
+        {
+          "kind": "fn",
+          "name": "record_token_usage",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 310
+        },
+        {
+          "kind": "fn",
+          "name": "record_last_turn_usage",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 321
+        },
+        {
+          "kind": "fn",
+          "name": "record_model_call_usage",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 325
+        },
+        {
+          "kind": "fn",
+          "name": "record_subagent_usage",
+          "path": "crates/codegen/xai-chat-state/src/actor/mutations.rs",
+          "line": 349
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/actor/mutations.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+      "module": "actor::queries",
+      "kind": "production",
+      "lineCount": 228,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "get_notification_meta",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "snapshot",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_to_prompt_index",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "check_auto_compact_needed",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "get_last_model_metadata",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "get_conversation_len",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "has_dangling_tool_calls",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 134
+        },
+        {
+          "kind": "fn",
+          "name": "get_last_assistant_text",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 143
+        },
+        {
+          "kind": "fn",
+          "name": "get_first_user_text",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 162
+        },
+        {
+          "kind": "fn",
+          "name": "get_conversation_item_at",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 181
+        },
+        {
+          "kind": "fn",
+          "name": "get_last_user_query_text",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 192
+        },
+        {
+          "kind": "fn",
+          "name": "get_conversation_counts",
+          "path": "crates/codegen/xai-chat-state/src/actor/queries.rs",
+          "line": 197
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/actor/queries.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+      "module": "actor::request_builder",
+      "kind": "production",
+      "lineCount": 866,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "HARD_CLEAR_PLACEHOLDER",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "build_conversation_request",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "should_prune",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "prune_conversation",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 166
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_COMPACT_TRIGGER_BYTES",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 246
+        },
+        {
+          "kind": "const",
+          "name": "IMAGE_COMPACT_RECLAIM_TARGET_BYTES",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 259
+        },
+        {
+          "kind": "struct",
+          "name": "ImageEvictionOutcome",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 325
+        },
+        {
+          "kind": "fn",
+          "name": "compact_images_to_byte_budget",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 395
+        },
+        {
+          "kind": "fn",
+          "name": "inject_memory_reminder",
+          "path": "crates/codegen/xai-chat-state/src/actor/request_builder.rs",
+          "line": 466
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/actor/request_builder.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+      "module": "actor::state",
+      "kind": "production",
+      "lineCount": 403,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "estimate_system_message_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_tool_definition_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_tool_definitions_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_item_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_conversation_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 83
+        },
+        {
+          "kind": "struct",
+          "name": "EstimatedItemTokenCounter",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "estimate_messages_tokens",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 107
+        },
+        {
+          "kind": "struct",
+          "name": "ChatState",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 118
+        },
+        {
+          "kind": "struct",
+          "name": "TurnCaptureState",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 190
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 210
+        },
+        {
+          "kind": "fn",
+          "name": "seal_harness_trace_turn",
+          "path": "crates/codegen/xai-chat-state/src/actor/state.rs",
+          "line": 255
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/actor/state.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/actor/tests.rs",
+      "module": "actor::tests",
+      "kind": "test",
+      "lineCount": 4419,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/actor/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/commands.rs",
+      "module": "commands",
+      "kind": "production",
+      "lineCount": 486,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ModelMetadata",
+          "path": "crates/codegen/xai-chat-state/src/commands.rs",
+          "line": 17
+        },
+        {
+          "kind": "struct",
+          "name": "RepairHistoryBlocked",
+          "path": "crates/codegen/xai-chat-state/src/commands.rs",
+          "line": 25
+        },
+        {
+          "kind": "enum",
+          "name": "ChatStateCommand",
+          "path": "crates/codegen/xai-chat-state/src/commands.rs",
+          "line": 39
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/commands.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/compaction_mode.rs",
+      "module": "compaction_mode",
+      "kind": "production",
+      "lineCount": 150,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "CompactionMode",
+          "path": "crates/codegen/xai-chat-state/src/compaction_mode.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "parse",
+          "path": "crates/codegen/xai-chat-state/src/compaction_mode.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "with_segment_detail",
+          "path": "crates/codegen/xai-chat-state/src/compaction_mode.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "segment_detail",
+          "path": "crates/codegen/xai-chat-state/src/compaction_mode.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "writes_segments",
+          "path": "crates/codegen/xai-chat-state/src/compaction_mode.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "transcript_hint",
+          "path": "crates/codegen/xai-chat-state/src/compaction_mode.rs",
+          "line": 59
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/compaction_mode.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+      "module": "compaction_transcript",
+      "kind": "production",
+      "lineCount": 822,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "COMPACTION_DIR",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "INDEX_FILE",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 17
+        },
+        {
+          "kind": "enum",
+          "name": "CompactionDetail",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "parse",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 50
+        },
+        {
+          "kind": "const",
+          "name": "INDEX_HEADER",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "segment_filename",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "parse_segment_index",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 91
+        },
+        {
+          "kind": "enum",
+          "name": "CompactionArtifact",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 103
+        },
+        {
+          "kind": "fn",
+          "name": "segment_index",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 110
+        },
+        {
+          "kind": "fn",
+          "name": "classify_compaction_path",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "render_segment_md",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 437
+        },
+        {
+          "kind": "fn",
+          "name": "render_index_row",
+          "path": "crates/codegen/xai-chat-state/src/compaction_transcript.rs",
+          "line": 511
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/compaction_transcript.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+      "module": "compaction_utils",
+      "kind": "production",
+      "lineCount": 3634,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "strip_tool_messages_for_conversation_item",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "strip_reasoning_blocks",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "strip_images",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "prepare_conversation_for_summarization",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "prepare_conversation_for_segment",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_trailing_incomplete_tool_call",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "prepare_conversation_for_verbatim_summarization",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "fit_conversation_to_budget",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "extract_user_query",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 280
+        },
+        {
+          "kind": "fn",
+          "name": "extract_last_user_query",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 294
+        },
+        {
+          "kind": "const",
+          "name": "AUTO_CONTINUE_PROMPT",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 308
+        },
+        {
+          "kind": "fn",
+          "name": "is_synthetic_extracted_query",
+          "path": "crates/codegen/xai-chat-state/src/compaction_utils.rs",
+          "line": 328
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/compaction_utils.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/conversation_util.rs",
+      "module": "conversation_util",
+      "kind": "production",
+      "lineCount": 118,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "canonical_system_prompt_eq",
+          "path": "crates/codegen/xai-chat-state/src/conversation_util.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "replace_or_insert_system_head",
+          "path": "crates/codegen/xai-chat-state/src/conversation_util.rs",
+          "line": 27
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/conversation_util.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/events.rs",
+      "module": "events",
+      "kind": "production",
+      "lineCount": 53,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ChatStateEvent",
+          "path": "crates/codegen/xai-chat-state/src/events.rs",
+          "line": 8
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/events.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/handle.rs",
+      "module": "handle",
+      "kind": "production",
+      "lineCount": 642,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ChatStateHandle",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "noop",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "push_user_message",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "push_user_message_and_ack",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "push_user_message_with_repair_reason",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "push_assistant_response",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "push_tool_result",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "record_token_usage",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "record_last_turn_usage",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "record_model_call_usage",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "record_subagent_usage",
+          "path": "crates/codegen/xai-chat-state/src/handle.rs",
+          "line": 107
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/handle.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 56,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/persistence.rs",
+      "module": "persistence",
+      "kind": "production",
+      "lineCount": 174,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "ChatPersistence",
+          "path": "crates/codegen/xai-chat-state/src/persistence.rs",
+          "line": 19
+        },
+        {
+          "kind": "enum",
+          "name": "PersistenceRecord",
+          "path": "crates/codegen/xai-chat-state/src/persistence.rs",
+          "line": 36
+        },
+        {
+          "kind": "struct",
+          "name": "MockChatPersistence",
+          "path": "crates/codegen/xai-chat-state/src/persistence.rs",
+          "line": 48
+        },
+        {
+          "kind": "struct",
+          "name": "MockPersistenceReceiver",
+          "path": "crates/codegen/xai-chat-state/src/persistence.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-chat-state/src/persistence.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "drain",
+          "path": "crates/codegen/xai-chat-state/src/persistence.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "messages",
+          "path": "crates/codegen/xai-chat-state/src/persistence.rs",
+          "line": 77
+        },
+        {
+          "kind": "struct",
+          "name": "NullChatPersistence",
+          "path": "crates/codegen/xai-chat-state/src/persistence.rs",
+          "line": 109
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/persistence.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/types.rs",
+      "module": "types",
+      "kind": "production",
+      "lineCount": 258,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MEMORY_CONTEXT_OPEN_TAG",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "MEMORY_CONTEXT_CLOSE_TAG",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 17
+        },
+        {
+          "kind": "struct",
+          "name": "ChatStateConfig",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "ChatStateSnapshot",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 30
+        },
+        {
+          "kind": "struct",
+          "name": "NotificationMeta",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 60
+        },
+        {
+          "kind": "struct",
+          "name": "PruningConfig",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 72
+        },
+        {
+          "kind": "enum",
+          "name": "AuthType",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 104
+        },
+        {
+          "kind": "struct",
+          "name": "Credentials",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 118
+        },
+        {
+          "kind": "struct",
+          "name": "TurnCapture",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 134
+        },
+        {
+          "kind": "struct",
+          "name": "ConversationCounts",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 146
+        },
+        {
+          "kind": "struct",
+          "name": "AutoCompactTrigger",
+          "path": "crates/codegen/xai-chat-state/src/types.rs",
+          "line": 159
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/types.rs"
+    },
+    {
+      "path": "crates/codegen/xai-chat-state/src/usage.rs",
+      "module": "usage",
+      "kind": "production",
+      "lineCount": 196,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "UsageTotals",
+          "path": "crates/codegen/xai-chat-state/src/usage.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "total_tokens",
+          "path": "crates/codegen/xai-chat-state/src/usage.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "cost_is_partial",
+          "path": "crates/codegen/xai-chat-state/src/usage.rs",
+          "line": 67
+        },
+        {
+          "kind": "struct",
+          "name": "UsageLedger",
+          "path": "crates/codegen/xai-chat-state/src/usage.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "record_main_loop_call",
+          "path": "crates/codegen/xai-chat-state/src/usage.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "record_subagent",
+          "path": "crates/codegen/xai-chat-state/src/usage.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "mark_incomplete",
+          "path": "crates/codegen/xai-chat-state/src/usage.rs",
+          "line": 136
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-chat-state/src/usage.rs"
+    }
+  ]
+}

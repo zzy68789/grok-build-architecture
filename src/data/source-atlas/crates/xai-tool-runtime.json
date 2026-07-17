@@ -1,0 +1,1035 @@
+{
+  "name": "xai-tool-runtime",
+  "memberPath": "crates/common/xai-tool-runtime",
+  "manifestPath": "crates/common/xai-tool-runtime/Cargo.toml",
+  "description": "Unified Tool trait, dispatch trait, error taxonomy, notifications, and search index for the xAI Computer Hub",
+  "role": "定义统一 Tool trait、分派、错误分类、通知和搜索索引。",
+  "layer": "工具与工作区",
+  "primaryArticle": "tools/contract-protocol-runtime-api",
+  "relatedArticles": [
+    "tools/contract-protocol-runtime-api",
+    "introduction/end-to-end-request",
+    "tools/tool-system"
+  ],
+  "dependencies": [
+    "xai-grok-tools-api",
+    "xai-tool-protocol",
+    "xai-tool-types"
+  ],
+  "dependents": [
+    "xai-computer-hub-core",
+    "xai-computer-hub-mcp-adapter",
+    "xai-computer-hub-sdk",
+    "xai-grok-mcp",
+    "xai-grok-shell",
+    "xai-grok-tools",
+    "xai-grok-workspace",
+    "xai-grok-workspace-client"
+  ],
+  "fileCount": 18,
+  "productionFileCount": 9,
+  "lineCount": 3235,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-tool-runtime/src/lib.rs",
+      "lineCount": 46,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/render.rs",
+      "lineCount": 732,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "ToolOutput",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "ToolChatCompletionResponse",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 114
+        },
+        {
+          "kind": "struct",
+          "name": "ToolChatCompletion",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 125
+        },
+        {
+          "kind": "struct",
+          "name": "ToolCodeExecutionResult",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 156
+        },
+        {
+          "kind": "struct",
+          "name": "ToolStreamError",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 169
+        },
+        {
+          "kind": "fn",
+          "name": "extract_content_blocks",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 188
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/error.rs",
+      "lineCount": 555,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ToolErrorKind",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 78
+        },
+        {
+          "kind": "struct",
+          "name": "ToolError",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "with_details",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 170
+        },
+        {
+          "kind": "fn",
+          "name": "with_source",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 176
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/notification.rs",
+      "lineCount": 531,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "BashNotificationBase",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "output_lossy",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 49
+        },
+        {
+          "kind": "struct",
+          "name": "BashOutputChunk",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 57
+        },
+        {
+          "kind": "struct",
+          "name": "BashExecutionComplete",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "was_signaled",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "BashExecutionTimeout",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 88
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/tool.rs",
+      "lineCount": 441,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "Tool",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 36
+        },
+        {
+          "kind": "type",
+          "name": "ToolStream",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 116
+        },
+        {
+          "kind": "enum",
+          "name": "ToolStreamItem",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "is_terminal",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 130
+        },
+        {
+          "kind": "enum",
+          "name": "ToolProgress",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 139
+        },
+        {
+          "kind": "enum",
+          "name": "ContentBlock",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 166
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/streaming.rs",
+      "lineCount": 440,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PartialResultPayload",
+          "path": "crates/common/xai-tool-runtime/src/streaming.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "stream_chunk",
+          "path": "crates/common/xai-tool-runtime/src/streaming.rs",
+          "line": 85
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "lineCount": 337,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TypedExtensions",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "insert",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "insert_arc",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "contains",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/search.rs",
+      "lineCount": 84,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ToolSearchResult",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 11
+        },
+        {
+          "kind": "struct",
+          "name": "SearchSnapshot",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 31
+        },
+        {
+          "kind": "struct",
+          "name": "ServerSummary",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "tool_count",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 54
+        },
+        {
+          "kind": "trait",
+          "name": "ToolSearchIndex",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "ToolIndex",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 77
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "TypedExtensions",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 12
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 17
+    },
+    {
+      "kind": "fn",
+      "name": "insert",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 21
+    },
+    {
+      "kind": "fn",
+      "name": "insert_arc",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 26
+    },
+    {
+      "kind": "fn",
+      "name": "get",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "contains",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 38
+    },
+    {
+      "kind": "fn",
+      "name": "remove",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 42
+    },
+    {
+      "kind": "fn",
+      "name": "len",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 48
+    },
+    {
+      "kind": "fn",
+      "name": "is_empty",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 52
+    },
+    {
+      "kind": "fn",
+      "name": "merge_defaults",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 57
+    },
+    {
+      "kind": "struct",
+      "name": "ToolCallContext",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 66
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 81
+    },
+    {
+      "kind": "fn",
+      "name": "insert",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 89
+    },
+    {
+      "kind": "fn",
+      "name": "get",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 95
+    },
+    {
+      "kind": "struct",
+      "name": "ListToolsContext",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 102
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 107
+    },
+    {
+      "kind": "struct",
+      "name": "Cwd",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 118
+    },
+    {
+      "kind": "struct",
+      "name": "BehaviorVersion",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 123
+    },
+    {
+      "kind": "struct",
+      "name": "TraceContext",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 130
+    },
+    {
+      "kind": "struct",
+      "name": "SessionContext",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 136
+    },
+    {
+      "kind": "struct",
+      "name": "Cancellation",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 142
+    },
+    {
+      "kind": "struct",
+      "name": "WorkspaceViewerContext",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 150
+    },
+    {
+      "kind": "struct",
+      "name": "WorkspaceBindMetadata",
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "line": 165
+    },
+    {
+      "kind": "trait",
+      "name": "ToolDispatch",
+      "path": "crates/common/xai-tool-runtime/src/dispatch.rs",
+      "line": 32
+    },
+    {
+      "kind": "enum",
+      "name": "ToolErrorKind",
+      "path": "crates/common/xai-tool-runtime/src/error.rs",
+      "line": 19
+    },
+    {
+      "kind": "fn",
+      "name": "as_str",
+      "path": "crates/common/xai-tool-runtime/src/error.rs",
+      "line": 78
+    },
+    {
+      "kind": "struct",
+      "name": "ToolError",
+      "path": "crates/common/xai-tool-runtime/src/error.rs",
+      "line": 112
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-tool-runtime/src/error.rs",
+      "line": 160
+    },
+    {
+      "kind": "fn",
+      "name": "with_details",
+      "path": "crates/common/xai-tool-runtime/src/error.rs",
+      "line": 170
+    },
+    {
+      "kind": "fn",
+      "name": "with_source",
+      "path": "crates/common/xai-tool-runtime/src/error.rs",
+      "line": 176
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-tool-runtime/src/context.rs",
+      "module": "context",
+      "kind": "production",
+      "lineCount": 337,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TypedExtensions",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "insert",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "insert_arc",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "contains",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "remove",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "merge_defaults",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 57
+        },
+        {
+          "kind": "struct",
+          "name": "ToolCallContext",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-runtime/src/context.rs",
+          "line": 81
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/src/context.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/dispatch.rs",
+      "module": "dispatch",
+      "kind": "production",
+      "lineCount": 69,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "ToolDispatch",
+          "path": "crates/common/xai-tool-runtime/src/dispatch.rs",
+          "line": 32
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/src/dispatch.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/error.rs",
+      "module": "error",
+      "kind": "production",
+      "lineCount": 555,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ToolErrorKind",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 78
+        },
+        {
+          "kind": "struct",
+          "name": "ToolError",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "with_details",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 170
+        },
+        {
+          "kind": "fn",
+          "name": "with_source",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 176
+        },
+        {
+          "kind": "fn",
+          "name": "not_implemented",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 181
+        },
+        {
+          "kind": "fn",
+          "name": "invalid_arguments",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 185
+        },
+        {
+          "kind": "fn",
+          "name": "not_found",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 189
+        },
+        {
+          "kind": "fn",
+          "name": "permission_denied",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 194
+        },
+        {
+          "kind": "fn",
+          "name": "unauthorized",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 198
+        },
+        {
+          "kind": "fn",
+          "name": "timeout",
+          "path": "crates/common/xai-tool-runtime/src/error.rs",
+          "line": 202
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/src/error.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 46,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/src/lib.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/notification.rs",
+      "module": "notification",
+      "kind": "production",
+      "lineCount": 531,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "BashNotificationBase",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "output_lossy",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 49
+        },
+        {
+          "kind": "struct",
+          "name": "BashOutputChunk",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 57
+        },
+        {
+          "kind": "struct",
+          "name": "BashExecutionComplete",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "was_signaled",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "BashExecutionTimeout",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 88
+        },
+        {
+          "kind": "struct",
+          "name": "BashExecutionBackgrounded",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 103
+        },
+        {
+          "kind": "struct",
+          "name": "BashExecutionFailed",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 121
+        },
+        {
+          "kind": "struct",
+          "name": "FileRead",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 139
+        },
+        {
+          "kind": "struct",
+          "name": "FileWritten",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 148
+        },
+        {
+          "kind": "struct",
+          "name": "PlanModeEntered",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 163
+        },
+        {
+          "kind": "struct",
+          "name": "PlanModeExited",
+          "path": "crates/common/xai-tool-runtime/src/notification.rs",
+          "line": 171
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/src/notification.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/render.rs",
+      "module": "render",
+      "kind": "production",
+      "lineCount": 732,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "ToolOutput",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "ToolChatCompletionResponse",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 114
+        },
+        {
+          "kind": "struct",
+          "name": "ToolChatCompletion",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 125
+        },
+        {
+          "kind": "struct",
+          "name": "ToolCodeExecutionResult",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 156
+        },
+        {
+          "kind": "struct",
+          "name": "ToolStreamError",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 169
+        },
+        {
+          "kind": "fn",
+          "name": "extract_content_blocks",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 188
+        },
+        {
+          "kind": "type",
+          "name": "ModelOutputExtractor",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 354
+        },
+        {
+          "kind": "fn",
+          "name": "extractor_for",
+          "path": "crates/common/xai-tool-runtime/src/render.rs",
+          "line": 357
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/src/render.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/search.rs",
+      "module": "search",
+      "kind": "production",
+      "lineCount": 84,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ToolSearchResult",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 11
+        },
+        {
+          "kind": "struct",
+          "name": "SearchSnapshot",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 31
+        },
+        {
+          "kind": "struct",
+          "name": "ServerSummary",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "tool_count",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 54
+        },
+        {
+          "kind": "trait",
+          "name": "ToolSearchIndex",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 63
+        },
+        {
+          "kind": "struct",
+          "name": "ToolIndex",
+          "path": "crates/common/xai-tool-runtime/src/search.rs",
+          "line": 77
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/src/search.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/streaming.rs",
+      "module": "streaming",
+      "kind": "production",
+      "lineCount": 440,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PartialResultPayload",
+          "path": "crates/common/xai-tool-runtime/src/streaming.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "stream_chunk",
+          "path": "crates/common/xai-tool-runtime/src/streaming.rs",
+          "line": 85
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/src/streaming.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/src/tool.rs",
+      "module": "tool",
+      "kind": "production",
+      "lineCount": 441,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "Tool",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 36
+        },
+        {
+          "kind": "type",
+          "name": "ToolStream",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 116
+        },
+        {
+          "kind": "enum",
+          "name": "ToolStreamItem",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "is_terminal",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 130
+        },
+        {
+          "kind": "enum",
+          "name": "ToolProgress",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 139
+        },
+        {
+          "kind": "enum",
+          "name": "ContentBlock",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 166
+        },
+        {
+          "kind": "fn",
+          "name": "terminal_only",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 206
+        },
+        {
+          "kind": "fn",
+          "name": "with_progress",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 218
+        },
+        {
+          "kind": "struct",
+          "name": "TypedToolOutput",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 246
+        },
+        {
+          "kind": "fn",
+          "name": "from_value",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 272
+        },
+        {
+          "kind": "fn",
+          "name": "with_chat_completion_output",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 285
+        },
+        {
+          "kind": "trait",
+          "name": "ToolDyn",
+          "path": "crates/common/xai-tool-runtime/src/tool.rs",
+          "line": 306
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/src/tool.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/tests/context_extensions.rs",
+      "module": "..::tests::context_extensions",
+      "kind": "test",
+      "lineCount": 264,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/tests/context_extensions.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/tests/error_conversion.rs",
+      "module": "..::tests::error_conversion",
+      "kind": "test",
+      "lineCount": 227,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/tests/error_conversion.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/tests/notification_serde.rs",
+      "module": "..::tests::notification_serde",
+      "kind": "test",
+      "lineCount": 404,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/tests/notification_serde.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/tests/search.rs",
+      "module": "..::tests::search",
+      "kind": "test",
+      "lineCount": 104,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/tests/search.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/tests/should_list.rs",
+      "module": "..::tests::should_list",
+      "kind": "test",
+      "lineCount": 178,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/tests/should_list.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/tests/tool_blocking.rs",
+      "module": "..::tests::tool_blocking",
+      "kind": "test",
+      "lineCount": 175,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/tests/tool_blocking.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/tests/tool_dyn.rs",
+      "module": "..::tests::tool_dyn",
+      "kind": "test",
+      "lineCount": 493,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/tests/tool_dyn.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/tests/tool_streaming.rs",
+      "module": "..::tests::tool_streaming",
+      "kind": "test",
+      "lineCount": 178,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/tests/tool_streaming.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-runtime/tests/trait_object_safety.rs",
+      "module": "..::tests::trait_object_safety",
+      "kind": "test",
+      "lineCount": 151,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-runtime/tests/trait_object_safety.rs"
+    }
+  ]
+}

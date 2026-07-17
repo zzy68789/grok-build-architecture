@@ -1,0 +1,295 @@
+{
+  "name": "xai-grok-http",
+  "memberPath": "crates/codegen/xai-grok-http",
+  "manifestPath": "crates/codegen/xai-grok-http/Cargo.toml",
+  "description": "Shared reqwest HTTP clients and User-Agent construction for the grok CLI.",
+  "role": "集中构造共享 reqwest 客户端、User-Agent 和网络默认值。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "agent/http-auth-circuit-breaker",
+  "relatedArticles": [
+    "agent/http-auth-circuit-breaker",
+    "agent/sampler-actor-streaming-retry"
+  ],
+  "dependencies": [
+    "xai-grok-auth",
+    "xai-grok-sampler",
+    "xai-grok-telemetry",
+    "xai-grok-version",
+    "xai-grok-workspace"
+  ],
+  "dependents": [
+    "xai-grok-memory",
+    "xai-grok-shell",
+    "xai-grok-shell-session-support"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 637,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "lineCount": 637,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "origin_client_info_from_env",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "origin_client_info_from_client_type",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "set_client_name",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 164
+        },
+        {
+          "kind": "fn",
+          "name": "process_user_agent_string",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 170
+        },
+        {
+          "kind": "fn",
+          "name": "session_user_agent_string",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 188
+        },
+        {
+          "kind": "fn",
+          "name": "origin_client_info_from_meta",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 198
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "origin_client_info_from_env",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 70
+    },
+    {
+      "kind": "fn",
+      "name": "origin_client_info_from_client_type",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 82
+    },
+    {
+      "kind": "fn",
+      "name": "set_client_name",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 164
+    },
+    {
+      "kind": "fn",
+      "name": "process_user_agent_string",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 170
+    },
+    {
+      "kind": "fn",
+      "name": "session_user_agent_string",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 188
+    },
+    {
+      "kind": "fn",
+      "name": "origin_client_info_from_meta",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 198
+    },
+    {
+      "kind": "fn",
+      "name": "merge_origin_client_info",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 220
+    },
+    {
+      "kind": "fn",
+      "name": "client_type_from_origin",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 235
+    },
+    {
+      "kind": "fn",
+      "name": "process_client_identifier",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 240
+    },
+    {
+      "kind": "const",
+      "name": "CLIENT_MODE_HEADER",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 247
+    },
+    {
+      "kind": "fn",
+      "name": "set_process_client_mode_headless",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 255
+    },
+    {
+      "kind": "fn",
+      "name": "process_client_mode",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 260
+    },
+    {
+      "kind": "fn",
+      "name": "user_agent_string_for",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 264
+    },
+    {
+      "kind": "fn",
+      "name": "shared_client",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 282
+    },
+    {
+      "kind": "fn",
+      "name": "with_auth_retry",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 302
+    },
+    {
+      "kind": "fn",
+      "name": "shared_upload_client",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 325
+    },
+    {
+      "kind": "fn",
+      "name": "fresh_http1_client",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 350
+    },
+    {
+      "kind": "fn",
+      "name": "error_cause_chain",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 362
+    },
+    {
+      "kind": "enum",
+      "name": "TransportFailureKind",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 375
+    },
+    {
+      "kind": "struct",
+      "name": "TransportFailure",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 392
+    },
+    {
+      "kind": "fn",
+      "name": "classify",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 400
+    },
+    {
+      "kind": "fn",
+      "name": "send_with_retry_escaping_pool",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 432
+    },
+    {
+      "kind": "fn",
+      "name": "shared_blocking_client",
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "line": 491
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-http/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 637,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "origin_client_info_from_env",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "origin_client_info_from_client_type",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "set_client_name",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 164
+        },
+        {
+          "kind": "fn",
+          "name": "process_user_agent_string",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 170
+        },
+        {
+          "kind": "fn",
+          "name": "session_user_agent_string",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 188
+        },
+        {
+          "kind": "fn",
+          "name": "origin_client_info_from_meta",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 198
+        },
+        {
+          "kind": "fn",
+          "name": "merge_origin_client_info",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 220
+        },
+        {
+          "kind": "fn",
+          "name": "client_type_from_origin",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 235
+        },
+        {
+          "kind": "fn",
+          "name": "process_client_identifier",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 240
+        },
+        {
+          "kind": "const",
+          "name": "CLIENT_MODE_HEADER",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 247
+        },
+        {
+          "kind": "fn",
+          "name": "set_process_client_mode_headless",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 255
+        },
+        {
+          "kind": "fn",
+          "name": "process_client_mode",
+          "path": "crates/codegen/xai-grok-http/src/lib.rs",
+          "line": 260
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-http/src/lib.rs"
+    }
+  ]
+}

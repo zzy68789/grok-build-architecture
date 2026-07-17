@@ -1,0 +1,25 @@
+---
+title: "Codebase Graph"
+description: "解释 tree-sitter 查询、增量索引和代码关系图的生成。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-codebase-graph
+sourcePaths:
+  - crates/codegen/xai-codebase-graph/src/lib.rs
+  - crates/codegen/xai-codebase-graph/src/index_manager.rs
+  - crates/codegen/xai-codebase-graph/src/scope_graph/graph.rs
+  - crates/codegen/xai-codebase-graph/src/navigation.rs
+  - crates/codegen/xai-codebase-graph/src/manager/lock.rs
+  - crates/codegen/xai-codebase-graph/src/manager/builder.rs
+  - crates/codegen/xai-codebase-graph/src/interner.rs
+  - crates/codegen/xai-codebase-graph/src/types/range.rs
+  - crates/codegen/xai-codebase-graph/src/languages/ts.rs
+  - crates/codegen/xai-codebase-graph/src/languages/rust.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="workspace/codebase-graph" />

@@ -1,0 +1,1699 @@
+{
+  "name": "xai-computer-hub-sdk",
+  "memberPath": "crates/common/xai-computer-hub-sdk",
+  "manifestPath": "crates/common/xai-computer-hub-sdk/Cargo.toml",
+  "description": "SDK for the xAI Computer Hub: connection pool, transparent reconnect, tool harness, and tool-server runtime.",
+  "role": "提供连接池、透明重连和工具服务器运行时 SDK。",
+  "layer": "工具与工作区",
+  "primaryArticle": "tools/computer-hub",
+  "relatedArticles": [
+    "tools/computer-hub"
+  ],
+  "dependencies": [
+    "xai-computer-hub-core",
+    "xai-tool-protocol",
+    "xai-tool-runtime",
+    "xai-tool-types",
+    "xai-tracing"
+  ],
+  "dependents": [
+    "xai-computer-hub-mcp-adapter",
+    "xai-grok-mcp",
+    "xai-grok-shell",
+    "xai-grok-tools",
+    "xai-grok-workspace",
+    "xai-grok-workspace-client"
+  ],
+  "fileCount": 21,
+  "productionFileCount": 21,
+  "lineCount": 14275,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/lib.rs",
+      "lineCount": 72,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+      "lineCount": 2941,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "TraceContextProvider",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 61
+        },
+        {
+          "kind": "const",
+          "name": "PERMISSION_REQUEST_KIND",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 72
+        },
+        {
+          "kind": "struct",
+          "name": "CancelOnDrop",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 86
+        },
+        {
+          "kind": "type",
+          "name": "ModelOutputExtractor",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "extractor_for",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 91
+        },
+        {
+          "kind": "struct",
+          "name": "LocalRegistry",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 125
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+      "lineCount": 2695,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ConnectionTuning",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 294
+        },
+        {
+          "kind": "struct",
+          "name": "ConnKey",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 311
+        },
+        {
+          "kind": "struct",
+          "name": "ReconnectEvent",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 328
+        },
+        {
+          "kind": "type",
+          "name": "ReconnectCallback",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 338
+        },
+        {
+          "kind": "type",
+          "name": "DisconnectCallback",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 341
+        },
+        {
+          "kind": "type",
+          "name": "ConnectCallback",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 347
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+      "lineCount": 2650,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "ReconnectSettledCallback",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 56
+        },
+        {
+          "kind": "enum",
+          "name": "SystemNotifyAck",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 61
+        },
+        {
+          "kind": "struct",
+          "name": "ResolvedSessionHandlers",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "full",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 126
+        },
+        {
+          "kind": "type",
+          "name": "SessionHandlerResolver",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 143
+        },
+        {
+          "kind": "trait",
+          "name": "ToolServerHandler",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 160
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+      "lineCount": 974,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "InboundFrame",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 41
+        },
+        {
+          "kind": "enum",
+          "name": "RouteOutcome",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 53
+        },
+        {
+          "kind": "struct",
+          "name": "Demux",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "with_outbound",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "subscribe_notifications",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 140
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+      "lineCount": 593,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TELEMETRY_TARGET",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 39
+        },
+        {
+          "kind": "struct",
+          "name": "LogDonationSender",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 248
+        },
+        {
+          "kind": "struct",
+          "name": "DonatingLogLayer",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 315
+        },
+        {
+          "kind": "fn",
+          "name": "new_inert",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 323
+        },
+        {
+          "kind": "fn",
+          "name": "activate",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 333
+        },
+        {
+          "kind": "fn",
+          "name": "flush_log_layer",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 360
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+      "lineCount": 553,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "pool_connections_inc",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 315
+        },
+        {
+          "kind": "fn",
+          "name": "pool_connections_dec",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 319
+        },
+        {
+          "kind": "fn",
+          "name": "pool_evictions_inc",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 323
+        },
+        {
+          "kind": "fn",
+          "name": "reconnect_succeeded",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 327
+        },
+        {
+          "kind": "fn",
+          "name": "reconnect_failed",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 331
+        },
+        {
+          "kind": "fn",
+          "name": "reconnect_duration_observe",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 335
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+      "lineCount": 397,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "gather_and_send",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 188
+        },
+        {
+          "kind": "fn",
+          "name": "clear_active_exporter",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 198
+        },
+        {
+          "kind": "struct",
+          "name": "MetricDonationReporter",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 205
+        },
+        {
+          "kind": "struct",
+          "name": "MetricDonationPump",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 228
+        },
+        {
+          "kind": "fn",
+          "name": "drain",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 235
+        },
+        {
+          "kind": "fn",
+          "name": "metric_donation_reporter",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 245
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "const",
+      "name": "TOOL_BUSY_CODE",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 27
+    },
+    {
+      "kind": "const",
+      "name": "DEFAULT_GLOBAL_MAX_INFLIGHT",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 32
+    },
+    {
+      "kind": "const",
+      "name": "DEFAULT_SESSION_MAX_INFLIGHT",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 34
+    },
+    {
+      "kind": "const",
+      "name": "DEFAULT_CONN_MAX_INFLIGHT",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 36
+    },
+    {
+      "kind": "const",
+      "name": "DEFAULT_ADMISSION_WAIT_TIMEOUT",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 38
+    },
+    {
+      "kind": "fn",
+      "name": "overloaded_response",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 51
+    },
+    {
+      "kind": "fn",
+      "name": "global_semaphore",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 72
+    },
+    {
+      "kind": "enum",
+      "name": "Overloaded",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 96
+    },
+    {
+      "kind": "struct",
+      "name": "AdmitGuard",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 108
+    },
+    {
+      "kind": "struct",
+      "name": "Admission",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 125
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 134
+    },
+    {
+      "kind": "fn",
+      "name": "ensure_session",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 152
+    },
+    {
+      "kind": "fn",
+      "name": "remove_session",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 159
+    },
+    {
+      "kind": "fn",
+      "name": "admit",
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "line": 165
+    },
+    {
+      "kind": "enum",
+      "name": "AuthCredential",
+      "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+      "line": 45
+    },
+    {
+      "kind": "fn",
+      "name": "bearer",
+      "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+      "line": 60
+    },
+    {
+      "kind": "fn",
+      "name": "headers",
+      "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+      "line": 73
+    },
+    {
+      "kind": "fn",
+      "name": "principal_key",
+      "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+      "line": 96
+    },
+    {
+      "kind": "fn",
+      "name": "upgrade_headers",
+      "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+      "line": 122
+    },
+    {
+      "kind": "struct",
+      "name": "PrincipalKey",
+      "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+      "line": 158
+    },
+    {
+      "kind": "struct",
+      "name": "AuthIdentity",
+      "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+      "line": 176
+    },
+    {
+      "kind": "trait",
+      "name": "AuthProvider",
+      "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+      "line": 186
+    },
+    {
+      "kind": "type",
+      "name": "SharedAuthProvider",
+      "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+      "line": 210
+    },
+    {
+      "kind": "struct",
+      "name": "CancelRegistry",
+      "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "register",
+      "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+      "line": 46
+    },
+    {
+      "kind": "fn",
+      "name": "cancel",
+      "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+      "line": 73
+    },
+    {
+      "kind": "fn",
+      "name": "deregister",
+      "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+      "line": 94
+    },
+    {
+      "kind": "fn",
+      "name": "is_closed",
+      "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+      "line": 101
+    },
+    {
+      "kind": "fn",
+      "name": "cancel_all",
+      "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+      "line": 112
+    },
+    {
+      "kind": "fn",
+      "name": "live_count",
+      "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+      "line": 131
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+      "module": "admission",
+      "kind": "production",
+      "lineCount": 334,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TOOL_BUSY_CODE",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 27
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_GLOBAL_MAX_INFLIGHT",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SESSION_MAX_INFLIGHT",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 34
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_CONN_MAX_INFLIGHT",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 36
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_ADMISSION_WAIT_TIMEOUT",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "overloaded_response",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "global_semaphore",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 72
+        },
+        {
+          "kind": "enum",
+          "name": "Overloaded",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 96
+        },
+        {
+          "kind": "struct",
+          "name": "AdmitGuard",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 108
+        },
+        {
+          "kind": "struct",
+          "name": "Admission",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 125
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 134
+        },
+        {
+          "kind": "fn",
+          "name": "ensure_session",
+          "path": "crates/common/xai-computer-hub-sdk/src/admission.rs",
+          "line": 152
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/admission.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+      "module": "auth",
+      "kind": "production",
+      "lineCount": 239,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "AuthCredential",
+          "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "bearer",
+          "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "headers",
+          "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "principal_key",
+          "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "upgrade_headers",
+          "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+          "line": 122
+        },
+        {
+          "kind": "struct",
+          "name": "PrincipalKey",
+          "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+          "line": 158
+        },
+        {
+          "kind": "struct",
+          "name": "AuthIdentity",
+          "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+          "line": 176
+        },
+        {
+          "kind": "trait",
+          "name": "AuthProvider",
+          "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+          "line": 186
+        },
+        {
+          "kind": "type",
+          "name": "SharedAuthProvider",
+          "path": "crates/common/xai-computer-hub-sdk/src/auth.rs",
+          "line": 210
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/auth.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+      "module": "cancel",
+      "kind": "production",
+      "lineCount": 302,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CancelRegistry",
+          "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "register",
+          "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "cancel",
+          "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "deregister",
+          "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "is_closed",
+          "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "cancel_all",
+          "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "live_count",
+          "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "pending_count",
+          "path": "crates/common/xai-computer-hub-sdk/src/cancel.rs",
+          "line": 136
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/cancel.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/connection_borrow.rs",
+      "module": "connection_borrow",
+      "kind": "production",
+      "lineCount": 225,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ConnectionBorrow",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection_borrow.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "acquire",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection_borrow.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "connection",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection_borrow.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "shutdown_token",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection_borrow.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "begin_teardown",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection_borrow.rs",
+          "line": 94
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/connection_borrow.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+      "module": "connection",
+      "kind": "production",
+      "lineCount": 2695,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ConnectionTuning",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 294
+        },
+        {
+          "kind": "struct",
+          "name": "ConnKey",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 311
+        },
+        {
+          "kind": "struct",
+          "name": "ReconnectEvent",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 328
+        },
+        {
+          "kind": "type",
+          "name": "ReconnectCallback",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 338
+        },
+        {
+          "kind": "type",
+          "name": "DisconnectCallback",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 341
+        },
+        {
+          "kind": "type",
+          "name": "ConnectCallback",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 347
+        },
+        {
+          "kind": "struct",
+          "name": "HubConnection",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 360
+        },
+        {
+          "kind": "struct",
+          "name": "ConnectionConfig",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 376
+        },
+        {
+          "kind": "fn",
+          "name": "connect",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 489
+        },
+        {
+          "kind": "fn",
+          "name": "key",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 597
+        },
+        {
+          "kind": "fn",
+          "name": "kind",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 601
+        },
+        {
+          "kind": "fn",
+          "name": "actor_id",
+          "path": "crates/common/xai-computer-hub-sdk/src/connection.rs",
+          "line": 606
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/connection.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+      "module": "demux",
+      "kind": "production",
+      "lineCount": 974,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "InboundFrame",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 41
+        },
+        {
+          "kind": "enum",
+          "name": "RouteOutcome",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 53
+        },
+        {
+          "kind": "struct",
+          "name": "Demux",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "with_outbound",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "subscribe_notifications",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 140
+        },
+        {
+          "kind": "fn",
+          "name": "register_session_inbox",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "unregister_session_inbox",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 158
+        },
+        {
+          "kind": "fn",
+          "name": "register_response_waiter",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 167
+        },
+        {
+          "kind": "fn",
+          "name": "register_call_response_waiter",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 178
+        },
+        {
+          "kind": "fn",
+          "name": "take_response_waiter",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 190
+        },
+        {
+          "kind": "fn",
+          "name": "fail_calls_for_session",
+          "path": "crates/common/xai-computer-hub-sdk/src/demux.rs",
+          "line": 206
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/demux.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/donate_pump.rs",
+      "module": "donate_pump",
+      "kind": "production",
+      "lineCount": 207,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "PENDING_FLUSHES",
+          "path": "crates/common/xai-computer-hub-sdk/src/donate_pump.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "RETRY_CAP",
+          "path": "crates/common/xai-computer-hub-sdk/src/donate_pump.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "now_unix_nanos",
+          "path": "crates/common/xai-computer-hub-sdk/src/donate_pump.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "string_value",
+          "path": "crates/common/xai-computer-hub-sdk/src/donate_pump.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "string_kv",
+          "path": "crates/common/xai-computer-hub-sdk/src/donate_pump.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "make_resource",
+          "path": "crates/common/xai-computer-hub-sdk/src/donate_pump.rs",
+          "line": 52
+        },
+        {
+          "kind": "enum",
+          "name": "PumpMsg",
+          "path": "crates/common/xai-computer-hub-sdk/src/donate_pump.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "drain_via",
+          "path": "crates/common/xai-computer-hub-sdk/src/donate_pump.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "run_pump",
+          "path": "crates/common/xai-computer-hub-sdk/src/donate_pump.rs",
+          "line": 77
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/donate_pump.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/error.rs",
+      "module": "error",
+      "kind": "production",
+      "lineCount": 347,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ClientError",
+          "path": "crates/common/xai-computer-hub-sdk/src/error.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "from_jsonrpc_error",
+          "path": "crates/common/xai-computer-hub-sdk/src/error.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "is_server_not_found",
+          "path": "crates/common/xai-computer-hub-sdk/src/error.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "is_tool_unavailable",
+          "path": "crates/common/xai-computer-hub-sdk/src/error.rs",
+          "line": 129
+        },
+        {
+          "kind": "fn",
+          "name": "from_wire",
+          "path": "crates/common/xai-computer-hub-sdk/src/error.rs",
+          "line": 134
+        },
+        {
+          "kind": "fn",
+          "name": "from_handshake_error",
+          "path": "crates/common/xai-computer-hub-sdk/src/error.rs",
+          "line": 179
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/error.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/handshake.rs",
+      "module": "handshake",
+      "kind": "production",
+      "lineCount": 94,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "send_hello",
+          "path": "crates/common/xai-computer-hub-sdk/src/handshake.rs",
+          "line": 28
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/handshake.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+      "module": "harness",
+      "kind": "production",
+      "lineCount": 2941,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "TraceContextProvider",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 61
+        },
+        {
+          "kind": "const",
+          "name": "PERMISSION_REQUEST_KIND",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 72
+        },
+        {
+          "kind": "struct",
+          "name": "CancelOnDrop",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 86
+        },
+        {
+          "kind": "type",
+          "name": "ModelOutputExtractor",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "extractor_for",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 91
+        },
+        {
+          "kind": "struct",
+          "name": "LocalRegistry",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 125
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 140
+        },
+        {
+          "kind": "fn",
+          "name": "register",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "register_arc",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 155
+        },
+        {
+          "kind": "fn",
+          "name": "find",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 167
+        },
+        {
+          "kind": "fn",
+          "name": "unregister",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 173
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/common/xai-computer-hub-sdk/src/harness.rs",
+          "line": 178
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/harness.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 72,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/lib.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+      "module": "log_donate",
+      "kind": "production",
+      "lineCount": 593,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TELEMETRY_TARGET",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 39
+        },
+        {
+          "kind": "struct",
+          "name": "LogDonationSender",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 248
+        },
+        {
+          "kind": "struct",
+          "name": "DonatingLogLayer",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 315
+        },
+        {
+          "kind": "fn",
+          "name": "new_inert",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 323
+        },
+        {
+          "kind": "fn",
+          "name": "activate",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 333
+        },
+        {
+          "kind": "fn",
+          "name": "flush_log_layer",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 360
+        },
+        {
+          "kind": "struct",
+          "name": "LogDonationPump",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 368
+        },
+        {
+          "kind": "fn",
+          "name": "drain",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 375
+        },
+        {
+          "kind": "fn",
+          "name": "log_donation_layer",
+          "path": "crates/common/xai-computer-hub-sdk/src/log_donate.rs",
+          "line": 387
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/log_donate.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+      "module": "metric_donate",
+      "kind": "production",
+      "lineCount": 397,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "gather_and_send",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 188
+        },
+        {
+          "kind": "fn",
+          "name": "clear_active_exporter",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 198
+        },
+        {
+          "kind": "struct",
+          "name": "MetricDonationReporter",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 205
+        },
+        {
+          "kind": "struct",
+          "name": "MetricDonationPump",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 228
+        },
+        {
+          "kind": "fn",
+          "name": "drain",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 235
+        },
+        {
+          "kind": "fn",
+          "name": "metric_donation_reporter",
+          "path": "crates/common/xai-computer-hub-sdk/src/metric_donate.rs",
+          "line": 245
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/metric_donate.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+      "module": "metrics",
+      "kind": "production",
+      "lineCount": 553,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "pool_connections_inc",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 315
+        },
+        {
+          "kind": "fn",
+          "name": "pool_connections_dec",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 319
+        },
+        {
+          "kind": "fn",
+          "name": "pool_evictions_inc",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 323
+        },
+        {
+          "kind": "fn",
+          "name": "reconnect_succeeded",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 327
+        },
+        {
+          "kind": "fn",
+          "name": "reconnect_failed",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 331
+        },
+        {
+          "kind": "fn",
+          "name": "reconnect_duration_observe",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 335
+        },
+        {
+          "kind": "fn",
+          "name": "reconnect_cause",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 339
+        },
+        {
+          "kind": "fn",
+          "name": "reconnect_gap_observe",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 343
+        },
+        {
+          "kind": "fn",
+          "name": "call_dispatch_observe",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 347
+        },
+        {
+          "kind": "fn",
+          "name": "demux_inbox_depth_set",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 351
+        },
+        {
+          "kind": "fn",
+          "name": "call_id_collision",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 355
+        },
+        {
+          "kind": "fn",
+          "name": "harness_connect",
+          "path": "crates/common/xai-computer-hub-sdk/src/metrics.rs",
+          "line": 365
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/metrics.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/notification.rs",
+      "module": "notification",
+      "kind": "production",
+      "lineCount": 363,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "HubNotification",
+          "path": "crates/common/xai-computer-hub-sdk/src/notification.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "parse",
+          "path": "crates/common/xai-computer-hub-sdk/src/notification.rs",
+          "line": 46
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/notification.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/observability.rs",
+      "module": "observability",
+      "kind": "production",
+      "lineCount": 276,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ObservabilityBridge",
+          "path": "crates/common/xai-computer-hub-sdk/src/observability.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-sdk/src/observability.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "session_id",
+          "path": "crates/common/xai-computer-hub-sdk/src/observability.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "has_harness",
+          "path": "crates/common/xai-computer-hub-sdk/src/observability.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "emit",
+          "path": "crates/common/xai-computer-hub-sdk/src/observability.rs",
+          "line": 66
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/observability.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+      "module": "oidc_provider",
+      "kind": "production",
+      "lineCount": 337,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "OnRefreshCallback",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "RefreshEvent",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 17
+        },
+        {
+          "kind": "struct",
+          "name": "OidcAuthProvider",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 29
+        },
+        {
+          "kind": "struct",
+          "name": "OidcAuthProviderBuilder",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "expires_at",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "user_id",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "principal_type",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "principal_id",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 99
+        },
+        {
+          "kind": "fn",
+          "name": "on_refresh",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "build",
+          "path": "crates/common/xai-computer-hub-sdk/src/oidc_provider.rs",
+          "line": 109
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/oidc_provider.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+      "module": "pool",
+      "kind": "production",
+      "lineCount": 345,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_POOL_IDLE_TTL",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 36
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_POOL_SWEEP_INTERVAL",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 39
+        },
+        {
+          "kind": "struct",
+          "name": "HubConnectionPool",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "shared",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "get_or_connect",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "get_or_connect_tuned",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 166
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 251
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 256
+        },
+        {
+          "kind": "fn",
+          "name": "forget",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 264
+        },
+        {
+          "kind": "fn",
+          "name": "sweep_idle",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 280
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_idle_reaper",
+          "path": "crates/common/xai-computer-hub-sdk/src/pool.rs",
+          "line": 308
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/pool.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/refcount.rs",
+      "module": "refcount",
+      "kind": "production",
+      "lineCount": 124,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "RefCountedSet",
+          "path": "crates/common/xai-computer-hub-sdk/src/refcount.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-sdk/src/refcount.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "increment",
+          "path": "crates/common/xai-computer-hub-sdk/src/refcount.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "decrement",
+          "path": "crates/common/xai-computer-hub-sdk/src/refcount.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "snapshot_keys",
+          "path": "crates/common/xai-computer-hub-sdk/src/refcount.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/common/xai-computer-hub-sdk/src/refcount.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/common/xai-computer-hub-sdk/src/refcount.rs",
+          "line": 76
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/refcount.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+      "module": "server",
+      "kind": "production",
+      "lineCount": 2650,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "ReconnectSettledCallback",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 56
+        },
+        {
+          "kind": "enum",
+          "name": "SystemNotifyAck",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 61
+        },
+        {
+          "kind": "struct",
+          "name": "ResolvedSessionHandlers",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "full",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 126
+        },
+        {
+          "kind": "type",
+          "name": "SessionHandlerResolver",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 143
+        },
+        {
+          "kind": "trait",
+          "name": "ToolServerHandler",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 160
+        },
+        {
+          "kind": "struct",
+          "name": "ToolServerBuilder",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 212
+        },
+        {
+          "kind": "fn",
+          "name": "alpha_test_key",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 243
+        },
+        {
+          "kind": "fn",
+          "name": "allow_insecure_ws",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 252
+        },
+        {
+          "kind": "fn",
+          "name": "session_max_inflight",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 259
+        },
+        {
+          "kind": "fn",
+          "name": "conn_max_inflight",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 266
+        },
+        {
+          "kind": "fn",
+          "name": "global_max_inflight",
+          "path": "crates/common/xai-computer-hub-sdk/src/server.rs",
+          "line": 276
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/server.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-sdk/src/trace_donate.rs",
+      "module": "trace_donate",
+      "kind": "production",
+      "lineCount": 207,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HubDonatingReporter",
+          "path": "crates/common/xai-computer-hub-sdk/src/trace_donate.rs",
+          "line": 26
+        },
+        {
+          "kind": "struct",
+          "name": "TraceDonationPump",
+          "path": "crates/common/xai-computer-hub-sdk/src/trace_donate.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "drain",
+          "path": "crates/common/xai-computer-hub-sdk/src/trace_donate.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "trace_donation_reporter",
+          "path": "crates/common/xai-computer-hub-sdk/src/trace_donate.rs",
+          "line": 95
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-sdk/src/trace_donate.rs"
+    }
+  ]
+}

@@ -1,0 +1,852 @@
+{
+  "name": "xai-computer-hub-core",
+  "memberPath": "crates/common/xai-computer-hub-core",
+  "manifestPath": "crates/common/xai-computer-hub-core/Cargo.toml",
+  "description": "Transport, ToolRegistry, and resolver abstractions for the xAI Computer Hub",
+  "role": "定义 Computer Hub 的传输、注册表和解析器抽象。",
+  "layer": "工具与工作区",
+  "primaryArticle": "tools/computer-hub",
+  "relatedArticles": [
+    "tools/computer-hub",
+    "tools/tool-system"
+  ],
+  "dependencies": [
+    "xai-tool-protocol",
+    "xai-tool-runtime",
+    "xai-tool-types"
+  ],
+  "dependents": [
+    "xai-computer-hub-sdk",
+    "xai-grok-tools"
+  ],
+  "fileCount": 15,
+  "productionFileCount": 7,
+  "lineCount": 1428,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-computer-hub-core/src/lib.rs",
+      "lineCount": 30,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "lineCount": 542,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "ConnectionClient",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 51
+        },
+        {
+          "kind": "struct",
+          "name": "RemoteToolProxy",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "session_id",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 109
+        },
+        {
+          "kind": "struct",
+          "name": "RemoteTransport",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 155
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+      "lineCount": 306,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ToolSessionBindOutcome",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 52
+        },
+        {
+          "kind": "enum",
+          "name": "ToolSessionUnbindOutcome",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 69
+        },
+        {
+          "kind": "struct",
+          "name": "ConnectionCleanupReport",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "SessionCleanupReport",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 90
+        },
+        {
+          "kind": "trait",
+          "name": "ToolRegistry",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 109
+        },
+        {
+          "kind": "struct",
+          "name": "ServerRecord",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 226
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+      "lineCount": 281,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ResolvedTool",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "registration",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "handle",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 64
+        },
+        {
+          "kind": "trait",
+          "name": "ToolHandle",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "ErasedTool",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "from_arc",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 120
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+      "lineCount": 117,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Principal",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "with_session",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "with_scope",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "with_audience",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "has_scope",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 73
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/local.rs",
+      "lineCount": 78,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "LOCAL_INVOKE_SCOPE",
+          "path": "crates/common/xai-computer-hub-core/src/local.rs",
+          "line": 23
+        },
+        {
+          "kind": "struct",
+          "name": "LocalTransport",
+          "path": "crates/common/xai-computer-hub-core/src/local.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/local.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "user_id",
+          "path": "crates/common/xai-computer-hub-core/src/local.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "session_id",
+          "path": "crates/common/xai-computer-hub-core/src/local.rs",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+      "lineCount": 74,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "InnerDispatchForResolver",
+          "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "session_id",
+          "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+          "line": 50
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "InnerDispatchForResolver",
+      "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+      "line": 34
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+      "line": 42
+    },
+    {
+      "kind": "fn",
+      "name": "session_id",
+      "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+      "line": 50
+    },
+    {
+      "kind": "const",
+      "name": "LOCAL_INVOKE_SCOPE",
+      "path": "crates/common/xai-computer-hub-core/src/local.rs",
+      "line": 23
+    },
+    {
+      "kind": "struct",
+      "name": "LocalTransport",
+      "path": "crates/common/xai-computer-hub-core/src/local.rs",
+      "line": 27
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-computer-hub-core/src/local.rs",
+      "line": 36
+    },
+    {
+      "kind": "fn",
+      "name": "user_id",
+      "path": "crates/common/xai-computer-hub-core/src/local.rs",
+      "line": 45
+    },
+    {
+      "kind": "fn",
+      "name": "session_id",
+      "path": "crates/common/xai-computer-hub-core/src/local.rs",
+      "line": 50
+    },
+    {
+      "kind": "enum",
+      "name": "ToolSessionBindOutcome",
+      "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+      "line": 52
+    },
+    {
+      "kind": "enum",
+      "name": "ToolSessionUnbindOutcome",
+      "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+      "line": 69
+    },
+    {
+      "kind": "struct",
+      "name": "ConnectionCleanupReport",
+      "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+      "line": 80
+    },
+    {
+      "kind": "struct",
+      "name": "SessionCleanupReport",
+      "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+      "line": 90
+    },
+    {
+      "kind": "trait",
+      "name": "ToolRegistry",
+      "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+      "line": 109
+    },
+    {
+      "kind": "struct",
+      "name": "ServerRecord",
+      "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+      "line": 226
+    },
+    {
+      "kind": "fn",
+      "name": "next_registration_seq",
+      "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+      "line": 246
+    },
+    {
+      "kind": "trait",
+      "name": "ConnectionClient",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 51
+    },
+    {
+      "kind": "struct",
+      "name": "RemoteToolProxy",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 82
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 92
+    },
+    {
+      "kind": "fn",
+      "name": "session_id",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 109
+    },
+    {
+      "kind": "struct",
+      "name": "RemoteTransport",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 146
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 155
+    },
+    {
+      "kind": "fn",
+      "name": "session_id",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 168
+    },
+    {
+      "kind": "fn",
+      "name": "user_id",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 173
+    },
+    {
+      "kind": "fn",
+      "name": "progress_from_frame",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 332
+    },
+    {
+      "kind": "fn",
+      "name": "decode_call_result",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 360
+    },
+    {
+      "kind": "fn",
+      "name": "output_to_value",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 386
+    },
+    {
+      "kind": "fn",
+      "name": "error_from_envelope",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 433
+    },
+    {
+      "kind": "fn",
+      "name": "is_workspace_unavailable",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 450
+    },
+    {
+      "kind": "fn",
+      "name": "tool_error_from_wire",
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "line": 465
+    },
+    {
+      "kind": "enum",
+      "name": "ResolvedTool",
+      "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+      "line": 34
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+      "module": "inner",
+      "kind": "production",
+      "lineCount": 74,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "InnerDispatchForResolver",
+          "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "session_id",
+          "path": "crates/common/xai-computer-hub-core/src/inner.rs",
+          "line": 50
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/src/inner.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 30,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/src/lib.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/local.rs",
+      "module": "local",
+      "kind": "production",
+      "lineCount": 78,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "LOCAL_INVOKE_SCOPE",
+          "path": "crates/common/xai-computer-hub-core/src/local.rs",
+          "line": 23
+        },
+        {
+          "kind": "struct",
+          "name": "LocalTransport",
+          "path": "crates/common/xai-computer-hub-core/src/local.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/local.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "user_id",
+          "path": "crates/common/xai-computer-hub-core/src/local.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "session_id",
+          "path": "crates/common/xai-computer-hub-core/src/local.rs",
+          "line": 50
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/src/local.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+      "module": "registry",
+      "kind": "production",
+      "lineCount": 306,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ToolSessionBindOutcome",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 52
+        },
+        {
+          "kind": "enum",
+          "name": "ToolSessionUnbindOutcome",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 69
+        },
+        {
+          "kind": "struct",
+          "name": "ConnectionCleanupReport",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "SessionCleanupReport",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 90
+        },
+        {
+          "kind": "trait",
+          "name": "ToolRegistry",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 109
+        },
+        {
+          "kind": "struct",
+          "name": "ServerRecord",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 226
+        },
+        {
+          "kind": "fn",
+          "name": "next_registration_seq",
+          "path": "crates/common/xai-computer-hub-core/src/registry.rs",
+          "line": 246
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/src/registry.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+      "module": "remote",
+      "kind": "production",
+      "lineCount": 542,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "ConnectionClient",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 51
+        },
+        {
+          "kind": "struct",
+          "name": "RemoteToolProxy",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "session_id",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 109
+        },
+        {
+          "kind": "struct",
+          "name": "RemoteTransport",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 155
+        },
+        {
+          "kind": "fn",
+          "name": "session_id",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 168
+        },
+        {
+          "kind": "fn",
+          "name": "user_id",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 173
+        },
+        {
+          "kind": "fn",
+          "name": "progress_from_frame",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 332
+        },
+        {
+          "kind": "fn",
+          "name": "decode_call_result",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 360
+        },
+        {
+          "kind": "fn",
+          "name": "output_to_value",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 386
+        },
+        {
+          "kind": "fn",
+          "name": "error_from_envelope",
+          "path": "crates/common/xai-computer-hub-core/src/remote.rs",
+          "line": 433
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/src/remote.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+      "module": "resolver",
+      "kind": "production",
+      "lineCount": 281,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ResolvedTool",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "registration",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "handle",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 64
+        },
+        {
+          "kind": "trait",
+          "name": "ToolHandle",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "ErasedTool",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "from_arc",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 125
+        },
+        {
+          "kind": "struct",
+          "name": "CompoundResolver",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 215
+        },
+        {
+          "kind": "fn",
+          "name": "local_only",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 222
+        },
+        {
+          "kind": "fn",
+          "name": "compound",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 230
+        },
+        {
+          "kind": "fn",
+          "name": "local",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 238
+        },
+        {
+          "kind": "fn",
+          "name": "remote",
+          "path": "crates/common/xai-computer-hub-core/src/resolver.rs",
+          "line": 243
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/src/resolver.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+      "module": "transport",
+      "kind": "production",
+      "lineCount": 117,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Principal",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "with_session",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "with_scope",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "with_audience",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "has_scope",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "authorizes_session",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 78
+        },
+        {
+          "kind": "trait",
+          "name": "Transport",
+          "path": "crates/common/xai-computer-hub-core/src/transport.rs",
+          "line": 89
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/src/transport.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/tests/compound_resolver.rs",
+      "module": "..::tests::compound_resolver",
+      "kind": "test",
+      "lineCount": 336,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/tests/compound_resolver.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/tests/inner_dispatch.rs",
+      "module": "..::tests::inner_dispatch",
+      "kind": "test",
+      "lineCount": 318,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/tests/inner_dispatch.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/tests/internal_error_detail.rs",
+      "module": "..::tests::internal_error_detail",
+      "kind": "test",
+      "lineCount": 66,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/tests/internal_error_detail.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/tests/local_transport.rs",
+      "module": "..::tests::local_transport",
+      "kind": "test",
+      "lineCount": 368,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/tests/local_transport.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/tests/remote_proxy.rs",
+      "module": "..::tests::remote_proxy",
+      "kind": "test",
+      "lineCount": 728,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/tests/remote_proxy.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/tests/tool_registry.rs",
+      "module": "..::tests::tool_registry",
+      "kind": "test",
+      "lineCount": 608,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/tests/tool_registry.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/tests/transport_trait.rs",
+      "module": "..::tests::transport_trait",
+      "kind": "test",
+      "lineCount": 138,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/tests/transport_trait.rs"
+    },
+    {
+      "path": "crates/common/xai-computer-hub-core/tests/workspace_unavailable.rs",
+      "module": "..::tests::workspace_unavailable",
+      "kind": "test",
+      "lineCount": 204,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-computer-hub-core/tests/workspace_unavailable.rs"
+    }
+  ]
+}

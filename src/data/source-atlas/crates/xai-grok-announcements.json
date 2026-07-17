@@ -1,0 +1,237 @@
+{
+  "name": "xai-grok-announcements",
+  "memberPath": "crates/codegen/xai-grok-announcements",
+  "manifestPath": "crates/codegen/xai-grok-announcements/Cargo.toml",
+  "description": "Shared announcement types, persistence, and formatting for Grok CLI apps",
+  "role": "安全、扩展与运维层的一方 crate；上游清单描述为：Shared announcement types, persistence, and formatting for Grok CLI apps。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/update-version-announcements-crash",
+  "relatedArticles": [
+    "operations/update-version-announcements-crash",
+    "runtime/lifecycle-crash-power"
+  ],
+  "dependencies": [
+    "xai-grok-tools"
+  ],
+  "dependents": [
+    "xai-grok-config-types",
+    "xai-grok-pager",
+    "xai-grok-shell"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 444,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "lineCount": 444,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "RemoteAnnouncement",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "AnnouncementCta",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 48
+        },
+        {
+          "kind": "struct",
+          "name": "AnnouncementsRefreshed",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 62
+        },
+        {
+          "kind": "fn",
+          "name": "announcement_hide_key",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "parse_hidden_announcement_ids",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "serialize_hidden_announcement_ids",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 108
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "RemoteAnnouncement",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 20
+    },
+    {
+      "kind": "struct",
+      "name": "AnnouncementCta",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 48
+    },
+    {
+      "kind": "struct",
+      "name": "AnnouncementsRefreshed",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 62
+    },
+    {
+      "kind": "fn",
+      "name": "announcement_hide_key",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 79
+    },
+    {
+      "kind": "fn",
+      "name": "parse_hidden_announcement_ids",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 94
+    },
+    {
+      "kind": "fn",
+      "name": "serialize_hidden_announcement_ids",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 108
+    },
+    {
+      "kind": "fn",
+      "name": "prune_hidden_announcement_ids",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 119
+    },
+    {
+      "kind": "fn",
+      "name": "read_hidden_announcement_ids",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 131
+    },
+    {
+      "kind": "fn",
+      "name": "write_hidden_announcement_ids",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 140
+    },
+    {
+      "kind": "fn",
+      "name": "visible_announcements",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 156
+    },
+    {
+      "kind": "fn",
+      "name": "filter_expired",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 169
+    },
+    {
+      "kind": "fn",
+      "name": "filter_expired_at",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 178
+    },
+    {
+      "kind": "fn",
+      "name": "is_expired_at",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 191
+    },
+    {
+      "kind": "fn",
+      "name": "resolve_startup",
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "line": 208
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 444,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "RemoteAnnouncement",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "AnnouncementCta",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 48
+        },
+        {
+          "kind": "struct",
+          "name": "AnnouncementsRefreshed",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 62
+        },
+        {
+          "kind": "fn",
+          "name": "announcement_hide_key",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "parse_hidden_announcement_ids",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "serialize_hidden_announcement_ids",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "prune_hidden_announcement_ids",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 119
+        },
+        {
+          "kind": "fn",
+          "name": "read_hidden_announcement_ids",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "write_hidden_announcement_ids",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 140
+        },
+        {
+          "kind": "fn",
+          "name": "visible_announcements",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 156
+        },
+        {
+          "kind": "fn",
+          "name": "filter_expired",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 169
+        },
+        {
+          "kind": "fn",
+          "name": "filter_expired_at",
+          "path": "crates/codegen/xai-grok-announcements/src/lib.rs",
+          "line": 178
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-announcements/src/lib.rs"
+    }
+  ]
+}

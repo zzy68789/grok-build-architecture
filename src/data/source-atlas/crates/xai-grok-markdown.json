@@ -1,0 +1,1686 @@
+{
+  "name": "xai-grok-markdown",
+  "memberPath": "crates/codegen/xai-grok-markdown",
+  "manifestPath": "crates/codegen/xai-grok-markdown/Cargo.toml",
+  "description": "Streaming markdown renderer for terminal UIs",
+  "role": "负责流式 Markdown 的增量解析、样式计算和终端呈现。",
+  "layer": "交互呈现",
+  "primaryArticle": "tui/streaming-markdown",
+  "relatedArticles": [
+    "tui/streaming-markdown",
+    "tui/mermaid-rendering"
+  ],
+  "dependencies": [
+    "xai-grok-markdown-core"
+  ],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-pager-render"
+  ],
+  "fileCount": 28,
+  "productionFileCount": 22,
+  "lineCount": 19713,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+      "lineCount": 183,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "render_markdown_ratatui_full",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "render_markdown_ratatui_with_buffers",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "render_markdown_ratatui_with_buffers_width",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "render_markdown_ratatui_with_link_id",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 135
+        },
+        {
+          "kind": "fn",
+          "name": "render_markdown",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "render_markdown_ratatui",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 174
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/mermaid.rs",
+      "lineCount": 5238,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MermaidStyles",
+          "path": "crates/codegen/xai-grok-markdown/src/mermaid.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "MermaidArt",
+          "path": "crates/codegen/xai-grok-markdown/src/mermaid.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "render",
+          "path": "crates/codegen/xai-grok-markdown/src/mermaid.rs",
+          "line": 61
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+      "lineCount": 2911,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "FrozenState",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "StreamingMarkdownRenderer",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 125
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 206
+        },
+        {
+          "kind": "fn",
+          "name": "set_style",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 225
+        },
+        {
+          "kind": "fn",
+          "name": "set_max_table_width",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 238
+        },
+        {
+          "kind": "fn",
+          "name": "set_collapse_soft_breaks",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 253
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/render.rs",
+      "lineCount": 2754,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "render_ansi",
+          "path": "crates/codegen/xai-grok-markdown/src/render.rs",
+          "line": 269
+        },
+        {
+          "kind": "fn",
+          "name": "render_ratatui",
+          "path": "crates/codegen/xai-grok-markdown/src/render.rs",
+          "line": 518
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+      "lineCount": 2058,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MarkdownParser",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 186
+        },
+        {
+          "kind": "fn",
+          "name": "cell_word_separator",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 252
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 414
+        },
+        {
+          "kind": "fn",
+          "name": "collapse_soft_breaks",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 443
+        },
+        {
+          "kind": "fn",
+          "name": "max_table_width",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 452
+        },
+        {
+          "kind": "fn",
+          "name": "link_id_start",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 462
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+      "lineCount": 1306,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LatexDelimiterNormalizer",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "reset",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "push",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "finish",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "normalize_latex_delimiters",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 397
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/hyperlinks.rs",
+      "lineCount": 785,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ChunkLinkRange",
+          "path": "crates/codegen/xai-grok-markdown/src/hyperlinks.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "source_to_chunk_offset",
+          "path": "crates/codegen/xai-grok-markdown/src/hyperlinks.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "chunk_link_offsets",
+          "path": "crates/codegen/xai-grok-markdown/src/hyperlinks.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "emit_segment_hyperlinks",
+          "path": "crates/codegen/xai-grok-markdown/src/hyperlinks.rs",
+          "line": 151
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+      "lineCount": 603,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HyperlinkTarget",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "CodeBlockSpan",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "MarkdownRenderOutput",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "clear",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 105
+        },
+        {
+          "kind": "fn",
+          "name": "as_view",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 113
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "const",
+      "name": "fn",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 5
+    },
+    {
+      "kind": "const",
+      "name": "fn",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 9
+    },
+    {
+      "kind": "const",
+      "name": "fn",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 13
+    },
+    {
+      "kind": "const",
+      "name": "TEAL",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 17
+    },
+    {
+      "kind": "const",
+      "name": "BLUE",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 18
+    },
+    {
+      "kind": "const",
+      "name": "ORANGE",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 19
+    },
+    {
+      "kind": "const",
+      "name": "RED",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 20
+    },
+    {
+      "kind": "const",
+      "name": "GREEN",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 21
+    },
+    {
+      "kind": "const",
+      "name": "MAGENTA",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 22
+    },
+    {
+      "kind": "const",
+      "name": "YELLOW",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 23
+    },
+    {
+      "kind": "const",
+      "name": "CYAN",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 24
+    },
+    {
+      "kind": "const",
+      "name": "COMMENT",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 25
+    },
+    {
+      "kind": "const",
+      "name": "BG_DARK",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 26
+    },
+    {
+      "kind": "const",
+      "name": "HEADING_COLORS",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 28
+    },
+    {
+      "kind": "const",
+      "name": "fn",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 30
+    },
+    {
+      "kind": "const",
+      "name": "fn",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 49
+    },
+    {
+      "kind": "fn",
+      "name": "get_syntect",
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "line": 80
+    },
+    {
+      "kind": "struct",
+      "name": "Highlight",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 14
+    },
+    {
+      "kind": "struct",
+      "name": "Replace",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 24
+    },
+    {
+      "kind": "struct",
+      "name": "LinkTarget",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 37
+    },
+    {
+      "kind": "struct",
+      "name": "CodeBlockMeta",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 53
+    },
+    {
+      "kind": "struct",
+      "name": "Transform",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 65
+    },
+    {
+      "kind": "struct",
+      "name": "CellSpan",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 82
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 93
+    },
+    {
+      "kind": "struct",
+      "name": "StyledCell",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 112
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 117
+    },
+    {
+      "kind": "fn",
+      "name": "plain_text",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 122
+    },
+    {
+      "kind": "fn",
+      "name": "clear",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 127
+    },
+    {
+      "kind": "struct",
+      "name": "TableState",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 134
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "line": 161
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-markdown/benches/bench.rs",
+      "module": "..::benches::bench",
+      "kind": "benchmark",
+      "lineCount": 604,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/benches/bench.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/bin/md_mermaid_test.rs",
+      "module": "..::bin::md_mermaid_test",
+      "kind": "test",
+      "lineCount": 326,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/bin/md_mermaid_test.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/bin/md_table_test.rs",
+      "module": "..::bin::md_table_test",
+      "kind": "test",
+      "lineCount": 469,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/bin/md_table_test.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+      "module": "..::bin::playground_common",
+      "kind": "support",
+      "lineCount": 85,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 5
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 9
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "TEAL",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "BLUE",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 18
+        },
+        {
+          "kind": "const",
+          "name": "ORANGE",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 19
+        },
+        {
+          "kind": "const",
+          "name": "RED",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 20
+        },
+        {
+          "kind": "const",
+          "name": "GREEN",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 21
+        },
+        {
+          "kind": "const",
+          "name": "MAGENTA",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "YELLOW",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "CYAN",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "COMMENT",
+          "path": "crates/codegen/xai-grok-markdown/bin/playground_common.rs",
+          "line": 25
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/bin/playground_common.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/fuzz/fuzz_targets/render_all.rs",
+      "module": "..::fuzz::fuzz_targets::render_all",
+      "kind": "fuzz",
+      "lineCount": 36,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/fuzz/fuzz_targets/render_all.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+      "module": "buffers",
+      "kind": "production",
+      "lineCount": 374,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Highlight",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "Replace",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 24
+        },
+        {
+          "kind": "struct",
+          "name": "LinkTarget",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 37
+        },
+        {
+          "kind": "struct",
+          "name": "CodeBlockMeta",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 53
+        },
+        {
+          "kind": "struct",
+          "name": "Transform",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 65
+        },
+        {
+          "kind": "struct",
+          "name": "CellSpan",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 93
+        },
+        {
+          "kind": "struct",
+          "name": "StyledCell",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 117
+        },
+        {
+          "kind": "fn",
+          "name": "plain_text",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "clear",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 127
+        },
+        {
+          "kind": "struct",
+          "name": "TableState",
+          "path": "crates/codegen/xai-grok-markdown/src/buffers.rs",
+          "line": 134
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/buffers.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/checkpoint.rs",
+      "module": "checkpoint",
+      "kind": "production",
+      "lineCount": 59,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Checkpoint",
+          "path": "crates/codegen/xai-grok-markdown/src/checkpoint.rs",
+          "line": 28
+        },
+        {
+          "kind": "enum",
+          "name": "CheckpointKind",
+          "path": "crates/codegen/xai-grok-markdown/src/checkpoint.rs",
+          "line": 41
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/checkpoint.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+      "module": "colors",
+      "kind": "production",
+      "lineCount": 288,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ColorLevel",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "has_color",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "has_256",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "has_truecolor",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "detect_color_level",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "set_color_level_cap",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 138
+        },
+        {
+          "kind": "fn",
+          "name": "get_color_level",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 153
+        },
+        {
+          "kind": "fn",
+          "name": "set_color_level",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 161
+        },
+        {
+          "kind": "fn",
+          "name": "adapt_color",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 172
+        },
+        {
+          "kind": "fn",
+          "name": "adapt_style",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 191
+        },
+        {
+          "kind": "fn",
+          "name": "rgb_to_ansi256",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 207
+        },
+        {
+          "kind": "fn",
+          "name": "rgb_to_ansi16",
+          "path": "crates/codegen/xai-grok-markdown/src/colors.rs",
+          "line": 212
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/colors.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/hyperlinks.rs",
+      "module": "hyperlinks",
+      "kind": "production",
+      "lineCount": 785,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ChunkLinkRange",
+          "path": "crates/codegen/xai-grok-markdown/src/hyperlinks.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "source_to_chunk_offset",
+          "path": "crates/codegen/xai-grok-markdown/src/hyperlinks.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "chunk_link_offsets",
+          "path": "crates/codegen/xai-grok-markdown/src/hyperlinks.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "emit_segment_hyperlinks",
+          "path": "crates/codegen/xai-grok-markdown/src/hyperlinks.rs",
+          "line": 151
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/hyperlinks.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+      "module": "latex_delimiters",
+      "kind": "production",
+      "lineCount": 1306,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LatexDelimiterNormalizer",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "reset",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "push",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "finish",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "normalize_latex_delimiters",
+          "path": "crates/codegen/xai-grok-markdown/src/latex_delimiters.rs",
+          "line": 397
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/latex_delimiters.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/latex/commands.rs",
+      "module": "latex::commands",
+      "kind": "production",
+      "lineCount": 533,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "render_atom",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/commands.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "render_sequence",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/commands.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "take_brace_arg",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/commands.rs",
+          "line": 441
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/latex/commands.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/latex/cursor.rs",
+      "module": "latex::cursor",
+      "kind": "production",
+      "lineCount": 100,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Cursor",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/cursor.rs",
+          "line": 4
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/cursor.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "peek",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/cursor.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "bump",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/cursor.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "read_command_name",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/cursor.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "skip_ws",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/cursor.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "read_group_body",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/cursor.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "read_atom",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/cursor.rs",
+          "line": 80
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/latex/cursor.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/latex/environments.rs",
+      "module": "latex::environments",
+      "kind": "production",
+      "lineCount": 326,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "render_environment",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/environments.rs",
+          "line": 11
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/latex/environments.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/latex/math_box.rs",
+      "module": "latex::math_box",
+      "kind": "production",
+      "lineCount": 157,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MathBox",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/math_box.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/math_box.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "at_line_start",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/math_box.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "ends_with_space",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/math_box.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "push",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/math_box.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "push_str",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/math_box.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "hcat_rows",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/math_box.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "into_lines",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/math_box.rs",
+          "line": 146
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/latex/math_box.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/latex/mod.rs",
+      "module": "latex::mod",
+      "kind": "production",
+      "lineCount": 97,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_MATH_SOURCE_LEN",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/mod.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "latex_to_unicode_inline",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/mod.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "latex_to_unicode_display",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/mod.rs",
+          "line": 70
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/latex/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/latex/symbols.rs",
+      "module": "latex::symbols",
+      "kind": "production",
+      "lineCount": 413,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "to_superscript",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/symbols.rs",
+          "line": 3
+        },
+        {
+          "kind": "fn",
+          "name": "to_subscript",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/symbols.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "map_mathbb",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/symbols.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "map_mathcal",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/symbols.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "map_mathfrak",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/symbols.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "map_mathbf",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/symbols.rs",
+          "line": 140
+        },
+        {
+          "kind": "fn",
+          "name": "symbol",
+          "path": "crates/codegen/xai-grok-markdown/src/latex/symbols.rs",
+          "line": 150
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/latex/symbols.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/latex/tests.rs",
+      "module": "latex::tests",
+      "kind": "test",
+      "lineCount": 371,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/latex/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 183,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "render_markdown_ratatui_full",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "render_markdown_ratatui_with_buffers",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "render_markdown_ratatui_with_buffers_width",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "render_markdown_ratatui_with_link_id",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 135
+        },
+        {
+          "kind": "fn",
+          "name": "render_markdown",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 160
+        },
+        {
+          "kind": "fn",
+          "name": "render_markdown_ratatui",
+          "path": "crates/codegen/xai-grok-markdown/src/lib.rs",
+          "line": 174
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/mermaid.rs",
+      "module": "mermaid",
+      "kind": "production",
+      "lineCount": 5238,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MermaidStyles",
+          "path": "crates/codegen/xai-grok-markdown/src/mermaid.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "MermaidArt",
+          "path": "crates/codegen/xai-grok-markdown/src/mermaid.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "render",
+          "path": "crates/codegen/xai-grok-markdown/src/mermaid.rs",
+          "line": 61
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/mermaid.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/open_code_highlighter.rs",
+      "module": "open_code_highlighter",
+      "kind": "production",
+      "lineCount": 440,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "OpenCodeHighlighter",
+          "path": "crates/codegen/xai-grok-markdown/src/open_code_highlighter.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/open_code_highlighter.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "highlight_block",
+          "path": "crates/codegen/xai-grok-markdown/src/open_code_highlighter.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "closed_memo_bytes",
+          "path": "crates/codegen/xai-grok-markdown/src/open_code_highlighter.rs",
+          "line": 159
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/open_code_highlighter.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+      "module": "output",
+      "kind": "production",
+      "lineCount": 603,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HyperlinkTarget",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "CodeBlockSpan",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "MarkdownRenderOutput",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "clear",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 105
+        },
+        {
+          "kind": "fn",
+          "name": "as_view",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 113
+        },
+        {
+          "kind": "struct",
+          "name": "MarkdownRenderView",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "line_count",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "build_code_block_spans",
+          "path": "crates/codegen/xai-grok-markdown/src/output.rs",
+          "line": 166
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/output.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+      "module": "parse",
+      "kind": "production",
+      "lineCount": 2058,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MarkdownParser",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 186
+        },
+        {
+          "kind": "fn",
+          "name": "cell_word_separator",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 252
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 414
+        },
+        {
+          "kind": "fn",
+          "name": "collapse_soft_breaks",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 443
+        },
+        {
+          "kind": "fn",
+          "name": "max_table_width",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 452
+        },
+        {
+          "kind": "fn",
+          "name": "link_id_start",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 462
+        },
+        {
+          "kind": "fn",
+          "name": "open_code",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 473
+        },
+        {
+          "kind": "fn",
+          "name": "parse",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 481
+        },
+        {
+          "kind": "struct",
+          "name": "ParsedMarkdown",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 2033
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/parse.rs",
+          "line": 2042
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/parse.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/render.rs",
+      "module": "render",
+      "kind": "production",
+      "lineCount": 2754,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "render_ansi",
+          "path": "crates/codegen/xai-grok-markdown/src/render.rs",
+          "line": 269
+        },
+        {
+          "kind": "fn",
+          "name": "render_ratatui",
+          "path": "crates/codegen/xai-grok-markdown/src/render.rs",
+          "line": 518
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/render.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+      "module": "source_map",
+      "kind": "production",
+      "lineCount": 142,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SourceMap",
+          "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "add",
+          "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "to_source",
+          "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "extend_with_offsets",
+          "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "segments",
+          "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "truncate",
+          "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "clear",
+          "path": "crates/codegen/xai-grok-markdown/src/source_map.rs",
+          "line": 103
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/source_map.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+      "module": "streaming",
+      "kind": "production",
+      "lineCount": 2911,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "FrozenState",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "StreamingMarkdownRenderer",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 125
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 206
+        },
+        {
+          "kind": "fn",
+          "name": "set_style",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 225
+        },
+        {
+          "kind": "fn",
+          "name": "set_max_table_width",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 238
+        },
+        {
+          "kind": "fn",
+          "name": "set_collapse_soft_breaks",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 253
+        },
+        {
+          "kind": "fn",
+          "name": "push",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 269
+        },
+        {
+          "kind": "fn",
+          "name": "render",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 295
+        },
+        {
+          "kind": "fn",
+          "name": "push_and_render",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 303
+        },
+        {
+          "kind": "fn",
+          "name": "view",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 438
+        },
+        {
+          "kind": "fn",
+          "name": "source",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 443
+        },
+        {
+          "kind": "fn",
+          "name": "frozen_bytes",
+          "path": "crates/codegen/xai-grok-markdown/src/streaming.rs",
+          "line": 448
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/streaming.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+      "module": "style",
+      "kind": "production",
+      "lineCount": 304,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TableBorders",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 12
+        },
+        {
+          "kind": "const",
+          "name": "BOX",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "ASCII",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "DOUBLE",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 37
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 41
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 46
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 49
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 52
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 55
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 58
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 61
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-markdown/src/style.rs",
+          "line": 64
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/style.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+      "module": "syntax",
+      "kind": "production",
+      "lineCount": 212,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Syntect",
+          "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "find_syntax_by_file_path",
+          "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+          "line": 46
+        },
+        {
+          "kind": "fn",
+          "name": "find_syntax_by_token",
+          "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "highlight_lines_by_file_path",
+          "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "highlight_lines_for_token",
+          "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "highlight_lines_for_fence_info",
+          "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "find_syntax_for_fence_info",
+          "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "syntax_highlight_raw",
+          "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+          "line": 140
+        },
+        {
+          "kind": "fn",
+          "name": "test_syntect",
+          "path": "crates/codegen/xai-grok-markdown/src/syntax.rs",
+          "line": 168
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/syntax.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-markdown/src/url_scan.rs",
+      "module": "url_scan",
+      "kind": "production",
+      "lineCount": 430,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "detect_plain_urls",
+          "path": "crates/codegen/xai-grok-markdown/src/url_scan.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "detect_plain_urls_with_offset",
+          "path": "crates/codegen/xai-grok-markdown/src/url_scan.rs",
+          "line": 32
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-markdown/src/url_scan.rs"
+    }
+  ]
+}

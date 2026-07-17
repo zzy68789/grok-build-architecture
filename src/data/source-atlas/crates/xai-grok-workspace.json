@@ -1,0 +1,4836 @@
+{
+  "name": "xai-grok-workspace",
+  "memberPath": "crates/codegen/xai-grok-workspace",
+  "manifestPath": "crates/codegen/xai-grok-workspace/Cargo.toml",
+  "description": "Core host-local workspace library (FS, VCS, execution, discovery) for xai-grok-shell and remote sampler",
+  "role": "提供本地主机工作区的文件、VCS、命令执行和项目发现能力。",
+  "layer": "工具与工作区",
+  "primaryArticle": "workspace/fs-discovery-rules",
+  "relatedArticles": [
+    "workspace/fs-discovery-rules",
+    "introduction/what-is-grok-build",
+    "introduction/architecture-overview",
+    "introduction/end-to-end-request",
+    "context/system-prompt-and-rules",
+    "workspace/execution-vcs-fsevents-status",
+    "agents/worktree-checkpoint-hunk"
+  ],
+  "dependencies": [
+    "xai-acp-lib",
+    "xai-codebase-graph",
+    "xai-computer-hub-mcp-adapter",
+    "xai-computer-hub-sdk",
+    "xai-fast-worktree",
+    "xai-file-utils",
+    "xai-fsnotify",
+    "xai-grok-agent",
+    "xai-grok-auth",
+    "xai-grok-config",
+    "xai-grok-config-types",
+    "xai-grok-env",
+    "xai-grok-hooks",
+    "xai-grok-mcp",
+    "xai-grok-paths",
+    "xai-grok-sandbox",
+    "xai-grok-telemetry",
+    "xai-grok-tools",
+    "xai-grok-tools-api",
+    "xai-grok-version",
+    "xai-grok-workspace-client",
+    "xai-grok-workspace-types",
+    "xai-hunk-tracker",
+    "xai-sqlite-journal",
+    "xai-test-utils",
+    "xai-tool-protocol",
+    "xai-tool-runtime",
+    "xai-tool-types",
+    "xai-tracing",
+    "xai-tty-utils"
+  ],
+  "dependents": [
+    "xai-grok-http",
+    "xai-grok-pager",
+    "xai-grok-pager-bin",
+    "xai-grok-pager-render",
+    "xai-grok-shell",
+    "xai-grok-shell-session-support"
+  ],
+  "fileCount": 87,
+  "productionFileCount": 81,
+  "lineCount": 75607,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+      "lineCount": 207,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_metrics",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 66
+        },
+        {
+          "kind": "static",
+          "name": "ENV_TEST_LOCK",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 82
+        },
+        {
+          "kind": "struct",
+          "name": "TestEnvGuard",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "set",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "unset",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 104
+        },
+        {
+          "kind": "struct",
+          "name": "LockedTestEnv",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 130
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+      "lineCount": 9484,
+      "symbols": [
+        {
+          "kind": "static",
+          "name": "WORKSPACE_TERMINAL_BACKEND_ORPHANED_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 111
+        },
+        {
+          "kind": "static",
+          "name": "REWIND_CHECKPOINT_CAPTURE_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 152
+        },
+        {
+          "kind": "static",
+          "name": "REWIND_CHECKPOINT_FINALIZE_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 162
+        },
+        {
+          "kind": "static",
+          "name": "REWIND_RESTORE_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 172
+        },
+        {
+          "kind": "static",
+          "name": "REWIND_CHECKPOINT_DURATION",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 182
+        },
+        {
+          "kind": "static",
+          "name": "REWIND_NON_COMPLETED_FINALIZE_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 194
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+      "lineCount": 5634,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "YOLO",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 28
+        },
+        {
+          "kind": "const",
+          "name": "POLICY_ALLOW",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "POLICY_DENY",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "POLICY_ASK",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "AUTO_FAST_PATH",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "AUTO_CLASSIFIER_ALLOW",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+      "lineCount": 4209,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "resolve_permission_config_with_fallback",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 312
+        },
+        {
+          "kind": "fn",
+          "name": "deny_read_globs_from_config",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 326
+        },
+        {
+          "kind": "struct",
+          "name": "ResolvedPermissions",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 342
+        },
+        {
+          "kind": "struct",
+          "name": "SkippedPermission",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 351
+        },
+        {
+          "kind": "fn",
+          "name": "is_catchall_allow",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 371
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_permissions_with_provenance",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 467
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+      "lineCount": 4154,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ERROR_CODE_DIFF_SIZE_EXCEEDED",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 17
+        },
+        {
+          "kind": "struct",
+          "name": "DiffSizeExceededError",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "message",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 24
+        },
+        {
+          "kind": "struct",
+          "name": "DiffSizeExceededFile",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "GIT_STATUS_CACHE_TTL",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "git_cli",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 67
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+      "lineCount": 3098,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "to_creation_mode",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "set_btrfs_delegate_factory",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "btrfs_delegate_from_env",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "is_worktree_in_progress",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 103
+        },
+        {
+          "kind": "fn",
+          "name": "claim_worktree_in_progress",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "mark_worktree_complete",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 120
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/hub_server.rs",
+      "lineCount": 3002,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_metrics",
+          "path": "crates/codegen/xai-grok-workspace/src/hub_server.rs",
+          "line": 87
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceRpcHandler",
+          "path": "crates/codegen/xai-grok-workspace/src/hub_server.rs",
+          "line": 329
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/hub_server.rs",
+          "line": 333
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+      "lineCount": 2517,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ClassifierVerdict",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 22
+        },
+        {
+          "kind": "enum",
+          "name": "ClassifierMessageRole",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 34
+        },
+        {
+          "kind": "enum",
+          "name": "ClassifierPromptType",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 52
+        },
+        {
+          "kind": "struct",
+          "name": "ClassifierMessage",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 62
+        },
+        {
+          "kind": "enum",
+          "name": "ClassifierTurn",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 69
+        },
+        {
+          "kind": "struct",
+          "name": "ClassifierContext",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 107
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "const",
+      "name": "PREVIEW_ACTIVITY_WINDOW_MS",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 28
+    },
+    {
+      "kind": "struct",
+      "name": "ActivityTracker",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 61
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 136
+    },
+    {
+      "kind": "fn",
+      "name": "with_prune_window",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 143
+    },
+    {
+      "kind": "fn",
+      "name": "with_prune_window_and_idle_hold",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 149
+    },
+    {
+      "kind": "fn",
+      "name": "with_idle_ignores_background",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 182
+    },
+    {
+      "kind": "fn",
+      "name": "with_preview_activity_window_ms",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 189
+    },
+    {
+      "kind": "fn",
+      "name": "set_event_writers",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 199
+    },
+    {
+      "kind": "fn",
+      "name": "set_upload_queue_stats",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 205
+    },
+    {
+      "kind": "fn",
+      "name": "set_producer_tasks",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 211
+    },
+    {
+      "kind": "fn",
+      "name": "notify_handle",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 216
+    },
+    {
+      "kind": "fn",
+      "name": "note_preview_activity",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 223
+    },
+    {
+      "kind": "fn",
+      "name": "drain_started",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 258
+    },
+    {
+      "kind": "fn",
+      "name": "tool_call_started",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 346
+    },
+    {
+      "kind": "fn",
+      "name": "tool_call_completed",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 401
+    },
+    {
+      "kind": "fn",
+      "name": "background_task_started",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 454
+    },
+    {
+      "kind": "fn",
+      "name": "background_task_completed",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 471
+    },
+    {
+      "kind": "fn",
+      "name": "turn_started",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 485
+    },
+    {
+      "kind": "fn",
+      "name": "turn_completed",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 495
+    },
+    {
+      "kind": "fn",
+      "name": "cancel_all_session_calls",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 509
+    },
+    {
+      "kind": "fn",
+      "name": "session_ended",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 527
+    },
+    {
+      "kind": "fn",
+      "name": "is_turn_active",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 535
+    },
+    {
+      "kind": "fn",
+      "name": "session_active_tool_calls",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 544
+    },
+    {
+      "kind": "fn",
+      "name": "set_active",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 550
+    },
+    {
+      "kind": "fn",
+      "name": "set_draining",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 561
+    },
+    {
+      "kind": "fn",
+      "name": "set_shutting_down",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 573
+    },
+    {
+      "kind": "fn",
+      "name": "is_draining",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 579
+    },
+    {
+      "kind": "fn",
+      "name": "is_drained",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 592
+    },
+    {
+      "kind": "fn",
+      "name": "tools_idle",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 598
+    },
+    {
+      "kind": "fn",
+      "name": "total_active",
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "line": 602
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+      "module": "activity",
+      "kind": "production",
+      "lineCount": 1945,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "PREVIEW_ACTIVITY_WINDOW_MS",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 28
+        },
+        {
+          "kind": "struct",
+          "name": "ActivityTracker",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 136
+        },
+        {
+          "kind": "fn",
+          "name": "with_prune_window",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 143
+        },
+        {
+          "kind": "fn",
+          "name": "with_prune_window_and_idle_hold",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 149
+        },
+        {
+          "kind": "fn",
+          "name": "with_idle_ignores_background",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 182
+        },
+        {
+          "kind": "fn",
+          "name": "with_preview_activity_window_ms",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 189
+        },
+        {
+          "kind": "fn",
+          "name": "set_event_writers",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 199
+        },
+        {
+          "kind": "fn",
+          "name": "set_upload_queue_stats",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 205
+        },
+        {
+          "kind": "fn",
+          "name": "set_producer_tasks",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 211
+        },
+        {
+          "kind": "fn",
+          "name": "notify_handle",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 216
+        },
+        {
+          "kind": "fn",
+          "name": "note_preview_activity",
+          "path": "crates/codegen/xai-grok-workspace/src/activity.rs",
+          "line": 223
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/activity.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/bin/workspace_server_probe.rs",
+      "module": "bin::workspace_server_probe",
+      "kind": "production",
+      "lineCount": 215,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/bin/workspace_server_probe.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/bin/workspace_server.rs",
+      "module": "bin::workspace_server",
+      "kind": "production",
+      "lineCount": 600,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/bin/workspace_server.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/capability.rs",
+      "module": "capability",
+      "kind": "production",
+      "lineCount": 333,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "CapabilityMode",
+          "path": "crates/codegen/xai-grok-workspace/src/capability.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "filter",
+          "path": "crates/codegen/xai-grok-workspace/src/capability.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "is_subset_of",
+          "path": "crates/codegen/xai-grok-workspace/src/capability.rs",
+          "line": 60
+        },
+        {
+          "kind": "const",
+          "name": "ALL_TOOL_KINDS",
+          "path": "crates/codegen/xai-grok-workspace/src/capability.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "kind_allowed",
+          "path": "crates/codegen/xai-grok-workspace/src/capability.rs",
+          "line": 120
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/capability.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/channel.rs",
+      "module": "channel",
+      "kind": "production",
+      "lineCount": 20,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TransportContext",
+          "path": "crates/codegen/xai-grok-workspace/src/channel.rs",
+          "line": 12
+        },
+        {
+          "kind": "type",
+          "name": "TransportError",
+          "path": "crates/codegen/xai-grok-workspace/src/channel.rs",
+          "line": 17
+        },
+        {
+          "kind": "type",
+          "name": "TransportCallResult",
+          "path": "crates/codegen/xai-grok-workspace/src/channel.rs",
+          "line": 18
+        },
+        {
+          "kind": "type",
+          "name": "TransportNotification",
+          "path": "crates/codegen/xai-grok-workspace/src/channel.rs",
+          "line": 19
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/channel.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+      "module": "config",
+      "kind": "production",
+      "lineCount": 1086,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_EVENT_BUFFER_CAPACITY",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "SessionTerminalBackend",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "local",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "backend",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "shutdown",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 54
+        },
+        {
+          "kind": "trait",
+          "name": "SessionContextFactory",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 73
+        },
+        {
+          "kind": "struct",
+          "name": "MemoryConfig",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 99
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceBindConfig",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 104
+        },
+        {
+          "kind": "enum",
+          "name": "ResolvedToolset",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 132
+        },
+        {
+          "kind": "struct",
+          "name": "ResolvedTools",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "from_metadata",
+          "path": "crates/codegen/xai-grok-workspace/src/config.rs",
+          "line": 166
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+      "module": "daemonize",
+      "kind": "production",
+      "lineCount": 1074,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_LOG_PATH",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_LOG_PATH",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 35
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_PIDFILE_PATH",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 39
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_PIDFILE_PATH",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 41
+        },
+        {
+          "kind": "const",
+          "name": "TAKEOVER_GRACE",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "daemonize",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "daemonize",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "daemonize",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "daemon_file_options",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 148
+        },
+        {
+          "kind": "fn",
+          "name": "daemon_file_options",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 156
+        },
+        {
+          "kind": "struct",
+          "name": "PidFile",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 200
+        },
+        {
+          "kind": "fn",
+          "name": "acquire",
+          "path": "crates/codegen/xai-grok-workspace/src/daemonize.rs",
+          "line": 211
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/daemonize.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+      "module": "diag_server",
+      "kind": "production",
+      "lineCount": 555,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_DIAG_SOCKET_PATH",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_DIAG_PORT",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "DIAG_BIND_FAILED_MARKER",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 36
+        },
+        {
+          "kind": "const",
+          "name": "EXIT_DIAG_BIND_FAILED",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 39
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_LOG_TAIL_BYTES",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 42
+        },
+        {
+          "kind": "const",
+          "name": "MAX_LOG_TAIL_BYTES",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 45
+        },
+        {
+          "kind": "enum",
+          "name": "DiagState",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 50
+        },
+        {
+          "kind": "struct",
+          "name": "DiagHandle",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 97
+        },
+        {
+          "kind": "fn",
+          "name": "set_connected",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "set_disconnected",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 124
+        },
+        {
+          "kind": "fn",
+          "name": "set_shutting_down",
+          "path": "crates/codegen/xai-grok-workspace/src/diag_server.rs",
+          "line": 132
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/diag_server.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/discovery.rs",
+      "module": "discovery",
+      "kind": "production",
+      "lineCount": 588,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "discover_skills",
+          "path": "crates/codegen/xai-grok-workspace/src/discovery.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "discover_agents_md",
+          "path": "crates/codegen/xai-grok-workspace/src/discovery.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "discover_plugins",
+          "path": "crates/codegen/xai-grok-workspace/src/discovery.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "load_project_config",
+          "path": "crates/codegen/xai-grok-workspace/src/discovery.rs",
+          "line": 165
+        },
+        {
+          "kind": "fn",
+          "name": "load_permissions",
+          "path": "crates/codegen/xai-grok-workspace/src/discovery.rs",
+          "line": 221
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/discovery.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/envrc.rs",
+      "module": "envrc",
+      "kind": "production",
+      "lineCount": 286,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "load_envrc",
+          "path": "crates/codegen/xai-grok-workspace/src/envrc.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "load_envrc_or_empty",
+          "path": "crates/codegen/xai-grok-workspace/src/envrc.rs",
+          "line": 209
+        },
+        {
+          "kind": "fn",
+          "name": "load_envrc_or_empty_when_trusted",
+          "path": "crates/codegen/xai-grok-workspace/src/envrc.rs",
+          "line": 218
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/envrc.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/error.rs",
+      "module": "error",
+      "kind": "production",
+      "lineCount": 87,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "WorkspaceError",
+          "path": "crates/codegen/xai-grok-workspace/src/error.rs",
+          "line": 11
+        },
+        {
+          "kind": "type",
+          "name": "WorkspaceResult",
+          "path": "crates/codegen/xai-grok-workspace/src/error.rs",
+          "line": 86
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/error.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/acp_fs.rs",
+      "module": "file_system::acp_fs",
+      "kind": "production",
+      "lineCount": 180,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AcpSessionFs",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/acp_fs.rs",
+          "line": 6
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/acp_fs.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "with_display_cwd",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/acp_fs.rs",
+          "line": 35
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/acp_fs.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/adapter.rs",
+      "module": "file_system::adapter",
+      "kind": "production",
+      "lineCount": 90,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AcpFsAdapter",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/adapter.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/adapter.rs",
+          "line": 28
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/adapter.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/attach_file.rs",
+      "module": "file_system::attach_file",
+      "kind": "production",
+      "lineCount": 541,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "session_dir",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/attach_file.rs",
+          "line": 13
+        },
+        {
+          "kind": "struct",
+          "name": "FileReference",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/attach_file.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "parse",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/attach_file.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "render_file_reference",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/attach_file.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "render_embedded_resource",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/attach_file.rs",
+          "line": 111
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/attach_file.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/client_fs.rs",
+      "module": "file_system::client_fs",
+      "kind": "production",
+      "lineCount": 776,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "FileHashMemo",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/client_fs.rs",
+          "line": 62
+        },
+        {
+          "kind": "fn",
+          "name": "lookup",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/client_fs.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "store",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/client_fs.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "list",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/client_fs.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "stat",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/client_fs.rs",
+          "line": 209
+        },
+        {
+          "kind": "fn",
+          "name": "read_file",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/client_fs.rs",
+          "line": 279
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/client_fs.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/codebase_index.rs",
+      "module": "file_system::codebase_index",
+      "kind": "production",
+      "lineCount": 307,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "get_index_cache_path",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/codebase_index.rs",
+          "line": 23
+        },
+        {
+          "kind": "struct",
+          "name": "CodebaseIndexManager",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/codebase_index.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/codebase_index.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "get_or_create",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/codebase_index.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/codebase_index.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "active_count",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/codebase_index.rs",
+          "line": 101
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/codebase_index.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/content.rs",
+      "module": "file_system::content",
+      "kind": "production",
+      "lineCount": 274,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ContentSearchParams",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/content.rs",
+          "line": 16
+        },
+        {
+          "kind": "struct",
+          "name": "ContentSearchBatch",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/content.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "content_search_streaming",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/content.rs",
+          "line": 134
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/content.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/ext_fs.rs",
+      "module": "file_system::ext_fs",
+      "kind": "production",
+      "lineCount": 561,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/ext_fs.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/file_tree.rs",
+      "module": "file_system::file_tree",
+      "kind": "production",
+      "lineCount": 527,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ListContentsLimits",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/file_tree.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/file_tree.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "list_contents",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/file_tree.rs",
+          "line": 341
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/file_tree.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+      "module": "file_system::fs",
+      "kind": "production",
+      "lineCount": 144,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FsError",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 7
+        },
+        {
+          "kind": "trait",
+          "name": "AsyncFileSystem",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "bytes_to_string",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 45
+        },
+        {
+          "kind": "struct",
+          "name": "AsyncFsWrapper",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "inner",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "root",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "exists",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "read_file",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "read_to_string",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "try_read_file",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 109
+        },
+        {
+          "kind": "fn",
+          "name": "try_read_to_string",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fs.rs",
+          "line": 118
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/fs.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+      "module": "file_system::fuzzy",
+      "kind": "production",
+      "lineCount": 480,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "FuzzyMatchResult",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 22
+        },
+        {
+          "kind": "struct",
+          "name": "FuzzyMatcherStatus",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 34
+        },
+        {
+          "kind": "struct",
+          "name": "FuzzyFileMatcher",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "query",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "restart_walk_custom",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "restart_walk",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 191
+        },
+        {
+          "kind": "fn",
+          "name": "set_query",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 198
+        },
+        {
+          "kind": "fn",
+          "name": "tick",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 221
+        },
+        {
+          "kind": "fn",
+          "name": "num_items",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 237
+        },
+        {
+          "kind": "fn",
+          "name": "get_top_k",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 246
+        },
+        {
+          "kind": "struct",
+          "name": "FuzzyMatcherDaemonResults",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs",
+          "line": 362
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/fuzzy.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/git_status.rs",
+      "module": "file_system::git_status",
+      "kind": "production",
+      "lineCount": 291,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "git_status",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/git_status.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "git_status_short",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/git_status.rs",
+          "line": 74
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/git_status.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+      "module": "file_system::index",
+      "kind": "production",
+      "lineCount": 1567,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "WalkOptions",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 181
+        },
+        {
+          "kind": "fn",
+          "name": "include_all",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 208
+        },
+        {
+          "kind": "fn",
+          "name": "with_max_depth",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 219
+        },
+        {
+          "kind": "fn",
+          "name": "with_gitignore",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 225
+        },
+        {
+          "kind": "fn",
+          "name": "with_hidden",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 231
+        },
+        {
+          "kind": "struct",
+          "name": "SegmentId",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 244
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 247
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 251
+        },
+        {
+          "kind": "struct",
+          "name": "StringInterner",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 281
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 299
+        },
+        {
+          "kind": "fn",
+          "name": "with_capacity",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 307
+        },
+        {
+          "kind": "fn",
+          "name": "intern_bytes",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/index.rs",
+          "line": 323
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/index.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/jj_status.rs",
+      "module": "file_system::jj_status",
+      "kind": "production",
+      "lineCount": 86,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "jj_status",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/jj_status.rs",
+          "line": 22
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/jj_status.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/local_fs.rs",
+      "module": "file_system::local_fs",
+      "kind": "production",
+      "lineCount": 51,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LocalFs",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/local_fs.rs",
+          "line": 6
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/local_fs.rs",
+          "line": 11
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/local_fs.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/mock_fs.rs",
+      "module": "file_system::mock_fs",
+      "kind": "production",
+      "lineCount": 59,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MockFs",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mock_fs.rs",
+          "line": 8
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mock_fs.rs",
+          "line": 52
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/mock_fs.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+      "module": "file_system::mod",
+      "kind": "production",
+      "lineCount": 361,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "FuzzySearchId",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 110
+        },
+        {
+          "kind": "struct",
+          "name": "FuzzySearchData",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 139
+        },
+        {
+          "kind": "enum",
+          "name": "FuzzyPollOutcome",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 153
+        },
+        {
+          "kind": "struct",
+          "name": "FuzzySearchContext",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 164
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 183
+        },
+        {
+          "kind": "fn",
+          "name": "is_stale",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 207
+        },
+        {
+          "kind": "struct",
+          "name": "FuzzySearchManager",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 212
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 218
+        },
+        {
+          "kind": "fn",
+          "name": "open",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 225
+        },
+        {
+          "kind": "fn",
+          "name": "get_session_id",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 243
+        },
+        {
+          "kind": "fn",
+          "name": "get_target_client_id",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 251
+        },
+        {
+          "kind": "fn",
+          "name": "get_root",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/mod.rs",
+          "line": 260
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+      "module": "file_system::walk",
+      "kind": "production",
+      "lineCount": 345,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_LIST_COLLECT",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 25
+        },
+        {
+          "kind": "const",
+          "name": "MAX_READ_BYTES",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "clamp_read_length",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "FsWalk",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 46
+        },
+        {
+          "kind": "struct",
+          "name": "RawFsEntry",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "walk_fs_entries",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "build_glob_overrides",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 137
+        },
+        {
+          "kind": "struct",
+          "name": "ListedEntry",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 167
+        },
+        {
+          "kind": "struct",
+          "name": "ListPage",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 183
+        },
+        {
+          "kind": "struct",
+          "name": "ListOptions",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 192
+        },
+        {
+          "kind": "fn",
+          "name": "list_directory_paged",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 223
+        },
+        {
+          "kind": "enum",
+          "name": "ChunkPayload",
+          "path": "crates/codegen/xai-grok-workspace/src/file_system/walk.rs",
+          "line": 273
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/file_system/walk.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+      "module": "folder_trust",
+      "kind": "production",
+      "lineCount": 976,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "TrustOutcome",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 37
+        },
+        {
+          "kind": "struct",
+          "name": "DecideInputs",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "decide",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "decide_inputs",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "decide_inputs_with_interactive",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 97
+        },
+        {
+          "kind": "fn",
+          "name": "folder_trust_inert",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 125
+        },
+        {
+          "kind": "fn",
+          "name": "feature_enabled",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 157
+        },
+        {
+          "kind": "fn",
+          "name": "grant_folder_trust",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 188
+        },
+        {
+          "kind": "fn",
+          "name": "revoke_folder_trust_store",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 205
+        },
+        {
+          "kind": "fn",
+          "name": "persist_trust",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 226
+        },
+        {
+          "kind": "fn",
+          "name": "repo_configs_present",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 243
+        },
+        {
+          "kind": "fn",
+          "name": "repo_config_kinds",
+          "path": "crates/codegen/xai-grok-workspace/src/folder_trust.rs",
+          "line": 253
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/folder_trust.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+      "module": "foreign_sessions::capability::mod",
+      "kind": "production",
+      "lineCount": 309,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ApprovedRoot",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 17
+        },
+        {
+          "kind": "struct",
+          "name": "OpenedRegularFile",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 22
+        },
+        {
+          "kind": "struct",
+          "name": "DirectoryVisit",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 29
+        },
+        {
+          "kind": "struct",
+          "name": "ReadTransactionSqlite",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "metadata",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 69
+        },
+        {
+          "kind": "fn",
+          "name": "path",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "join",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 96
+        },
+        {
+          "kind": "fn",
+          "name": "modified",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "subroot",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 105
+        },
+        {
+          "kind": "fn",
+          "name": "for_each_entry",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "for_each_entry_bounded",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs",
+          "line": 138
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/tests.rs",
+      "module": "foreign_sessions::capability::tests",
+      "kind": "test",
+      "lineCount": 224,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/unix.rs",
+      "module": "foreign_sessions::capability::unix",
+      "kind": "production",
+      "lineCount": 241,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "open_directory_path",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/unix.rs",
+          "line": 7
+        },
+        {
+          "kind": "fn",
+          "name": "open_directory_relative",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/unix.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "open_regular_relative",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/unix.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "visit_directory_names",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/unix.rs",
+          "line": 129
+        },
+        {
+          "kind": "fn",
+          "name": "visit_directory_names_bounded",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/unix.rs",
+          "line": 143
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/unix.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/windows.rs",
+      "module": "foreign_sessions::capability::windows",
+      "kind": "production",
+      "lineCount": 167,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "open_directory_path",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/windows.rs",
+          "line": 5
+        },
+        {
+          "kind": "fn",
+          "name": "open_regular_path",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/windows.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "directory_path_matches",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/windows.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "canonical_file_matches",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/windows.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "same_open_file",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/windows.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "final_handle_path_matches",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/windows.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "same_file_for_test",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/windows.rs",
+          "line": 159
+        },
+        {
+          "kind": "fn",
+          "name": "final_path_matches_for_test",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/windows.rs",
+          "line": 164
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/capability/windows.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude.rs",
+      "module": "foreign_sessions::claude",
+      "kind": "production",
+      "lineCount": 498,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "scan",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "most_recent",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude.rs",
+          "line": 40
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/claude.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/projects.rs",
+      "module": "foreign_sessions::claude::projects",
+      "kind": "production",
+      "lineCount": 56,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_PROJECT_DIRS",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/projects.rs",
+          "line": 4
+        },
+        {
+          "kind": "const",
+          "name": "MAX_SANITIZED_LENGTH",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/projects.rs",
+          "line": 5
+        },
+        {
+          "kind": "fn",
+          "name": "scoped_project_dirs",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/projects.rs",
+          "line": 7
+        },
+        {
+          "kind": "fn",
+          "name": "project_dir_for_path",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/projects.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "project_dir_path",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/projects.rs",
+          "line": 45
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/projects.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/tests.rs",
+      "module": "foreign_sessions::claude::tests",
+      "kind": "test",
+      "lineCount": 412,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/windows_tests.rs",
+      "module": "foreign_sessions::claude::windows_tests",
+      "kind": "test",
+      "lineCount": 122,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/claude/windows_tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/db.rs",
+      "module": "foreign_sessions::codex::db",
+      "kind": "production",
+      "lineCount": 292,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_RECENT_DB_CANDIDATES",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/db.rs",
+          "line": 15
+        },
+        {
+          "kind": "enum",
+          "name": "RecentDatabaseResult",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/db.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "scan_database",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/db.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "most_recent_database",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/db.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "normalize_updated_at",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/db.rs",
+          "line": 191
+        },
+        {
+          "kind": "fn",
+          "name": "scan_sql",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/db.rs",
+          "line": 200
+        },
+        {
+          "kind": "fn",
+          "name": "recent_scan_sql",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/db.rs",
+          "line": 208
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/db.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/files.rs",
+      "module": "foreign_sessions::codex::files",
+      "kind": "production",
+      "lineCount": 360,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_RECENT_DIRECTORY_ENTRIES",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/files.rs",
+          "line": 20
+        },
+        {
+          "kind": "const",
+          "name": "MAX_HEAD_BYTES",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/files.rs",
+          "line": 22
+        },
+        {
+          "kind": "const",
+          "name": "MAX_COMPRESSED_HEAD_BYTES",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/files.rs",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "MAX_ZSTD_WINDOW_LOG",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/files.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "scan_rollouts",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/files.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "most_recent_rollout",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/files.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "recent_date_dirs",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/files.rs",
+          "line": 216
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/files.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/mod.rs",
+      "module": "foreign_sessions::codex::mod",
+      "kind": "production",
+      "lineCount": 195,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "scan",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/mod.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "most_recent",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/mod.rs",
+          "line": 28
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/tests/db.rs",
+      "module": "foreign_sessions::codex::tests::db",
+      "kind": "test",
+      "lineCount": 898,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/tests/db.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/tests/files.rs",
+      "module": "foreign_sessions::codex::tests::files",
+      "kind": "test",
+      "lineCount": 446,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/tests/files.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/tests/mod.rs",
+      "module": "foreign_sessions::codex::tests::mod",
+      "kind": "test",
+      "lineCount": 118,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/codex/tests/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+      "module": "foreign_sessions::mod",
+      "kind": "production",
+      "lineCount": 764,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_SESSIONS_PER_TOOL",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "MAX_SESSION_AGE",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "MAX_TITLE_CHARS",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 16
+        },
+        {
+          "kind": "enum",
+          "name": "ForeignSessionTool",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 19
+        },
+        {
+          "kind": "enum",
+          "name": "ForeignSessionSource",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "ForeignSessionSummary",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 35
+        },
+        {
+          "kind": "struct",
+          "name": "RecentForeignSession",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 45
+        },
+        {
+          "kind": "struct",
+          "name": "EnabledForeignSessionSources",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "scan_foreign_sessions",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 90
+        },
+        {
+          "kind": "fn",
+          "name": "most_recent_foreign_session",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 97
+        },
+        {
+          "kind": "fn",
+          "name": "finish_tool_scan",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 233
+        },
+        {
+          "kind": "fn",
+          "name": "retain_top_k_by",
+          "path": "crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs",
+          "line": 242
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/foreign_sessions/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/fs_notify.rs",
+      "module": "fs_notify",
+      "kind": "production",
+      "lineCount": 366,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_under_hidden_dir",
+          "path": "crates/codegen/xai-grok-workspace/src/fs_notify.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "forward_to_hunk_tracker",
+          "path": "crates/codegen/xai-grok-workspace/src/fs_notify.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "fs_event_to_codebase_graph_event",
+          "path": "crates/codegen/xai-grok-workspace/src/fs_notify.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "to_workspace_event_kind",
+          "path": "crates/codegen/xai-grok-workspace/src/fs_notify.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_fs_event_forwarder",
+          "path": "crates/codegen/xai-grok-workspace/src/fs_notify.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "refresh_codebase_graph_after_head_change",
+          "path": "crates/codegen/xai-grok-workspace/src/fs_notify.rs",
+          "line": 195
+        },
+        {
+          "kind": "fn",
+          "name": "ws_event_to_codebase_graph_event",
+          "path": "crates/codegen/xai-grok-workspace/src/fs_notify.rs",
+          "line": 262
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/fs_notify.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+      "module": "handle",
+      "kind": "production",
+      "lineCount": 9484,
+      "symbols": [
+        {
+          "kind": "static",
+          "name": "WORKSPACE_TERMINAL_BACKEND_ORPHANED_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 111
+        },
+        {
+          "kind": "static",
+          "name": "REWIND_CHECKPOINT_CAPTURE_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 152
+        },
+        {
+          "kind": "static",
+          "name": "REWIND_CHECKPOINT_FINALIZE_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 162
+        },
+        {
+          "kind": "static",
+          "name": "REWIND_RESTORE_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 172
+        },
+        {
+          "kind": "static",
+          "name": "REWIND_CHECKPOINT_DURATION",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 182
+        },
+        {
+          "kind": "static",
+          "name": "REWIND_NON_COMPLETED_FINALIZE_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 194
+        },
+        {
+          "kind": "enum",
+          "name": "RewindDomain",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 206
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 212
+        },
+        {
+          "kind": "fn",
+          "name": "rewind_outcome_label",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 222
+        },
+        {
+          "kind": "fn",
+          "name": "rewind_result_label",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 231
+        },
+        {
+          "kind": "fn",
+          "name": "record_rewind_capture",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 235
+        },
+        {
+          "kind": "fn",
+          "name": "observe_rewind_capture_duration",
+          "path": "crates/codegen/xai-grok-workspace/src/handle.rs",
+          "line": 241
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/handle.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/hub_auth.rs",
+      "module": "hub_auth",
+      "kind": "production",
+      "lineCount": 491,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "provider",
+          "path": "crates/codegen/xai-grok-workspace/src/hub_auth.rs",
+          "line": 211
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/hub_auth.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/hub_channel.rs",
+      "module": "hub_channel",
+      "kind": "production",
+      "lineCount": 128,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "extract_workspace_event",
+          "path": "crates/codegen/xai-grok-workspace/src/hub_channel.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "extract_tool_notification",
+          "path": "crates/codegen/xai-grok-workspace/src/hub_channel.rs",
+          "line": 32
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/hub_channel.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/hub_ids.rs",
+      "module": "hub_ids",
+      "kind": "production",
+      "lineCount": 11,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/hub_ids.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/hub_server.rs",
+      "module": "hub_server",
+      "kind": "production",
+      "lineCount": 3002,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_metrics",
+          "path": "crates/codegen/xai-grok-workspace/src/hub_server.rs",
+          "line": 87
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceRpcHandler",
+          "path": "crates/codegen/xai-grok-workspace/src/hub_server.rs",
+          "line": 329
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/hub_server.rs",
+          "line": 333
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/hub_server.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+      "module": "hub",
+      "kind": "production",
+      "lineCount": 1397,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HubConfig",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 58
+        },
+        {
+          "kind": "struct",
+          "name": "HubHandle",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "connect",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 208
+        },
+        {
+          "kind": "fn",
+          "name": "set_server_task",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 272
+        },
+        {
+          "kind": "fn",
+          "name": "set_notification_task",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 276
+        },
+        {
+          "kind": "fn",
+          "name": "set_event_publisher_task",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 280
+        },
+        {
+          "kind": "fn",
+          "name": "set_activity_feed_task",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 284
+        },
+        {
+          "kind": "fn",
+          "name": "set_status_publisher_task",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 288
+        },
+        {
+          "kind": "fn",
+          "name": "set_codebase_index_forwarder_task",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 292
+        },
+        {
+          "kind": "fn",
+          "name": "set_client_ext_forwarder_task",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 296
+        },
+        {
+          "kind": "fn",
+          "name": "set_tool_defs_forwarder_task",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 300
+        },
+        {
+          "kind": "fn",
+          "name": "shutdown",
+          "path": "crates/codegen/xai-grok-workspace/src/hub.rs",
+          "line": 310
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/hub.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 207,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_metrics",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 66
+        },
+        {
+          "kind": "static",
+          "name": "ENV_TEST_LOCK",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 82
+        },
+        {
+          "kind": "struct",
+          "name": "TestEnvGuard",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "set",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "unset",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 104
+        },
+        {
+          "kind": "struct",
+          "name": "LockedTestEnv",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 130
+        },
+        {
+          "kind": "fn",
+          "name": "lock",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "set",
+          "path": "crates/codegen/xai-grok-workspace/src/lib.rs",
+          "line": 147
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/mcp.rs",
+      "module": "mcp",
+      "kind": "production",
+      "lineCount": 221,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "McpClientTransportAdapter",
+          "path": "crates/codegen/xai-grok-workspace/src/mcp.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/mcp.rs",
+          "line": 27
+        },
+        {
+          "kind": "struct",
+          "name": "QualifiedMcpToolHandler",
+          "path": "crates/codegen/xai-grok-workspace/src/mcp.rs",
+          "line": 139
+        },
+        {
+          "kind": "fn",
+          "name": "try_new",
+          "path": "crates/codegen/xai-grok-workspace/src/mcp.rs",
+          "line": 147
+        },
+        {
+          "kind": "struct",
+          "name": "McpStartResult",
+          "path": "crates/codegen/xai-grok-workspace/src/mcp.rs",
+          "line": 189
+        },
+        {
+          "kind": "struct",
+          "name": "McpStartFailure",
+          "path": "crates/codegen/xai-grok-workspace/src/mcp.rs",
+          "line": 198
+        },
+        {
+          "kind": "fn",
+          "name": "server_name_from_mcp_error",
+          "path": "crates/codegen/xai-grok-workspace/src/mcp.rs",
+          "line": 207
+        },
+        {
+          "kind": "fn",
+          "name": "make_bridge_config",
+          "path": "crates/codegen/xai-grok-workspace/src/mcp.rs",
+          "line": 212
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/mcp.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+      "module": "permission::auto_mode",
+      "kind": "production",
+      "lineCount": 2517,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ClassifierVerdict",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 22
+        },
+        {
+          "kind": "enum",
+          "name": "ClassifierMessageRole",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 34
+        },
+        {
+          "kind": "enum",
+          "name": "ClassifierPromptType",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 52
+        },
+        {
+          "kind": "struct",
+          "name": "ClassifierMessage",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 62
+        },
+        {
+          "kind": "enum",
+          "name": "ClassifierTurn",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 69
+        },
+        {
+          "kind": "struct",
+          "name": "ClassifierContext",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 107
+        },
+        {
+          "kind": "trait",
+          "name": "PermissionClassifier",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 132
+        },
+        {
+          "kind": "struct",
+          "name": "FixedClassifier",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 144
+        },
+        {
+          "kind": "struct",
+          "name": "HeuristicPermissionClassifier",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 165
+        },
+        {
+          "kind": "fn",
+          "name": "classify_sync",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 168
+        },
+        {
+          "kind": "fn",
+          "name": "access_requires_user_interaction",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 855
+        },
+        {
+          "kind": "type",
+          "name": "SharedClassifier",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs",
+          "line": 874
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/auto_mode.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+      "module": "permission::bash_command_splitting",
+      "kind": "production",
+      "lineCount": 1250,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "BashCommandHighlights",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 5
+        },
+        {
+          "kind": "struct",
+          "name": "PlainCommand",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "words",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "try_parse_shell",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "try_parse_word_only_commands_sequence",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 48
+        },
+        {
+          "kind": "fn",
+          "name": "is_setup_command",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 148
+        },
+        {
+          "kind": "fn",
+          "name": "strip_wrapper_command",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 211
+        },
+        {
+          "kind": "fn",
+          "name": "is_wrapper_command",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 298
+        },
+        {
+          "kind": "fn",
+          "name": "unwrap_wrappers",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 308
+        },
+        {
+          "kind": "fn",
+          "name": "wrapper_has_chdir",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 322
+        },
+        {
+          "kind": "fn",
+          "name": "primary_command_from_script",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 395
+        },
+        {
+          "kind": "fn",
+          "name": "all_commands_from_script",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs",
+          "line": 417
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/bash_command_splitting.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+      "module": "permission::claude_settings",
+      "kind": "production",
+      "lineCount": 555,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ClaudeSettings",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "ParsedPermissions",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "into_permission_config",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "load_claude_settings",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "extract_default_mode",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "has_claude_compat",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 347
+        },
+        {
+          "kind": "fn",
+          "name": "find_claude_settings_paths",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 354
+        },
+        {
+          "kind": "fn",
+          "name": "project_claude_settings_present",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 390
+        },
+        {
+          "kind": "fn",
+          "name": "load_claude_env_with_project",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 468
+        },
+        {
+          "kind": "fn",
+          "name": "is_claude_import_marked",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 512
+        },
+        {
+          "kind": "fn",
+          "name": "is_claude_import_marked_with_log",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs",
+          "line": 540
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/claude_settings.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+      "module": "permission::hub_permission",
+      "kind": "production",
+      "lineCount": 499,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_metrics",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 37
+        },
+        {
+          "kind": "const",
+          "name": "HITL_PERMISSION_LIVE_ENV",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "hitl_permission_live_enabled",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 62
+        },
+        {
+          "kind": "trait",
+          "name": "PermissionHookTransport",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 75
+        },
+        {
+          "kind": "struct",
+          "name": "ToolServerPermissionTransport",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "from_session_id",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "build_permission_payload",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 154
+        },
+        {
+          "kind": "fn",
+          "name": "reply_to_outcome",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 178
+        },
+        {
+          "kind": "fn",
+          "name": "access_kind_for_hub_tool",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 226
+        },
+        {
+          "kind": "fn",
+          "name": "prompt_outcome_allows",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 274
+        },
+        {
+          "kind": "fn",
+          "name": "request_permission_via_hub",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs",
+          "line": 290
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/hub_permission.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+      "module": "permission::manager",
+      "kind": "production",
+      "lineCount": 5634,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "YOLO",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 28
+        },
+        {
+          "kind": "const",
+          "name": "POLICY_ALLOW",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "POLICY_DENY",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "POLICY_ASK",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "AUTO_FAST_PATH",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 32
+        },
+        {
+          "kind": "const",
+          "name": "AUTO_CLASSIFIER_ALLOW",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "AUTO_CLASSIFIER_BLOCK",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 34
+        },
+        {
+          "kind": "const",
+          "name": "SANDBOX_AUTO",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 35
+        },
+        {
+          "kind": "const",
+          "name": "PERSISTED_GRANT",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 36
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_GRANT",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 37
+        },
+        {
+          "kind": "const",
+          "name": "STATIC_ALLOWLIST",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 38
+        },
+        {
+          "kind": "const",
+          "name": "SAFE_COMMAND",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/manager.rs",
+          "line": 39
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/manager.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/mod.rs",
+      "module": "permission::mod",
+      "kind": "production",
+      "lineCount": 46,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_metrics",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/mod.rs",
+          "line": 28
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/policy.rs",
+      "module": "permission::policy",
+      "kind": "production",
+      "lineCount": 879,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CompiledPolicy",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/policy.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/policy.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "evaluate_bash_command_policy",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/policy.rs",
+          "line": 69
+        },
+        {
+          "kind": "fn",
+          "name": "evaluate",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/policy.rs",
+          "line": 111
+        },
+        {
+          "kind": "fn",
+          "name": "rule_is_catchall",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/policy.rs",
+          "line": 311
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/policy.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+      "module": "permission::prompter",
+      "kind": "production",
+      "lineCount": 1666,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ALLOW_EDITS_SESSION_OPTION_ID",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 25
+        },
+        {
+          "kind": "const",
+          "name": "ENABLE_ALWAYS_APPROVE_OPTION_ID",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "is_enable_always_approve_option",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 105
+        },
+        {
+          "kind": "struct",
+          "name": "BashCommandPermission",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 147
+        },
+        {
+          "kind": "struct",
+          "name": "BashCommandSelectedTerms",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 155
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_tool_action",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 174
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_titleize_segment",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 193
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_tool_display_name",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 211
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_pretty_name_if_qualified",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 231
+        },
+        {
+          "kind": "struct",
+          "name": "McpToolPermission",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 246
+        },
+        {
+          "kind": "fn",
+          "name": "action",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 262
+        },
+        {
+          "kind": "fn",
+          "name": "display_name",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/prompter.rs",
+          "line": 267
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/prompter.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+      "module": "permission::resolution",
+      "kind": "production",
+      "lineCount": 4209,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "resolve_permission_config_with_fallback",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 312
+        },
+        {
+          "kind": "fn",
+          "name": "deny_read_globs_from_config",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 326
+        },
+        {
+          "kind": "struct",
+          "name": "ResolvedPermissions",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 342
+        },
+        {
+          "kind": "struct",
+          "name": "SkippedPermission",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 351
+        },
+        {
+          "kind": "fn",
+          "name": "is_catchall_allow",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 371
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_permissions_with_provenance",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 467
+        },
+        {
+          "kind": "struct",
+          "name": "ManagedSettings",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 726
+        },
+        {
+          "kind": "fn",
+          "name": "managed_settings",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 737
+        },
+        {
+          "kind": "struct",
+          "name": "ManagedSettingsFeatures",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 921
+        },
+        {
+          "kind": "fn",
+          "name": "json_env_flag",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 928
+        },
+        {
+          "kind": "const",
+          "name": "YOLO_PIN_REASON_REQUIREMENTS",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 950
+        },
+        {
+          "kind": "const",
+          "name": "YOLO_PIN_REASON_LEGACY_YOLO",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/resolution.rs",
+          "line": 952
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/resolution.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+      "module": "permission::rules",
+      "kind": "production",
+      "lineCount": 303,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "DefaultPermissionMode",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "effects",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "DefaultModeEffects",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 66
+        },
+        {
+          "kind": "enum",
+          "name": "RuleParseError",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "parse_permission_rule",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "tool_name_to_filter",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 236
+        },
+        {
+          "kind": "fn",
+          "name": "is_unescaped",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 250
+        },
+        {
+          "kind": "fn",
+          "name": "find_first_unescaped",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 260
+        },
+        {
+          "kind": "fn",
+          "name": "find_last_unescaped",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 269
+        },
+        {
+          "kind": "fn",
+          "name": "unescape_rule_content",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 277
+        },
+        {
+          "kind": "fn",
+          "name": "strip_domain_prefix",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 287
+        },
+        {
+          "kind": "fn",
+          "name": "strip_bash_colon_wildcard",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/rules.rs",
+          "line": 297
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/rules.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/shell_access.rs",
+      "module": "permission::shell_access",
+      "kind": "production",
+      "lineCount": 2013,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "evaluate_shell_file_access",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/shell_access.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "command_words_write_paths",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/shell_access.rs",
+          "line": 169
+        },
+        {
+          "kind": "fn",
+          "name": "command_write_paths_in_tree",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/shell_access.rs",
+          "line": 210
+        },
+        {
+          "kind": "enum",
+          "name": "ShellFileMode",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/shell_access.rs",
+          "line": 229
+        },
+        {
+          "kind": "fn",
+          "name": "shell_redirect_targets",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/shell_access.rs",
+          "line": 413
+        },
+        {
+          "kind": "fn",
+          "name": "combine_decisions",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/shell_access.rs",
+          "line": 773
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/shell_access.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/state.rs",
+      "module": "permission::state",
+      "kind": "production",
+      "lineCount": 591,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PermissionState",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/state.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "load_state_from_disk",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/state.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "persist_state",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/state.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "cleanup_stale_permission_state",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/state.rs",
+          "line": 115
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/state.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+      "module": "permission::types",
+      "kind": "production",
+      "lineCount": 640,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PermissionEvent",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 8
+        },
+        {
+          "kind": "enum",
+          "name": "ClientType",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "user_agent_label",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 110
+        },
+        {
+          "kind": "fn",
+          "name": "from_client_identifier",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "feedback_label",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 133
+        },
+        {
+          "kind": "enum",
+          "name": "AccessKind",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 145
+        },
+        {
+          "kind": "enum",
+          "name": "Decision",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 164
+        },
+        {
+          "kind": "enum",
+          "name": "EditPolicy",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 179
+        },
+        {
+          "kind": "enum",
+          "name": "PermissionCommand",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 215
+        },
+        {
+          "kind": "struct",
+          "name": "PermissionConfig",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 286
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 293
+        },
+        {
+          "kind": "enum",
+          "name": "PromptPolicy",
+          "path": "crates/codegen/xai-grok-workspace/src/permission/types.rs",
+          "line": 303
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/permission/types.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+      "module": "preview_supervisor",
+      "kind": "production",
+      "lineCount": 1327,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "PREVIEW_PROXY_BIN_PATH",
+          "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "PREVIEW_PROXY_LOG_PATH",
+          "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+          "line": 39
+        },
+        {
+          "kind": "const",
+          "name": "PREVIEW_PROXY_HEALTHY_RUN_SECS",
+          "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+          "line": 43
+        },
+        {
+          "kind": "const",
+          "name": "PREVIEW_PROXY_RESTART_BACKOFF_BASE_SECS",
+          "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+          "line": 46
+        },
+        {
+          "kind": "const",
+          "name": "PREVIEW_PROXY_RESTART_BACKOFF_CAP_SECS",
+          "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+          "line": 50
+        },
+        {
+          "kind": "enum",
+          "name": "PreviewVisibility",
+          "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+          "line": 89
+        },
+        {
+          "kind": "struct",
+          "name": "PreviewArgs",
+          "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "to_argv",
+          "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+          "line": 134
+        },
+        {
+          "kind": "fn",
+          "name": "supervise_preview",
+          "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+          "line": 283
+        },
+        {
+          "kind": "fn",
+          "name": "supervise_preview_activity",
+          "path": "crates/codegen/xai-grok-workspace/src/preview_supervisor.rs",
+          "line": 465
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/preview_supervisor.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/project_config.rs",
+      "module": "project_config",
+      "kind": "production",
+      "lineCount": 116,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MCP_JSON_FILENAME",
+          "path": "crates/codegen/xai-grok-workspace/src/project_config.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_json_candidate_paths",
+          "path": "crates/codegen/xai-grok-workspace/src/project_config.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "find_mcp_json_files",
+          "path": "crates/codegen/xai-grok-workspace/src/project_config.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "find_mcp_json_files_in",
+          "path": "crates/codegen/xai-grok-workspace/src/project_config.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "find_project_configs",
+          "path": "crates/codegen/xai-grok-workspace/src/project_config.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "find_project_configs_in",
+          "path": "crates/codegen/xai-grok-workspace/src/project_config.rs",
+          "line": 75
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/project_config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/recovery.rs",
+      "module": "recovery",
+      "kind": "production",
+      "lineCount": 887,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "init_metrics",
+          "path": "crates/codegen/xai-grok-workspace/src/recovery.rs",
+          "line": 53
+        },
+        {
+          "kind": "struct",
+          "name": "RecoveryReport",
+          "path": "crates/codegen/xai-grok-workspace/src/recovery.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "run_startup_recovery",
+          "path": "crates/codegen/xai-grok-workspace/src/recovery.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "purge_spilled_items",
+          "path": "crates/codegen/xai-grok-workspace/src/recovery.rs",
+          "line": 354
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SESSION_MAX_AGE",
+          "path": "crates/codegen/xai-grok-workspace/src/recovery.rs",
+          "line": 378
+        },
+        {
+          "kind": "fn",
+          "name": "cleanup_stale_sessions",
+          "path": "crates/codegen/xai-grok-workspace/src/recovery.rs",
+          "line": 389
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/recovery.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/rpc_envelope.rs",
+      "module": "rpc_envelope",
+      "kind": "production",
+      "lineCount": 230,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "envelope_err",
+          "path": "crates/codegen/xai-grok-workspace/src/rpc_envelope.rs",
+          "line": 12
+        },
+        {
+          "kind": "fn",
+          "name": "error_code",
+          "path": "crates/codegen/xai-grok-workspace/src/rpc_envelope.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "rpc_error_to_workspace",
+          "path": "crates/codegen/xai-grok-workspace/src/rpc_envelope.rs",
+          "line": 60
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/rpc_envelope.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint_store.rs",
+      "module": "session::checkpoint_store",
+      "kind": "production",
+      "lineCount": 726,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CheckpointStore",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint_store.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint_store.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "with_cap",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint_store.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "persist",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint_store.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_from",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint_store.rs",
+          "line": 165
+        },
+        {
+          "kind": "fn",
+          "name": "dir",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint_store.rs",
+          "line": 421
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint_store.rs",
+          "line": 428
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/session/checkpoint_store.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+      "module": "session::checkpoint",
+      "kind": "production",
+      "lineCount": 1050,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "TurnBoundary",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "turn_start",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "turn_end",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "rewind_begin",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "rewind_finalize",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 73
+        },
+        {
+          "kind": "struct",
+          "name": "RewindCheckpoint",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "rewind_hunks_enabled",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "rewind_durable_enabled",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "capture_hunk_delta",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 115
+        },
+        {
+          "kind": "fn",
+          "name": "restore_hunk_checkpoints",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 152
+        },
+        {
+          "kind": "fn",
+          "name": "get_checkpoint",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 194
+        },
+        {
+          "kind": "fn",
+          "name": "persist_checkpoint",
+          "path": "crates/codegen/xai-grok-workspace/src/session/checkpoint.rs",
+          "line": 215
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/session/checkpoint.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+      "module": "session::file_state",
+      "kind": "production",
+      "lineCount": 1814,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ToolContext",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "new_local_context",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 29
+        },
+        {
+          "kind": "enum",
+          "name": "FlexiblePath",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "from_rel",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "as_path",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "to_absolute",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 73
+        },
+        {
+          "kind": "fn",
+          "name": "try_to_relative",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 84
+        },
+        {
+          "kind": "fn",
+          "name": "is_relative",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "serialize",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 154
+        },
+        {
+          "kind": "fn",
+          "name": "deserialize",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 161
+        },
+        {
+          "kind": "fn",
+          "name": "serialize",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 179
+        },
+        {
+          "kind": "fn",
+          "name": "deserialize",
+          "path": "crates/codegen/xai-grok-workspace/src/session/file_state.rs",
+          "line": 194
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/session/file_state.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+      "module": "session::git",
+      "kind": "production",
+      "lineCount": 4154,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ERROR_CODE_DIFF_SIZE_EXCEEDED",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 17
+        },
+        {
+          "kind": "struct",
+          "name": "DiffSizeExceededError",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "message",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 24
+        },
+        {
+          "kind": "struct",
+          "name": "DiffSizeExceededFile",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "GIT_STATUS_CACHE_TTL",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "git_cli",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "jj_cli",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 111
+        },
+        {
+          "kind": "fn",
+          "name": "jj_cli_mut",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 118
+        },
+        {
+          "kind": "fn",
+          "name": "detect_vcs_kind",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 165
+        },
+        {
+          "kind": "enum",
+          "name": "GitDiscoveryResult",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 174
+        },
+        {
+          "kind": "fn",
+          "name": "discover_git_root",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 191
+        },
+        {
+          "kind": "fn",
+          "name": "strip_url_credentials",
+          "path": "crates/codegen/xai-grok-workspace/src/session/git.rs",
+          "line": 215
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/session/git.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/session/jj.rs",
+      "module": "session::jj",
+      "kind": "production",
+      "lineCount": 228,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "info",
+          "path": "crates/codegen/xai-grok-workspace/src/session/jj.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "status",
+          "path": "crates/codegen/xai-grok-workspace/src/session/jj.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "current_commit",
+          "path": "crates/codegen/xai-grok-workspace/src/session/jj.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "commit",
+          "path": "crates/codegen/xai-grok-workspace/src/session/jj.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "discard",
+          "path": "crates/codegen/xai-grok-workspace/src/session/jj.rs",
+          "line": 173
+        },
+        {
+          "kind": "fn",
+          "name": "list_bookmarks",
+          "path": "crates/codegen/xai-grok-workspace/src/session/jj.rs",
+          "line": 189
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/session/jj.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+      "module": "session::mod",
+      "kind": "production",
+      "lineCount": 1007,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ExtMethodError",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "with_data",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 34
+        },
+        {
+          "kind": "struct",
+          "name": "ExtMethodResult",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 43
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceSession",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "system_notifications",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 208
+        },
+        {
+          "kind": "fn",
+          "name": "system_notify_handle",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 213
+        },
+        {
+          "kind": "fn",
+          "name": "take_pending_notif_rx",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 219
+        },
+        {
+          "kind": "fn",
+          "name": "set_system_notify_forwarder",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 226
+        },
+        {
+          "kind": "fn",
+          "name": "abort_system_notify_forwarder",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 236
+        },
+        {
+          "kind": "fn",
+          "name": "session_id",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 246
+        },
+        {
+          "kind": "fn",
+          "name": "cwd",
+          "path": "crates/codegen/xai-grok-workspace/src/session/mod.rs",
+          "line": 249
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/session/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+      "module": "session::swap_policy",
+      "kind": "production",
+      "lineCount": 780,
+      "symbols": [
+        {
+          "kind": "static",
+          "name": "WORKSPACE_TOOLSET_SWAP_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 13
+        },
+        {
+          "kind": "static",
+          "name": "WORKSPACE_TOOLSET_SWAP_REJECTED_TOTAL",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "init_metrics",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "record_toolset_swap",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 87
+        },
+        {
+          "kind": "enum",
+          "name": "SwapTrigger",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "from_rebuild_source",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 118
+        },
+        {
+          "kind": "fn",
+          "name": "metric_label",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 129
+        },
+        {
+          "kind": "fn",
+          "name": "rechecks_after_resolve",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 142
+        },
+        {
+          "kind": "enum",
+          "name": "SkipReason",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 149
+        },
+        {
+          "kind": "enum",
+          "name": "DeferReason",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 157
+        },
+        {
+          "kind": "fn",
+          "name": "metric_reason",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 172
+        },
+        {
+          "kind": "enum",
+          "name": "SwapDecision",
+          "path": "crates/codegen/xai-grok-workspace/src/session/swap_policy.rs",
+          "line": 184
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/session/swap_policy.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+      "module": "session::tool_config",
+      "kind": "production",
+      "lineCount": 1206,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "resolve_session_toolset",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_session_toolset_rebuild",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "merge_and_filter",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 168
+        },
+        {
+          "kind": "type",
+          "name": "NoopSessionContextFactory",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 252
+        },
+        {
+          "kind": "fn",
+          "name": "tool_state_enabled",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 256
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceSessionContextFactory",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 321
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 335
+        },
+        {
+          "kind": "fn",
+          "name": "with_auth",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 343
+        },
+        {
+          "kind": "fn",
+          "name": "with_tool_state_home",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 353
+        },
+        {
+          "kind": "struct",
+          "name": "TestSessionContextFactory",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 540
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 549
+        },
+        {
+          "kind": "fn",
+          "name": "tc",
+          "path": "crates/codegen/xai-grok-workspace/src/session/tool_config.rs",
+          "line": 600
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/session/tool_config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/status_config.rs",
+      "module": "status_config",
+      "kind": "production",
+      "lineCount": 629,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "StatusConfig",
+          "path": "crates/codegen/xai-grok-workspace/src/status_config.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "from_env",
+          "path": "crates/codegen/xai-grok-workspace/src/status_config.rs",
+          "line": 116
+        },
+        {
+          "kind": "fn",
+          "name": "agent_timeouts_from_env",
+          "path": "crates/codegen/xai-grok-workspace/src/status_config.rs",
+          "line": 167
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/status_config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/telemetry.rs",
+      "module": "telemetry",
+      "kind": "production",
+      "lineCount": 33,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TELEMETRY_TARGET",
+          "path": "crates/codegen/xai-grok-workspace/src/telemetry.rs",
+          "line": 18
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/telemetry.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+      "module": "trust",
+      "kind": "production",
+      "lineCount": 1564,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TRUST_FILE_NAME",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "FolderTrust",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 42
+        },
+        {
+          "kind": "struct",
+          "name": "TrustStore",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "load",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "load_from",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "default_path",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 111
+        },
+        {
+          "kind": "fn",
+          "name": "is_trusted",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 142
+        },
+        {
+          "kind": "fn",
+          "name": "set_trusted",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 185
+        },
+        {
+          "kind": "fn",
+          "name": "set_untrusted",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 197
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 202
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 207
+        },
+        {
+          "kind": "fn",
+          "name": "has_decision",
+          "path": "crates/codegen/xai-grok-workspace/src/trust.rs",
+          "line": 214
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/trust.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+      "module": "upload::environment",
+      "kind": "production",
+      "lineCount": 443,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SCHEMA_VERSION",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "PRINCIPAL_TYPE_TEAM",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 18
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceIdentity",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "team",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "is_team",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "team_id",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "user_id_opt",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 80
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceEnvironment",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 105
+        },
+        {
+          "kind": "fn",
+          "name": "capture",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 146
+        },
+        {
+          "kind": "fn",
+          "name": "to_json_bytes",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/environment.rs",
+          "line": 206
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/upload/environment.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+      "module": "upload::mod",
+      "kind": "production",
+      "lineCount": 646,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "record_upload_outcome",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "record_upload_failed",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "record_upload_skipped",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "init_metrics",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_queue_stats_sampler",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+          "line": 107
+        },
+        {
+          "kind": "struct",
+          "name": "ProxyStorageConfig",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+          "line": 185
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+          "line": 190
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceTraceExportSource",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+          "line": 229
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+          "line": 233
+        },
+        {
+          "kind": "fn",
+          "name": "upload_tool_state_queued",
+          "path": "crates/codegen/xai-grok-workspace/src/upload/mod.rs",
+          "line": 266
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/upload/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/util/mod.rs",
+      "module": "util::mod",
+      "kind": "production",
+      "lineCount": 33,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_lock_contended",
+          "path": "crates/codegen/xai-grok-workspace/src/util/mod.rs",
+          "line": 8
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/util/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/util/ripgrep.rs",
+      "module": "util::ripgrep",
+      "kind": "production",
+      "lineCount": 52,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "rg_path",
+          "path": "crates/codegen/xai-grok-workspace/src/util/ripgrep.rs",
+          "line": 37
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/util/ripgrep.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+      "module": "workspace_ops",
+      "kind": "production",
+      "lineCount": 2188,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "WorkspaceOp",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 87
+        },
+        {
+          "kind": "struct",
+          "name": "PrepareWorktreeFromWorktreeReq",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 98
+        },
+        {
+          "kind": "struct",
+          "name": "GetRewindPointsReq",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 103
+        },
+        {
+          "kind": "enum",
+          "name": "WorkspaceOps",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 1206
+        },
+        {
+          "kind": "fn",
+          "name": "local",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 1219
+        },
+        {
+          "kind": "fn",
+          "name": "proxy",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 1223
+        },
+        {
+          "kind": "fn",
+          "name": "proxy_with_connected",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 1231
+        },
+        {
+          "kind": "fn",
+          "name": "is_proxy",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 1237
+        },
+        {
+          "kind": "fn",
+          "name": "client",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 1241
+        },
+        {
+          "kind": "fn",
+          "name": "workspace_handle",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 1248
+        },
+        {
+          "kind": "fn",
+          "name": "bind_local_session",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 1269
+        },
+        {
+          "kind": "fn",
+          "name": "end_local_session",
+          "path": "crates/codegen/xai-grok-workspace/src/workspace_ops.rs",
+          "line": 1298
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/workspace_ops.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+      "module": "worktree::mod",
+      "kind": "production",
+      "lineCount": 3098,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "to_creation_mode",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "set_btrfs_delegate_factory",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "btrfs_delegate_from_env",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 80
+        },
+        {
+          "kind": "fn",
+          "name": "is_worktree_in_progress",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 103
+        },
+        {
+          "kind": "fn",
+          "name": "claim_worktree_in_progress",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "mark_worktree_complete",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 120
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_BG_PARALLELISM",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 130
+        },
+        {
+          "kind": "struct",
+          "name": "BackgroundCopyContext",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 143
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 149
+        },
+        {
+          "kind": "fn",
+          "name": "cancel",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 173
+        },
+        {
+          "kind": "struct",
+          "name": "BackgroundCopyGuard",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 194
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-workspace/src/worktree/mod.rs",
+          "line": 201
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-workspace/src/worktree/mod.rs"
+    }
+  ]
+}

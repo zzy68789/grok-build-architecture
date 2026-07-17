@@ -1,0 +1,37 @@
+---
+title: Build、Prod 与 Third-party 边界
+description: 区分代码生成、生产代理类型、第三方布局库与 73 个一方产品 crate。
+lastVerified: '2026-07-17'
+coverageKind: appendix
+sourceCrates: []
+sourcePaths:
+  - Cargo.toml
+  - crates/build/xai-proto-build/Cargo.toml
+  - prod/mc/cli-chat-proxy-types/Cargo.toml
+  - third_party/dagre_rust/Cargo.toml
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import SourceBaseline from '@components/SourceBaseline.astro';
+import SourceRef from '@components/SourceRef.astro';
+
+<SourceBaseline compact />
+
+## 为什么单独列出
+
+workspace 根清单除了 73 个 `codegen/common` 一方 crate，还包含 build helper、`prod` 目录和 vendored third-party crate。它们同样参与编译，但来源、发布对象和架构意义不同。把所有成员直接算成“Grok Build 产品模块”会造成错误结论。
+
+<SourceRef path="Cargo.toml" start={1} end={92} symbol="workspace members" note="完整 workspace 成员和分区" />
+<SourceRef path="crates/build/xai-proto-build/Cargo.toml" start={1} end={17} symbol="xai-proto-build" note="构建期 Protobuf 代码生成" />
+<SourceRef path="prod/mc/cli-chat-proxy-types/Cargo.toml" start={1} end={21} symbol="cli-chat-proxy-types" note="prod 目录中的代理共享类型" />
+<SourceRef path="third_party/dagre_rust/Cargo.toml" start={1} end={25} symbol="dagre_rust" note="vendored 第三方图布局实现" />
+
+## 分类规则
+
+- `crates/build` 在编译期生成代码，不属于用户请求运行时。
+- `prod` 表达单体仓库内的生产服务或共享类型；公开仓库并不证明对应服务的完整线上实现。
+- `third_party` 保存外部来源或移植代码，应以各自来源和许可说明为准。
+- `crates/codegen` 与 `crates/common` 构成本白皮书的 73 个一方 crate 主图谱。
+
+深度文章可以解释一方封装如何调用第三方布局或协议库，但不会把第三方算法改写成 xAI 的原创设计。源码摘录继续保留上游 Apache-2.0 和各第三方目录中的原始来源信息。

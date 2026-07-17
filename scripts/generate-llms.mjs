@@ -40,13 +40,19 @@ const base = (process.env.BASE_PATH ?? (owner && repository && !userSite ? `/${r
 const site = (process.env.SITE_URL ?? (owner ? `https://${owner}.github.io` : 'http://localhost:4321')).replace(/\/$/, '');
 
 const articles = [];
-for (const file of (await walk(docsRoot)).filter((item) => item.endsWith('.mdx') && !['index.mdx', '404.mdx'].includes(path.basename(item)))) {
+for (const file of (await walk(docsRoot)).filter((item) => {
+  if (!item.endsWith('.mdx')) return false;
+  const relative = path.relative(docsRoot, item).replaceAll('\\', '/');
+  return relative !== 'index.mdx' && relative !== '404.mdx';
+})) {
   const source = await readFile(file, 'utf8');
   const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
   const slug = path.relative(docsRoot, file).replaceAll('\\', '/').replace(/\.mdx$/, '');
   articles.push({
     title: scalar(frontmatter, 'title'),
     description: scalar(frontmatter, 'description'),
+    coverageKind: scalar(frontmatter, 'coverageKind'),
+    sourceCrates: list(frontmatter, 'sourceCrates'),
     sourcePaths: list(frontmatter, 'sourcePaths'),
     officialDocs: list(frontmatter, 'officialDocs'),
     url: `${site}${base}/${slug}/`,
@@ -72,6 +78,8 @@ const lines = [
 
 for (const article of articles) {
   lines.push(`- [${article.title}](${article.url}): ${article.description}`);
+  if (article.coverageKind) lines.push(`  Coverage: ${article.coverageKind}`);
+  if (article.sourceCrates.length) lines.push(`  Source crates: ${article.sourceCrates.join(', ')}`);
   if (article.sourcePaths.length) lines.push(`  Source paths: ${article.sourcePaths.join(', ')}`);
   if (article.officialDocs.length) lines.push(`  Official docs: ${article.officialDocs.join(', ')}`);
 }

@@ -1,0 +1,27 @@
+---
+title: "Event Loop 与副作用调度"
+description: "追踪终端事件、网络事件、计时器和后台结果如何进入统一循环。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-grok-pager
+  - xai-ratatui-inline
+  - xai-tty-utils
+sourcePaths:
+  - crates/codegen/xai-tty-utils/src/lib.rs
+  - crates/codegen/xai-grok-pager/src/lib.rs
+  - crates/codegen/xai-ratatui-inline/src/lib.rs
+  - crates/codegen/xai-grok-pager/src/app/app_view.rs
+  - crates/codegen/xai-grok-pager/src/views/dashboard/state.rs
+  - crates/codegen/xai-grok-pager/src/views/dashboard/render.rs
+  - crates/codegen/xai-grok-pager/src/views/extensions_modal.rs
+  - crates/codegen/xai-grok-pager/src/acp/tracker.rs
+  - crates/codegen/xai-grok-pager/src/scrollback/render.rs
+  - crates/codegen/xai-grok-pager/src/app/agent_view/render.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="tui/event-loop-effects" />

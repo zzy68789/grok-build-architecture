@@ -1,0 +1,1319 @@
+{
+  "name": "xai-grok-compaction",
+  "memberPath": "crates/common/xai-grok-compaction",
+  "manifestPath": "crates/common/xai-grok-compaction/Cargo.toml",
+  "description": "Shared, transport-agnostic compaction engine for Grok chat and Grok Build.",
+  "role": "实现与传输无关的上下文压缩、摘要提交和失败回退。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "context/compaction-and-token-budget",
+  "relatedArticles": [
+    "context/compaction-and-token-budget"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-chat-state",
+    "xai-grok-sampling-types",
+    "xai-grok-shell"
+  ],
+  "fileCount": 33,
+  "productionFileCount": 33,
+  "lineCount": 6823,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-grok-compaction/src/lib.rs",
+      "lineCount": 84,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+      "lineCount": 1551,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "apply_intra_compaction",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "apply_steps_compaction",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "apply_history_compaction",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+          "line": 174
+        },
+        {
+          "kind": "fn",
+          "name": "apply_full_replace_compaction",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+          "line": 208
+        },
+        {
+          "kind": "fn",
+          "name": "error_status_label",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+          "line": 699
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+      "lineCount": 640,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "filter_turns_for_basic",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "keep_turn_for_basic_compaction",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "filter_turns_for_inter_compaction",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "split_prior_compaction_text",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 90
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_middle",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 149
+        },
+        {
+          "kind": "fn",
+          "name": "extract_user_queries_from_turns",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 169
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+      "lineCount": 609,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "FullReplaceContext",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 34
+        },
+        {
+          "kind": "enum",
+          "name": "FullReplaceError",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 55
+        },
+        {
+          "kind": "struct",
+          "name": "FullReplaceOutput",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 88
+        },
+        {
+          "kind": "struct",
+          "name": "FullReplaceSummary",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "apply_full_replace_compaction",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "sample_full_replace_summary",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 179
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+      "lineCount": 520,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SubagentToolNames",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 27
+        },
+        {
+          "kind": "enum",
+          "name": "TodoStatus",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "is_actionable",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "tag",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 46
+        },
+        {
+          "kind": "struct",
+          "name": "TodoItem",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 57
+        },
+        {
+          "kind": "struct",
+          "name": "BackgroundTask",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 65
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+      "lineCount": 367,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "IntraCompactionMode",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+          "line": 21
+        },
+        {
+          "kind": "enum",
+          "name": "IntraSummarizer",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+          "line": 34
+        },
+        {
+          "kind": "struct",
+          "name": "IntraCompactionConfig",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+          "line": 84
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_COMPACTION_MODEL_NAME",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+          "line": 208
+        },
+        {
+          "kind": "fn",
+          "name": "effective_compaction_model_name",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+          "line": 212
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+      "lineCount": 353,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SampledSummary",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+          "line": 40
+        },
+        {
+          "kind": "enum",
+          "name": "SampleRetryError",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "sample_summary_with_retries",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+          "line": 80
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/select.rs",
+      "lineCount": 280,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SplitPlan",
+          "path": "crates/common/xai-grok-compaction/src/select.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "select_turns_to_compact",
+          "path": "crates/common/xai-grok-compaction/src/select.rs",
+          "line": 60
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "CompactedHistoryParts",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/assemble.rs",
+      "line": 27
+    },
+    {
+      "kind": "fn",
+      "name": "assemble_compacted_history",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/assemble.rs",
+      "line": 62
+    },
+    {
+      "kind": "enum",
+      "name": "MockItem",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/assemble.rs",
+      "line": 110
+    },
+    {
+      "kind": "struct",
+      "name": "FullReplaceContext",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+      "line": 34
+    },
+    {
+      "kind": "enum",
+      "name": "FullReplaceError",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+      "line": 55
+    },
+    {
+      "kind": "struct",
+      "name": "FullReplaceOutput",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+      "line": 88
+    },
+    {
+      "kind": "struct",
+      "name": "FullReplaceSummary",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+      "line": 107
+    },
+    {
+      "kind": "fn",
+      "name": "apply_full_replace_compaction",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+      "line": 127
+    },
+    {
+      "kind": "fn",
+      "name": "sample_full_replace_summary",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+      "line": 179
+    },
+    {
+      "kind": "const",
+      "name": "DEFAULT_AUTO_COMPACT_THRESHOLD_PERCENT",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/config.rs",
+      "line": 13
+    },
+    {
+      "kind": "const",
+      "name": "MIN_SUMMARY_SEED_CHARS",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/config.rs",
+      "line": 20
+    },
+    {
+      "kind": "struct",
+      "name": "FullReplaceConfig",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/config.rs",
+      "line": 24
+    },
+    {
+      "kind": "enum",
+      "name": "FailureKind",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+      "line": 11
+    },
+    {
+      "kind": "fn",
+      "name": "is_deterministic",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+      "line": 21
+    },
+    {
+      "kind": "fn",
+      "name": "is_context_length_error",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+      "line": 29
+    },
+    {
+      "kind": "fn",
+      "name": "classify_http_status",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+      "line": 45
+    },
+    {
+      "kind": "fn",
+      "name": "classify_stream_event_error",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+      "line": 67
+    },
+    {
+      "kind": "enum",
+      "name": "FullReplaceAttemptOutcome",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/observer.rs",
+      "line": 23
+    },
+    {
+      "kind": "trait",
+      "name": "FullReplaceObserver",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/observer.rs",
+      "line": 60
+    },
+    {
+      "kind": "fn",
+      "name": "build_summary_prompt",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/prompt.rs",
+      "line": 15
+    },
+    {
+      "kind": "const",
+      "name": "SELF_SUMMARIZATION_PROMPT",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/prompt.rs",
+      "line": 34
+    },
+    {
+      "kind": "enum",
+      "name": "SummaryPromptKind",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/prompt.rs",
+      "line": 55
+    },
+    {
+      "kind": "fn",
+      "name": "build_summary_prompt_kind",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/prompt.rs",
+      "line": 70
+    },
+    {
+      "kind": "struct",
+      "name": "SampledSummary",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+      "line": 40
+    },
+    {
+      "kind": "enum",
+      "name": "SampleRetryError",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+      "line": 51
+    },
+    {
+      "kind": "fn",
+      "name": "sample_summary_with_retries",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+      "line": 80
+    },
+    {
+      "kind": "fn",
+      "name": "format_compact_summary",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/summary.rs",
+      "line": 19
+    },
+    {
+      "kind": "fn",
+      "name": "is_degenerate_summary",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/summary.rs",
+      "line": 123
+    },
+    {
+      "kind": "fn",
+      "name": "format_compact_summary_content",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/summary.rs",
+      "line": 130
+    },
+    {
+      "kind": "fn",
+      "name": "wrap_user_query",
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/summary.rs",
+      "line": 143
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/assemble.rs",
+      "module": "code_compaction::assemble",
+      "kind": "production",
+      "lineCount": 203,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CompactedHistoryParts",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/assemble.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "assemble_compacted_history",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/assemble.rs",
+          "line": 62
+        },
+        {
+          "kind": "enum",
+          "name": "MockItem",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/assemble.rs",
+          "line": 110
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/code_compaction/assemble.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+      "module": "code_compaction::compact",
+      "kind": "production",
+      "lineCount": 609,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "FullReplaceContext",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 34
+        },
+        {
+          "kind": "enum",
+          "name": "FullReplaceError",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 55
+        },
+        {
+          "kind": "struct",
+          "name": "FullReplaceOutput",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 88
+        },
+        {
+          "kind": "struct",
+          "name": "FullReplaceSummary",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "apply_full_replace_compaction",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "sample_full_replace_summary",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/compact.rs",
+          "line": 179
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/code_compaction/compact.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/config.rs",
+      "module": "code_compaction::config",
+      "kind": "production",
+      "lineCount": 42,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_AUTO_COMPACT_THRESHOLD_PERCENT",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/config.rs",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "MIN_SUMMARY_SEED_CHARS",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/config.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "FullReplaceConfig",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/config.rs",
+          "line": 24
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/code_compaction/config.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+      "module": "code_compaction::failure",
+      "kind": "production",
+      "lineCount": 198,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FailureKind",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "is_deterministic",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "is_context_length_error",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "classify_http_status",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "classify_stream_event_error",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/failure.rs",
+          "line": 67
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/code_compaction/failure.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/mod.rs",
+      "module": "code_compaction::mod",
+      "kind": "production",
+      "lineCount": 55,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/code_compaction/mod.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/observer.rs",
+      "module": "code_compaction::observer",
+      "kind": "production",
+      "lineCount": 74,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FullReplaceAttemptOutcome",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/observer.rs",
+          "line": 23
+        },
+        {
+          "kind": "trait",
+          "name": "FullReplaceObserver",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/observer.rs",
+          "line": 60
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/code_compaction/observer.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/prompt.rs",
+      "module": "code_compaction::prompt",
+      "kind": "production",
+      "lineCount": 142,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "build_summary_prompt",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/prompt.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "SELF_SUMMARIZATION_PROMPT",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/prompt.rs",
+          "line": 34
+        },
+        {
+          "kind": "enum",
+          "name": "SummaryPromptKind",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/prompt.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "build_summary_prompt_kind",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/prompt.rs",
+          "line": 70
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/code_compaction/prompt.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+      "module": "code_compaction::sample",
+      "kind": "production",
+      "lineCount": 353,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SampledSummary",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+          "line": 40
+        },
+        {
+          "kind": "enum",
+          "name": "SampleRetryError",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+          "line": 51
+        },
+        {
+          "kind": "fn",
+          "name": "sample_summary_with_retries",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/sample.rs",
+          "line": 80
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/code_compaction/sample.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/code_compaction/summary.rs",
+      "module": "code_compaction::summary",
+      "kind": "production",
+      "lineCount": 267,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "format_compact_summary",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/summary.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "is_degenerate_summary",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/summary.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "format_compact_summary_content",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/summary.rs",
+          "line": 130
+        },
+        {
+          "kind": "fn",
+          "name": "wrap_user_query",
+          "path": "crates/common/xai-grok-compaction/src/code_compaction/summary.rs",
+          "line": 143
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/code_compaction/summary.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+      "module": "history::filter",
+      "kind": "production",
+      "lineCount": 640,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "filter_turns_for_basic",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "keep_turn_for_basic_compaction",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "filter_turns_for_inter_compaction",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "split_prior_compaction_text",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 90
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_middle",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 149
+        },
+        {
+          "kind": "fn",
+          "name": "extract_user_queries_from_turns",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 169
+        },
+        {
+          "kind": "fn",
+          "name": "extract_prior_user_queries",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 233
+        },
+        {
+          "kind": "struct",
+          "name": "SeparatedHistoryTurns",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 239
+        },
+        {
+          "kind": "fn",
+          "name": "separate_prior_user_queries",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 273
+        },
+        {
+          "kind": "fn",
+          "name": "assemble_user_queries_preamble",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 322
+        },
+        {
+          "kind": "fn",
+          "name": "build_user_queries_preamble",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 343
+        },
+        {
+          "kind": "fn",
+          "name": "wrap_chunk_analysis",
+          "path": "crates/common/xai-grok-compaction/src/history/filter.rs",
+          "line": 354
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/history/filter.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/history/mod.rs",
+      "module": "history::mod",
+      "kind": "production",
+      "lineCount": 24,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/history/mod.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/history/prompt.rs",
+      "module": "history::prompt",
+      "kind": "production",
+      "lineCount": 43,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "format_compaction_developer_prompt",
+          "path": "crates/common/xai-grok-compaction/src/history/prompt.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "format_compaction_user_prompt",
+          "path": "crates/common/xai-grok-compaction/src/history/prompt.rs",
+          "line": 14
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/history/prompt.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/history/types.rs",
+      "module": "history::types",
+      "kind": "production",
+      "lineCount": 31,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "CompactionStrategy",
+          "path": "crates/common/xai-grok-compaction/src/history/types.rs",
+          "line": 8
+        },
+        {
+          "kind": "fn",
+          "name": "label",
+          "path": "crates/common/xai-grok-compaction/src/history/types.rs",
+          "line": 23
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/history/types.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/history/validate.rs",
+      "module": "history::validate",
+      "kind": "production",
+      "lineCount": 109,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "CompactionValidationError",
+          "path": "crates/common/xai-grok-compaction/src/history/validate.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "validate_compaction_text",
+          "path": "crates/common/xai-grok-compaction/src/history/validate.rs",
+          "line": 43
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/history/validate.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/inter_compaction/compact.rs",
+      "module": "inter_compaction::compact",
+      "kind": "production",
+      "lineCount": 273,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ChunkedCompactionOutput",
+          "path": "crates/common/xai-grok-compaction/src/inter_compaction/compact.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "sample_compaction_chunked",
+          "path": "crates/common/xai-grok-compaction/src/inter_compaction/compact.rs",
+          "line": 81
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/inter_compaction/compact.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/inter_compaction/config.rs",
+      "module": "inter_compaction::config",
+      "kind": "production",
+      "lineCount": 35,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "InterCompactionConfig",
+          "path": "crates/common/xai-grok-compaction/src/inter_compaction/config.rs",
+          "line": 16
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/inter_compaction/config.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/inter_compaction/mod.rs",
+      "module": "inter_compaction::mod",
+      "kind": "production",
+      "lineCount": 16,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/inter_compaction/mod.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/inter_compaction/observer.rs",
+      "module": "inter_compaction::observer",
+      "kind": "production",
+      "lineCount": 24,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "InterCompactionObserver",
+          "path": "crates/common/xai-grok-compaction/src/inter_compaction/observer.rs",
+          "line": 10
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/inter_compaction/observer.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+      "module": "intra_compaction::compact",
+      "kind": "production",
+      "lineCount": 1551,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "apply_intra_compaction",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "apply_steps_compaction",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+          "line": 145
+        },
+        {
+          "kind": "fn",
+          "name": "apply_history_compaction",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+          "line": 174
+        },
+        {
+          "kind": "fn",
+          "name": "apply_full_replace_compaction",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+          "line": 208
+        },
+        {
+          "kind": "fn",
+          "name": "error_status_label",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/compact.rs",
+          "line": 699
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/intra_compaction/compact.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+      "module": "intra_compaction::config",
+      "kind": "production",
+      "lineCount": 367,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "IntraCompactionMode",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+          "line": 21
+        },
+        {
+          "kind": "enum",
+          "name": "IntraSummarizer",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+          "line": 34
+        },
+        {
+          "kind": "struct",
+          "name": "IntraCompactionConfig",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+          "line": 84
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_COMPACTION_MODEL_NAME",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+          "line": 208
+        },
+        {
+          "kind": "fn",
+          "name": "effective_compaction_model_name",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/config.rs",
+          "line": 212
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/intra_compaction/config.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/intra_compaction/mod.rs",
+      "module": "intra_compaction::mod",
+      "kind": "production",
+      "lineCount": 27,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/intra_compaction/mod.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/intra_compaction/observer.rs",
+      "module": "intra_compaction::observer",
+      "kind": "production",
+      "lineCount": 35,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "IntraCompactionObserver",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/observer.rs",
+          "line": 15
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/intra_compaction/observer.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/intra_compaction/traits.rs",
+      "module": "intra_compaction::traits",
+      "kind": "production",
+      "lineCount": 117,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "CompactionTarget",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/traits.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "label",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/traits.rs",
+          "line": 30
+        },
+        {
+          "kind": "trait",
+          "name": "CompactionStreamProc",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/traits.rs",
+          "line": 64
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/intra_compaction/traits.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/intra_compaction/trigger.rs",
+      "module": "intra_compaction::trigger",
+      "kind": "production",
+      "lineCount": 248,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "IntraCompactionTrigger",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/trigger.rs",
+          "line": 15
+        },
+        {
+          "kind": "struct",
+          "name": "IntraCompactionResult",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/trigger.rs",
+          "line": 29
+        },
+        {
+          "kind": "enum",
+          "name": "IntraCompactionError",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/trigger.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "should_compact",
+          "path": "crates/common/xai-grok-compaction/src/intra_compaction/trigger.rs",
+          "line": 117
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/intra_compaction/trigger.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/item.rs",
+      "module": "item",
+      "kind": "production",
+      "lineCount": 184,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "CompactionRole",
+          "path": "crates/common/xai-grok-compaction/src/item.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "CompactionFileRef",
+          "path": "crates/common/xai-grok-compaction/src/item.rs",
+          "line": 43
+        },
+        {
+          "kind": "trait",
+          "name": "CompactionItem",
+          "path": "crates/common/xai-grok-compaction/src/item.rs",
+          "line": 56
+        },
+        {
+          "kind": "trait",
+          "name": "CompactionItemBuilder",
+          "path": "crates/common/xai-grok-compaction/src/item.rs",
+          "line": 104
+        },
+        {
+          "kind": "trait",
+          "name": "CompactionItemFactory",
+          "path": "crates/common/xai-grok-compaction/src/item.rs",
+          "line": 137
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/item.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 84,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/lib.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/prompt.rs",
+      "module": "prompt",
+      "kind": "production",
+      "lineCount": 17,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CompactionPrompt",
+          "path": "crates/common/xai-grok-compaction/src/prompt.rs",
+          "line": 13
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/prompt.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+      "module": "reminder",
+      "kind": "production",
+      "lineCount": 520,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SubagentToolNames",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 27
+        },
+        {
+          "kind": "enum",
+          "name": "TodoStatus",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "is_actionable",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "tag",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 46
+        },
+        {
+          "kind": "struct",
+          "name": "TodoItem",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 57
+        },
+        {
+          "kind": "struct",
+          "name": "BackgroundTask",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 65
+        },
+        {
+          "kind": "struct",
+          "name": "RunningSubagent",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 78
+        },
+        {
+          "kind": "struct",
+          "name": "ActiveAgentReminderState",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 94
+        },
+        {
+          "kind": "fn",
+          "name": "has_actionable_todos",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "section_background_tasks",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 110
+        },
+        {
+          "kind": "fn",
+          "name": "section_todo_list",
+          "path": "crates/common/xai-grok-compaction/src/reminder.rs",
+          "line": 133
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/reminder.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/sampler.rs",
+      "module": "sampler",
+      "kind": "production",
+      "lineCount": 185,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LlmCompactionOutput",
+          "path": "crates/common/xai-grok-compaction/src/sampler.rs",
+          "line": 19
+        },
+        {
+          "kind": "enum",
+          "name": "CompactionSampleError",
+          "path": "crates/common/xai-grok-compaction/src/sampler.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "is_deterministic",
+          "path": "crates/common/xai-grok-compaction/src/sampler.rs",
+          "line": 93
+        },
+        {
+          "kind": "trait",
+          "name": "CompactionSampler",
+          "path": "crates/common/xai-grok-compaction/src/sampler.rs",
+          "line": 120
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/sampler.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/select.rs",
+      "module": "select",
+      "kind": "production",
+      "lineCount": 280,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SplitPlan",
+          "path": "crates/common/xai-grok-compaction/src/select.rs",
+          "line": 20
+        },
+        {
+          "kind": "fn",
+          "name": "select_turns_to_compact",
+          "path": "crates/common/xai-grok-compaction/src/select.rs",
+          "line": 60
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/select.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/steps/mod.rs",
+      "module": "steps::mod",
+      "kind": "production",
+      "lineCount": 13,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/steps/mod.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/steps/prompt.rs",
+      "module": "steps::prompt",
+      "kind": "production",
+      "lineCount": 32,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "format_compaction_prompt",
+          "path": "crates/common/xai-grok-compaction/src/steps/prompt.rs",
+          "line": 14
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/steps/prompt.rs"
+    },
+    {
+      "path": "crates/common/xai-grok-compaction/src/token.rs",
+      "module": "token",
+      "kind": "production",
+      "lineCount": 25,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "ItemTokenCounter",
+          "path": "crates/common/xai-grok-compaction/src/token.rs",
+          "line": 21
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-grok-compaction/src/token.rs"
+    }
+  ]
+}

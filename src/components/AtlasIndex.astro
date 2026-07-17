@@ -1,0 +1,57 @@
+---
+import atlas from '@data/source-atlas/index.json';
+interface Props { baseHref?: string }
+const { baseHref = './crates' } = Astro.props;
+const fmt = new Intl.NumberFormat('zh-CN');
+---
+
+<div class="article-metrics atlas-summary">
+  <div><strong>{atlas.crateCount}</strong><span>一方 crate</span></div>
+  <div><strong>{fmt.format(atlas.productionFileCount)}</strong><span>生产 Rust 文件</span></div>
+  <div><strong>{fmt.format(atlas.rustFileCount)}</strong><span>Rust 文件总数</span></div>
+  <div><strong>{fmt.format(atlas.lineCount)}</strong><span>生产代码行</span></div>
+</div>
+
+<div class="atlas-controls" data-atlas-controls>
+  <label>搜索 crate、职责或入口<input type="search" placeholder="例如 sampler、沙箱、workspace" data-atlas-query /></label>
+  <label>架构层<select data-atlas-layer><option value="">全部架构层</option>{atlas.layers.map((layer) => <option value={layer}>{layer}</option>)}</select></label>
+  <span aria-live="polite" data-atlas-count>{atlas.crateCount} 个 crate</span>
+</div>
+
+<div class="atlas-grid" data-atlas-grid>
+  {atlas.crates.map((crate) => (
+    <a class="atlas-card" href={`${baseHref}/${crate.name}/`} data-layer={crate.layer} data-search={`${crate.name} ${crate.role} ${crate.keyEntrypoints.map((entry) => entry.path).join(' ')}`.toLowerCase()}>
+      <span>{crate.layer}</span>
+      <h3>{crate.name}</h3>
+      <p>{crate.role}</p>
+      <footer><span>{crate.productionFileCount} 文件</span><span>{fmt.format(crate.lineCount)} 行</span><span>{crate.dependencies.length} 依赖</span></footer>
+    </a>
+  ))}
+</div>
+
+<script>
+  function initAtlas() {
+    const root = document.querySelector<HTMLElement>('[data-atlas-controls]');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = 'true';
+    const query = root.querySelector<HTMLInputElement>('[data-atlas-query]');
+    const layer = root.querySelector<HTMLSelectElement>('[data-atlas-layer]');
+    const count = root.querySelector<HTMLElement>('[data-atlas-count]');
+    const cards = [...document.querySelectorAll<HTMLElement>('[data-atlas-grid] .atlas-card')];
+    const apply = () => {
+      const needle = query?.value.trim().toLowerCase() ?? '';
+      const selected = layer?.value ?? '';
+      let visible = 0;
+      cards.forEach((card) => {
+        const show = (!needle || card.dataset.search?.includes(needle)) && (!selected || card.dataset.layer === selected);
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (count) count.textContent = `${visible} 个 crate`;
+    };
+    query?.addEventListener('input', apply);
+    layer?.addEventListener('change', apply);
+  }
+  initAtlas();
+  document.addEventListener('astro:page-load', initAtlas);
+</script>

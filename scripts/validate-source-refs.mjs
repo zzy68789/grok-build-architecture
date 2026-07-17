@@ -1,13 +1,12 @@
 import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
+import atlas from '../src/data/source-atlas/index.json' with { type: 'json' };
 
 const projectRoot = process.cwd();
 const docsRoot = path.join(projectRoot, 'src', 'content', 'docs');
-const sourceRoot = path.resolve(
-  process.env.GROK_BUILD_SOURCE_DIR
-    ?? (process.env.CI ? path.join(projectRoot, '.cache', 'grok-build') : 'D:\\Code\\Grok-build\\grok-build'),
-);
+const sourceRoot = path.resolve(process.env.GROK_BUILD_SOURCE_DIR
+  ?? (process.env.CI ? path.join(projectRoot, '.cache', 'grok-build') : 'D:\\Code\\Grok-build\\grok-build'));
 
 async function walk(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -19,11 +18,14 @@ async function walk(directory) {
 }
 
 function frontmatterOf(source) {
-  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  return match?.[1] ?? '';
+  return source.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
 }
 
-function listFromFrontmatter(frontmatter, field) {
+function scalar(frontmatter, field) {
+  return frontmatter.match(new RegExp(`^${field}:\\s*(.+)$`, 'm'))?.[1]?.replace(/^['"]|['"]$/g, '') ?? '';
+}
+
+function list(frontmatter, field) {
   const lines = frontmatter.split(/\r?\n/);
   const start = lines.findIndex((line) => line === `${field}:`);
   if (start < 0) return [];
@@ -36,91 +38,73 @@ function listFromFrontmatter(frontmatter, field) {
   return values;
 }
 
-function sourceRefsFrom(source) {
-  return [...source.matchAll(/<SourceRef\s+([\s\S]*?)\s*\/>/g)].map((match) => {
-    const attributes = match[1];
-    return {
-      path: attributes.match(/\bpath="([^"]+)"/)?.[1],
-      start: Number(attributes.match(/\bstart=\{(\d+)\}/)?.[1]),
-      end: Number(attributes.match(/\bend=\{(\d+)\}/)?.[1] ?? 0),
-    };
-  });
+function literalRefs(source) {
+  return [...source.matchAll(/<SourceRef\s+([\s\S]*?)\s*\/>/g)].map((match) => ({
+    path: match[1].match(/\bpath="([^"]+)"/)?.[1],
+    start: Number(match[1].match(/\bstart=\{(\d+)\}/)?.[1]),
+    end: Number(match[1].match(/\bend=\{(\d+)\}/)?.[1] ?? 0),
+  }));
 }
 
 const failures = [];
-
-try {
-  await access(sourceRoot);
-} catch {
+try { await access(sourceRoot); } catch {
   console.error(`Source checkout not found: ${sourceRoot}`);
-  console.error('Set GROK_BUILD_SOURCE_DIR to the read-only Grok Build checkout.');
   process.exit(1);
 }
 
-const files = (await walk(docsRoot))
-  .filter((file) => file.endsWith('.mdx') && !['index.mdx', '404.mdx'].includes(path.basename(file)))
-  .sort();
-
-if (files.length !== 15) {
-  failures.push(`Expected 15 architecture articles, found ${files.length}.`);
-}
-
-let referenceCount = 0;
+const crateNames = new Set(atlas.crates.map((item) => item.name));
+const files = (await walk(docsRoot)).filter((file) => file.endsWith('.mdx')).sort();
+let validatedPaths = 0;
+let validatedRanges = 0;
 
 for (const file of files) {
   const relativeArticle = path.relative(projectRoot, file);
   const source = await readFile(file, 'utf8');
   const frontmatter = frontmatterOf(source);
-
-  for (const field of ['title', 'description', 'lastVerified', 'sourcePaths', 'officialDocs']) {
-    if (!new RegExp(`^${field}:`, 'm').test(frontmatter)) {
-      failures.push(`${relativeArticle}: missing frontmatter field ${field}.`);
-    }
+  for (const field of ['title', 'description', 'lastVerified', 'coverageKind', 'sourceCrates', 'sourcePaths', 'officialDocs']) {
+    if (!new RegExp(`^${field}:`, 'm').test(frontmatter)) failures.push(`${relativeArticle}: missing frontmatter field ${field}.`);
   }
 
-  const declaredPaths = listFromFrontmatter(frontmatter, 'sourcePaths');
+  const kind = scalar(frontmatter, 'coverageKind');
+  const declaredPaths = list(frontmatter, 'sourcePaths');
+  const declaredCrates = list(frontmatter, 'sourceCrates');
+  for (const crateName of declaredCrates) if (!crateNames.has(crateName)) failures.push(`${relativeArticle}: unknown source crate ${crateName}.`);
+  if (kind === 'deep-dive' && declaredPaths.length < 5) failures.push(`${relativeArticle}: deep-dive needs at least 5 generated source entrypoints.`);
+  if (kind === 'overview' && declaredPaths.length < 2) failures.push(`${relativeArticle}: overview needs at least 2 source paths.`);
+
   for (const sourcePath of declaredPaths) {
-    try {
-      await access(path.join(sourceRoot, ...sourcePath.split('/')));
-    } catch {
-      failures.push(`${relativeArticle}: declared source path does not exist: ${sourcePath}.`);
-    }
+    try { await access(path.join(sourceRoot, ...sourcePath.split('/'))); validatedPaths += 1; }
+    catch { failures.push(`${relativeArticle}: source path does not exist: ${sourcePath}.`); }
   }
 
-  const references = sourceRefsFrom(source);
-  if (references.length < 2) {
-    failures.push(`${relativeArticle}: expected at least 2 SourceRef entries, found ${references.length}.`);
-  }
-
-  for (const reference of references) {
-    referenceCount += 1;
+  for (const reference of literalRefs(source)) {
     if (!reference.path || !Number.isInteger(reference.start) || reference.start < 1) {
       failures.push(`${relativeArticle}: malformed SourceRef.`);
       continue;
     }
-
-    const absoluteSource = path.join(sourceRoot, ...reference.path.split('/'));
     let upstream;
-    try {
-      upstream = await readFile(absoluteSource, 'utf8');
-    } catch {
-      failures.push(`${relativeArticle}: SourceRef file not found: ${reference.path}.`);
-      continue;
-    }
-
+    try { upstream = await readFile(path.join(sourceRoot, ...reference.path.split('/')), 'utf8'); }
+    catch { failures.push(`${relativeArticle}: SourceRef file not found: ${reference.path}.`); continue; }
     const lineCount = upstream.split(/\r?\n/).length;
     const lastLine = reference.end || reference.start;
-    if (lastLine < reference.start || lastLine > lineCount) {
-      failures.push(`${relativeArticle}: invalid range ${reference.path}:${reference.start}-${lastLine}; file has ${lineCount} lines.`);
-    }
+    if (lastLine < reference.start || lastLine > lineCount) failures.push(`${relativeArticle}: invalid range ${reference.path}:${reference.start}-${lastLine}; file has ${lineCount} lines.`);
+    else validatedRanges += 1;
+  }
+}
+
+for (const crate of atlas.crates) {
+  for (const entry of crate.keyEntrypoints) {
+    const symbol = entry.symbols[0];
+    if (symbol && (symbol.line < 1 || symbol.line > entry.lineCount)) failures.push(`${crate.name}: invalid generated symbol line ${symbol.path}:${symbol.line}.`);
+    else validatedRanges += 1;
   }
 }
 
 if (failures.length) {
   console.error(`Source validation failed with ${failures.length} issue(s):`);
-  failures.forEach((failure) => console.error(`- ${failure}`));
+  failures.slice(0, 50).forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
 
-console.log(`Validated ${referenceCount} SourceRef entries across ${files.length} articles.`);
+console.log(`Validated ${validatedPaths} declared source paths and ${validatedRanges} exact/generated ranges across ${files.length} documents.`);
 console.log(`Read-only source baseline: ${sourceRoot}`);

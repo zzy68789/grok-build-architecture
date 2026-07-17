@@ -1,0 +1,383 @@
+{
+  "name": "xai-test-utils",
+  "memberPath": "crates/common/xai-test-utils",
+  "manifestPath": "crates/common/xai-test-utils/Cargo.toml",
+  "description": "Shared test utilities: hermetic git, optional runfiles helpers",
+  "role": "集中提供密封测试环境、模拟服务和共享测试工具。",
+  "layer": "测试支持",
+  "primaryArticle": "introduction/workspace-and-crates",
+  "relatedArticles": [
+    "introduction/workspace-and-crates"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-fast-worktree",
+    "xai-file-utils",
+    "xai-gix-status",
+    "xai-grok-shell",
+    "xai-grok-tools",
+    "xai-grok-workspace",
+    "xai-hunk-tracker"
+  ],
+  "fileCount": 6,
+  "productionFileCount": 6,
+  "lineCount": 378,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-test-utils/src/lib.rs",
+      "lineCount": 26,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-test-utils/src/git.rs",
+      "lineCount": 177,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "ensure_hermetic_git_on_path",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "init_git_repo",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "git_commit_all",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "run_git",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "run_git_with_env",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 111
+        },
+        {
+          "kind": "fn",
+          "name": "write_fanout_tree",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 144
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+      "lineCount": 102,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MessagePrefixCounter",
+          "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "count",
+          "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "install_prefix_counter_thread",
+          "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "install_prefix_counter_global",
+          "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+          "line": 83
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-test-utils/src/runfiles_util.rs",
+      "lineCount": 47,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "try_resolve_runfiles",
+          "path": "crates/common/xai-test-utils/src/runfiles_util.rs",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-test-utils/src/image.rs",
+      "lineCount": 14,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "ico_with_png_frame",
+          "path": "crates/common/xai-test-utils/src/image.rs",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-test-utils/src/env.rs",
+      "lineCount": 12,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "env_usize",
+          "path": "crates/common/xai-test-utils/src/env.rs",
+          "line": 6
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "env_usize",
+      "path": "crates/common/xai-test-utils/src/env.rs",
+      "line": 6
+    },
+    {
+      "kind": "fn",
+      "name": "ensure_hermetic_git_on_path",
+      "path": "crates/common/xai-test-utils/src/git.rs",
+      "line": 19
+    },
+    {
+      "kind": "fn",
+      "name": "init_git_repo",
+      "path": "crates/common/xai-test-utils/src/git.rs",
+      "line": 59
+    },
+    {
+      "kind": "fn",
+      "name": "git_commit_all",
+      "path": "crates/common/xai-test-utils/src/git.rs",
+      "line": 83
+    },
+    {
+      "kind": "fn",
+      "name": "run_git",
+      "path": "crates/common/xai-test-utils/src/git.rs",
+      "line": 101
+    },
+    {
+      "kind": "fn",
+      "name": "run_git_with_env",
+      "path": "crates/common/xai-test-utils/src/git.rs",
+      "line": 111
+    },
+    {
+      "kind": "fn",
+      "name": "write_fanout_tree",
+      "path": "crates/common/xai-test-utils/src/git.rs",
+      "line": 144
+    },
+    {
+      "kind": "fn",
+      "name": "make_feature_branch",
+      "path": "crates/common/xai-test-utils/src/git.rs",
+      "line": 161
+    },
+    {
+      "kind": "fn",
+      "name": "ico_with_png_frame",
+      "path": "crates/common/xai-test-utils/src/image.rs",
+      "line": 5
+    },
+    {
+      "kind": "fn",
+      "name": "try_resolve_runfiles",
+      "path": "crates/common/xai-test-utils/src/runfiles_util.rs",
+      "line": 13
+    },
+    {
+      "kind": "struct",
+      "name": "MessagePrefixCounter",
+      "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+      "line": 26
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "count",
+      "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+      "line": 39
+    },
+    {
+      "kind": "fn",
+      "name": "install_prefix_counter_thread",
+      "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+      "line": 68
+    },
+    {
+      "kind": "fn",
+      "name": "install_prefix_counter_global",
+      "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+      "line": 83
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-test-utils/src/env.rs",
+      "module": "env",
+      "kind": "production",
+      "lineCount": 12,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "env_usize",
+          "path": "crates/common/xai-test-utils/src/env.rs",
+          "line": 6
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-test-utils/src/env.rs"
+    },
+    {
+      "path": "crates/common/xai-test-utils/src/git.rs",
+      "module": "git",
+      "kind": "production",
+      "lineCount": 177,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "ensure_hermetic_git_on_path",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "init_git_repo",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 59
+        },
+        {
+          "kind": "fn",
+          "name": "git_commit_all",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "run_git",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "run_git_with_env",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 111
+        },
+        {
+          "kind": "fn",
+          "name": "write_fanout_tree",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 144
+        },
+        {
+          "kind": "fn",
+          "name": "make_feature_branch",
+          "path": "crates/common/xai-test-utils/src/git.rs",
+          "line": 161
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-test-utils/src/git.rs"
+    },
+    {
+      "path": "crates/common/xai-test-utils/src/image.rs",
+      "module": "image",
+      "kind": "production",
+      "lineCount": 14,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "ico_with_png_frame",
+          "path": "crates/common/xai-test-utils/src/image.rs",
+          "line": 5
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-test-utils/src/image.rs"
+    },
+    {
+      "path": "crates/common/xai-test-utils/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 26,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-test-utils/src/lib.rs"
+    },
+    {
+      "path": "crates/common/xai-test-utils/src/runfiles_util.rs",
+      "module": "runfiles_util",
+      "kind": "production",
+      "lineCount": 47,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "try_resolve_runfiles",
+          "path": "crates/common/xai-test-utils/src/runfiles_util.rs",
+          "line": 13
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-test-utils/src/runfiles_util.rs"
+    },
+    {
+      "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+      "module": "tracing_capture",
+      "kind": "production",
+      "lineCount": 102,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "MessagePrefixCounter",
+          "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "count",
+          "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+          "line": 39
+        },
+        {
+          "kind": "fn",
+          "name": "install_prefix_counter_thread",
+          "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "install_prefix_counter_global",
+          "path": "crates/common/xai-test-utils/src/tracing_capture.rs",
+          "line": 83
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-test-utils/src/tracing_capture.rs"
+    }
+  ]
+}

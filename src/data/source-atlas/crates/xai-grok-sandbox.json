@@ -1,0 +1,985 @@
+{
+  "name": "xai-grok-sandbox",
+  "memberPath": "crates/codegen/xai-grok-sandbox",
+  "manifestPath": "crates/codegen/xai-grok-sandbox/Cargo.toml",
+  "description": "OS-level sandboxing for Grok Build using kernel primitives (Landlock/Seatbelt) via nono",
+  "role": "通过操作系统内核机制为工具执行建立最小能力沙箱。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "safety/permission-plan-sandbox",
+  "relatedArticles": [
+    "safety/permission-plan-sandbox"
+  ],
+  "dependencies": [
+    "xai-grok-config"
+  ],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-pager-bin",
+    "xai-grok-shell",
+    "xai-grok-tools",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 11,
+  "productionFileCount": 8,
+  "lineCount": 3160,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "lineCount": 734,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_inside_bwrap",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "trust_bwrap_marker_for_devbox",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "should_restrict_child_network",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "should_auto_allow_bash",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "set_auto_allow_bash",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "set_configured_profile",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 75
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+      "lineCount": 844,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_glob",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "partition_deny_entries",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "validate_deny_glob",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "apply_deny_globs_to_capability_set",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 260
+        },
+        {
+          "kind": "const",
+          "name": "DENY_GLOB_MAX_DEPTH",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 311
+        },
+        {
+          "kind": "const",
+          "name": "DENY_GLOB_MAX_MATCHES",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 313
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+      "lineCount": 761,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SandboxProfile",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "ProfileConfig",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "SandboxConfig",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 55
+        },
+        {
+          "kind": "enum",
+          "name": "ProfileName",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "restricts_network",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "restricts_network_resolved",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 77
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+      "lineCount": 310,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "apply_deny_paths_to_capability_set",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_deny_paths",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+          "line": 186
+        },
+        {
+          "kind": "fn",
+          "name": "effective_deny_paths",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+          "line": 201
+        },
+        {
+          "kind": "fn",
+          "name": "exact_deny_path_strings",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+          "line": 214
+        },
+        {
+          "kind": "fn",
+          "name": "deny_path_is_dir",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+          "line": 230
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+      "lineCount": 194,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SandboxEvent",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "profile_applied",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "apply_failed",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "fs_violation",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 134
+        },
+        {
+          "kind": "fn",
+          "name": "net_violation",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 142
+        },
+        {
+          "kind": "enum",
+          "name": "SandboxEventType",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 151
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/child_net.rs",
+      "lineCount": 112,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "install_child_network_filter",
+          "path": "crates/codegen/xai-grok-sandbox/src/child_net.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "install_child_network_filter",
+          "path": "crates/codegen/xai-grok-sandbox/src/child_net.rs",
+          "line": 109
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+      "lineCount": 106,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SandboxLogger",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "log",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "metrics",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "take_events",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "flush_to_disk",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+      "lineCount": 99,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "grok_home",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "DEVICE_FILES",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "DEVICE_DIRS",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "temp_writable_paths",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "essential_writable_paths",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "essential_writable_paths_minimal",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 94
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "fn",
+      "name": "install_child_network_filter",
+      "path": "crates/codegen/xai-grok-sandbox/src/child_net.rs",
+      "line": 9
+    },
+    {
+      "kind": "fn",
+      "name": "install_child_network_filter",
+      "path": "crates/codegen/xai-grok-sandbox/src/child_net.rs",
+      "line": 109
+    },
+    {
+      "kind": "fn",
+      "name": "is_glob",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+      "line": 22
+    },
+    {
+      "kind": "fn",
+      "name": "partition_deny_entries",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+      "line": 30
+    },
+    {
+      "kind": "fn",
+      "name": "validate_deny_glob",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+      "line": 81
+    },
+    {
+      "kind": "fn",
+      "name": "apply_deny_globs_to_capability_set",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+      "line": 260
+    },
+    {
+      "kind": "const",
+      "name": "DENY_GLOB_MAX_DEPTH",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+      "line": 311
+    },
+    {
+      "kind": "const",
+      "name": "DENY_GLOB_MAX_MATCHES",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+      "line": 313
+    },
+    {
+      "kind": "const",
+      "name": "DENY_GLOB_MAX_ENTRIES",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+      "line": 318
+    },
+    {
+      "kind": "fn",
+      "name": "expand_deny_globs",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+      "line": 348
+    },
+    {
+      "kind": "fn",
+      "name": "apply_deny_paths_to_capability_set",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+      "line": 121
+    },
+    {
+      "kind": "fn",
+      "name": "resolve_deny_paths",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+      "line": 186
+    },
+    {
+      "kind": "fn",
+      "name": "effective_deny_paths",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+      "line": 201
+    },
+    {
+      "kind": "fn",
+      "name": "exact_deny_path_strings",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+      "line": 214
+    },
+    {
+      "kind": "fn",
+      "name": "deny_path_is_dir",
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+      "line": 230
+    },
+    {
+      "kind": "fn",
+      "name": "is_inside_bwrap",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 52
+    },
+    {
+      "kind": "fn",
+      "name": "trust_bwrap_marker_for_devbox",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 55
+    },
+    {
+      "kind": "fn",
+      "name": "should_restrict_child_network",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 64
+    },
+    {
+      "kind": "fn",
+      "name": "should_auto_allow_bash",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 68
+    },
+    {
+      "kind": "fn",
+      "name": "set_auto_allow_bash",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 71
+    },
+    {
+      "kind": "fn",
+      "name": "set_configured_profile",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 75
+    },
+    {
+      "kind": "fn",
+      "name": "configured_profile_name",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 79
+    },
+    {
+      "kind": "fn",
+      "name": "is_active",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 83
+    },
+    {
+      "kind": "fn",
+      "name": "profile_name",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 87
+    },
+    {
+      "kind": "fn",
+      "name": "log_violation",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 95
+    },
+    {
+      "kind": "fn",
+      "name": "flush",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 106
+    },
+    {
+      "kind": "fn",
+      "name": "metrics",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 114
+    },
+    {
+      "kind": "struct",
+      "name": "SandboxManager",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 118
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 126
+    },
+    {
+      "kind": "fn",
+      "name": "apply",
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "line": 138
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-sandbox/examples/sandbox_smoke_test.rs",
+      "module": "..::examples::sandbox_smoke_test",
+      "kind": "example",
+      "lineCount": 170,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/examples/sandbox_smoke_test.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/child_net.rs",
+      "module": "child_net",
+      "kind": "production",
+      "lineCount": 112,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "install_child_network_filter",
+          "path": "crates/codegen/xai-grok-sandbox/src/child_net.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "install_child_network_filter",
+          "path": "crates/codegen/xai-grok-sandbox/src/child_net.rs",
+          "line": 109
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/src/child_net.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+      "module": "deny::glob",
+      "kind": "production",
+      "lineCount": 844,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_glob",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "partition_deny_entries",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "validate_deny_glob",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "apply_deny_globs_to_capability_set",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 260
+        },
+        {
+          "kind": "const",
+          "name": "DENY_GLOB_MAX_DEPTH",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 311
+        },
+        {
+          "kind": "const",
+          "name": "DENY_GLOB_MAX_MATCHES",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 313
+        },
+        {
+          "kind": "const",
+          "name": "DENY_GLOB_MAX_ENTRIES",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 318
+        },
+        {
+          "kind": "fn",
+          "name": "expand_deny_globs",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/glob.rs",
+          "line": 348
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/src/deny/glob.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+      "module": "deny::mod",
+      "kind": "production",
+      "lineCount": 310,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "apply_deny_paths_to_capability_set",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_deny_paths",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+          "line": 186
+        },
+        {
+          "kind": "fn",
+          "name": "effective_deny_paths",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+          "line": 201
+        },
+        {
+          "kind": "fn",
+          "name": "exact_deny_path_strings",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+          "line": 214
+        },
+        {
+          "kind": "fn",
+          "name": "deny_path_is_dir",
+          "path": "crates/codegen/xai-grok-sandbox/src/deny/mod.rs",
+          "line": 230
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/src/deny/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 734,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "is_inside_bwrap",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "trust_bwrap_marker_for_devbox",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "should_restrict_child_network",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "should_auto_allow_bash",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "set_auto_allow_bash",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "set_configured_profile",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "configured_profile_name",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "is_active",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "profile_name",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "log_violation",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "flush",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 106
+        },
+        {
+          "kind": "fn",
+          "name": "metrics",
+          "path": "crates/codegen/xai-grok-sandbox/src/lib.rs",
+          "line": 114
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+      "module": "logging",
+      "kind": "production",
+      "lineCount": 106,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SandboxLogger",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "log",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "metrics",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "take_events",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "flush_to_disk",
+          "path": "crates/codegen/xai-grok-sandbox/src/logging.rs",
+          "line": 64
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/src/logging.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+      "module": "paths",
+      "kind": "production",
+      "lineCount": 99,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "grok_home",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 14
+        },
+        {
+          "kind": "const",
+          "name": "DEVICE_FILES",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 29
+        },
+        {
+          "kind": "const",
+          "name": "DEVICE_DIRS",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "temp_writable_paths",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "essential_writable_paths",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 85
+        },
+        {
+          "kind": "fn",
+          "name": "essential_writable_paths_minimal",
+          "path": "crates/codegen/xai-grok-sandbox/src/paths.rs",
+          "line": 94
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/src/paths.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+      "module": "profiles",
+      "kind": "production",
+      "lineCount": 761,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SandboxProfile",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 25
+        },
+        {
+          "kind": "struct",
+          "name": "ProfileConfig",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "SandboxConfig",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 55
+        },
+        {
+          "kind": "enum",
+          "name": "ProfileName",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "restricts_network",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "restricts_network_resolved",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "load_sandbox_config",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 125
+        },
+        {
+          "kind": "fn",
+          "name": "sandbox_profile_conflicts",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 143
+        },
+        {
+          "kind": "fn",
+          "name": "to_capability_set",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 189
+        },
+        {
+          "kind": "fn",
+          "name": "to_capability_set_with_config",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 198
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_profile",
+          "path": "crates/codegen/xai-grok-sandbox/src/profiles.rs",
+          "line": 286
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/src/profiles.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+      "module": "types",
+      "kind": "production",
+      "lineCount": 194,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SandboxEvent",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "profile_applied",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "apply_failed",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "fs_violation",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 134
+        },
+        {
+          "kind": "fn",
+          "name": "net_violation",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 142
+        },
+        {
+          "kind": "enum",
+          "name": "SandboxEventType",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 151
+        },
+        {
+          "kind": "struct",
+          "name": "SandboxMetrics",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 162
+        },
+        {
+          "kind": "fn",
+          "name": "inc_fs_violation",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 170
+        },
+        {
+          "kind": "fn",
+          "name": "inc_net_violation",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 174
+        },
+        {
+          "kind": "fn",
+          "name": "inc_bypass_granted",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 178
+        },
+        {
+          "kind": "fn",
+          "name": "inc_bypass_denied",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 182
+        },
+        {
+          "kind": "fn",
+          "name": "fs_violation_count",
+          "path": "crates/codegen/xai-grok-sandbox/src/types.rs",
+          "line": 186
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/src/types.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/tests/deny_paths_e2e.rs",
+      "module": "..::tests::deny_paths_e2e",
+      "kind": "test",
+      "lineCount": 448,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/tests/deny_paths_e2e.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-sandbox/tests/integration_test.rs",
+      "module": "..::tests::integration_test",
+      "kind": "test",
+      "lineCount": 106,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-sandbox/tests/integration_test.rs"
+    }
+  ]
+}

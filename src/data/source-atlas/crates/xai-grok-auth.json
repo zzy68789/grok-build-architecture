@@ -1,0 +1,214 @@
+{
+  "name": "xai-grok-auth",
+  "memberPath": "crates/codegen/xai-grok-auth",
+  "manifestPath": "crates/codegen/xai-grok-auth/Cargo.toml",
+  "description": "Auth dependency-inversion seam: HttpAuth + AuthCredentialProvider traits",
+  "role": "通过 trait 提供 HTTP 认证与凭据提供者的依赖倒置接缝。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "agent/http-auth-circuit-breaker",
+  "relatedArticles": [
+    "agent/http-auth-circuit-breaker"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-file-utils",
+    "xai-grok-http",
+    "xai-grok-memory",
+    "xai-grok-shell",
+    "xai-grok-telemetry",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 4,
+  "productionFileCount": 4,
+  "lineCount": 415,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-auth/src/lib.rs",
+      "lineCount": 15,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-auth/src/retry_middleware.rs",
+      "lineCount": 273,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AuthRetryMiddleware",
+          "path": "crates/codegen/xai-grok-auth/src/retry_middleware.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-auth/src/retry_middleware.rs",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+      "lineCount": 119,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CredentialSnapshot",
+          "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+          "line": 14
+        },
+        {
+          "kind": "trait",
+          "name": "AuthCredentialProvider",
+          "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+          "line": 39
+        },
+        {
+          "kind": "struct",
+          "name": "StaticAuthCredentialProvider",
+          "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+          "line": 87
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-auth/src/visibility.rs",
+      "lineCount": 8,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "HttpAuth",
+          "path": "crates/codegen/xai-grok-auth/src/visibility.rs",
+          "line": 5
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "CredentialSnapshot",
+      "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+      "line": 14
+    },
+    {
+      "kind": "trait",
+      "name": "AuthCredentialProvider",
+      "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+      "line": 39
+    },
+    {
+      "kind": "struct",
+      "name": "StaticAuthCredentialProvider",
+      "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+      "line": 78
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+      "line": 87
+    },
+    {
+      "kind": "struct",
+      "name": "AuthRetryMiddleware",
+      "path": "crates/codegen/xai-grok-auth/src/retry_middleware.rs",
+      "line": 11
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-auth/src/retry_middleware.rs",
+      "line": 17
+    },
+    {
+      "kind": "trait",
+      "name": "HttpAuth",
+      "path": "crates/codegen/xai-grok-auth/src/visibility.rs",
+      "line": 5
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+      "module": "auth_provider",
+      "kind": "production",
+      "lineCount": 119,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CredentialSnapshot",
+          "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+          "line": 14
+        },
+        {
+          "kind": "trait",
+          "name": "AuthCredentialProvider",
+          "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+          "line": 39
+        },
+        {
+          "kind": "struct",
+          "name": "StaticAuthCredentialProvider",
+          "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-auth/src/auth_provider.rs",
+          "line": 87
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-auth/src/auth_provider.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-auth/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 15,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-auth/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-auth/src/retry_middleware.rs",
+      "module": "retry_middleware",
+      "kind": "production",
+      "lineCount": 273,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AuthRetryMiddleware",
+          "path": "crates/codegen/xai-grok-auth/src/retry_middleware.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-auth/src/retry_middleware.rs",
+          "line": 17
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-auth/src/retry_middleware.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-auth/src/visibility.rs",
+      "module": "visibility",
+      "kind": "production",
+      "lineCount": 8,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "HttpAuth",
+          "path": "crates/codegen/xai-grok-auth/src/visibility.rs",
+          "line": 5
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-auth/src/visibility.rs"
+    }
+  ]
+}

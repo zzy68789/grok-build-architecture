@@ -1,0 +1,392 @@
+{
+  "name": "xai-system-power",
+  "memberPath": "crates/codegen/xai-system-power",
+  "manifestPath": "crates/codegen/xai-system-power/Cargo.toml",
+  "description": "Cross-platform system sleep/wake (suspend) notifications — used to defer work across a suspend boundary",
+  "role": "提供跨平台休眠和唤醒通知。",
+  "layer": "会话运行时",
+  "primaryArticle": "runtime/lifecycle-crash-power",
+  "relatedArticles": [
+    "runtime/lifecycle-crash-power",
+    "operations/update-version-announcements-crash"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-shell"
+  ],
+  "fileCount": 4,
+  "productionFileCount": 4,
+  "lineCount": 747,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "lineCount": 181,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "PowerEvent",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 38
+        },
+        {
+          "kind": "type",
+          "name": "PowerCallback",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 59
+        },
+        {
+          "kind": "enum",
+          "name": "PowerState",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "current_power_state",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 95
+        },
+        {
+          "kind": "struct",
+          "name": "Listener",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 115
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 118
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-system-power/src/macos.rs",
+      "lineCount": 368,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "current_power_state",
+          "path": "crates/codegen/xai-system-power/src/macos.rs",
+          "line": 108
+        },
+        {
+          "kind": "struct",
+          "name": "Listener",
+          "path": "crates/codegen/xai-system-power/src/macos.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-system-power/src/macos.rs",
+          "line": 139
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-system-power/src/windows.rs",
+      "lineCount": 104,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Listener",
+          "path": "crates/codegen/xai-system-power/src/windows.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-system-power/src/windows.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "current_power_state",
+          "path": "crates/codegen/xai-system-power/src/windows.rs",
+          "line": 99
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-system-power/src/linux.rs",
+      "lineCount": 94,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Listener",
+          "path": "crates/codegen/xai-system-power/src/linux.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-system-power/src/linux.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "current_power_state",
+          "path": "crates/codegen/xai-system-power/src/linux.rs",
+          "line": 88
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "PowerEvent",
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "line": 38
+    },
+    {
+      "kind": "type",
+      "name": "PowerCallback",
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "line": 59
+    },
+    {
+      "kind": "enum",
+      "name": "PowerState",
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "line": 74
+    },
+    {
+      "kind": "fn",
+      "name": "current_power_state",
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "line": 95
+    },
+    {
+      "kind": "struct",
+      "name": "Listener",
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "line": 115
+    },
+    {
+      "kind": "fn",
+      "name": "start",
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "line": 118
+    },
+    {
+      "kind": "fn",
+      "name": "current_power_state",
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "line": 123
+    },
+    {
+      "kind": "struct",
+      "name": "SystemPowerListener",
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "line": 133
+    },
+    {
+      "kind": "fn",
+      "name": "start",
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "line": 149
+    },
+    {
+      "kind": "struct",
+      "name": "Listener",
+      "path": "crates/codegen/xai-system-power/src/linux.rs",
+      "line": 28
+    },
+    {
+      "kind": "fn",
+      "name": "start",
+      "path": "crates/codegen/xai-system-power/src/linux.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "current_power_state",
+      "path": "crates/codegen/xai-system-power/src/linux.rs",
+      "line": 88
+    },
+    {
+      "kind": "fn",
+      "name": "current_power_state",
+      "path": "crates/codegen/xai-system-power/src/macos.rs",
+      "line": 108
+    },
+    {
+      "kind": "struct",
+      "name": "Listener",
+      "path": "crates/codegen/xai-system-power/src/macos.rs",
+      "line": 132
+    },
+    {
+      "kind": "fn",
+      "name": "start",
+      "path": "crates/codegen/xai-system-power/src/macos.rs",
+      "line": 139
+    },
+    {
+      "kind": "struct",
+      "name": "Listener",
+      "path": "crates/codegen/xai-system-power/src/windows.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "start",
+      "path": "crates/codegen/xai-system-power/src/windows.rs",
+      "line": 45
+    },
+    {
+      "kind": "fn",
+      "name": "current_power_state",
+      "path": "crates/codegen/xai-system-power/src/windows.rs",
+      "line": 99
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-system-power/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 181,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "PowerEvent",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 38
+        },
+        {
+          "kind": "type",
+          "name": "PowerCallback",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 59
+        },
+        {
+          "kind": "enum",
+          "name": "PowerState",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "current_power_state",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 95
+        },
+        {
+          "kind": "struct",
+          "name": "Listener",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 115
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 118
+        },
+        {
+          "kind": "fn",
+          "name": "current_power_state",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 123
+        },
+        {
+          "kind": "struct",
+          "name": "SystemPowerListener",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-system-power/src/lib.rs",
+          "line": 149
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-system-power/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-system-power/src/linux.rs",
+      "module": "linux",
+      "kind": "production",
+      "lineCount": 94,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Listener",
+          "path": "crates/codegen/xai-system-power/src/linux.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-system-power/src/linux.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "current_power_state",
+          "path": "crates/codegen/xai-system-power/src/linux.rs",
+          "line": 88
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-system-power/src/linux.rs"
+    },
+    {
+      "path": "crates/codegen/xai-system-power/src/macos.rs",
+      "module": "macos",
+      "kind": "production",
+      "lineCount": 368,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "current_power_state",
+          "path": "crates/codegen/xai-system-power/src/macos.rs",
+          "line": 108
+        },
+        {
+          "kind": "struct",
+          "name": "Listener",
+          "path": "crates/codegen/xai-system-power/src/macos.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-system-power/src/macos.rs",
+          "line": 139
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-system-power/src/macos.rs"
+    },
+    {
+      "path": "crates/codegen/xai-system-power/src/windows.rs",
+      "module": "windows",
+      "kind": "production",
+      "lineCount": 104,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Listener",
+          "path": "crates/codegen/xai-system-power/src/windows.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "start",
+          "path": "crates/codegen/xai-system-power/src/windows.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "current_power_state",
+          "path": "crates/codegen/xai-system-power/src/windows.rs",
+          "line": 99
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-system-power/src/windows.rs"
+    }
+  ]
+}

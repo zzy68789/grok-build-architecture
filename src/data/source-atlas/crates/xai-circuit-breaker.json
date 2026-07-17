@@ -1,0 +1,928 @@
+{
+  "name": "xai-circuit-breaker",
+  "memberPath": "crates/common/xai-circuit-breaker",
+  "manifestPath": "crates/common/xai-circuit-breaker/Cargo.toml",
+  "description": "",
+  "role": "根据连续故障和恢复探测限制外部请求故障扩散。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "agent/http-auth-circuit-breaker",
+  "relatedArticles": [
+    "agent/http-auth-circuit-breaker",
+    "agent/sampler-actor-streaming-retry"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-file-utils"
+  ],
+  "fileCount": 18,
+  "productionFileCount": 16,
+  "lineCount": 1948,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-circuit-breaker/src/lib.rs",
+      "lineCount": 27,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "lineCount": 366,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CircuitBreaker",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "CircuitBreakerInner",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "with_clock",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "with_observer",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "check",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 97
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "lineCount": 141,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "BreakerConfig",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "server",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "client",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "from_env",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "from_env_with_prefix",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "from_lookup_with_prefix",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+      "lineCount": 105,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "Disposition",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 12
+        },
+        {
+          "kind": "struct",
+          "name": "RetryPolicy",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "classify",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "should_retry",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 49
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 55
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 66
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/window.rs",
+      "lineCount": 77,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_WINDOW_ENTRIES",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "SlidingWindow",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "push",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "evict",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "error_rate",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 57
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/registry.rs",
+      "lineCount": 70,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CircuitBreakerRegistry",
+          "path": "crates/common/xai-circuit-breaker/src/registry.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-circuit-breaker/src/registry.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/common/xai-circuit-breaker/src/registry.rs",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/state.rs",
+      "lineCount": 69,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "BreakerState",
+          "path": "crates/common/xai-circuit-breaker/src/state.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "from_u8",
+          "path": "crates/common/xai-circuit-breaker/src/state.rs",
+          "line": 17
+        },
+        {
+          "kind": "enum",
+          "name": "Outcome",
+          "path": "crates/common/xai-circuit-breaker/src/state.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "BreakerOpen",
+          "path": "crates/common/xai-circuit-breaker/src/state.rs",
+          "line": 41
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+      "lineCount": 64,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "Clock",
+          "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "SystemClock",
+          "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "MockClock",
+          "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "advance",
+          "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+          "line": 45
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "CircuitBreaker",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 19
+    },
+    {
+      "kind": "struct",
+      "name": "CircuitBreakerInner",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 23
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 54
+    },
+    {
+      "kind": "fn",
+      "name": "with_clock",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 60
+    },
+    {
+      "kind": "fn",
+      "name": "with_observer",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 81
+    },
+    {
+      "kind": "fn",
+      "name": "check",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 97
+    },
+    {
+      "kind": "fn",
+      "name": "record",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 109
+    },
+    {
+      "kind": "fn",
+      "name": "state",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 149
+    },
+    {
+      "kind": "fn",
+      "name": "is_open",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 155
+    },
+    {
+      "kind": "fn",
+      "name": "error_rate",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 163
+    },
+    {
+      "kind": "fn",
+      "name": "is_failure_status",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 171
+    },
+    {
+      "kind": "fn",
+      "name": "force_half_open",
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "line": 178
+    },
+    {
+      "kind": "fn",
+      "name": "fast_config",
+      "path": "crates/common/xai-circuit-breaker/src/breaker_tests/support.rs",
+      "line": 18
+    },
+    {
+      "kind": "fn",
+      "name": "breaker_with_mock",
+      "path": "crates/common/xai-circuit-breaker/src/breaker_tests/support.rs",
+      "line": 29
+    },
+    {
+      "kind": "trait",
+      "name": "Clock",
+      "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+      "line": 14
+    },
+    {
+      "kind": "struct",
+      "name": "SystemClock",
+      "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+      "line": 20
+    },
+    {
+      "kind": "struct",
+      "name": "MockClock",
+      "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+      "line": 32
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+      "line": 38
+    },
+    {
+      "kind": "fn",
+      "name": "advance",
+      "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+      "line": 45
+    },
+    {
+      "kind": "struct",
+      "name": "BreakerConfig",
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "line": 17
+    },
+    {
+      "kind": "fn",
+      "name": "server",
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "line": 36
+    },
+    {
+      "kind": "fn",
+      "name": "client",
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "line": 50
+    },
+    {
+      "kind": "fn",
+      "name": "from_env",
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "line": 63
+    },
+    {
+      "kind": "fn",
+      "name": "from_env_with_prefix",
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "line": 68
+    },
+    {
+      "kind": "fn",
+      "name": "from_lookup_with_prefix",
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "line": 72
+    },
+    {
+      "kind": "fn",
+      "name": "is_failure_status",
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "line": 105
+    },
+    {
+      "kind": "fn",
+      "name": "default_failure_codes",
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "line": 128
+    },
+    {
+      "kind": "fn",
+      "name": "parse_failure_codes",
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "line": 134
+    },
+    {
+      "kind": "trait",
+      "name": "Observer",
+      "path": "crates/common/xai-circuit-breaker/src/observer.rs",
+      "line": 14
+    },
+    {
+      "kind": "struct",
+      "name": "NoopObserver",
+      "path": "crates/common/xai-circuit-breaker/src/observer.rs",
+      "line": 33
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-circuit-breaker/src/breaker_tests/breaker_size.rs",
+      "module": "breaker_tests::breaker_size",
+      "kind": "production",
+      "lineCount": 46,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/breaker_tests/breaker_size.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/breaker_tests/concurrent.rs",
+      "module": "breaker_tests::concurrent",
+      "kind": "production",
+      "lineCount": 87,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/breaker_tests/concurrent.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/breaker_tests/half_open.rs",
+      "module": "breaker_tests::half_open",
+      "kind": "production",
+      "lineCount": 173,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/breaker_tests/half_open.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/breaker_tests/observer.rs",
+      "module": "breaker_tests::observer",
+      "kind": "production",
+      "lineCount": 161,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/breaker_tests/observer.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/breaker_tests/parity.rs",
+      "module": "breaker_tests::parity",
+      "kind": "production",
+      "lineCount": 132,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/breaker_tests/parity.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/breaker_tests/state_machine.rs",
+      "module": "breaker_tests::state_machine",
+      "kind": "production",
+      "lineCount": 360,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/breaker_tests/state_machine.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/breaker_tests/support.rs",
+      "module": "breaker_tests::support",
+      "kind": "production",
+      "lineCount": 34,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "fast_config",
+          "path": "crates/common/xai-circuit-breaker/src/breaker_tests/support.rs",
+          "line": 18
+        },
+        {
+          "kind": "fn",
+          "name": "breaker_with_mock",
+          "path": "crates/common/xai-circuit-breaker/src/breaker_tests/support.rs",
+          "line": 29
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/breaker_tests/support.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+      "module": "breaker",
+      "kind": "production",
+      "lineCount": 366,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CircuitBreaker",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 19
+        },
+        {
+          "kind": "struct",
+          "name": "CircuitBreakerInner",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "with_clock",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "with_observer",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "check",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 97
+        },
+        {
+          "kind": "fn",
+          "name": "record",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 109
+        },
+        {
+          "kind": "fn",
+          "name": "state",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 149
+        },
+        {
+          "kind": "fn",
+          "name": "is_open",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 155
+        },
+        {
+          "kind": "fn",
+          "name": "error_rate",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 163
+        },
+        {
+          "kind": "fn",
+          "name": "is_failure_status",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 171
+        },
+        {
+          "kind": "fn",
+          "name": "force_half_open",
+          "path": "crates/common/xai-circuit-breaker/src/breaker.rs",
+          "line": 178
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/breaker.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+      "module": "clock",
+      "kind": "production",
+      "lineCount": 64,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "Clock",
+          "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "SystemClock",
+          "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "MockClock",
+          "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "advance",
+          "path": "crates/common/xai-circuit-breaker/src/clock.rs",
+          "line": 45
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/clock.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/config_tests.rs",
+      "module": "config_tests",
+      "kind": "test",
+      "lineCount": 136,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/config_tests.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/config.rs",
+      "module": "config",
+      "kind": "production",
+      "lineCount": 141,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "BreakerConfig",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "server",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "client",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "from_env",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 63
+        },
+        {
+          "kind": "fn",
+          "name": "from_env_with_prefix",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "from_lookup_with_prefix",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "is_failure_status",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 105
+        },
+        {
+          "kind": "fn",
+          "name": "default_failure_codes",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "parse_failure_codes",
+          "path": "crates/common/xai-circuit-breaker/src/config.rs",
+          "line": 134
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/config.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 27,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/lib.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/observer.rs",
+      "module": "observer",
+      "kind": "production",
+      "lineCount": 36,
+      "symbols": [
+        {
+          "kind": "trait",
+          "name": "Observer",
+          "path": "crates/common/xai-circuit-breaker/src/observer.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "NoopObserver",
+          "path": "crates/common/xai-circuit-breaker/src/observer.rs",
+          "line": 33
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/observer.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/registry.rs",
+      "module": "registry",
+      "kind": "production",
+      "lineCount": 70,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CircuitBreakerRegistry",
+          "path": "crates/common/xai-circuit-breaker/src/registry.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-circuit-breaker/src/registry.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/common/xai-circuit-breaker/src/registry.rs",
+          "line": 25
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/registry.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+      "module": "retry_policy",
+      "kind": "production",
+      "lineCount": 105,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "Disposition",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 12
+        },
+        {
+          "kind": "struct",
+          "name": "RetryPolicy",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "classify",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "should_retry",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 49
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 55
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/common/xai-circuit-breaker/src/retry_policy.rs",
+          "line": 66
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/retry_policy.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/state.rs",
+      "module": "state",
+      "kind": "production",
+      "lineCount": 69,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "BreakerState",
+          "path": "crates/common/xai-circuit-breaker/src/state.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "from_u8",
+          "path": "crates/common/xai-circuit-breaker/src/state.rs",
+          "line": 17
+        },
+        {
+          "kind": "enum",
+          "name": "Outcome",
+          "path": "crates/common/xai-circuit-breaker/src/state.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "BreakerOpen",
+          "path": "crates/common/xai-circuit-breaker/src/state.rs",
+          "line": 41
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/state.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/window_tests.rs",
+      "module": "window_tests",
+      "kind": "test",
+      "lineCount": 110,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/window_tests.rs"
+    },
+    {
+      "path": "crates/common/xai-circuit-breaker/src/window.rs",
+      "module": "window",
+      "kind": "production",
+      "lineCount": 77,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_WINDOW_ENTRIES",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 9
+        },
+        {
+          "kind": "struct",
+          "name": "SlidingWindow",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "push",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "evict",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 41
+        },
+        {
+          "kind": "fn",
+          "name": "error_rate",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "sample_count",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "clear",
+          "path": "crates/common/xai-circuit-breaker/src/window.rs",
+          "line": 68
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-circuit-breaker/src/window.rs"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+---
+title: "Tool Contract、Protocol、Runtime 与 API"
+description: "分解 Tool trait、wire protocol、错误分类、通知和 Protobuf API。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-grok-tools-api
+  - xai-tool-protocol
+  - xai-tool-runtime
+  - xai-tool-types
+sourcePaths:
+  - crates/codegen/xai-grok-tools-api/src/lib.rs
+  - crates/common/xai-tool-protocol/src/lib.rs
+  - crates/common/xai-tool-runtime/src/lib.rs
+  - crates/common/xai-tool-types/src/lib.rs
+  - crates/common/xai-tool-protocol/src/frames.rs
+  - crates/common/xai-tool-types/src/task.rs
+  - crates/common/xai-tool-types/src/types.rs
+  - crates/common/xai-tool-runtime/src/render.rs
+  - crates/common/xai-tool-protocol/src/turn_hook.rs
+  - crates/common/xai-tool-types/src/schema_utils.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="tools/contract-protocol-runtime-api" />

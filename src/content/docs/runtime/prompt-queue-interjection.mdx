@@ -1,0 +1,27 @@
+---
+title: "Prompt Queue 与 Mid-turn Interjection"
+description: "解释排队输入和运行中插话如何进入同一会话而不破坏事件顺序。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-grok-shell
+  - xai-interjection-core
+  - xai-prompt-queue
+sourcePaths:
+  - crates/codegen/xai-grok-shell/src/lib.rs
+  - crates/common/xai-interjection-core/src/lib.rs
+  - crates/codegen/xai-prompt-queue/src/lib.rs
+  - crates/codegen/xai-grok-shell/src/agent/config.rs
+  - crates/codegen/xai-grok-shell/src/session/goal_classifier.rs
+  - crates/codegen/xai-grok-shell/src/leader/server.rs
+  - crates/codegen/xai-grok-shell/src/session/persistence.rs
+  - crates/codegen/xai-grok-shell/src/agent/mvp_agent/agent_ops.rs
+  - crates/codegen/xai-grok-shell/src/session/goal_tracker.rs
+  - crates/codegen/xai-grok-shell/src/agent/models.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="runtime/prompt-queue-interjection" />

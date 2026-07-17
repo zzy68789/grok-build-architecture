@@ -1,0 +1,930 @@
+{
+  "name": "xai-grok-hooks",
+  "memberPath": "crates/codegen/xai-grok-hooks",
+  "manifestPath": "crates/codegen/xai-grok-hooks/Cargo.toml",
+  "description": "Runtime hook system for Grok — file-based discovery, command execution, and policy enforcement",
+  "role": "负责 hook 发现、命令执行、超时和策略拦截。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "extensibility/hooks-runtime",
+  "relatedArticles": [
+    "extensibility/hooks-runtime"
+  ],
+  "dependencies": [
+    "xai-grok-config",
+    "xai-grok-tools"
+  ],
+  "dependents": [
+    "xai-grok-agent",
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 15,
+  "productionFileCount": 14,
+  "lineCount": 7502,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/lib.rs",
+      "lineCount": 51,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "lineCount": 1294,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HooksMap",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "from_value",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 24
+        },
+        {
+          "kind": "struct",
+          "name": "MatcherGroup",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 60
+        },
+        {
+          "kind": "struct",
+          "name": "RawHandler",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 71
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_TIMEOUT_SECS",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 116
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_TIMEOUT_MS",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 119
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/runner/command.rs",
+      "lineCount": 1273,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run_command_hook",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/command.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "RUNNER_ALWAYS_SET_ENV",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/command.rs",
+          "line": 276
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_command_path",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/command.rs",
+          "line": 534
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/runner/http.rs",
+      "lineCount": 1013,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run_http_hook",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/http.rs",
+          "line": 152
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+      "lineCount": 896,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PreToolUseResult",
+          "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+          "line": 8
+        },
+        {
+          "kind": "fn",
+          "name": "dispatch_pre_tool_use",
+          "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "dispatch_non_blocking",
+          "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+          "line": 167
+        },
+        {
+          "kind": "fn",
+          "name": "hub_hook_kind",
+          "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+          "line": 300
+        },
+        {
+          "kind": "fn",
+          "name": "extract_tool_name",
+          "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+          "line": 312
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "lineCount": 893,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HookRegistry",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "hooks_for",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "append_specs",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "remove_by_prefix",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 44
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+      "lineCount": 857,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "expand_env_vars_with_extra",
+          "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+          "line": 119
+        },
+        {
+          "kind": "struct",
+          "name": "EnvVarRef",
+          "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+          "line": 207
+        },
+        {
+          "kind": "fn",
+          "name": "iter_env_var_references",
+          "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+          "line": 243
+        },
+        {
+          "kind": "struct",
+          "name": "EnvVarRefIter",
+          "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+          "line": 247
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+      "lineCount": 546,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_PAYLOAD_SIZE",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 4
+        },
+        {
+          "kind": "enum",
+          "name": "HookEventName",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "canonical",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "is_blocking",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 139
+        },
+        {
+          "kind": "fn",
+          "name": "is_lifecycle",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 144
+        },
+        {
+          "kind": "struct",
+          "name": "HookEventEnvelope",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 158
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "HooksMap",
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "line": 16
+    },
+    {
+      "kind": "fn",
+      "name": "from_value",
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "line": 24
+    },
+    {
+      "kind": "struct",
+      "name": "MatcherGroup",
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "line": 60
+    },
+    {
+      "kind": "struct",
+      "name": "RawHandler",
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "line": 71
+    },
+    {
+      "kind": "const",
+      "name": "DEFAULT_TIMEOUT_SECS",
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "line": 116
+    },
+    {
+      "kind": "const",
+      "name": "DEFAULT_TIMEOUT_MS",
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "line": 119
+    },
+    {
+      "kind": "struct",
+      "name": "HookSpec",
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "line": 123
+    },
+    {
+      "kind": "fn",
+      "name": "parse_hooks_from_value",
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "line": 236
+    },
+    {
+      "kind": "fn",
+      "name": "parse_hooks_from_value_with_dir",
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "line": 245
+    },
+    {
+      "kind": "fn",
+      "name": "parse_hook_file",
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "line": 261
+    },
+    {
+      "kind": "struct",
+      "name": "HookRegistry",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 16
+    },
+    {
+      "kind": "fn",
+      "name": "hooks_for",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 22
+    },
+    {
+      "kind": "fn",
+      "name": "is_empty",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 27
+    },
+    {
+      "kind": "fn",
+      "name": "len",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 32
+    },
+    {
+      "kind": "fn",
+      "name": "append_specs",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 37
+    },
+    {
+      "kind": "fn",
+      "name": "remove_by_prefix",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 44
+    },
+    {
+      "kind": "fn",
+      "name": "all_hooks",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 70
+    },
+    {
+      "kind": "fn",
+      "name": "recompile_matchers",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 89
+    },
+    {
+      "kind": "enum",
+      "name": "HookSource",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 113
+    },
+    {
+      "kind": "fn",
+      "name": "load_hooks_from_sources",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 129
+    },
+    {
+      "kind": "fn",
+      "name": "load_hooks",
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "line": 225
+    },
+    {
+      "kind": "struct",
+      "name": "PreToolUseResult",
+      "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+      "line": 8
+    },
+    {
+      "kind": "fn",
+      "name": "dispatch_pre_tool_use",
+      "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+      "line": 31
+    },
+    {
+      "kind": "fn",
+      "name": "dispatch_non_blocking",
+      "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+      "line": 167
+    },
+    {
+      "kind": "fn",
+      "name": "hub_hook_kind",
+      "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+      "line": 300
+    },
+    {
+      "kind": "fn",
+      "name": "extract_tool_name",
+      "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+      "line": 312
+    },
+    {
+      "kind": "fn",
+      "name": "expand_env_vars_with_extra",
+      "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+      "line": 119
+    },
+    {
+      "kind": "struct",
+      "name": "EnvVarRef",
+      "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+      "line": 207
+    },
+    {
+      "kind": "fn",
+      "name": "iter_env_var_references",
+      "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+      "line": 243
+    },
+    {
+      "kind": "struct",
+      "name": "EnvVarRefIter",
+      "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+      "line": 247
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+      "module": "config",
+      "kind": "production",
+      "lineCount": 1294,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HooksMap",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "from_value",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 24
+        },
+        {
+          "kind": "struct",
+          "name": "MatcherGroup",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 60
+        },
+        {
+          "kind": "struct",
+          "name": "RawHandler",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 71
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_TIMEOUT_SECS",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 116
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_TIMEOUT_MS",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 119
+        },
+        {
+          "kind": "struct",
+          "name": "HookSpec",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "parse_hooks_from_value",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 236
+        },
+        {
+          "kind": "fn",
+          "name": "parse_hooks_from_value_with_dir",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 245
+        },
+        {
+          "kind": "fn",
+          "name": "parse_hook_file",
+          "path": "crates/codegen/xai-grok-hooks/src/config.rs",
+          "line": 261
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+      "module": "discovery",
+      "kind": "production",
+      "lineCount": 893,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HookRegistry",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "hooks_for",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "is_empty",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "len",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 32
+        },
+        {
+          "kind": "fn",
+          "name": "append_specs",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "remove_by_prefix",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "all_hooks",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "recompile_matchers",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 89
+        },
+        {
+          "kind": "enum",
+          "name": "HookSource",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 113
+        },
+        {
+          "kind": "fn",
+          "name": "load_hooks_from_sources",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 129
+        },
+        {
+          "kind": "fn",
+          "name": "load_hooks",
+          "path": "crates/codegen/xai-grok-hooks/src/discovery.rs",
+          "line": 225
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/discovery.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+      "module": "dispatcher",
+      "kind": "production",
+      "lineCount": 896,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "PreToolUseResult",
+          "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+          "line": 8
+        },
+        {
+          "kind": "fn",
+          "name": "dispatch_pre_tool_use",
+          "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "dispatch_non_blocking",
+          "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+          "line": 167
+        },
+        {
+          "kind": "fn",
+          "name": "hub_hook_kind",
+          "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+          "line": 300
+        },
+        {
+          "kind": "fn",
+          "name": "extract_tool_name",
+          "path": "crates/codegen/xai-grok-hooks/src/dispatcher.rs",
+          "line": 312
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/dispatcher.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+      "module": "env_expand",
+      "kind": "production",
+      "lineCount": 857,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "expand_env_vars_with_extra",
+          "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+          "line": 119
+        },
+        {
+          "kind": "struct",
+          "name": "EnvVarRef",
+          "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+          "line": 207
+        },
+        {
+          "kind": "fn",
+          "name": "iter_env_var_references",
+          "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+          "line": 243
+        },
+        {
+          "kind": "struct",
+          "name": "EnvVarRefIter",
+          "path": "crates/codegen/xai-grok-hooks/src/env_expand.rs",
+          "line": 247
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/env_expand.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/error.rs",
+      "module": "error",
+      "kind": "production",
+      "lineCount": 60,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "HookError",
+          "path": "crates/codegen/xai-grok-hooks/src/error.rs",
+          "line": 5
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/error.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+      "module": "event",
+      "kind": "production",
+      "lineCount": 546,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAX_PAYLOAD_SIZE",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 4
+        },
+        {
+          "kind": "enum",
+          "name": "HookEventName",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "canonical",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 131
+        },
+        {
+          "kind": "fn",
+          "name": "is_blocking",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 139
+        },
+        {
+          "kind": "fn",
+          "name": "is_lifecycle",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 144
+        },
+        {
+          "kind": "struct",
+          "name": "HookEventEnvelope",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 158
+        },
+        {
+          "kind": "enum",
+          "name": "HookPayload",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 178
+        },
+        {
+          "kind": "fn",
+          "name": "truncate_payload",
+          "path": "crates/codegen/xai-grok-hooks/src/event.rs",
+          "line": 325
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/event.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 51,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/matcher.rs",
+      "module": "matcher",
+      "kind": "production",
+      "lineCount": 197,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HookMatcher",
+          "path": "crates/codegen/xai-grok-hooks/src/matcher.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-hooks/src/matcher.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "is_match",
+          "path": "crates/codegen/xai-grok-hooks/src/matcher.rs",
+          "line": 42
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/matcher.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/result.rs",
+      "module": "result",
+      "kind": "production",
+      "lineCount": 71,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "HookDecision",
+          "path": "crates/codegen/xai-grok-hooks/src/result.rs",
+          "line": 5
+        },
+        {
+          "kind": "struct",
+          "name": "HttpInfo",
+          "path": "crates/codegen/xai-grok-hooks/src/result.rs",
+          "line": 18
+        },
+        {
+          "kind": "enum",
+          "name": "HookRunResult",
+          "path": "crates/codegen/xai-grok-hooks/src/result.rs",
+          "line": 52
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/result.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/runner/command.rs",
+      "module": "runner::command",
+      "kind": "production",
+      "lineCount": 1273,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run_command_hook",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/command.rs",
+          "line": 31
+        },
+        {
+          "kind": "const",
+          "name": "RUNNER_ALWAYS_SET_ENV",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/command.rs",
+          "line": 276
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_command_path",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/command.rs",
+          "line": 534
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/runner/command.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/runner/http.rs",
+      "module": "runner::http",
+      "kind": "production",
+      "lineCount": 1013,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "run_http_hook",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/http.rs",
+          "line": 152
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/runner/http.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/runner/mod.rs",
+      "module": "runner::mod",
+      "kind": "production",
+      "lineCount": 56,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "RunContext",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/mod.rs",
+          "line": 11
+        },
+        {
+          "kind": "enum",
+          "name": "HookRunnerResult",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/mod.rs",
+          "line": 18
+        },
+        {
+          "kind": "type",
+          "name": "HookRunOutput",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/mod.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "run_hook",
+          "path": "crates/codegen/xai-grok-hooks/src/runner/mod.rs",
+          "line": 36
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/runner/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/test_support.rs",
+      "module": "test_support",
+      "kind": "production",
+      "lineCount": 123,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "with_env_var",
+          "path": "crates/codegen/xai-grok-hooks/src/test_support.rs",
+          "line": 30
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/test_support.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/src/trust.rs",
+      "module": "trust",
+      "kind": "production",
+      "lineCount": 172,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "legacy_trust_file_path",
+          "path": "crates/codegen/xai-grok-hooks/src/trust.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "list_trusted_projects_with_file",
+          "path": "crates/codegen/xai-grok-hooks/src/trust.rs",
+          "line": 22
+        },
+        {
+          "kind": "fn",
+          "name": "is_hook_disabled",
+          "path": "crates/codegen/xai-grok-hooks/src/trust.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "disable_hook",
+          "path": "crates/codegen/xai-grok-hooks/src/trust.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "enable_hook",
+          "path": "crates/codegen/xai-grok-hooks/src/trust.rs",
+          "line": 84
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/src/trust.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-hooks/tests/integration.rs",
+      "module": "..::tests::integration",
+      "kind": "test",
+      "lineCount": 906,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-hooks/tests/integration.rs"
+    }
+  ]
+}

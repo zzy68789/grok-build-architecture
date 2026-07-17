@@ -1,0 +1,26 @@
+---
+title: "流式 Markdown 与 Headless Markdown"
+description: "分析不完整 Markdown 如何被增量解析、终端渲染并在无 UI 场景复用。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-grok-markdown
+  - xai-grok-markdown-core
+sourcePaths:
+  - crates/codegen/xai-grok-markdown-core/src/lib.rs
+  - crates/codegen/xai-grok-markdown/src/lib.rs
+  - crates/codegen/xai-grok-markdown/src/mermaid.rs
+  - crates/codegen/xai-grok-markdown/src/streaming.rs
+  - crates/codegen/xai-grok-markdown/src/render.rs
+  - crates/codegen/xai-grok-markdown/src/parse.rs
+  - crates/codegen/xai-grok-markdown/src/latex_delimiters.rs
+  - crates/codegen/xai-grok-markdown/src/hyperlinks.rs
+  - crates/codegen/xai-grok-markdown/src/output.rs
+  - crates/codegen/xai-grok-markdown/src/latex/commands.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="tui/streaming-markdown" />

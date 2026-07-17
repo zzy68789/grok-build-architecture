@@ -1,0 +1,1241 @@
+{
+  "name": "xai-grok-config",
+  "memberPath": "crates/codegen/xai-grok-config",
+  "manifestPath": "crates/codegen/xai-grok-config/Cargo.toml",
+  "description": "Shared config loading for Grok — grok_home, effective config (requirements > user > managed), TOML merge",
+  "role": "加载 requirements、用户与受管配置并执行有序 TOML 合并。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/shared-foundations",
+  "relatedArticles": [
+    "operations/shared-foundations",
+    "runtime/bootstrap-environment-version",
+    "context/system-prompt-and-rules"
+  ],
+  "dependencies": [
+    "xai-grok-version",
+    "xai-tty-utils"
+  ],
+  "dependents": [
+    "xai-grok-agent",
+    "xai-grok-config-types",
+    "xai-grok-hooks",
+    "xai-grok-mcp",
+    "xai-grok-pager",
+    "xai-grok-pager-bin",
+    "xai-grok-pager-render",
+    "xai-grok-plugin-marketplace",
+    "xai-grok-sandbox",
+    "xai-grok-shell",
+    "xai-grok-shell-base",
+    "xai-grok-telemetry",
+    "xai-grok-tools",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 14,
+  "productionFileCount": 12,
+  "lineCount": 4063,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-config/src/lib.rs",
+      "lineCount": 69,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "env_bool",
+          "path": "crates/codegen/xai-grok-config/src/lib.rs",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "lineCount": 710,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "load_toml_file",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "toml_error_detail",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "load_config_file",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "load_from_disk",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 83
+        },
+        {
+          "kind": "const",
+          "name": "MANAGED_CONFIG_FILENAME",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 88
+        },
+        {
+          "kind": "const",
+          "name": "REQUIREMENTS_FILENAME",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/shell.rs",
+      "lineCount": 683,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "WindowsShell",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "detect_windows_shell",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "name",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 151
+        },
+        {
+          "kind": "fn",
+          "name": "supports_chain_operator",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 168
+        },
+        {
+          "kind": "fn",
+          "name": "has_unix_utilities",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 175
+        },
+        {
+          "kind": "fn",
+          "name": "ampersand_semantics",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 181
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+      "lineCount": 494,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MANAGED_CONFIG_CACHE_FILE",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 15
+        },
+        {
+          "kind": "enum",
+          "name": "ServingIdentity",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "is_managed_config_stale_for",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 50
+        },
+        {
+          "kind": "struct",
+          "name": "SyncMarker",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "mark_managed_config_synced",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "managed_deployment_id",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 76
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/validation.rs",
+      "lineCount": 468,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "FAIL_CLOSED_ENV",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 28
+        },
+        {
+          "kind": "enum",
+          "name": "RequirementsSource",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "label",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 43
+        },
+        {
+          "kind": "struct",
+          "name": "RequirementsLayer",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "requirements_layers",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "load_merged_requirements",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 100
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+      "lineCount": 414,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "EMBEDDED_DEPLOYMENT_CONFIG_PUBKEYS",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "SIGNATURE_SIDECAR_FILE",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 59
+        },
+        {
+          "kind": "enum",
+          "name": "SigError",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "verification_active",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "embedded_key_id_trusted",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "verify_signed_payload",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 97
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/paths.rs",
+      "lineCount": 333,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "default_grok_home",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "grok_home",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "user_grok_home",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "grok_application",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "grok_application_in",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "system_config_dir",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "lineCount": 295,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "CAMPAIGNS_KEY",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 11
+        },
+        {
+          "kind": "struct",
+          "name": "CampaignMeta",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "CampaignEntry",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "CampaignOverrides",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "take_campaigns",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "build_campaign_entries",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 45
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "const",
+      "name": "CAMPAIGNS_KEY",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 11
+    },
+    {
+      "kind": "struct",
+      "name": "CampaignMeta",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 14
+    },
+    {
+      "kind": "struct",
+      "name": "CampaignEntry",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 20
+    },
+    {
+      "kind": "struct",
+      "name": "CampaignOverrides",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 28
+    },
+    {
+      "kind": "fn",
+      "name": "take_campaigns",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 35
+    },
+    {
+      "kind": "fn",
+      "name": "build_campaign_entries",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 45
+    },
+    {
+      "kind": "fn",
+      "name": "merge_campaign_entries",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 75
+    },
+    {
+      "kind": "fn",
+      "name": "filter_active_campaigns",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 90
+    },
+    {
+      "kind": "fn",
+      "name": "ids_touching_paths",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 102
+    },
+    {
+      "kind": "fn",
+      "name": "apply_active_campaign_patches",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 112
+    },
+    {
+      "kind": "fn",
+      "name": "take_campaign_entries",
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "line": 120
+    },
+    {
+      "kind": "type",
+      "name": "PatchPath",
+      "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+      "line": 7
+    },
+    {
+      "kind": "struct",
+      "name": "ConfigOverrideEntry",
+      "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+      "line": 10
+    },
+    {
+      "kind": "fn",
+      "name": "take_patch_array",
+      "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+      "line": 16
+    },
+    {
+      "kind": "fn",
+      "name": "patch_touches_path",
+      "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+      "line": 53
+    },
+    {
+      "kind": "fn",
+      "name": "patch_touches_any",
+      "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+      "line": 74
+    },
+    {
+      "kind": "const",
+      "name": "PATCH_STRIP_KEYS",
+      "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+      "line": 82
+    },
+    {
+      "kind": "fn",
+      "name": "apply_patches",
+      "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+      "line": 86
+    },
+    {
+      "kind": "fn",
+      "name": "write_atomically",
+      "path": "crates/codegen/xai-grok-config/src/fs_atomic.rs",
+      "line": 10
+    },
+    {
+      "kind": "fn",
+      "name": "env_bool",
+      "path": "crates/codegen/xai-grok-config/src/lib.rs",
+      "line": 60
+    },
+    {
+      "kind": "fn",
+      "name": "load_toml_file",
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "line": 13
+    },
+    {
+      "kind": "fn",
+      "name": "toml_error_detail",
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "line": 44
+    },
+    {
+      "kind": "fn",
+      "name": "load_config_file",
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "line": 77
+    },
+    {
+      "kind": "fn",
+      "name": "load_from_disk",
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "line": 83
+    },
+    {
+      "kind": "const",
+      "name": "MANAGED_CONFIG_FILENAME",
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "line": 88
+    },
+    {
+      "kind": "const",
+      "name": "REQUIREMENTS_FILENAME",
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "line": 91
+    },
+    {
+      "kind": "fn",
+      "name": "load_managed_config",
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "line": 93
+    },
+    {
+      "kind": "fn",
+      "name": "load_system_managed_config",
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "line": 108
+    },
+    {
+      "kind": "struct",
+      "name": "ManagedConfigLayer",
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "line": 119
+    },
+    {
+      "kind": "fn",
+      "name": "managed_config_layers",
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "line": 130
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+      "module": "campaigns",
+      "kind": "production",
+      "lineCount": 295,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "CAMPAIGNS_KEY",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 11
+        },
+        {
+          "kind": "struct",
+          "name": "CampaignMeta",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "CampaignEntry",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 20
+        },
+        {
+          "kind": "struct",
+          "name": "CampaignOverrides",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "take_campaigns",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "build_campaign_entries",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "merge_campaign_entries",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 75
+        },
+        {
+          "kind": "fn",
+          "name": "filter_active_campaigns",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 90
+        },
+        {
+          "kind": "fn",
+          "name": "ids_touching_paths",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "apply_active_campaign_patches",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 112
+        },
+        {
+          "kind": "fn",
+          "name": "take_campaign_entries",
+          "path": "crates/codegen/xai-grok-config/src/campaigns.rs",
+          "line": 120
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/campaigns.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+      "module": "config_override",
+      "kind": "production",
+      "lineCount": 143,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "PatchPath",
+          "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+          "line": 7
+        },
+        {
+          "kind": "struct",
+          "name": "ConfigOverrideEntry",
+          "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+          "line": 10
+        },
+        {
+          "kind": "fn",
+          "name": "take_patch_array",
+          "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "patch_touches_path",
+          "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "patch_touches_any",
+          "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+          "line": 74
+        },
+        {
+          "kind": "const",
+          "name": "PATCH_STRIP_KEYS",
+          "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "apply_patches",
+          "path": "crates/codegen/xai-grok-config/src/config_override.rs",
+          "line": 86
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/config_override.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/fs_atomic.rs",
+      "module": "fs_atomic",
+      "kind": "production",
+      "lineCount": 44,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "write_atomically",
+          "path": "crates/codegen/xai-grok-config/src/fs_atomic.rs",
+          "line": 10
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/fs_atomic.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 69,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "env_bool",
+          "path": "crates/codegen/xai-grok-config/src/lib.rs",
+          "line": 60
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/loader.rs",
+      "module": "loader",
+      "kind": "production",
+      "lineCount": 710,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "load_toml_file",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "toml_error_detail",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "load_config_file",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 77
+        },
+        {
+          "kind": "fn",
+          "name": "load_from_disk",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 83
+        },
+        {
+          "kind": "const",
+          "name": "MANAGED_CONFIG_FILENAME",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 88
+        },
+        {
+          "kind": "const",
+          "name": "REQUIREMENTS_FILENAME",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 91
+        },
+        {
+          "kind": "fn",
+          "name": "load_managed_config",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "load_system_managed_config",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 108
+        },
+        {
+          "kind": "struct",
+          "name": "ManagedConfigLayer",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 119
+        },
+        {
+          "kind": "fn",
+          "name": "managed_config_layers",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 130
+        },
+        {
+          "kind": "fn",
+          "name": "managed_config_layers_at",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 135
+        },
+        {
+          "kind": "struct",
+          "name": "ConfigLayers",
+          "path": "crates/codegen/xai-grok-config/src/loader.rs",
+          "line": 163
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/loader.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/macos_managed.rs",
+      "module": "macos_managed",
+      "kind": "production",
+      "lineCount": 197,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MDM_REQUIREMENTS_SOURCE",
+          "path": "crates/codegen/xai-grok-config/src/macos_managed.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "managed_preferences_requirements",
+          "path": "crates/codegen/xai-grok-config/src/macos_managed.rs",
+          "line": 17
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/macos_managed.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+      "module": "managed_cache",
+      "kind": "production",
+      "lineCount": 494,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MANAGED_CONFIG_CACHE_FILE",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 15
+        },
+        {
+          "kind": "enum",
+          "name": "ServingIdentity",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "is_managed_config_stale_for",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 50
+        },
+        {
+          "kind": "struct",
+          "name": "SyncMarker",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "mark_managed_config_synced",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "managed_deployment_id",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "mark_managed_config_synced_at",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "managed_config_identity_changed_at",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 155
+        },
+        {
+          "kind": "fn",
+          "name": "normalize_identity",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 174
+        },
+        {
+          "kind": "fn",
+          "name": "confirmed_team_switch",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 188
+        },
+        {
+          "kind": "fn",
+          "name": "confirmed_team_switch_at",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 193
+        },
+        {
+          "kind": "fn",
+          "name": "is_managed_config_hard_stale_for",
+          "path": "crates/codegen/xai-grok-config/src/managed_cache.rs",
+          "line": 279
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/managed_cache.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/managed_cache/tests.rs",
+      "module": "managed_cache::tests",
+      "kind": "test",
+      "lineCount": 1150,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/managed_cache/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/paths.rs",
+      "module": "paths",
+      "kind": "production",
+      "lineCount": 333,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "default_grok_home",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "grok_home",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "user_grok_home",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 54
+        },
+        {
+          "kind": "fn",
+          "name": "grok_application",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "grok_application_in",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "system_config_dir",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "claude_managed_settings_path",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "claude_managed_settings_path",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "claude_managed_settings_probe_path",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "claude_managed_settings_probe_path",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "encode_cwd_dirname",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 117
+        },
+        {
+          "kind": "fn",
+          "name": "decode_cwd_from_dirname",
+          "path": "crates/codegen/xai-grok-config/src/paths.rs",
+          "line": 138
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/paths.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/shell.rs",
+      "module": "shell",
+      "kind": "production",
+      "lineCount": 683,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "WindowsShell",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "detect_windows_shell",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 30
+        },
+        {
+          "kind": "fn",
+          "name": "name",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 151
+        },
+        {
+          "kind": "fn",
+          "name": "supports_chain_operator",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 168
+        },
+        {
+          "kind": "fn",
+          "name": "has_unix_utilities",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 175
+        },
+        {
+          "kind": "fn",
+          "name": "ampersand_semantics",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 181
+        },
+        {
+          "kind": "fn",
+          "name": "chain_separator",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 198
+        },
+        {
+          "kind": "fn",
+          "name": "has_unix_utilities",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 219
+        },
+        {
+          "kind": "fn",
+          "name": "is_command_available",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 239
+        },
+        {
+          "kind": "enum",
+          "name": "AmpersandSemantics",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 246
+        },
+        {
+          "kind": "fn",
+          "name": "ampersand_semantics",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 262
+        },
+        {
+          "kind": "struct",
+          "name": "ShellInvocation",
+          "path": "crates/codegen/xai-grok-config/src/shell.rs",
+          "line": 275
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/shell.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+      "module": "signed_policy",
+      "kind": "production",
+      "lineCount": 414,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "EMBEDDED_DEPLOYMENT_CONFIG_PUBKEYS",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 15
+        },
+        {
+          "kind": "const",
+          "name": "SIGNATURE_SIDECAR_FILE",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 59
+        },
+        {
+          "kind": "enum",
+          "name": "SigError",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 61
+        },
+        {
+          "kind": "fn",
+          "name": "verification_active",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "embedded_key_id_trusted",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "verify_signed_payload",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 97
+        },
+        {
+          "kind": "fn",
+          "name": "check_fetch_identity",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "verify_fetched",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 155
+        },
+        {
+          "kind": "fn",
+          "name": "check_on_disk_matches",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 186
+        },
+        {
+          "kind": "fn",
+          "name": "sidecar_path",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 221
+        },
+        {
+          "kind": "fn",
+          "name": "write_sidecar",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 253
+        },
+        {
+          "kind": "fn",
+          "name": "cloud_cache_signature_invalid",
+          "path": "crates/codegen/xai-grok-config/src/signed_policy.rs",
+          "line": 261
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/signed_policy.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/signed_policy/tests.rs",
+      "module": "signed_policy::tests",
+      "kind": "test",
+      "lineCount": 959,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/signed_policy/tests.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/validation.rs",
+      "module": "validation",
+      "kind": "production",
+      "lineCount": 468,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "FAIL_CLOSED_ENV",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 28
+        },
+        {
+          "kind": "enum",
+          "name": "RequirementsSource",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "label",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 43
+        },
+        {
+          "kind": "struct",
+          "name": "RequirementsLayer",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "requirements_layers",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "load_merged_requirements",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "load_requirements",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 109
+        },
+        {
+          "kind": "fn",
+          "name": "load_system_requirements",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 119
+        },
+        {
+          "kind": "fn",
+          "name": "load_requirements_layer",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "normalize_requirements_value",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 137
+        },
+        {
+          "kind": "fn",
+          "name": "mdm_requirements_value",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 157
+        },
+        {
+          "kind": "enum",
+          "name": "RequirementsError",
+          "path": "crates/codegen/xai-grok-config/src/validation.rs",
+          "line": 166
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/validation.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-config/src/version_overrides.rs",
+      "module": "version_overrides",
+      "kind": "production",
+      "lineCount": 213,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "VERSION_OVERRIDES_KEY",
+          "path": "crates/codegen/xai-grok-config/src/version_overrides.rs",
+          "line": 22
+        },
+        {
+          "kind": "struct",
+          "name": "VersionOverrideMeta",
+          "path": "crates/codegen/xai-grok-config/src/version_overrides.rs",
+          "line": 25
+        },
+        {
+          "kind": "enum",
+          "name": "VersionOverrideError",
+          "path": "crates/codegen/xai-grok-config/src/version_overrides.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "apply_version_overrides",
+          "path": "crates/codegen/xai-grok-config/src/version_overrides.rs",
+          "line": 54
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-config/src/version_overrides.rs"
+    }
+  ]
+}

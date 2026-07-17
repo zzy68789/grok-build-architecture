@@ -1,0 +1,27 @@
+---
+title: 73 个一方 Crate 总索引
+description: 一方 crate 的分层、职责、文件规模和覆盖口径总表。
+lastVerified: '2026-07-17'
+coverageKind: appendix
+sourceCrates: []
+sourcePaths:
+  - Cargo.toml
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import AtlasIndex from '@components/AtlasIndex.astro';
+import CoverageOverview from '@components/CoverageOverview.astro';
+import SourceBaseline from '@components/SourceBaseline.astro';
+
+<SourceBaseline compact />
+
+## 索引目的
+
+根 `Cargo.toml` 是 workspace 成员的权威入口。本附录只把 `crates/codegen` 与 `crates/common` 视为一方产品 crate；`crates/build`、`prod` 和 `third_party` 具有不同发布或来源边界，在另一篇附录单独说明。
+
+<CoverageOverview />
+
+分层是面向阅读的归纳，不是上游声明的官方模块等级。每个 crate 仍以真实 Cargo 依赖、反向依赖和公开符号为证据；测试辅助 crate 会标记为“测试支持”，不会被误写成用户请求的生产主链。
+
+<AtlasIndex baseHref="../../source-atlas/crates" />

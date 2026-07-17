@@ -1,0 +1,26 @@
+---
+title: "Hooks Runtime"
+description: "解释文件发现、命令执行、策略拦截和 hook 结果传播。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-grok-hooks
+  - xai-hooks-plugins-types
+sourcePaths:
+  - crates/codegen/xai-hooks-plugins-types/src/lib.rs
+  - crates/codegen/xai-grok-hooks/src/lib.rs
+  - crates/codegen/xai-grok-hooks/src/config.rs
+  - crates/codegen/xai-grok-hooks/src/runner/command.rs
+  - crates/codegen/xai-grok-hooks/src/runner/http.rs
+  - crates/codegen/xai-grok-hooks/src/dispatcher.rs
+  - crates/codegen/xai-grok-hooks/src/discovery.rs
+  - crates/codegen/xai-grok-hooks/src/env_expand.rs
+  - crates/codegen/xai-grok-hooks/src/event.rs
+  - crates/codegen/xai-grok-hooks/src/matcher.rs
+officialDocs:
+  - https://docs.x.ai/build/features/skills-plugins-marketplaces
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="extensibility/hooks-runtime" />

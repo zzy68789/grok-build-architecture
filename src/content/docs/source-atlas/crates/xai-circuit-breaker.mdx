@@ -1,0 +1,24 @@
+---
+title: "xai-circuit-breaker"
+description: "根据连续故障和恢复探测限制外部请求故障扩散。"
+lastVerified: '2026-07-17'
+coverageKind: appendix
+sourceCrates:
+  - xai-circuit-breaker
+sourcePaths:
+  - crates/common/xai-circuit-breaker/Cargo.toml
+  - crates/common/xai-circuit-breaker/src/lib.rs
+  - crates/common/xai-circuit-breaker/src/breaker.rs
+  - crates/common/xai-circuit-breaker/src/config.rs
+  - crates/common/xai-circuit-breaker/src/retry_policy.rs
+  - crates/common/xai-circuit-breaker/src/window.rs
+  - crates/common/xai-circuit-breaker/src/registry.rs
+  - crates/common/xai-circuit-breaker/src/state.rs
+  - crates/common/xai-circuit-breaker/src/clock.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import CrateAtlas from '@components/CrateAtlas.astro';
+
+<CrateAtlas crateName="xai-circuit-breaker" />

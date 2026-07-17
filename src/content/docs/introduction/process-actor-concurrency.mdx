@@ -1,0 +1,28 @@
+---
+title: "进程、Actor 与并发模型"
+description: "解释进程边界、actor 邮箱、异步任务、取消和背压如何共同工作。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-agent-lifecycle
+  - xai-chat-state
+  - xai-grok-sampler
+  - xai-prompt-queue
+sourcePaths:
+  - crates/codegen/xai-chat-state/src/lib.rs
+  - crates/codegen/xai-grok-sampler/src/lib.rs
+  - crates/codegen/xai-agent-lifecycle/src/lib.rs
+  - crates/codegen/xai-prompt-queue/src/lib.rs
+  - crates/codegen/xai-chat-state/src/compaction_utils.rs
+  - crates/codegen/xai-grok-sampler/src/client.rs
+  - crates/codegen/xai-grok-sampler/src/stream/responses.rs
+  - crates/codegen/xai-chat-state/src/actor/request_builder.rs
+  - crates/codegen/xai-grok-sampler/src/actor/request_task.rs
+  - crates/codegen/xai-grok-sampler/src/retry.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="introduction/process-actor-concurrency" />

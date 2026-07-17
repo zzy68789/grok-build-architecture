@@ -1,0 +1,1228 @@
+{
+  "name": "xai-tool-protocol",
+  "memberPath": "crates/common/xai-tool-protocol",
+  "manifestPath": "crates/common/xai-tool-protocol/Cargo.toml",
+  "description": "Wire-protocol types for the xAI Computer Hub",
+  "role": "定义 Computer Hub 工具调用的稳定传输协议类型。",
+  "layer": "工具与工作区",
+  "primaryArticle": "tools/contract-protocol-runtime-api",
+  "relatedArticles": [
+    "tools/contract-protocol-runtime-api",
+    "introduction/workspace-and-crates"
+  ],
+  "dependencies": [
+    "xai-tool-types"
+  ],
+  "dependents": [
+    "xai-computer-hub-core",
+    "xai-computer-hub-mcp-adapter",
+    "xai-computer-hub-sdk",
+    "xai-grok-mcp",
+    "xai-grok-shell",
+    "xai-grok-tools",
+    "xai-grok-tools-api",
+    "xai-grok-workspace",
+    "xai-grok-workspace-client",
+    "xai-tool-runtime"
+  ],
+  "fileCount": 21,
+  "productionFileCount": 17,
+  "lineCount": 4400,
+  "keyEntrypoints": [
+    {
+      "path": "crates/common/xai-tool-protocol/src/lib.rs",
+      "lineCount": 74,
+      "symbols": []
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/frames.rs",
+      "lineCount": 1550,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ToolCallParams",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 27
+        },
+        {
+          "kind": "struct",
+          "name": "ToolCallResult",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "MAX_SPANS_PER_DONATION",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 65
+        },
+        {
+          "kind": "const",
+          "name": "MAX_DONATION_BYTES",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 68
+        },
+        {
+          "kind": "struct",
+          "name": "TracesDonateParams",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 74
+        },
+        {
+          "kind": "const",
+          "name": "MAX_LOG_RECORDS_PER_DONATION",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 85
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+      "lineCount": 701,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BEFORE_TURN_KIND",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 10
+        },
+        {
+          "kind": "const",
+          "name": "AFTER_TURN_KIND",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SESSION_RELATIONSHIP",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SCHEMA_VERSION",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "BeforeTurnPayload",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 37
+        },
+        {
+          "kind": "struct",
+          "name": "AfterTurnPayload",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 86
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/session_event.rs",
+      "lineCount": 405,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SessionEvent",
+          "path": "crates/common/xai-tool-protocol/src/session_event.rs",
+          "line": 22
+        },
+        {
+          "kind": "enum",
+          "name": "ToolCallOutcome",
+          "path": "crates/common/xai-tool-protocol/src/session_event.rs",
+          "line": 73
+        },
+        {
+          "kind": "enum",
+          "name": "SessionPhase",
+          "path": "crates/common/xai-tool-protocol/src/session_event.rs",
+          "line": 87
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+      "lineCount": 301,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ERROR_CODES",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "numeric_for",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "string_for",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "from_tool_error_wire",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 65
+        },
+        {
+          "kind": "const",
+          "name": "WORKSPACE_UNAVAILABLE_SUBCODE",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 89
+        },
+        {
+          "kind": "const",
+          "name": "WORKSPACE_UNAVAILABLE_MESSAGE",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 92
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "lineCount": 258,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "JsonRpcVersion",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "VERSION",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 27
+        },
+        {
+          "kind": "enum",
+          "name": "JsonRpcId",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "new_string",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "new_uuid_v7",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "from_request_id",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 87
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/ids.rs",
+      "lineCount": 242,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "IdError",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "into_inner",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "new_v7",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 136
+        },
+        {
+          "kind": "fn",
+          "name": "synthesize_for_tool",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 172
+        }
+      ]
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/methods.rs",
+      "lineCount": 209,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "Method",
+          "path": "crates/common/xai-tool-protocol/src/methods.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "ALL",
+          "path": "crates/common/xai-tool-protocol/src/methods.rs",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/common/xai-tool-protocol/src/methods.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "from_wire_str",
+          "path": "crates/common/xai-tool-protocol/src/methods.rs",
+          "line": 45
+        },
+        {
+          "kind": "const",
+          "name": "UNKNOWN_METHOD_MSG_PREFIX",
+          "path": "crates/common/xai-tool-protocol/src/methods.rs",
+          "line": 62
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "ToolCapabilities",
+      "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+      "line": 10
+    },
+    {
+      "kind": "struct",
+      "name": "StreamingSpec",
+      "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+      "line": 58
+    },
+    {
+      "kind": "enum",
+      "name": "HookKind",
+      "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+      "line": 73
+    },
+    {
+      "kind": "enum",
+      "name": "ToolScope",
+      "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+      "line": 88
+    },
+    {
+      "kind": "struct",
+      "name": "NotificationSchemas",
+      "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+      "line": 98
+    },
+    {
+      "kind": "enum",
+      "name": "ConnectionKind",
+      "path": "crates/common/xai-tool-protocol/src/connection.rs",
+      "line": 9
+    },
+    {
+      "kind": "enum",
+      "name": "ToolDefinitionMode",
+      "path": "crates/common/xai-tool-protocol/src/connection.rs",
+      "line": 27
+    },
+    {
+      "kind": "struct",
+      "name": "JsonRpcVersion",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 24
+    },
+    {
+      "kind": "const",
+      "name": "VERSION",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 27
+    },
+    {
+      "kind": "enum",
+      "name": "JsonRpcId",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 72
+    },
+    {
+      "kind": "fn",
+      "name": "new_string",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 78
+    },
+    {
+      "kind": "fn",
+      "name": "new_uuid_v7",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 83
+    },
+    {
+      "kind": "fn",
+      "name": "from_request_id",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 87
+    },
+    {
+      "kind": "fn",
+      "name": "as_request_id",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 93
+    },
+    {
+      "kind": "struct",
+      "name": "JsonRpcRequest",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 116
+    },
+    {
+      "kind": "struct",
+      "name": "JsonRpcNotification",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 132
+    },
+    {
+      "kind": "struct",
+      "name": "JsonRpcError",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 148
+    },
+    {
+      "kind": "struct",
+      "name": "JsonRpcResponse",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 161
+    },
+    {
+      "kind": "enum",
+      "name": "ResponseOutcome",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 170
+    },
+    {
+      "kind": "fn",
+      "name": "ok",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 235
+    },
+    {
+      "kind": "fn",
+      "name": "err",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 244
+    },
+    {
+      "kind": "fn",
+      "name": "with_session",
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "line": 253
+    },
+    {
+      "kind": "const",
+      "name": "ERROR_CODES",
+      "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+      "line": 16
+    },
+    {
+      "kind": "fn",
+      "name": "numeric_for",
+      "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+      "line": 49
+    },
+    {
+      "kind": "fn",
+      "name": "string_for",
+      "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+      "line": 56
+    },
+    {
+      "kind": "fn",
+      "name": "from_tool_error_wire",
+      "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+      "line": 65
+    },
+    {
+      "kind": "const",
+      "name": "WORKSPACE_UNAVAILABLE_SUBCODE",
+      "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+      "line": 89
+    },
+    {
+      "kind": "const",
+      "name": "WORKSPACE_UNAVAILABLE_MESSAGE",
+      "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+      "line": 92
+    },
+    {
+      "kind": "const",
+      "name": "WORKSPACE_UNAVAILABLE_JSONRPC_CODE",
+      "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+      "line": 97
+    },
+    {
+      "kind": "enum",
+      "name": "WorkspaceGoneReason",
+      "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+      "line": 104
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+      "module": "capabilities",
+      "kind": "production",
+      "lineCount": 107,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ToolCapabilities",
+          "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+          "line": 10
+        },
+        {
+          "kind": "struct",
+          "name": "StreamingSpec",
+          "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+          "line": 58
+        },
+        {
+          "kind": "enum",
+          "name": "HookKind",
+          "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+          "line": 73
+        },
+        {
+          "kind": "enum",
+          "name": "ToolScope",
+          "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+          "line": 88
+        },
+        {
+          "kind": "struct",
+          "name": "NotificationSchemas",
+          "path": "crates/common/xai-tool-protocol/src/capabilities.rs",
+          "line": 98
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/capabilities.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/connection.rs",
+      "module": "connection",
+      "kind": "production",
+      "lineCount": 39,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ConnectionKind",
+          "path": "crates/common/xai-tool-protocol/src/connection.rs",
+          "line": 9
+        },
+        {
+          "kind": "enum",
+          "name": "ToolDefinitionMode",
+          "path": "crates/common/xai-tool-protocol/src/connection.rs",
+          "line": 27
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/connection.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+      "module": "envelope",
+      "kind": "production",
+      "lineCount": 258,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "JsonRpcVersion",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 24
+        },
+        {
+          "kind": "const",
+          "name": "VERSION",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 27
+        },
+        {
+          "kind": "enum",
+          "name": "JsonRpcId",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "new_string",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "new_uuid_v7",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "from_request_id",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 87
+        },
+        {
+          "kind": "fn",
+          "name": "as_request_id",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 93
+        },
+        {
+          "kind": "struct",
+          "name": "JsonRpcRequest",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 116
+        },
+        {
+          "kind": "struct",
+          "name": "JsonRpcNotification",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 132
+        },
+        {
+          "kind": "struct",
+          "name": "JsonRpcError",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 148
+        },
+        {
+          "kind": "struct",
+          "name": "JsonRpcResponse",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 161
+        },
+        {
+          "kind": "enum",
+          "name": "ResponseOutcome",
+          "path": "crates/common/xai-tool-protocol/src/envelope.rs",
+          "line": 170
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/envelope.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+      "module": "error_codes",
+      "kind": "production",
+      "lineCount": 301,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ERROR_CODES",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "numeric_for",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "string_for",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "from_tool_error_wire",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 65
+        },
+        {
+          "kind": "const",
+          "name": "WORKSPACE_UNAVAILABLE_SUBCODE",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 89
+        },
+        {
+          "kind": "const",
+          "name": "WORKSPACE_UNAVAILABLE_MESSAGE",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 92
+        },
+        {
+          "kind": "const",
+          "name": "WORKSPACE_UNAVAILABLE_JSONRPC_CODE",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 97
+        },
+        {
+          "kind": "enum",
+          "name": "WorkspaceGoneReason",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 104
+        },
+        {
+          "kind": "enum",
+          "name": "WorkspaceGonePhase",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 121
+        },
+        {
+          "kind": "struct",
+          "name": "WorkspaceUnavailableDetails",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 134
+        },
+        {
+          "kind": "fn",
+          "name": "workspace_unavailable_wire",
+          "path": "crates/common/xai-tool-protocol/src/error_codes.rs",
+          "line": 142
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/error_codes.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/error_wire.rs",
+      "module": "error_wire",
+      "kind": "production",
+      "lineCount": 97,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ToolErrorWire",
+          "path": "crates/common/xai-tool-protocol/src/error_wire.rs",
+          "line": 13
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/error_wire.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/frames.rs",
+      "module": "frames",
+      "kind": "production",
+      "lineCount": 1550,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ToolCallParams",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 27
+        },
+        {
+          "kind": "struct",
+          "name": "ToolCallResult",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "MAX_SPANS_PER_DONATION",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 65
+        },
+        {
+          "kind": "const",
+          "name": "MAX_DONATION_BYTES",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 68
+        },
+        {
+          "kind": "struct",
+          "name": "TracesDonateParams",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 74
+        },
+        {
+          "kind": "const",
+          "name": "MAX_LOG_RECORDS_PER_DONATION",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 85
+        },
+        {
+          "kind": "struct",
+          "name": "LogsDonateParams",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 91
+        },
+        {
+          "kind": "const",
+          "name": "MAX_METRICS_PER_DONATION",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 101
+        },
+        {
+          "kind": "struct",
+          "name": "MetricsDonateParams",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 108
+        },
+        {
+          "kind": "struct",
+          "name": "ToolCallProgressFrame",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 116
+        },
+        {
+          "kind": "struct",
+          "name": "ToolNotificationFrame",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 132
+        },
+        {
+          "kind": "fn",
+          "name": "custom",
+          "path": "crates/common/xai-tool-protocol/src/frames.rs",
+          "line": 142
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/frames.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/handshake.rs",
+      "module": "handshake",
+      "kind": "production",
+      "lineCount": 53,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "PROTOCOL_VERSION",
+          "path": "crates/common/xai-tool-protocol/src/handshake.rs",
+          "line": 10
+        },
+        {
+          "kind": "struct",
+          "name": "HelloMsg",
+          "path": "crates/common/xai-tool-protocol/src/handshake.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "HelloAckMsg",
+          "path": "crates/common/xai-tool-protocol/src/handshake.rs",
+          "line": 38
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/handshake.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/hook.rs",
+      "module": "hook",
+      "kind": "production",
+      "lineCount": 23,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "HookEvent",
+          "path": "crates/common/xai-tool-protocol/src/hook.rs",
+          "line": 9
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/hook.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/ids.rs",
+      "module": "ids",
+      "kind": "production",
+      "lineCount": 242,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "IdError",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 67
+        },
+        {
+          "kind": "fn",
+          "name": "into_inner",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 71
+        },
+        {
+          "kind": "fn",
+          "name": "new_v7",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 136
+        },
+        {
+          "kind": "fn",
+          "name": "synthesize_for_tool",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 172
+        },
+        {
+          "kind": "struct",
+          "name": "FrameSeq",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 219
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 222
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/common/xai-tool-protocol/src/ids.rs",
+          "line": 226
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/ids.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 74,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/lib.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/methods.rs",
+      "module": "methods",
+      "kind": "production",
+      "lineCount": 209,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "Method",
+          "path": "crates/common/xai-tool-protocol/src/methods.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "ALL",
+          "path": "crates/common/xai-tool-protocol/src/methods.rs",
+          "line": 33
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/common/xai-tool-protocol/src/methods.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "from_wire_str",
+          "path": "crates/common/xai-tool-protocol/src/methods.rs",
+          "line": 45
+        },
+        {
+          "kind": "const",
+          "name": "UNKNOWN_METHOD_MSG_PREFIX",
+          "path": "crates/common/xai-tool-protocol/src/methods.rs",
+          "line": 62
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/methods.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/notification_wire.rs",
+      "module": "notification_wire",
+      "kind": "production",
+      "lineCount": 87,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "WireToolNotification",
+          "path": "crates/common/xai-tool-protocol/src/notification_wire.rs",
+          "line": 22
+        },
+        {
+          "kind": "struct",
+          "name": "WireCustomNotification",
+          "path": "crates/common/xai-tool-protocol/src/notification_wire.rs",
+          "line": 31
+        },
+        {
+          "kind": "struct",
+          "name": "KnownVariantCollision",
+          "path": "crates/common/xai-tool-protocol/src/notification_wire.rs",
+          "line": 38
+        },
+        {
+          "kind": "const",
+          "name": "KNOWN_NOTIFICATION_KINDS",
+          "path": "crates/common/xai-tool-protocol/src/notification_wire.rs",
+          "line": 48
+        },
+        {
+          "kind": "const",
+          "name": "fn",
+          "path": "crates/common/xai-tool-protocol/src/notification_wire.rs",
+          "line": 70
+        },
+        {
+          "kind": "fn",
+          "name": "check_custom_kind",
+          "path": "crates/common/xai-tool-protocol/src/notification_wire.rs",
+          "line": 78
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/notification_wire.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/output_wire.rs",
+      "module": "output_wire",
+      "kind": "production",
+      "lineCount": 41,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ToolOutputWire",
+          "path": "crates/common/xai-tool-protocol/src/output_wire.rs",
+          "line": 11
+        },
+        {
+          "kind": "enum",
+          "name": "McpBlock",
+          "path": "crates/common/xai-tool-protocol/src/output_wire.rs",
+          "line": 24
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/output_wire.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/registration.rs",
+      "module": "registration",
+      "kind": "production",
+      "lineCount": 165,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "TransportKind",
+          "path": "crates/common/xai-tool-protocol/src/registration.rs",
+          "line": 12
+        },
+        {
+          "kind": "struct",
+          "name": "ToolDescriptionWithSchema",
+          "path": "crates/common/xai-tool-protocol/src/registration.rs",
+          "line": 21
+        },
+        {
+          "kind": "fn",
+          "name": "derive_tool_id",
+          "path": "crates/common/xai-tool-protocol/src/registration.rs",
+          "line": 37
+        },
+        {
+          "kind": "struct",
+          "name": "ToolRegistration",
+          "path": "crates/common/xai-tool-protocol/src/registration.rs",
+          "line": 66
+        },
+        {
+          "kind": "fn",
+          "name": "derive_tool_id",
+          "path": "crates/common/xai-tool-protocol/src/registration.rs",
+          "line": 101
+        },
+        {
+          "kind": "struct",
+          "name": "ToolServerRegistration",
+          "path": "crates/common/xai-tool-protocol/src/registration.rs",
+          "line": 120
+        },
+        {
+          "kind": "enum",
+          "name": "RegistrationOutcome",
+          "path": "crates/common/xai-tool-protocol/src/registration.rs",
+          "line": 146
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/registration.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/registry_error.rs",
+      "module": "registry_error",
+      "kind": "production",
+      "lineCount": 48,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "RegistryError",
+          "path": "crates/common/xai-tool-protocol/src/registry_error.rs",
+          "line": 14
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/registry_error.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/session_event.rs",
+      "module": "session_event",
+      "kind": "production",
+      "lineCount": 405,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SessionEvent",
+          "path": "crates/common/xai-tool-protocol/src/session_event.rs",
+          "line": 22
+        },
+        {
+          "kind": "enum",
+          "name": "ToolCallOutcome",
+          "path": "crates/common/xai-tool-protocol/src/session_event.rs",
+          "line": 73
+        },
+        {
+          "kind": "enum",
+          "name": "SessionPhase",
+          "path": "crates/common/xai-tool-protocol/src/session_event.rs",
+          "line": 87
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/session_event.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+      "module": "turn_hook",
+      "kind": "production",
+      "lineCount": 701,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BEFORE_TURN_KIND",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 10
+        },
+        {
+          "kind": "const",
+          "name": "AFTER_TURN_KIND",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SESSION_RELATIONSHIP",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 17
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SCHEMA_VERSION",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 21
+        },
+        {
+          "kind": "struct",
+          "name": "BeforeTurnPayload",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 37
+        },
+        {
+          "kind": "struct",
+          "name": "AfterTurnPayload",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 86
+        },
+        {
+          "kind": "enum",
+          "name": "TurnHookOutcome",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 126
+        },
+        {
+          "kind": "const",
+          "name": "TURN_HOOK_KIND",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 136
+        },
+        {
+          "kind": "enum",
+          "name": "TurnHookRequest",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 143
+        },
+        {
+          "kind": "enum",
+          "name": "InjectionRole",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 154
+        },
+        {
+          "kind": "struct",
+          "name": "HookInjection",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 166
+        },
+        {
+          "kind": "enum",
+          "name": "TurnControl",
+          "path": "crates/common/xai-tool-protocol/src/turn_hook.rs",
+          "line": 177
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/src/turn_hook.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/tests/identifier_validation.rs",
+      "module": "..::tests::identifier_validation",
+      "kind": "test",
+      "lineCount": 193,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/tests/identifier_validation.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/tests/jsonrpc_envelope.rs",
+      "module": "..::tests::jsonrpc_envelope",
+      "kind": "test",
+      "lineCount": 266,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/tests/jsonrpc_envelope.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/tests/serde_roundtrip.rs",
+      "module": "..::tests::serde_roundtrip",
+      "kind": "test",
+      "lineCount": 1681,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/tests/serde_roundtrip.rs"
+    },
+    {
+      "path": "crates/common/xai-tool-protocol/tests/tool_id_derivation.rs",
+      "module": "..::tests::tool_id_derivation",
+      "kind": "test",
+      "lineCount": 94,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/common/xai-tool-protocol/tests/tool_id_derivation.rs"
+    }
+  ]
+}

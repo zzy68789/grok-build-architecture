@@ -1,0 +1,27 @@
+---
+title: "Workspace Execution、VCS、FS Events 与 Gix Status"
+description: "串联命令执行、版本控制状态、语义文件事件和线程预算。"
+lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-fsnotify
+  - xai-gix-status
+  - xai-grok-workspace
+sourcePaths:
+  - crates/codegen/xai-gix-status/src/lib.rs
+  - crates/codegen/xai-grok-workspace/src/lib.rs
+  - crates/codegen/xai-fsnotify/src/lib.rs
+  - crates/codegen/xai-grok-workspace/src/handle.rs
+  - crates/codegen/xai-grok-workspace/src/permission/manager.rs
+  - crates/codegen/xai-grok-workspace/src/permission/resolution.rs
+  - crates/codegen/xai-grok-workspace/src/session/git.rs
+  - crates/codegen/xai-fsnotify/src/watcher.rs
+  - crates/codegen/xai-grok-workspace/src/worktree/mod.rs
+  - crates/codegen/xai-grok-workspace/src/hub_server.rs
+officialDocs:
+  - https://docs.x.ai/build/overview
+---
+
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
+
+<DeepDiveArticle slug="workspace/execution-vcs-fsevents-status" />

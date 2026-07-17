@@ -1,0 +1,1886 @@
+{
+  "name": "xai-grok-agent",
+  "memberPath": "crates/codegen/xai-grok-agent",
+  "manifestPath": "crates/codegen/xai-grok-agent/Cargo.toml",
+  "description": "Agent builder, definition parsing, and system prompt assembly",
+  "role": "负责 Agent 定义解析、构建和 system prompt 装配。",
+  "layer": "Agent 与推理",
+  "primaryArticle": "agent/definition-prompt-assembly",
+  "relatedArticles": [
+    "agent/definition-prompt-assembly",
+    "introduction/architecture-overview",
+    "context/system-prompt-and-rules",
+    "extensibility/skills-plugins-hooks"
+  ],
+  "dependencies": [
+    "xai-grok-config",
+    "xai-grok-hooks",
+    "xai-grok-sampling-types",
+    "xai-grok-tools",
+    "xai-token-estimation"
+  ],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-plugin-marketplace",
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 30,
+  "productionFileCount": 30,
+  "lineCount": 21456,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-agent/src/lib.rs",
+      "lineCount": 30,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+      "lineCount": 2689,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SkillsConfig",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "list_skills",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "list_skills_with_plugins",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "collect_skill_config_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 142
+        },
+        {
+          "kind": "fn",
+          "name": "filter_skills",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 626
+        },
+        {
+          "kind": "fn",
+          "name": "format_skill_for_injection",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 650
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/config.rs",
+      "lineCount": 2553,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "ToolsetPresetBuilder",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "register_toolset_preset",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "register_internal_toolset_preset",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "workspace_grok_build_toolset",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 176
+        },
+        {
+          "kind": "fn",
+          "name": "preset_names",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 248
+        },
+        {
+          "kind": "fn",
+          "name": "toolset_for_preset",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 255
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+      "lineCount": 2397,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AgentBuilder",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 180
+        },
+        {
+          "kind": "fn",
+          "name": "with_persisted_announced_skill_names",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 249
+        },
+        {
+          "kind": "fn",
+          "name": "with_preloaded_skills",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 259
+        },
+        {
+          "kind": "fn",
+          "name": "from_definition",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 267
+        },
+        {
+          "kind": "fn",
+          "name": "with_persona_summaries",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 272
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+      "lineCount": 1866,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "PluginScope",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "id_label",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 41
+        },
+        {
+          "kind": "enum",
+          "name": "PluginOrigin",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 68
+        },
+        {
+          "kind": "struct",
+          "name": "PluginId",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 112
+        },
+        {
+          "kind": "struct",
+          "name": "DiscoveredPlugin",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 133
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+      "lineCount": 1502,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "project_agent_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "project_agent_dirs_in",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "SubagentEntry",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 46
+        },
+        {
+          "kind": "enum",
+          "name": "SubagentSource",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "all_subagents",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "user_agent_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 196
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+      "lineCount": 1352,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "TemplateOverride",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 21
+        },
+        {
+          "kind": "enum",
+          "name": "PromptAudience",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 71
+        },
+        {
+          "kind": "struct",
+          "name": "PromptContext",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 84
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SYSTEM_PROMPT_LABEL",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 153
+        },
+        {
+          "kind": "fn",
+          "name": "normalize_for_persistence",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 166
+        },
+        {
+          "kind": "fn",
+          "name": "format_agents_md_section",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 202
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+      "lineCount": 1246,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LoadedPlugin",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "data_dir",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "root_str",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "data_dir_str",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 94
+        },
+        {
+          "kind": "struct",
+          "name": "PluginRegistry",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "from_discovered",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 121
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "Agent",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 25
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 58
+    },
+    {
+      "kind": "fn",
+      "name": "name",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 83
+    },
+    {
+      "kind": "fn",
+      "name": "description",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 88
+    },
+    {
+      "kind": "fn",
+      "name": "definition",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 93
+    },
+    {
+      "kind": "fn",
+      "name": "permission_mode",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 98
+    },
+    {
+      "kind": "fn",
+      "name": "completion_requirement",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 103
+    },
+    {
+      "kind": "fn",
+      "name": "system_prompt",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 110
+    },
+    {
+      "kind": "fn",
+      "name": "compact_system_prompt",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 117
+    },
+    {
+      "kind": "fn",
+      "name": "tool_bridge",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 122
+    },
+    {
+      "kind": "fn",
+      "name": "compaction_policy",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 127
+    },
+    {
+      "kind": "fn",
+      "name": "reminder_policy",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 132
+    },
+    {
+      "kind": "fn",
+      "name": "agents_md_section",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 137
+    },
+    {
+      "kind": "fn",
+      "name": "agents_md_user_reminder",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 145
+    },
+    {
+      "kind": "fn",
+      "name": "personas_user_reminder",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 153
+    },
+    {
+      "kind": "fn",
+      "name": "prompt_context",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 158
+    },
+    {
+      "kind": "fn",
+      "name": "prompt_audience",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 168
+    },
+    {
+      "kind": "fn",
+      "name": "tool_definitions",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 173
+    },
+    {
+      "kind": "fn",
+      "name": "hosted_tools",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 180
+    },
+    {
+      "kind": "fn",
+      "name": "backend_search_enabled",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 189
+    },
+    {
+      "kind": "fn",
+      "name": "tool_definitions_builtins_only",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 194
+    },
+    {
+      "kind": "fn",
+      "name": "should_auto_compact",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 201
+    },
+    {
+      "kind": "fn",
+      "name": "update_policies_from_definition",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 218
+    },
+    {
+      "kind": "fn",
+      "name": "finalize_prompt",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 227
+    },
+    {
+      "kind": "fn",
+      "name": "render_prompt_for_definition",
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "line": 239
+    },
+    {
+      "kind": "struct",
+      "name": "AgentBuilder",
+      "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+      "line": 42
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+      "line": 180
+    },
+    {
+      "kind": "fn",
+      "name": "with_persisted_announced_skill_names",
+      "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+      "line": 249
+    },
+    {
+      "kind": "fn",
+      "name": "with_preloaded_skills",
+      "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+      "line": 259
+    },
+    {
+      "kind": "fn",
+      "name": "from_definition",
+      "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+      "line": 267
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+      "module": "agent",
+      "kind": "production",
+      "lineCount": 297,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Agent",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 58
+        },
+        {
+          "kind": "fn",
+          "name": "name",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 83
+        },
+        {
+          "kind": "fn",
+          "name": "description",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "definition",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 93
+        },
+        {
+          "kind": "fn",
+          "name": "permission_mode",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 98
+        },
+        {
+          "kind": "fn",
+          "name": "completion_requirement",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 103
+        },
+        {
+          "kind": "fn",
+          "name": "system_prompt",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 110
+        },
+        {
+          "kind": "fn",
+          "name": "compact_system_prompt",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 117
+        },
+        {
+          "kind": "fn",
+          "name": "tool_bridge",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "compaction_policy",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 127
+        },
+        {
+          "kind": "fn",
+          "name": "reminder_policy",
+          "path": "crates/codegen/xai-grok-agent/src/agent.rs",
+          "line": 132
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/agent.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+      "module": "builder",
+      "kind": "production",
+      "lineCount": 2397,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AgentBuilder",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 180
+        },
+        {
+          "kind": "fn",
+          "name": "with_persisted_announced_skill_names",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 249
+        },
+        {
+          "kind": "fn",
+          "name": "with_preloaded_skills",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 259
+        },
+        {
+          "kind": "fn",
+          "name": "from_definition",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 267
+        },
+        {
+          "kind": "fn",
+          "name": "with_persona_summaries",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 272
+        },
+        {
+          "kind": "fn",
+          "name": "with_prompt_audience",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 277
+        },
+        {
+          "kind": "fn",
+          "name": "with_role_instructions",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 284
+        },
+        {
+          "kind": "fn",
+          "name": "with_persona_instructions",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 288
+        },
+        {
+          "kind": "fn",
+          "name": "with_name",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 292
+        },
+        {
+          "kind": "fn",
+          "name": "with_description",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 296
+        },
+        {
+          "kind": "fn",
+          "name": "with_prompt_mode",
+          "path": "crates/codegen/xai-grok-agent/src/builder.rs",
+          "line": 300
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/builder.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/compaction.rs",
+      "module": "compaction",
+      "kind": "production",
+      "lineCount": 47,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CompactionPolicy",
+          "path": "crates/codegen/xai-grok-agent/src/compaction.rs",
+          "line": 9
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/compaction.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/config.rs",
+      "module": "config",
+      "kind": "production",
+      "lineCount": 2553,
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "ToolsetPresetBuilder",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 38
+        },
+        {
+          "kind": "fn",
+          "name": "register_toolset_preset",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 56
+        },
+        {
+          "kind": "fn",
+          "name": "register_internal_toolset_preset",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 68
+        },
+        {
+          "kind": "fn",
+          "name": "workspace_grok_build_toolset",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 176
+        },
+        {
+          "kind": "fn",
+          "name": "preset_names",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 248
+        },
+        {
+          "kind": "fn",
+          "name": "toolset_for_preset",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 255
+        },
+        {
+          "kind": "fn",
+          "name": "grok_build_hashline_toolset",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 312
+        },
+        {
+          "kind": "enum",
+          "name": "ModelOverride",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 546
+        },
+        {
+          "kind": "static",
+          "name": "AGENT_TASK_TOKENIZER_RE",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 587
+        },
+        {
+          "kind": "static",
+          "name": "AGENT_TASK_CLASSIFIER_RE",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 593
+        },
+        {
+          "kind": "enum",
+          "name": "BuiltinAgentName",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 657
+        },
+        {
+          "kind": "fn",
+          "name": "is_strict_harness_agent_type",
+          "path": "crates/codegen/xai-grok-agent/src/config.rs",
+          "line": 677
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/config.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+      "module": "discovery",
+      "kind": "production",
+      "lineCount": 1502,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "project_agent_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "project_agent_dirs_in",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "SubagentEntry",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 46
+        },
+        {
+          "kind": "enum",
+          "name": "SubagentSource",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "all_subagents",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 74
+        },
+        {
+          "kind": "fn",
+          "name": "user_agent_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 196
+        },
+        {
+          "kind": "fn",
+          "name": "discover",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 226
+        },
+        {
+          "kind": "fn",
+          "name": "by_name",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 253
+        },
+        {
+          "kind": "fn",
+          "name": "by_name_in_cwd",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 289
+        },
+        {
+          "kind": "fn",
+          "name": "builtin_subagents",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 316
+        },
+        {
+          "kind": "fn",
+          "name": "all_builtin_agent_definitions",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 330
+        },
+        {
+          "kind": "fn",
+          "name": "parse_agent_frontmatter_only",
+          "path": "crates/codegen/xai-grok-agent/src/discovery.rs",
+          "line": 338
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/discovery.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/error.rs",
+      "module": "error",
+      "kind": "production",
+      "lineCount": 37,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "AgentBuildError",
+          "path": "crates/codegen/xai-grok-agent/src/error.rs",
+          "line": 5
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/error.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 30,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+      "module": "plugins::discovery",
+      "kind": "production",
+      "lineCount": 1866,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "PluginScope",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "id_label",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 41
+        },
+        {
+          "kind": "enum",
+          "name": "PluginOrigin",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 68
+        },
+        {
+          "kind": "struct",
+          "name": "PluginId",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 108
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 112
+        },
+        {
+          "kind": "struct",
+          "name": "DiscoveredPlugin",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "plugin_name",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 165
+        },
+        {
+          "kind": "struct",
+          "name": "DiscoveryConfig",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 172
+        },
+        {
+          "kind": "fn",
+          "name": "populate_plugin_lists",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 189
+        },
+        {
+          "kind": "fn",
+          "name": "project_plugin_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 251
+        },
+        {
+          "kind": "fn",
+          "name": "project_plugin_dirs_in",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 263
+        },
+        {
+          "kind": "fn",
+          "name": "discover_plugins",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/discovery.rs",
+          "line": 274
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/plugins/discovery.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+      "module": "plugins::git_install",
+      "kind": "production",
+      "lineCount": 1230,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "InstallSource",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 18
+        },
+        {
+          "kind": "struct",
+          "name": "InstallResult",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 34
+        },
+        {
+          "kind": "struct",
+          "name": "DiscoveredPlugin",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 42
+        },
+        {
+          "kind": "fn",
+          "name": "parse_install_source",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "install_from_source",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 163
+        },
+        {
+          "kind": "fn",
+          "name": "remove_repo_path",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 367
+        },
+        {
+          "kind": "fn",
+          "name": "cleanup_plugin_data",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 386
+        },
+        {
+          "kind": "fn",
+          "name": "discover_plugins_in_dir",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 413
+        },
+        {
+          "kind": "fn",
+          "name": "build_installed_repo",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 507
+        },
+        {
+          "kind": "fn",
+          "name": "repo_plugin_map",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 537
+        },
+        {
+          "kind": "struct",
+          "name": "UpdateResult",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 555
+        },
+        {
+          "kind": "enum",
+          "name": "UpdateStatus",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/git_install.rs",
+          "line": 564
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/plugins/git_install.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/hooks_adapter.rs",
+      "module": "plugins::hooks_adapter",
+      "kind": "production",
+      "lineCount": 662,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "parse_plugin_hooks",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/hooks_adapter.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "parse_plugin_hooks_from_value",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/hooks_adapter.rs",
+          "line": 88
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/plugins/hooks_adapter.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+      "module": "plugins::install_registry",
+      "kind": "production",
+      "lineCount": 615,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "InstallRegistry",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 18
+        },
+        {
+          "kind": "enum",
+          "name": "InstallKind",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 31
+        },
+        {
+          "kind": "struct",
+          "name": "InstalledRepo",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 54
+        },
+        {
+          "kind": "struct",
+          "name": "MarketplaceProvenance",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 70
+        },
+        {
+          "kind": "struct",
+          "name": "RepoPlugin",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "load",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 106
+        },
+        {
+          "kind": "fn",
+          "name": "empty",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 138
+        },
+        {
+          "kind": "fn",
+          "name": "save",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "save_atomic",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 151
+        },
+        {
+          "kind": "fn",
+          "name": "get_repo",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 188
+        },
+        {
+          "kind": "fn",
+          "name": "get_repo_mut",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 193
+        },
+        {
+          "kind": "fn",
+          "name": "find_plugin",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/install_registry.rs",
+          "line": 200
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/plugins/install_registry.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/local_refresh.rs",
+      "module": "plugins::local_refresh",
+      "kind": "production",
+      "lineCount": 667,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "RefreshSummary",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/local_refresh.rs",
+          "line": 24
+        },
+        {
+          "kind": "fn",
+          "name": "refresh_local_installs_from_disk",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/local_refresh.rs",
+          "line": 37
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/plugins/local_refresh.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+      "module": "plugins::manifest",
+      "kind": "production",
+      "lineCount": 870,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "Author",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 35
+        },
+        {
+          "kind": "enum",
+          "name": "PathOrPaths",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 47
+        },
+        {
+          "kind": "fn",
+          "name": "resolve",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 57
+        },
+        {
+          "kind": "enum",
+          "name": "PathOrInline",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 127
+        },
+        {
+          "kind": "struct",
+          "name": "PluginManifest",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 138
+        },
+        {
+          "kind": "fn",
+          "name": "validate",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 174
+        },
+        {
+          "kind": "fn",
+          "name": "skill_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 187
+        },
+        {
+          "kind": "fn",
+          "name": "command_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 191
+        },
+        {
+          "kind": "fn",
+          "name": "agent_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 195
+        },
+        {
+          "kind": "fn",
+          "name": "hooks_path",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 201
+        },
+        {
+          "kind": "fn",
+          "name": "mcp_config_path",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 205
+        },
+        {
+          "kind": "fn",
+          "name": "inline_hooks",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/manifest.rs",
+          "line": 218
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/plugins/manifest.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/marketplace.rs",
+      "module": "plugins::marketplace",
+      "kind": "production",
+      "lineCount": 498,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ResolvedMarketplace",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/marketplace.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "resolve",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/marketplace.rs",
+          "line": 19
+        },
+        {
+          "kind": "fn",
+          "name": "parse_enabled_disabled_plugins",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/marketplace.rs",
+          "line": 100
+        },
+        {
+          "kind": "fn",
+          "name": "load_enabled_disabled_plugins",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/marketplace.rs",
+          "line": 138
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_known_marketplaces",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/marketplace.rs",
+          "line": 166
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_known_marketplaces_in",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/marketplace.rs",
+          "line": 175
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/plugins/marketplace.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/mod.rs",
+      "module": "plugins::mod",
+      "kind": "production",
+      "lineCount": 33,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/plugins/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+      "module": "plugins::registry",
+      "kind": "production",
+      "lineCount": 1246,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LoadedPlugin",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "data_dir",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 82
+        },
+        {
+          "kind": "fn",
+          "name": "root_str",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 89
+        },
+        {
+          "kind": "fn",
+          "name": "data_dir_str",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 94
+        },
+        {
+          "kind": "struct",
+          "name": "PluginRegistry",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "from_discovered",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 121
+        },
+        {
+          "kind": "fn",
+          "name": "empty",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 240
+        },
+        {
+          "kind": "fn",
+          "name": "with_session_plugin_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 249
+        },
+        {
+          "kind": "fn",
+          "name": "session_plugin_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 255
+        },
+        {
+          "kind": "fn",
+          "name": "get",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 260
+        },
+        {
+          "kind": "fn",
+          "name": "list",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 265
+        },
+        {
+          "kind": "fn",
+          "name": "active_plugins",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/registry.rs",
+          "line": 275
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/plugins/registry.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/plugins/trust.rs",
+      "module": "plugins::trust",
+      "kind": "production",
+      "lineCount": 366,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TrustStore",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/trust.rs",
+          "line": 28
+        },
+        {
+          "kind": "fn",
+          "name": "load",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/trust.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "load_from",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/trust.rs",
+          "line": 55
+        },
+        {
+          "kind": "fn",
+          "name": "is_trusted",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/trust.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "grant_trust",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/trust.rs",
+          "line": 81
+        },
+        {
+          "kind": "fn",
+          "name": "revoke_trust",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/trust.rs",
+          "line": 124
+        },
+        {
+          "kind": "fn",
+          "name": "is_config_path_auto_trusted",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/trust.rs",
+          "line": 169
+        },
+        {
+          "kind": "enum",
+          "name": "TrustError",
+          "path": "crates/codegen/xai-grok-agent/src/plugins/trust.rs",
+          "line": 214
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/plugins/trust.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/agents_md.rs",
+      "module": "prompt::agents_md",
+      "kind": "production",
+      "lineCount": 605,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "AgentConfigFile",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/agents_md.rs",
+          "line": 14
+        },
+        {
+          "kind": "fn",
+          "name": "read_agents_config_with_paths",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/agents_md.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "format_agents_md_section",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/agents_md.rs",
+          "line": 187
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_AGENTS_MD_REMINDER_PREFIX",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/agents_md.rs",
+          "line": 194
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/prompt/agents_md.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+      "module": "prompt::context",
+      "kind": "production",
+      "lineCount": 1352,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "TemplateOverride",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 21
+        },
+        {
+          "kind": "enum",
+          "name": "PromptAudience",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 71
+        },
+        {
+          "kind": "struct",
+          "name": "PromptContext",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 84
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SYSTEM_PROMPT_LABEL",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 153
+        },
+        {
+          "kind": "fn",
+          "name": "normalize_for_persistence",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 166
+        },
+        {
+          "kind": "fn",
+          "name": "format_agents_md_section",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 202
+        },
+        {
+          "kind": "fn",
+          "name": "agents_md_user_reminder",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 209
+        },
+        {
+          "kind": "fn",
+          "name": "personas_user_reminder",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 218
+        },
+        {
+          "kind": "fn",
+          "name": "format_personas_section",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 230
+        },
+        {
+          "kind": "fn",
+          "name": "placeholders",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 237
+        },
+        {
+          "kind": "fn",
+          "name": "render",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/context.rs",
+          "line": 260
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/prompt/context.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/ignore.rs",
+      "module": "prompt::ignore",
+      "kind": "production",
+      "lineCount": 38,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "build_gitignore",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/ignore.rs",
+          "line": 6
+        },
+        {
+          "kind": "fn",
+          "name": "is_ignored",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/ignore.rs",
+          "line": 25
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/prompt/ignore.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/mod.rs",
+      "module": "prompt::mod",
+      "kind": "production",
+      "lineCount": 10,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/prompt/mod.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/prompt_encrypted.rs",
+      "module": "prompt::prompt_encrypted",
+      "kind": "production",
+      "lineCount": 15,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BASE_PROMPT_ENC",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/prompt_encrypted.rs",
+          "line": 6
+        },
+        {
+          "kind": "const",
+          "name": "CODEX_PROMPT_ENC",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/prompt_encrypted.rs",
+          "line": 9
+        },
+        {
+          "kind": "const",
+          "name": "SUBAGENT_PROMPT_ENC",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/prompt_encrypted.rs",
+          "line": 12
+        },
+        {
+          "kind": "const",
+          "name": "PROMPT_SEEDS",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/prompt_encrypted.rs",
+          "line": 14
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/prompt/prompt_encrypted.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+      "module": "prompt::skills",
+      "kind": "production",
+      "lineCount": 2689,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SkillsConfig",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "list_skills",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "list_skills_with_plugins",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 79
+        },
+        {
+          "kind": "fn",
+          "name": "collect_skill_config_dirs",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 142
+        },
+        {
+          "kind": "fn",
+          "name": "filter_skills",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 626
+        },
+        {
+          "kind": "fn",
+          "name": "format_skill_for_injection",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 650
+        },
+        {
+          "kind": "fn",
+          "name": "format_skills_for_injection",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 658
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_preloaded_skills",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/skills.rs",
+          "line": 672
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/prompt/skills.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/subagent_prompts.rs",
+      "module": "prompt::subagent_prompts",
+      "kind": "production",
+      "lineCount": 27,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/prompt/subagent_prompts.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/template.rs",
+      "module": "prompt::template",
+      "kind": "production",
+      "lineCount": 881,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "base_template",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/template.rs",
+          "line": 31
+        },
+        {
+          "kind": "fn",
+          "name": "base_template_source",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/template.rs",
+          "line": 36
+        },
+        {
+          "kind": "fn",
+          "name": "apply_patch_template",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/template.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "apply_patch_template_source",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/template.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "subagent_template",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/template.rs",
+          "line": 50
+        },
+        {
+          "kind": "const",
+          "name": "COMPACT_SYSTEM_PROMPT",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/template.rs",
+          "line": 55
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/prompt/template.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/user_message.rs",
+      "module": "prompt::user_message",
+      "kind": "production",
+      "lineCount": 377,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "USER_MESSAGE_DATE_FORMAT",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/user_message.rs",
+          "line": 25
+        },
+        {
+          "kind": "const",
+          "name": "GIT_STATUS_CHARACTER_LIMIT",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/user_message.rs",
+          "line": 30
+        },
+        {
+          "kind": "enum",
+          "name": "UserMessageTemplate",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/user_message.rs",
+          "line": 65
+        },
+        {
+          "kind": "fn",
+          "name": "is_cursor",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/user_message.rs",
+          "line": 76
+        },
+        {
+          "kind": "struct",
+          "name": "RuleEntry",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/user_message.rs",
+          "line": 123
+        },
+        {
+          "kind": "struct",
+          "name": "McpServerEntry",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/user_message.rs",
+          "line": 139
+        },
+        {
+          "kind": "struct",
+          "name": "UserMessageContext",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/user_message.rs",
+          "line": 156
+        },
+        {
+          "kind": "fn",
+          "name": "render_skill_listing_xml",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/user_message.rs",
+          "line": 279
+        },
+        {
+          "kind": "fn",
+          "name": "render",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/user_message.rs",
+          "line": 300
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/prompt/user_message.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/prompt/workspace_user.rs",
+      "module": "prompt::workspace_user",
+      "kind": "production",
+      "lineCount": 163,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "optional_workspace_user_dir",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/workspace_user.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_workspace_user_dir",
+          "path": "crates/codegen/xai-grok-agent/src/prompt/workspace_user.rs",
+          "line": 38
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/prompt/workspace_user.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/repo.rs",
+      "module": "repo",
+      "kind": "production",
+      "lineCount": 223,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "RepoDirChain",
+          "path": "crates/codegen/xai-grok-agent/src/repo.rs",
+          "line": 35
+        },
+        {
+          "kind": "fn",
+          "name": "resolve",
+          "path": "crates/codegen/xai-grok-agent/src/repo.rs",
+          "line": 44
+        },
+        {
+          "kind": "fn",
+          "name": "existing_subdirs_along",
+          "path": "crates/codegen/xai-grok-agent/src/repo.rs",
+          "line": 99
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/repo.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/system_reminder.rs",
+      "module": "system_reminder",
+      "kind": "production",
+      "lineCount": 128,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEFAULT_TODO_GATE_MAX_FIRES",
+          "path": "crates/codegen/xai-grok-agent/src/system_reminder.rs",
+          "line": 7
+        },
+        {
+          "kind": "struct",
+          "name": "ReminderPolicy",
+          "path": "crates/codegen/xai-grok-agent/src/system_reminder.rs",
+          "line": 14
+        },
+        {
+          "kind": "struct",
+          "name": "TodoNudgeConfig",
+          "path": "crates/codegen/xai-grok-agent/src/system_reminder.rs",
+          "line": 38
+        },
+        {
+          "kind": "struct",
+          "name": "TodoGateConfig",
+          "path": "crates/codegen/xai-grok-agent/src/system_reminder.rs",
+          "line": 69
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/system_reminder.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-agent/src/timing.rs",
+      "module": "timing",
+      "kind": "production",
+      "lineCount": 32,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "TimingGuard",
+          "path": "crates/codegen/xai-grok-agent/src/timing.rs",
+          "line": 3
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-agent/src/timing.rs",
+          "line": 9
+        },
+        {
+          "kind": "fn",
+          "name": "timer",
+          "path": "crates/codegen/xai-grok-agent/src/timing.rs",
+          "line": 29
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-agent/src/timing.rs"
+    }
+  ]
+}

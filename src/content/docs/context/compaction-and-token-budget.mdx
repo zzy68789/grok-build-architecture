@@ -1,81 +1,27 @@
 ---
-title: 上下文压缩与 Token 预算
-description: 解释压缩触发、摘要生成、提交、回退与 token 阈值的协作方式。
+title: "上下文压缩与 Token 预算"
+description: "追踪预算估算、压缩触发、摘要提交和失败回退。"
 lastVerified: '2026-07-17'
+coverageKind: deep-dive
+sourceCrates:
+  - xai-grok-compaction
+  - xai-grok-shell
+  - xai-token-estimation
 sourcePaths:
-  - crates/common/xai-grok-compaction/src/lib.rs
-  - crates/codegen/xai-grok-shell/src/session/compaction.rs
   - crates/codegen/xai-token-estimation/src/lib.rs
+  - crates/common/xai-grok-compaction/src/lib.rs
+  - crates/codegen/xai-grok-shell/src/lib.rs
+  - crates/codegen/xai-grok-shell/src/agent/config.rs
+  - crates/codegen/xai-grok-shell/src/session/goal_classifier.rs
+  - crates/codegen/xai-grok-shell/src/leader/server.rs
+  - crates/codegen/xai-grok-shell/src/session/persistence.rs
+  - crates/codegen/xai-grok-shell/src/agent/mvp_agent/agent_ops.rs
+  - crates/codegen/xai-grok-shell/src/session/goal_tracker.rs
+  - crates/codegen/xai-grok-shell/src/agent/models.rs
 officialDocs:
   - https://docs.x.ai/build/overview
 ---
 
-import SourceBaseline from '@components/SourceBaseline.astro';
-import SourceRef from '@components/SourceRef.astro';
-import Mermaid from '@components/Mermaid.astro';
+import DeepDiveArticle from '@components/DeepDiveArticle.astro';
 
-<SourceBaseline compact />
-
-> **结论：** 压缩不是简单截断最旧消息，而是 session 在 token 阈值附近触发的受控事务：选择历史范围、生成可续接摘要、验证并提交新上下文；失败时保留原历史或走回退路径，避免半压缩状态破坏会话。
-
-## 源码入口
-
-独立 `xai-grok-compaction` crate 的模块文档描述压缩引擎与数据边界，说明算法层被刻意从完整 session 运行时拆出。
-
-<SourceRef path="crates/common/xai-grok-compaction/src/lib.rs" start={1} end={68} symbol="compaction engine" />
-
-session 层的 `run_compact` 负责把引擎接入当前会话、进度事件与持久化；自动检查逻辑则在预算接近阈值时决定是否启动。
-
-<SourceRef path="crates/codegen/xai-grok-shell/src/session/compaction.rs" start={601} end={692} symbol="run_compact" />
-<SourceRef path="crates/codegen/xai-grok-shell/src/session/compaction.rs" start={1764} end={1838} symbol="automatic compaction check" />
-
-token estimation crate 提供预算原语和阈值计算，压缩决策不应只看字符数。
-
-<SourceRef path="crates/codegen/xai-token-estimation/src/lib.rs" start={1} end={100} symbol="token estimation primitives" />
-
-## 压缩事务
-
-<Mermaid label="从阈值触发到提交" chart={`stateDiagram-v2
-  [*] --> Observe
-  Observe --> Estimate: history changed
-  Estimate --> Continue: below threshold
-  Estimate --> Select: threshold reached
-  Select --> Summarize
-  Summarize --> Validate
-  Validate --> Commit: summary usable
-  Validate --> Rollback: invalid / failed
-  Commit --> Persist
-  Rollback --> PreserveOriginal
-  Persist --> [*]
-  PreserveOriginal --> [*]
-  Continue --> [*]`} />
-
-压缩的目标是释放窗口，同时保存继续完成任务所需的因果信息：用户目标、已经采取的动作、关键工具结果、当前文件状态、未完成事项和约束。如果只做语言摘要而丢失执行状态，下一轮模型会重复动作或得出错误前提。
-
-## Token 预算不是一个数字
-
-估算需要给系统提示、工具 definitions、新回复和协议开销留出空间。因此触发阈值通常早于模型硬上限。历史本身也包含不同成本：文本、工具参数、工具输出与结构字段的编码并不等价。
-
-自动压缩与用户显式压缩可以共享引擎，但触发来源不同。前者是运行时保护，后者是用户意图；两者都要进入同一个提交与错误处理路径，避免产生两套历史格式。
-
-## 提交与回退
-
-压缩期间，原历史仍是安全基线。只有摘要满足结构要求并成功合并，session 才替换可采样上下文；持久化随后记录新状态。如果摘要生成失败或取消，系统应继续使用原历史，哪怕剩余预算较紧。
-
-**推断：** 把压缩实现为“先生成、后提交”的流程，是为了在模型调用这种易失败操作与会话历史这种关键状态之间建立事务边界。
-
-## 边界与失败模式
-
-- token 估算是近似值，服务端实际编码可能不同，必须保留安全余量。
-- 超大的单次工具输出可能越过阈值，不能只在完整 turn 结束后检查。
-- 摘要语义正确但遗漏精确路径/错误信息，仍会降低后续工程可靠性。
-- 压缩本身也消耗 token，并可能因网络、取消或模型错误失败。
-
-## 与官方文档的区别
-
-官方文档若提供压缩命令或用户行为，以其为准；本文解释自动触发和历史提交为什么需要分层。本站不承诺固定阈值，因为模型窗口和配置会变化。
-
-## 源码引用
-
-算法 crate、session 集成和 token 估算三组引用共同构成证据链。只查看压缩 prompt 无法解释何时提交，也无法解释失败后会话如何保持一致。
-
+<DeepDiveArticle slug="context/compaction-and-token-budget" />

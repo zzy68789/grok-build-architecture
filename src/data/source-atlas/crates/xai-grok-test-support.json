@@ -1,0 +1,1093 @@
+{
+  "name": "xai-grok-test-support",
+  "memberPath": "crates/codegen/xai-grok-test-support",
+  "manifestPath": "crates/codegen/xai-grok-test-support/Cargo.toml",
+  "description": "Shared test-support for grok-build crates: mock inference server, SSE generators, ACP stdio client, headless runner, env sandbox",
+  "role": "集中提供密封测试环境、模拟服务和共享测试工具。",
+  "layer": "测试支持",
+  "primaryArticle": "introduction/workspace-and-crates",
+  "relatedArticles": [
+    "introduction/workspace-and-crates"
+  ],
+  "dependencies": [
+    "xai-acp-lib"
+  ],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-pager-pty-harness",
+    "xai-grok-sampler",
+    "xai-grok-shell"
+  ],
+  "fileCount": 11,
+  "productionFileCount": 11,
+  "lineCount": 4584,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/lib.rs",
+      "lineCount": 42,
+      "symbols": []
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+      "lineCount": 1466,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LogEntry",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "header",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 47
+        },
+        {
+          "kind": "struct",
+          "name": "RequestLog",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 56
+        },
+        {
+          "kind": "struct",
+          "name": "MockModelEntry",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "with_agent_type",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 126
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+      "lineCount": 1105,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "messages_api_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "chat_completion_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "chat_completion_events_exact",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_events_exact",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 157
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_reasoning_only_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 261
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "lineCount": 515,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "GrokStdioClient",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_home",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_home_and_env",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 135
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_home_env_and_args",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "initialize",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 181
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+      "lineCount": 513,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FaultDirection",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 26
+        },
+        {
+          "kind": "struct",
+          "name": "FaultPlan",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 36
+        },
+        {
+          "kind": "struct",
+          "name": "FaultHandle",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "sever_now",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "forwarded",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 84
+        },
+        {
+          "kind": "struct",
+          "name": "UdsProxy",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 95
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+      "lineCount": 355,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "LEADER_BINARY_ENV",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "CLIENT_BINARY_ENV",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "leader_binary",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "client_binary",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 46
+        },
+        {
+          "kind": "struct",
+          "name": "Capture",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 52
+        },
+        {
+          "kind": "struct",
+          "name": "LeaderStdioClient",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 107
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+      "lineCount": 178,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "EnvGuard",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "set",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "unset",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "grok_binary",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 99
+        },
+        {
+          "kind": "fn",
+          "name": "git_workdir",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "test_env_cmd_tokio",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 153
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+      "lineCount": 155,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HeadlessResult",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "run_headless",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "run_headless_with_cmd",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "stderr_tail",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 118
+        },
+        {
+          "kind": "fn",
+          "name": "assert_headless_success",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "assert_no_crashes",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 145
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "struct",
+      "name": "GrokStdioClient",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 114
+    },
+    {
+      "kind": "fn",
+      "name": "spawn",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 123
+    },
+    {
+      "kind": "fn",
+      "name": "spawn_with_home",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 128
+    },
+    {
+      "kind": "fn",
+      "name": "spawn_with_home_and_env",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 135
+    },
+    {
+      "kind": "fn",
+      "name": "spawn_with_home_env_and_args",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 147
+    },
+    {
+      "kind": "fn",
+      "name": "initialize",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 181
+    },
+    {
+      "kind": "fn",
+      "name": "create_session",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 231
+    },
+    {
+      "kind": "fn",
+      "name": "create_session_with_model",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 241
+    },
+    {
+      "kind": "fn",
+      "name": "set_model",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 259
+    },
+    {
+      "kind": "fn",
+      "name": "prompt",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 273
+    },
+    {
+      "kind": "fn",
+      "name": "captured_text",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 288
+    },
+    {
+      "kind": "fn",
+      "name": "notification_count",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 292
+    },
+    {
+      "kind": "fn",
+      "name": "stderr",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 296
+    },
+    {
+      "kind": "fn",
+      "name": "take_home",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 300
+    },
+    {
+      "kind": "fn",
+      "name": "home_path",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 305
+    },
+    {
+      "kind": "fn",
+      "name": "initialize_with_timeout",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 309
+    },
+    {
+      "kind": "fn",
+      "name": "create_session_with_timeout",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 315
+    },
+    {
+      "kind": "fn",
+      "name": "create_session_with_model_timeout",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 321
+    },
+    {
+      "kind": "fn",
+      "name": "set_model_with_timeout",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 339
+    },
+    {
+      "kind": "fn",
+      "name": "prompt_with_timeout",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 357
+    },
+    {
+      "kind": "fn",
+      "name": "load_session_with_timeout",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 367
+    },
+    {
+      "kind": "fn",
+      "name": "ext_method",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 386
+    },
+    {
+      "kind": "struct",
+      "name": "RawStdioClient",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 405
+    },
+    {
+      "kind": "fn",
+      "name": "spawn",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 414
+    },
+    {
+      "kind": "fn",
+      "name": "stderr",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 430
+    },
+    {
+      "kind": "fn",
+      "name": "send_line",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 435
+    },
+    {
+      "kind": "fn",
+      "name": "response_for_id",
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "line": 454
+    },
+    {
+      "kind": "fn",
+      "name": "spawn_counting_server",
+      "path": "crates/codegen/xai-grok-test-support/src/counting_server.rs",
+      "line": 13
+    },
+    {
+      "kind": "struct",
+      "name": "EnvGuard",
+      "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+      "line": 17
+    },
+    {
+      "kind": "fn",
+      "name": "set",
+      "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+      "line": 25
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+      "module": "acp_client",
+      "kind": "production",
+      "lineCount": 515,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "GrokStdioClient",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_home",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 128
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_home_and_env",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 135
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_home_env_and_args",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "initialize",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 181
+        },
+        {
+          "kind": "fn",
+          "name": "create_session",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 231
+        },
+        {
+          "kind": "fn",
+          "name": "create_session_with_model",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 241
+        },
+        {
+          "kind": "fn",
+          "name": "set_model",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 259
+        },
+        {
+          "kind": "fn",
+          "name": "prompt",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 273
+        },
+        {
+          "kind": "fn",
+          "name": "captured_text",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 288
+        },
+        {
+          "kind": "fn",
+          "name": "notification_count",
+          "path": "crates/codegen/xai-grok-test-support/src/acp_client.rs",
+          "line": 292
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/acp_client.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/counting_server.rs",
+      "module": "counting_server",
+      "kind": "production",
+      "lineCount": 69,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "spawn_counting_server",
+          "path": "crates/codegen/xai-grok-test-support/src/counting_server.rs",
+          "line": 13
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/counting_server.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+      "module": "env",
+      "kind": "production",
+      "lineCount": 178,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "EnvGuard",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 17
+        },
+        {
+          "kind": "fn",
+          "name": "set",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "unset",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 33
+        },
+        {
+          "kind": "fn",
+          "name": "grok_binary",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 99
+        },
+        {
+          "kind": "fn",
+          "name": "git_workdir",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 120
+        },
+        {
+          "kind": "fn",
+          "name": "test_env_cmd_tokio",
+          "path": "crates/codegen/xai-grok-test-support/src/env.rs",
+          "line": 153
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/env.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+      "module": "headless",
+      "kind": "production",
+      "lineCount": 155,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "HeadlessResult",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 15
+        },
+        {
+          "kind": "fn",
+          "name": "run_headless",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 26
+        },
+        {
+          "kind": "fn",
+          "name": "run_headless_with_cmd",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 43
+        },
+        {
+          "kind": "fn",
+          "name": "stderr_tail",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 118
+        },
+        {
+          "kind": "fn",
+          "name": "assert_headless_success",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 123
+        },
+        {
+          "kind": "fn",
+          "name": "assert_no_crashes",
+          "path": "crates/codegen/xai-grok-test-support/src/headless.rs",
+          "line": 145
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/headless.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+      "module": "leader",
+      "kind": "production",
+      "lineCount": 355,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "LEADER_BINARY_ENV",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 23
+        },
+        {
+          "kind": "const",
+          "name": "CLIENT_BINARY_ENV",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 27
+        },
+        {
+          "kind": "fn",
+          "name": "leader_binary",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 40
+        },
+        {
+          "kind": "fn",
+          "name": "client_binary",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 46
+        },
+        {
+          "kind": "struct",
+          "name": "Capture",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 52
+        },
+        {
+          "kind": "struct",
+          "name": "LeaderStdioClient",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 116
+        },
+        {
+          "kind": "fn",
+          "name": "spawn_with_binary",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 122
+        },
+        {
+          "kind": "fn",
+          "name": "stderr_text",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 178
+        },
+        {
+          "kind": "fn",
+          "name": "captured_text",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 182
+        },
+        {
+          "kind": "fn",
+          "name": "initialize",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 186
+        },
+        {
+          "kind": "fn",
+          "name": "create_session",
+          "path": "crates/codegen/xai-grok-test-support/src/leader.rs",
+          "line": 230
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/leader.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 42,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+      "module": "mock_server",
+      "kind": "production",
+      "lineCount": 1466,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "LogEntry",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 34
+        },
+        {
+          "kind": "fn",
+          "name": "header",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 47
+        },
+        {
+          "kind": "struct",
+          "name": "RequestLog",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 56
+        },
+        {
+          "kind": "struct",
+          "name": "MockModelEntry",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 92
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 114
+        },
+        {
+          "kind": "fn",
+          "name": "with_agent_type",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "with_api_backend",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 133
+        },
+        {
+          "kind": "fn",
+          "name": "with_supports_backend_search",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 138
+        },
+        {
+          "kind": "fn",
+          "name": "with_supports_reasoning_effort",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 143
+        },
+        {
+          "kind": "fn",
+          "name": "with_reasoning_effort",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 148
+        },
+        {
+          "kind": "fn",
+          "name": "with_reasoning_efforts",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 153
+        },
+        {
+          "kind": "struct",
+          "name": "StorageUpload",
+          "path": "crates/codegen/xai-grok-test-support/src/mock_server.rs",
+          "line": 271
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/mock_server.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/process.rs",
+      "module": "process",
+      "kind": "production",
+      "lineCount": 47,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "spawn_piped_with_stderr_capture",
+          "path": "crates/codegen/xai-grok-test-support/src/process.rs",
+          "line": 11
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/process.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+      "module": "scripted",
+      "kind": "production",
+      "lineCount": 139,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "SseEvent",
+          "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+          "line": 16
+        },
+        {
+          "kind": "fn",
+          "name": "data",
+          "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+          "line": 23
+        },
+        {
+          "kind": "fn",
+          "name": "with_event",
+          "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+          "line": 31
+        },
+        {
+          "kind": "enum",
+          "name": "ScriptedBody",
+          "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+          "line": 41
+        },
+        {
+          "kind": "struct",
+          "name": "ScriptedResponse",
+          "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "sse",
+          "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+          "line": 60
+        },
+        {
+          "kind": "fn",
+          "name": "json",
+          "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+          "line": 69
+        },
+        {
+          "kind": "fn",
+          "name": "text",
+          "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+          "line": 78
+        },
+        {
+          "kind": "fn",
+          "name": "validate",
+          "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+          "line": 88
+        },
+        {
+          "kind": "fn",
+          "name": "into_response_paced",
+          "path": "crates/codegen/xai-grok-test-support/src/scripted.rs",
+          "line": 100
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/scripted.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+      "module": "sse",
+      "kind": "production",
+      "lineCount": 1105,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "messages_api_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 13
+        },
+        {
+          "kind": "fn",
+          "name": "chat_completion_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "chat_completion_events_exact",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 57
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 147
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_events_exact",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 157
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_reasoning_only_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 261
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_reasoning_and_text_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 344
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_doom_loop_check_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 509
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_doom_loop_terminal_only_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 531
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_with_doom_loop_frame",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 548
+        },
+        {
+          "kind": "fn",
+          "name": "responses_api_reasoning_then_tool_call_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 572
+        },
+        {
+          "kind": "fn",
+          "name": "chat_completions_reasoning_then_tool_call_events",
+          "path": "crates/codegen/xai-grok-test-support/src/sse.rs",
+          "line": 675
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/sse.rs"
+    },
+    {
+      "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+      "module": "uds_proxy",
+      "kind": "production",
+      "lineCount": 513,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FaultDirection",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 26
+        },
+        {
+          "kind": "struct",
+          "name": "FaultPlan",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 36
+        },
+        {
+          "kind": "struct",
+          "name": "FaultHandle",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "sever_now",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 72
+        },
+        {
+          "kind": "fn",
+          "name": "forwarded",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 84
+        },
+        {
+          "kind": "struct",
+          "name": "UdsProxy",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "spawn",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 104
+        },
+        {
+          "kind": "fn",
+          "name": "handle",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 143
+        },
+        {
+          "kind": "fn",
+          "name": "shutdown",
+          "path": "crates/codegen/xai-grok-test-support/src/uds_proxy.rs",
+          "line": 148
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-test-support/src/uds_proxy.rs"
+    }
+  ]
+}

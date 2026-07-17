@@ -1,0 +1,692 @@
+{
+  "name": "xai-crash-handler",
+  "memberPath": "crates/codegen/xai-crash-handler",
+  "manifestPath": "crates/codegen/xai-crash-handler/Cargo.toml",
+  "description": "Cross-platform crash handler (Unix signals + Windows SEH) with startup crash detection",
+  "role": "处理跨平台崩溃信号并检测启动期连续崩溃。",
+  "layer": "会话运行时",
+  "primaryArticle": "runtime/lifecycle-crash-power",
+  "relatedArticles": [
+    "runtime/lifecycle-crash-power",
+    "operations/update-version-announcements-crash"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-grok-pager",
+    "xai-grok-pager-bin"
+  ],
+  "fileCount": 6,
+  "productionFileCount": 5,
+  "lineCount": 1597,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+      "lineCount": 179,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CrashHandlerConfig",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 42
+        },
+        {
+          "kind": "struct",
+          "name": "CrashReport",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "install",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "install_terminal_restore_only",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "enable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "disable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 107
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "lineCount": 924,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "install_terminal_restore_only",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 433
+        },
+        {
+          "kind": "fn",
+          "name": "install",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 441
+        },
+        {
+          "kind": "fn",
+          "name": "enable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 483
+        },
+        {
+          "kind": "fn",
+          "name": "disable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 495
+        },
+        {
+          "kind": "fn",
+          "name": "install_terminal_restore_only",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 744
+        },
+        {
+          "kind": "fn",
+          "name": "install",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 752
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "lineCount": 215,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAGIC",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 7
+        },
+        {
+          "kind": "const",
+          "name": "VERSION",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 10
+        },
+        {
+          "kind": "const",
+          "name": "MAX_FRAMES",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_STRING_LEN",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "HEADER_SIZE",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "MAX_FILE_SIZE",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+      "lineCount": 144,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ResolvedFrame",
+          "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_frames",
+          "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "format_report",
+          "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "signal_name",
+          "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+          "line": 81
+        }
+      ]
+    },
+    {
+      "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+      "lineCount": 135,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MOUSE_TRACKING_RESET",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 35
+        },
+        {
+          "kind": "const",
+          "name": "MOUSE_PASTE_RESET",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 38
+        },
+        {
+          "kind": "const",
+          "name": "RESTORE_SEQ",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "restore_in_signal_handler",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "restore_in_signal_handler",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "restore_in_signal_handler",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 83
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "const",
+      "name": "MAGIC",
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "line": 7
+    },
+    {
+      "kind": "const",
+      "name": "VERSION",
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "line": 10
+    },
+    {
+      "kind": "const",
+      "name": "MAX_FRAMES",
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "line": 13
+    },
+    {
+      "kind": "const",
+      "name": "VERSION_STRING_LEN",
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "line": 16
+    },
+    {
+      "kind": "const",
+      "name": "HEADER_SIZE",
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "line": 30
+    },
+    {
+      "kind": "const",
+      "name": "MAX_FILE_SIZE",
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "line": 33
+    },
+    {
+      "kind": "struct",
+      "name": "CrashBlob",
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "line": 37
+    },
+    {
+      "kind": "fn",
+      "name": "parse",
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "line": 49
+    },
+    {
+      "kind": "fn",
+      "name": "write_header",
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "line": 126
+    },
+    {
+      "kind": "fn",
+      "name": "write_frame",
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "line": 160
+    },
+    {
+      "kind": "fn",
+      "name": "install_terminal_restore_only",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 433
+    },
+    {
+      "kind": "fn",
+      "name": "install",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 441
+    },
+    {
+      "kind": "fn",
+      "name": "enable_terminal_escape_restore",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 483
+    },
+    {
+      "kind": "fn",
+      "name": "disable_terminal_escape_restore",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 495
+    },
+    {
+      "kind": "fn",
+      "name": "install_terminal_restore_only",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 744
+    },
+    {
+      "kind": "fn",
+      "name": "install",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 752
+    },
+    {
+      "kind": "fn",
+      "name": "enable_terminal_escape_restore",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 800
+    },
+    {
+      "kind": "fn",
+      "name": "disable_terminal_escape_restore",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 813
+    },
+    {
+      "kind": "fn",
+      "name": "install",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 834
+    },
+    {
+      "kind": "fn",
+      "name": "install_terminal_restore_only",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 839
+    },
+    {
+      "kind": "fn",
+      "name": "enable_terminal_escape_restore",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 842
+    },
+    {
+      "kind": "fn",
+      "name": "disable_terminal_escape_restore",
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "line": 845
+    },
+    {
+      "kind": "struct",
+      "name": "CrashHandlerConfig",
+      "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+      "line": 42
+    },
+    {
+      "kind": "struct",
+      "name": "CrashReport",
+      "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+      "line": 52
+    },
+    {
+      "kind": "fn",
+      "name": "install",
+      "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+      "line": 76
+    },
+    {
+      "kind": "fn",
+      "name": "install_terminal_restore_only",
+      "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+      "line": 95
+    },
+    {
+      "kind": "fn",
+      "name": "enable_terminal_escape_restore",
+      "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+      "line": 101
+    },
+    {
+      "kind": "fn",
+      "name": "disable_terminal_escape_restore",
+      "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+      "line": 107
+    },
+    {
+      "kind": "fn",
+      "name": "check_previous_crash",
+      "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+      "line": 116
+    },
+    {
+      "kind": "struct",
+      "name": "ResolvedFrame",
+      "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+      "line": 11
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-crash-handler/src/format.rs",
+      "module": "format",
+      "kind": "production",
+      "lineCount": 215,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MAGIC",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 7
+        },
+        {
+          "kind": "const",
+          "name": "VERSION",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 10
+        },
+        {
+          "kind": "const",
+          "name": "MAX_FRAMES",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 13
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_STRING_LEN",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 16
+        },
+        {
+          "kind": "const",
+          "name": "HEADER_SIZE",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 30
+        },
+        {
+          "kind": "const",
+          "name": "MAX_FILE_SIZE",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 33
+        },
+        {
+          "kind": "struct",
+          "name": "CrashBlob",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "parse",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 49
+        },
+        {
+          "kind": "fn",
+          "name": "write_header",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 126
+        },
+        {
+          "kind": "fn",
+          "name": "write_frame",
+          "path": "crates/codegen/xai-crash-handler/src/format.rs",
+          "line": 160
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-crash-handler/src/format.rs"
+    },
+    {
+      "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+      "module": "handler",
+      "kind": "production",
+      "lineCount": 924,
+      "symbols": [
+        {
+          "kind": "fn",
+          "name": "install_terminal_restore_only",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 433
+        },
+        {
+          "kind": "fn",
+          "name": "install",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 441
+        },
+        {
+          "kind": "fn",
+          "name": "enable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 483
+        },
+        {
+          "kind": "fn",
+          "name": "disable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 495
+        },
+        {
+          "kind": "fn",
+          "name": "install_terminal_restore_only",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 744
+        },
+        {
+          "kind": "fn",
+          "name": "install",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 752
+        },
+        {
+          "kind": "fn",
+          "name": "enable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 800
+        },
+        {
+          "kind": "fn",
+          "name": "disable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 813
+        },
+        {
+          "kind": "fn",
+          "name": "install",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 834
+        },
+        {
+          "kind": "fn",
+          "name": "install_terminal_restore_only",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 839
+        },
+        {
+          "kind": "fn",
+          "name": "enable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 842
+        },
+        {
+          "kind": "fn",
+          "name": "disable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/handler.rs",
+          "line": 845
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-crash-handler/src/handler.rs"
+    },
+    {
+      "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 179,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "CrashHandlerConfig",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 42
+        },
+        {
+          "kind": "struct",
+          "name": "CrashReport",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 52
+        },
+        {
+          "kind": "fn",
+          "name": "install",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 76
+        },
+        {
+          "kind": "fn",
+          "name": "install_terminal_restore_only",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 95
+        },
+        {
+          "kind": "fn",
+          "name": "enable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 101
+        },
+        {
+          "kind": "fn",
+          "name": "disable_terminal_escape_restore",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 107
+        },
+        {
+          "kind": "fn",
+          "name": "check_previous_crash",
+          "path": "crates/codegen/xai-crash-handler/src/lib.rs",
+          "line": 116
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-crash-handler/src/lib.rs"
+    },
+    {
+      "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+      "module": "symbolicate",
+      "kind": "production",
+      "lineCount": 144,
+      "symbols": [
+        {
+          "kind": "struct",
+          "name": "ResolvedFrame",
+          "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+          "line": 11
+        },
+        {
+          "kind": "fn",
+          "name": "resolve_frames",
+          "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+          "line": 25
+        },
+        {
+          "kind": "fn",
+          "name": "format_report",
+          "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+          "line": 50
+        },
+        {
+          "kind": "fn",
+          "name": "signal_name",
+          "path": "crates/codegen/xai-crash-handler/src/symbolicate.rs",
+          "line": 81
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-crash-handler/src/symbolicate.rs"
+    },
+    {
+      "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+      "module": "terminal",
+      "kind": "production",
+      "lineCount": 135,
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MOUSE_TRACKING_RESET",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 35
+        },
+        {
+          "kind": "const",
+          "name": "MOUSE_PASTE_RESET",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 38
+        },
+        {
+          "kind": "const",
+          "name": "RESTORE_SEQ",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "restore_in_signal_handler",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 53
+        },
+        {
+          "kind": "fn",
+          "name": "restore_in_signal_handler",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 64
+        },
+        {
+          "kind": "fn",
+          "name": "restore_in_signal_handler",
+          "path": "crates/codegen/xai-crash-handler/src/terminal.rs",
+          "line": 83
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-crash-handler/src/terminal.rs"
+    },
+    {
+      "path": "crates/codegen/xai-crash-handler/tests/integration.rs",
+      "module": "..::tests::integration",
+      "kind": "test",
+      "lineCount": 284,
+      "symbols": [],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-crash-handler/tests/integration.rs"
+    }
+  ]
+}

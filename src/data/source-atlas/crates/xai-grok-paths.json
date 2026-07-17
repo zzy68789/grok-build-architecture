@@ -1,0 +1,291 @@
+{
+  "name": "xai-grok-paths",
+  "memberPath": "crates/codegen/xai-grok-paths",
+  "manifestPath": "crates/codegen/xai-grok-paths/Cargo.toml",
+  "description": "Type-safe path wrappers for absolute and relative UTF-8 paths",
+  "role": "提供绝对/相对 UTF-8 路径包装并维持路径不变量。",
+  "layer": "安全、扩展与运维",
+  "primaryArticle": "operations/shared-foundations",
+  "relatedArticles": [
+    "operations/shared-foundations",
+    "runtime/bootstrap-environment-version",
+    "workspace/fs-discovery-rules"
+  ],
+  "dependencies": [],
+  "dependents": [
+    "xai-codebase-graph",
+    "xai-grok-pager-render",
+    "xai-grok-shell",
+    "xai-grok-workspace"
+  ],
+  "fileCount": 1,
+  "productionFileCount": 1,
+  "lineCount": 576,
+  "keyEntrypoints": [
+    {
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "lineCount": 576,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "AbsPathError",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 10
+        },
+        {
+          "kind": "enum",
+          "name": "RelPathError",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 19
+        },
+        {
+          "kind": "trait",
+          "name": "ToAbsPath",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "to_relative_path",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "from_relative_path",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "normalize_lexically",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 59
+        }
+      ]
+    }
+  ],
+  "keySymbols": [
+    {
+      "kind": "enum",
+      "name": "AbsPathError",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 10
+    },
+    {
+      "kind": "enum",
+      "name": "RelPathError",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 19
+    },
+    {
+      "kind": "trait",
+      "name": "ToAbsPath",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 29
+    },
+    {
+      "kind": "fn",
+      "name": "to_relative_path",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 37
+    },
+    {
+      "kind": "fn",
+      "name": "from_relative_path",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 45
+    },
+    {
+      "kind": "fn",
+      "name": "normalize_lexically",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 59
+    },
+    {
+      "kind": "struct",
+      "name": "AbsPathBuf",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 86
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 90
+    },
+    {
+      "kind": "fn",
+      "name": "as_str",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 102
+    },
+    {
+      "kind": "fn",
+      "name": "as_path",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 106
+    },
+    {
+      "kind": "fn",
+      "name": "to_path_buf",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 110
+    },
+    {
+      "kind": "fn",
+      "name": "into_string",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 114
+    },
+    {
+      "kind": "fn",
+      "name": "join",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 118
+    },
+    {
+      "kind": "fn",
+      "name": "is_dir",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 122
+    },
+    {
+      "kind": "fn",
+      "name": "contains_path",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 127
+    },
+    {
+      "kind": "struct",
+      "name": "RelPathBuf",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 214
+    },
+    {
+      "kind": "fn",
+      "name": "new",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 218
+    },
+    {
+      "kind": "fn",
+      "name": "from_absolute",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 232
+    },
+    {
+      "kind": "fn",
+      "name": "to_absolute",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 243
+    },
+    {
+      "kind": "fn",
+      "name": "as_str",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 247
+    },
+    {
+      "kind": "fn",
+      "name": "as_path",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 251
+    },
+    {
+      "kind": "fn",
+      "name": "to_path_buf",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 255
+    },
+    {
+      "kind": "fn",
+      "name": "into_string",
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "line": 259
+    }
+  ],
+  "files": [
+    {
+      "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+      "module": "lib",
+      "kind": "production",
+      "lineCount": 576,
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "AbsPathError",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 10
+        },
+        {
+          "kind": "enum",
+          "name": "RelPathError",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 19
+        },
+        {
+          "kind": "trait",
+          "name": "ToAbsPath",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 29
+        },
+        {
+          "kind": "fn",
+          "name": "to_relative_path",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 37
+        },
+        {
+          "kind": "fn",
+          "name": "from_relative_path",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 45
+        },
+        {
+          "kind": "fn",
+          "name": "normalize_lexically",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 59
+        },
+        {
+          "kind": "struct",
+          "name": "AbsPathBuf",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 86
+        },
+        {
+          "kind": "fn",
+          "name": "new",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 90
+        },
+        {
+          "kind": "fn",
+          "name": "as_str",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 102
+        },
+        {
+          "kind": "fn",
+          "name": "as_path",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 106
+        },
+        {
+          "kind": "fn",
+          "name": "to_path_buf",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 110
+        },
+        {
+          "kind": "fn",
+          "name": "into_string",
+          "path": "crates/codegen/xai-grok-paths/src/lib.rs",
+          "line": 114
+        }
+      ],
+      "url": "https://github.com/xai-org/grok-build/blob/8adf9013a0929e5c7f1d4e849492d2387837a28d/crates/codegen/xai-grok-paths/src/lib.rs"
+    }
+  ]
+}
